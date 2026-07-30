@@ -1,14 +1,18 @@
 import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
+import { createStarField } from "../particles.js";
 
 let scene;
 let camera;
 let renderer;
+let stars;
 
 export function initScene(){
 
     scene = new THREE.Scene();
 
     scene.background = new THREE.Color(0x0B0515);
+
+    stars = createStarField(scene);
 
     camera = new THREE.PerspectiveCamera(
 
@@ -54,11 +58,15 @@ export function initScene(){
 
 }
 
-function animate(){
+function animate() {
 
     requestAnimationFrame(animate);
 
-    renderer.render(scene,camera);
+    stars.rotation.y += 0.00025;
+
+    stars.rotation.x += 0.00005;
+
+    renderer.render(scene, camera);
 
 }
 
