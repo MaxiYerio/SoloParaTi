@@ -1,24 +1,81 @@
 import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
-import { createStarField } from "../particles.js";
+import { createStarField } from "../objects/StarField.js";
+import { createCoreSphere } from "../objects/CoreSphere.js";
 
 let scene;
 let camera;
 let renderer;
 let stars;
+let core;
+let ambientLight;
+let pointLight;
+let hemisphereLight;
 
-export function initScene(){
+export function initScene() {
 
     scene = new THREE.Scene();
 
     scene.background = new THREE.Color(0x0B0515);
 
+    //----------------------------------
+    // LUCES
+    //----------------------------------
+
+    ambientLight = new THREE.AmbientLight(
+
+        0xffffff,
+
+        0.18
+
+    );
+
+    scene.add(ambientLight);
+
+    hemisphereLight = new THREE.HemisphereLight(
+
+        0xd6b8ff,
+
+        0x08070d,
+
+        0.35
+
+    );
+
+    scene.add(hemisphereLight);
+
+    pointLight = new THREE.PointLight(
+
+        0xb987ff,
+
+        7,
+
+        18,
+
+        2
+
+    );
+
+    pointLight.position.set(
+
+        0,
+
+        0,
+
+        0
+
+    );
+
+    scene.add(pointLight);
+
     stars = createStarField(scene);
+
+    core = createCoreSphere(scene);
 
     camera = new THREE.PerspectiveCamera(
 
         60,
 
-        window.innerWidth/window.innerHeight,
+        window.innerWidth / window.innerHeight,
 
         0.1,
 
@@ -30,9 +87,9 @@ export function initScene(){
 
     renderer = new THREE.WebGLRenderer({
 
-        antialias:true,
+        antialias: true,
 
-        alpha:true
+        alpha: true
 
     });
 
@@ -51,8 +108,8 @@ export function initScene(){
     );
 
     document
-    .getElementById("scene")
-    .appendChild(renderer.domElement);
+        .getElementById("scene")
+        .appendChild(renderer.domElement);
 
     animate();
 
@@ -62,21 +119,46 @@ function animate() {
 
     requestAnimationFrame(animate);
 
-    stars.rotation.y += 0.00025;
+    stars.rotation.y += 0.00008;
 
-    stars.rotation.x += 0.00005;
+    core.rotation.y += 0.002;
+
+    pointLight.intensity =
+
+        6.8 +
+
+        Math.sin(
+
+            Date.now() * 0.0015
+
+        ) * 0.6;
+
+    const pulse = 1 + Math.sin(Date.now() * 0.0015) * 0.01;
+
+    core.scale.set(
+
+        pulse,
+
+        pulse,
+
+        pulse
+
+    );
+
+    stars.rotation.x += 0.00002;
 
     renderer.render(scene, camera);
 
+
 }
 
-window.addEventListener("resize",()=>{
+window.addEventListener("resize", () => {
 
-    if(!camera) return;
+    if (!camera) return;
 
-    camera.aspect=
+    camera.aspect =
 
-        window.innerWidth/
+        window.innerWidth /
 
         window.innerHeight;
 

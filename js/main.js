@@ -1,4 +1,4 @@
-import { initScene } from "./scene.js";
+import { startApp } from "./core/App.js";
 
 const intro = document.getElementById("intro");
 
@@ -16,7 +16,7 @@ window.addEventListener("pointerdown", () => {
 
         intro.style.display = "none";
 
-        initScene();
+        startApp();
 
     },1200);
 

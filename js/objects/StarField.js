@@ -2,36 +2,56 @@ import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
 
 export function createStarField(scene) {
 
+    const group = new THREE.Group();
+
+    createLayer(group, 1800, 0.08, 260, [
+        "#ffffff",
+        "#f8f8ff",
+        "#efe9ff"
+    ]);
+
+    createLayer(group, 900, 0.16, 190, [
+        "#ffffff",
+        "#e8d5ff",
+        "#dcb8ff"
+    ]);
+
+    createLayer(group, 350, 0.28, 120, [
+        "#ffffff",
+        "#d8b4fe",
+        "#c084fc"
+    ]);
+
+    scene.add(group);
+
+    return group;
+
+}
+
+function createLayer(group, amount, size, radius, palette){
+
     const geometry = new THREE.BufferGeometry();
 
-    const starCount = 3000;
-
     const positions = [];
-
     const colors = [];
 
-    const colorPalette = [
-
-        new THREE.Color("#ffffff"),
-        new THREE.Color("#E9D5FF"),
-        new THREE.Color("#C084FC"),
-        new THREE.Color("#D8B4FE")
-
-    ];
-
-    for (let i = 0; i < starCount; i++) {
+    for(let i = 0; i < amount; i++){
 
         positions.push(
 
-            (Math.random() - 0.5) * 250,
-            (Math.random() - 0.5) * 250,
-            (Math.random() - 0.5) * 250
+            (Math.random()-0.5)*radius,
+            (Math.random()-0.5)*radius,
+            (Math.random()-0.5)*radius
 
         );
 
-        const c = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+        const color = new THREE.Color(
 
-        colors.push(c.r, c.g, c.b);
+            palette[Math.floor(Math.random()*palette.length)]
+
+        );
+
+        colors.push(color.r,color.g,color.b);
 
     }
 
@@ -39,7 +59,7 @@ export function createStarField(scene) {
 
         "position",
 
-        new THREE.Float32BufferAttribute(positions, 3)
+        new THREE.Float32BufferAttribute(positions,3)
 
     );
 
@@ -47,34 +67,28 @@ export function createStarField(scene) {
 
         "color",
 
-        new THREE.Float32BufferAttribute(colors, 3)
+        new THREE.Float32BufferAttribute(colors,3)
 
     );
 
     const material = new THREE.PointsMaterial({
 
-        size: 0.4,
+        size,
 
-        vertexColors: true,
+        vertexColors:true,
 
-        transparent: true,
+        transparent:true,
 
-        opacity: 0.9,
+        opacity:0.9,
 
-        sizeAttenuation: true
+        depthWrite:false,
+
+        sizeAttenuation:true
 
     });
 
-    const stars = new THREE.Points(
+    const stars = new THREE.Points(geometry,material);
 
-        geometry,
-
-        material
-
-    );
-
-    scene.add(stars);
-
-    return stars;
+    group.add(stars);
 
 }
