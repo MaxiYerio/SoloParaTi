@@ -1,12 +1,15 @@
 import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
 import { createStarField } from "../objects/StarField.js";
 import { createCoreSphere } from "../objects/CoreSphere.js";
+import { createWordSphere } from "../objects/WordSphere.js";
+import { createTextSprite } from "../objects/TextSprite.js";
 
 let scene;
 let camera;
 let renderer;
 let stars;
 let core;
+let wordSphere;
 let ambientLight;
 let pointLight;
 let hemisphereLight;
@@ -69,7 +72,15 @@ export function initScene() {
 
     stars = createStarField(scene);
 
+    scene.add(stars.object);
+
     core = createCoreSphere(scene);
+
+    scene.add(core.object);
+
+    wordSphere = createWordSphere(scene);
+
+    scene.add(wordSphere.object);
 
     camera = new THREE.PerspectiveCamera(
 
@@ -119,9 +130,11 @@ function animate() {
 
     requestAnimationFrame(animate);
 
-    stars.rotation.y += 0.00008;
+    stars.update();
 
-    core.rotation.y += 0.002;
+    core.update();
+
+    wordSphere.update();
 
     pointLight.intensity =
 
@@ -129,26 +142,11 @@ function animate() {
 
         Math.sin(
 
-            Date.now() * 0.0015
+            performance.now() * 0.0015
 
         ) * 0.6;
 
-    const pulse = 1 + Math.sin(Date.now() * 0.0015) * 0.01;
-
-    core.scale.set(
-
-        pulse,
-
-        pulse,
-
-        pulse
-
-    );
-
-    stars.rotation.x += 0.00002;
-
     renderer.render(scene, camera);
-
 
 }
 

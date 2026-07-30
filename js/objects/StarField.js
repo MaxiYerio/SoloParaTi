@@ -22,36 +22,46 @@ export function createStarField(scene) {
         "#c084fc"
     ]);
 
-    scene.add(group);
+    return {
 
-    return group;
+        object: group,
+
+        update() {
+
+            group.rotation.y += 0.00008;
+
+            group.rotation.x += 0.00002;
+
+        }
+
+    };
 
 }
 
-function createLayer(group, amount, size, radius, palette){
+function createLayer(group, amount, size, radius, palette) {
 
     const geometry = new THREE.BufferGeometry();
 
     const positions = [];
     const colors = [];
 
-    for(let i = 0; i < amount; i++){
+    for (let i = 0; i < amount; i++) {
 
         positions.push(
 
-            (Math.random()-0.5)*radius,
-            (Math.random()-0.5)*radius,
-            (Math.random()-0.5)*radius
+            (Math.random() - 0.5) * radius,
+            (Math.random() - 0.5) * radius,
+            (Math.random() - 0.5) * radius
 
         );
 
         const color = new THREE.Color(
 
-            palette[Math.floor(Math.random()*palette.length)]
+            palette[Math.floor(Math.random() * palette.length)]
 
         );
 
-        colors.push(color.r,color.g,color.b);
+        colors.push(color.r, color.g, color.b);
 
     }
 
@@ -59,7 +69,7 @@ function createLayer(group, amount, size, radius, palette){
 
         "position",
 
-        new THREE.Float32BufferAttribute(positions,3)
+        new THREE.Float32BufferAttribute(positions, 3)
 
     );
 
@@ -67,7 +77,7 @@ function createLayer(group, amount, size, radius, palette){
 
         "color",
 
-        new THREE.Float32BufferAttribute(colors,3)
+        new THREE.Float32BufferAttribute(colors, 3)
 
     );
 
@@ -75,19 +85,19 @@ function createLayer(group, amount, size, radius, palette){
 
         size,
 
-        vertexColors:true,
+        vertexColors: true,
 
-        transparent:true,
+        transparent: true,
 
-        opacity:0.9,
+        opacity: 0.9,
 
-        depthWrite:false,
+        depthWrite: false,
 
-        sizeAttenuation:true
+        sizeAttenuation: true
 
     });
 
-    const stars = new THREE.Points(geometry,material);
+    const stars = new THREE.Points(geometry, material);
 
     group.add(stars);
 

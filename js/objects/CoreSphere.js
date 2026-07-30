@@ -1,6 +1,6 @@
 import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
 
-export function createCoreSphere(scene){
+export function createCoreSphere(scene) {
 
     const group = new THREE.Group();
 
@@ -20,15 +20,15 @@ export function createCoreSphere(scene){
 
     const material = new THREE.MeshPhysicalMaterial({
 
-        color:0x161018,
+        color: 0x161018,
 
-        roughness:0.35,
+        roughness: 0.35,
 
-        metalness:0.15,
+        metalness: 0.15,
 
-        clearcoat:1,
+        clearcoat: 1,
 
-        clearcoatRoughness:0
+        clearcoatRoughness: 0
 
     });
 
@@ -58,13 +58,13 @@ export function createCoreSphere(scene){
 
     const haloMaterial = new THREE.MeshBasicMaterial({
 
-        color:0xB987FF,
+        color: 0xB987FF,
 
-        transparent:true,
+        transparent: true,
 
-        opacity:0.08,
+        opacity: 0.08,
 
-        side:THREE.BackSide
+        side: THREE.BackSide
 
     });
 
@@ -80,8 +80,36 @@ export function createCoreSphere(scene){
 
     //----------------------------------
 
-    scene.add(group);
+    return {
 
-    return group;
+        object: group,
+
+        update() {
+
+            group.rotation.y += 0.002;
+
+            const pulse =
+
+                1 +
+
+                Math.sin(
+
+                    performance.now() * 0.0015
+
+                ) * 0.01;
+
+            group.scale.set(
+
+                pulse,
+
+                pulse,
+
+                pulse
+
+            );
+
+        }
+
+    };
 
 }
