@@ -21,7 +21,7 @@ export function createTextSprite(data) {
     ctx.shadowColor = "#B987FF";
     ctx.shadowBlur = 18;
 
-    ctx.fillStyle = data.color;
+    ctx.fillStyle = data.color || "#FFFFFF";
 
     ctx.fillText(
 
@@ -48,12 +48,14 @@ export function createTextSprite(data) {
     });
 
     const sprite = new THREE.Sprite(material);
+    
+    const size = data.size || 1;
 
     sprite.scale.set(
 
-        2.5 * data.size,
+        2.5 * size,
 
-        0.6 * data.size,
+        0.6 * size,
 
         1
 
