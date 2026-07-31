@@ -1,8 +1,11 @@
+//js\core\SceneManager.js
+
 import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
 import { createStarField } from "../objects/StarField.js";
 import { createCoreSphere } from "../objects/CoreSphere.js";
 import { createWordSphere } from "../objects/WordSphere.js";
 import { createTextSprite } from "../objects/TextSprite.js";
+import { setupInteraction } from "../systems/InteractionManager.js";
 
 let scene;
 let camera;
@@ -122,6 +125,9 @@ export function initScene() {
         .getElementById("scene")
         .appendChild(renderer.domElement);
 
+    // Ahora el canvas ya existe
+    setupInteraction(wordSphere.object);
+
     animate();
 
 }
@@ -134,7 +140,7 @@ function animate() {
 
     core.update();
 
-    wordSphere.update();
+    wordSphere.update(camera);
 
     pointLight.intensity =
 

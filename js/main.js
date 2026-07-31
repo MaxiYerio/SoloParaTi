@@ -1,3 +1,5 @@
+//js\main.js
+
 import { startApp } from "./core/App.js";
 
 const intro = document.getElementById("intro");

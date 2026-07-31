@@ -1,3 +1,5 @@
+//js\data\words.js
+
 export const words = [
 
     "Amistad",

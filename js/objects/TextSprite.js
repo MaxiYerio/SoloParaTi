@@ -1,6 +1,8 @@
+//js\objects\TextSprite.js
+
 import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
 
-export function createTextSprite(text){
+export function createTextSprite(data) {
 
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
@@ -8,7 +10,7 @@ export function createTextSprite(text){
     canvas.width = 1024;
     canvas.height = 256;
 
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     ctx.font = "bold 72px Poppins";
 
@@ -19,15 +21,15 @@ export function createTextSprite(text){
     ctx.shadowColor = "#B987FF";
     ctx.shadowBlur = 18;
 
-    ctx.fillStyle = "#FFFFFF";
+    ctx.fillStyle = data.color;
 
     ctx.fillText(
 
-        text,
+        data.text,
 
-        canvas.width/2,
+        canvas.width / 2,
 
-        canvas.height/2
+        canvas.height / 2
 
     );
 
@@ -37,11 +39,11 @@ export function createTextSprite(text){
 
     const material = new THREE.SpriteMaterial({
 
-        map:texture,
+        map: texture,
 
-        transparent:true,
+        transparent: true,
 
-        depthWrite:false
+        depthWrite: false
 
     });
 
@@ -49,9 +51,9 @@ export function createTextSprite(text){
 
     sprite.scale.set(
 
-        2.5,
+        2.5 * data.size,
 
-        0.6,
+        0.6 * data.size,
 
         1
 

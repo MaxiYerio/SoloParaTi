@@ -1,10 +1,14 @@
+//js\objects\WordSphere.js
+
 import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
 import { createTextSprite } from "./TextSprite.js";
-import { words } from "../data/words.js";
+import { UniverseData } from "../config/UniverseData.js";
 
 export function createWordSphere(scene) {
 
     const group = new THREE.Group();
+
+    const generatedWords = UniverseData;
 
     const radius = 4;
 
@@ -26,11 +30,11 @@ export function createWordSphere(scene) {
 
         const z = Math.sin(theta) * r;
 
-        const mesh = createTextSprite(
+        const data = generatedWords[
+            i % generatedWords.length
+        ];
 
-            words[i % words.length]
-
-        );
+        const mesh = createTextSprite(data);
 
         mesh.position.set(
 
@@ -70,11 +74,7 @@ export function createWordSphere(scene) {
 
         points,
 
-        update() {
-
-            group.rotation.y += 0.0015;
-
-            group.rotation.x += 0.0003;
+        update(camera) {
 
         }
 

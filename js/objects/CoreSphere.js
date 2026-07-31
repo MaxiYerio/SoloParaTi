@@ -1,84 +1,37 @@
+//js\objects\CoreSphere.js
+
 import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
 
-export function createCoreSphere(scene) {
+export function createCoreSphere() {
 
     const group = new THREE.Group();
 
-    //----------------------------------
-    // ESFERA
-    //----------------------------------
-
-    const geometry = new THREE.SphereGeometry(
-
-        1.1,
-
-        64,
-
-        64
-
-    );
-
-    const material = new THREE.MeshPhysicalMaterial({
-
-        color: 0x161018,
-
-        roughness: 0.35,
-
-        metalness: 0.15,
-
-        clearcoat: 1,
-
-        clearcoatRoughness: 0
-
-    });
-
+    // Núcleo
     const sphere = new THREE.Mesh(
-
-        geometry,
-
-        material
-
+        new THREE.SphereGeometry(1.1, 64, 64),
+        new THREE.MeshPhysicalMaterial({
+            color: 0x18111F,
+            roughness: 0.3,
+            metalness: 0.15,
+            clearcoat: 1,
+            clearcoatRoughness: 0
+        })
     );
 
     group.add(sphere);
 
-    //----------------------------------
-    // HALO
-    //----------------------------------
-
-    const haloGeometry = new THREE.SphereGeometry(
-
-        1.45,
-
-        64,
-
-        64
-
-    );
-
-    const haloMaterial = new THREE.MeshBasicMaterial({
-
-        color: 0xB987FF,
-
-        transparent: true,
-
-        opacity: 0.08,
-
-        side: THREE.BackSide
-
-    });
-
+    // Halo exterior
     const halo = new THREE.Mesh(
-
-        haloGeometry,
-
-        haloMaterial
-
+        new THREE.SphereGeometry(1.45, 64, 64),
+        new THREE.MeshBasicMaterial({
+            color: 0xB987FF,
+            transparent: true,
+            opacity: 0.10,
+            side: THREE.BackSide
+        })
     );
 
     group.add(halo);
-
-    //----------------------------------
 
     return {
 
@@ -86,27 +39,21 @@ export function createCoreSphere(scene) {
 
         update() {
 
-            group.rotation.y += 0.002;
+            const t = performance.now() * 0.001;
 
-            const pulse =
+            const pulse = 1 + Math.sin(t * 2) * 0.02;
 
-                1 +
+            sphere.scale.setScalar(pulse);
 
-                Math.sin(
-
-                    performance.now() * 0.0015
-
-                ) * 0.01;
-
-            group.scale.set(
-
-                pulse,
-
-                pulse,
-
-                pulse
-
+            halo.scale.setScalar(
+                1.03 + Math.sin(t * 2) * 0.015
             );
+
+            halo.material.opacity =
+                0.08 +
+                Math.sin(t * 2.5) * 0.03;
+
+            group.rotation.y += 0.001;
 
         }
 
