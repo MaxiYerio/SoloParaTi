@@ -48,7 +48,7 @@ export function createTextSprite(data) {
     });
 
     const sprite = new THREE.Sprite(material);
-    
+
     const size = data.size || 1;
 
     sprite.scale.set(
@@ -60,6 +60,10 @@ export function createTextSprite(data) {
         1
 
     );
+
+    sprite.userData.baseScale = sprite.scale.clone();
+
+    sprite.userData.baseColor = data.color || "#FFFFFF";
 
     return sprite;
 

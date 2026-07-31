@@ -1,11 +1,13 @@
 //js\core\SceneManager.js
-
 import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
 import { createStarField } from "../objects/StarField.js";
 import { createCoreSphere } from "../objects/CoreSphere.js";
 import { createWordSphere } from "../objects/WordSphere.js";
 import { createTextSprite } from "../objects/TextSprite.js";
+
 import { setupInteraction } from "../systems/InteractionManager.js";
+import { setupCameraController } from "../systems/CameraController.js";
+import { setupHover } from "../systems/HoverManager.js";
 
 let scene;
 let camera;
@@ -127,6 +129,18 @@ export function initScene() {
 
     // Ahora el canvas ya existe
     setupInteraction(wordSphere.object);
+
+    setupCameraController(camera);
+
+    setupHover(
+
+        renderer,
+
+        camera,
+
+        scene
+
+    );
 
     animate();
 
