@@ -114,3 +114,57 @@ body{
     }
 
 }
+
+#message-system{
+
+    position:fixed;
+
+    left:50%;
+    top:68%;
+
+    transform:translate(-50%,-50%);
+
+    min-width:320px;
+    max-width:620px;
+
+    padding:22px 34px;
+
+    border-radius:22px;
+
+    background:rgba(16,10,28,.28);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(185,135,255,.18);
+
+    color:#FFFFFF;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:2rem;
+
+    text-align:center;
+
+    white-space:pre-line;
+
+    opacity:0;
+
+    transition:.6s;
+
+    pointer-events:none;
+
+    box-shadow:
+        0 0 40px rgba(185,135,255,.12);
+
+    text-shadow:
+        0 0 12px rgba(185,135,255,.45);
+
+    z-index:999;
+
+}
+
+#message-system.show{
+
+    opacity:1;
+
+}

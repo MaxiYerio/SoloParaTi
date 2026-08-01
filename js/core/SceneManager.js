@@ -8,6 +8,9 @@ import { createTextSprite } from "../objects/TextSprite.js";
 import { setupInteraction } from "../systems/InteractionManager.js";
 import { setupCameraController } from "../systems/CameraController.js";
 import { setupHover } from "../systems/HoverManager.js";
+import { setupClick } from "../systems/ClickManager.js";
+import { initMessageSystem } from "../systems/MessageSystem.js";
+import { setupUniverseFocus, updateUniverseFocus } from "../systems/UniverseFocus.js";
 
 let scene;
 let camera;
@@ -142,6 +145,28 @@ export function initScene() {
 
     );
 
+    setupClick(
+
+        renderer,
+
+        camera,
+
+        scene
+
+    );
+
+    initMessageSystem();
+
+    setupUniverseFocus({
+
+        stars,
+
+        wordSphere,
+
+        core
+
+    });
+
     animate();
 
 }
@@ -149,6 +174,8 @@ export function initScene() {
 function animate() {
 
     requestAnimationFrame(animate);
+
+    updateUniverseFocus();
 
     stars.update();
 

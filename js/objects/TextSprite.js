@@ -65,6 +65,8 @@ export function createTextSprite(data) {
 
     sprite.userData.baseColor = data.color || "#FFFFFF";
 
+    sprite.userData.data = data;
+
     return sprite;
 
 }

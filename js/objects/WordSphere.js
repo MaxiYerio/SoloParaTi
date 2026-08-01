@@ -1,6 +1,11 @@
 //js\objects\WordSphere.js
 
 import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
+import {
+
+    getUniverseFade
+
+} from "../systems/UniverseFocus.js";
 import { createTextSprite } from "./TextSprite.js";
 import { UniverseData } from "../config/UniverseData.js";
 
@@ -74,7 +79,51 @@ export function createWordSphere(scene) {
 
         points,
 
+        fadeOut() {
+
+            points.forEach(point => {
+
+                point.mesh.userData.targetOpacity = 0.08;
+
+            });
+
+        },
+
+        fadeIn() {
+
+            points.forEach(point => {
+
+                point.mesh.userData.targetOpacity = 1;
+
+            });
+
+        },
+
         update(camera) {
+
+            points.forEach(point => {
+
+                const mesh = point.mesh;
+
+                if (mesh.userData.targetOpacity === undefined) {
+
+                    mesh.userData.targetOpacity = 1;
+
+                }
+
+                mesh.material.opacity +=
+
+                    (
+
+                        mesh.userData.targetOpacity
+
+                        -
+
+                        mesh.material.opacity
+
+                    ) * 0.08;
+
+            });
 
         }
 
