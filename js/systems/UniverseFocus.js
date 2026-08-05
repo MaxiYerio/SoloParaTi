@@ -1,17 +1,25 @@
 //js\systems\UniverseFocus.js
+
+import { wait } from "./MessageSystem.js";
+
 let active = false;
 
 let stars;
 let wordSphere;
 let core;
+let focusWord;
 
 let fade = 0;
 
-export function setupUniverseFocus(data) {
+export function setupUniverseFocus(objects) {
 
-    stars = data.stars;
-    wordSphere = data.wordSphere;
-    core = data.core;
+    stars = objects.stars;
+
+    wordSphere = objects.wordSphere;
+
+    core = objects.core;
+
+    focusWord = objects.focusWord;
 
 }
 
@@ -21,20 +29,30 @@ export function isUniverseBusy() {
 
 }
 
-export function beginUniverseFocus(){
+export function beginUniverseFocus() {
+
 
     active = true;
 
+    stars.fadeOut();
+
     wordSphere.fadeOut();
+
+    core.focus();
 
 }
 
-export function endUniverseFocus(){
+export function endUniverseFocus() {
 
     active = false;
 
+    stars.fadeIn?.();
+
     wordSphere.fadeIn();
 
+    core.unfocus();
+
+    focusWord.hide();
 }
 
 export function updateUniverseFocus() {
@@ -51,8 +69,30 @@ export function updateUniverseFocus() {
 
 }
 
-export function getUniverseFade(){
+export function getUniverseFade() {
 
     return fade;
+
+}
+
+export async function playSequence(sequence){
+
+    beginUniverseFocus();
+
+    await wait(800);
+
+    for(const text of sequence){
+
+        focusWord.show(text);
+
+        await wait(2200);
+
+        focusWord.hide();
+
+        await wait(700);
+
+    }
+
+    endUniverseFocus();
 
 }

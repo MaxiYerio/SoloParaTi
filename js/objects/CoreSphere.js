@@ -2,6 +2,8 @@
 
 import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
 
+let focus = false;
+
 export function createCoreSphere() {
 
     const group = new THREE.Group();
@@ -37,21 +39,65 @@ export function createCoreSphere() {
 
         object: group,
 
+        focus() {
+
+            focus = true;
+
+        },
+
+        unfocus() {
+
+            focus = false;
+
+        },
+
         update() {
 
             const t = performance.now() * 0.001;
 
-            const pulse = 1 + Math.sin(t * 2) * 0.02;
+            const speed = focus ? 1 : 2;
+
+            const amount = focus ? 0.05 : 0.02;
+
+            const pulse =
+
+                1 +
+
+                Math.sin(t * speed) * amount;
 
             sphere.scale.setScalar(pulse);
 
-            halo.scale.setScalar(
-                1.03 + Math.sin(t * 2) * 0.015
-            );
+            const haloScale =
 
-            halo.material.opacity =
-                0.08 +
-                Math.sin(t * 2.5) * 0.03;
+                focus
+
+                    ? 1.08
+
+                    : 1.03;
+
+            halo.scale.x += (haloScale - halo.scale.x) * 0.05;
+            halo.scale.y += (haloScale - halo.scale.y) * 0.05;
+            halo.scale.z += (haloScale - halo.scale.z) * 0.05;
+
+            const targetOpacity =
+
+                focus
+
+                    ? 0.18
+
+                    : 0.08;
+
+            halo.material.opacity +=
+
+                (
+
+                    targetOpacity
+
+                    -
+
+                    halo.material.opacity
+
+                ) * 0.06;
 
             group.rotation.y += 0.001;
 

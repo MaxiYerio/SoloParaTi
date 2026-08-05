@@ -44,11 +44,11 @@ export async function showSequence(sequence) {
 
 }
 
-function wait(ms) {
+export function wait(ms){
 
-    return new Promise(resolve => {
+    return new Promise(resolve=>{
 
-        setTimeout(resolve, ms);
+        setTimeout(resolve,ms);
 
     });
 

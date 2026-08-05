@@ -4,6 +4,7 @@ import { createStarField } from "../objects/StarField.js";
 import { createCoreSphere } from "../objects/CoreSphere.js";
 import { createWordSphere } from "../objects/WordSphere.js";
 import { createTextSprite } from "../objects/TextSprite.js";
+import { createFocusWord } from "../objects/FocusWord.js";
 
 import { setupInteraction } from "../systems/InteractionManager.js";
 import { setupCameraController } from "../systems/CameraController.js";
@@ -18,6 +19,7 @@ let renderer;
 let stars;
 let core;
 let wordSphere;
+let focusWord;
 let ambientLight;
 let pointLight;
 let hemisphereLight;
@@ -82,13 +84,21 @@ export function initScene() {
 
     scene.add(stars.object);
 
+    wordSphere = createWordSphere(scene);
+
+    scene.add(wordSphere.object);
+
     core = createCoreSphere(scene);
 
     scene.add(core.object);
 
-    wordSphere = createWordSphere(scene);
+    focusWord = createFocusWord();
 
-    scene.add(wordSphere.object);
+    core.object.add(
+
+        focusWord.object
+
+    );
 
     camera = new THREE.PerspectiveCamera(
 
@@ -163,7 +173,9 @@ export function initScene() {
 
         wordSphere,
 
-        core
+        core,
+
+        focusWord
 
     });
 
@@ -182,6 +194,8 @@ function animate() {
     core.update();
 
     wordSphere.update(camera);
+
+    focusWord.update();
 
     pointLight.intensity =
 

@@ -4,10 +4,15 @@ import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
 import {
 
     showMessage,
-    hideMessage,
-    showSequence
+    hideMessage
 
 } from "./MessageSystem.js";
+
+import {
+
+    playSequence
+
+} from "./UniverseFocus.js";
 
 import {
 
@@ -26,7 +31,7 @@ export function setupClick(renderer, camera, scene) {
         "click",
 
         event => {
-            
+
             if (isUniverseBusy()) return;
 
             mouse.x =
@@ -62,10 +67,10 @@ export function setupClick(renderer, camera, scene) {
             console.log(data);
 
             if (!data) return;
-
+            
             if (data.type == "memory") {
 
-                showSequence(
+                playSequence(
 
                     data.sequence
 

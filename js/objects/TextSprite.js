@@ -43,7 +43,9 @@ export function createTextSprite(data) {
 
         transparent: true,
 
-        depthWrite: false
+        depthWrite: false,
+        depthTest: true,
+        toneMapped: false
 
     });
 

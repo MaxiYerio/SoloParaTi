@@ -28,11 +28,43 @@ export function createStarField(scene) {
 
         object: group,
 
+        fadeTarget: 1,
+
+        fadeOut() {
+
+            this.fadeTarget = 0.15;
+
+        },
+
+        fadeIn() {
+
+            this.fadeTarget = 1;
+
+        },
+
         update() {
 
             group.rotation.y += 0.00008;
 
             group.rotation.x += 0.00002;
+
+            group.children.forEach(layer => {
+
+                const material = layer.userData.material;
+
+                material.opacity +=
+
+                    (
+
+                        this.fadeTarget
+
+                        -
+
+                        material.opacity
+
+                    ) * 0.05;
+
+            });
 
         }
 
@@ -99,7 +131,12 @@ function createLayer(group, amount, size, radius, palette) {
 
     });
 
-    const stars = new THREE.Points(geometry, material);
+    const stars = new THREE.Points(
+        geometry,
+        material
+    );
+
+    stars.userData.material = material;
 
     group.add(stars);
 
