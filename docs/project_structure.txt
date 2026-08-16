@@ -1,0 +1,4229 @@
+--- Folder Structure ---
+[.git]
+    ├── COMMIT_EDITMSG
+    ├── config
+    ├── description
+    ├── FETCH_HEAD
+    ├── HEAD
+    ├── [hooks]
+        ├── applypatch-msg.sample
+        ├── commit-msg.sample
+        ├── fsmonitor-watchman.sample
+        ├── post-update.sample
+        ├── pre-applypatch.sample
+        ├── pre-commit.sample
+        ├── pre-merge-commit.sample
+        ├── pre-push.sample
+        ├── pre-rebase.sample
+        ├── pre-receive.sample
+        ├── prepare-commit-msg.sample
+        ├── push-to-checkout.sample
+        ├── sendemail-validate.sample
+        └── update.sample
+    ├── index
+    ├── [info]
+        └── exclude
+    ├── [logs]
+        ├── HEAD
+        └── [refs]
+            ├── [heads]
+                └── main
+            └── [remotes]
+                └── [origin]
+                    ├── HEAD
+                    └── main
+    ├── [objects]
+        ├── [01]
+            └── 3605398bc9f70885a286d0c7749fde9a736b03
+        ├── [02]
+            └── 3fd22c33897c0ac91419132afe6d646d767482
+        ├── [04]
+            └── 46798a40464f3b5dc1c71d033a841cc89ef177
+        ├── [08]
+            └── bbff3b5e623e15b1a4aa326893f5924693c2c4
+        ├── [0d]
+            └── 6b8b230f060bbf5489f7de6c2db5f31b806422
+        ├── [11]
+            ├── 8b54c074d84520d658d2b81437ac39e2d8fc10
+            └── 8df101d6debafa0b51a82c0f67d5301deeb5bf
+        ├── [12]
+            └── c749c4eba32549c0f5cdcdf635118088c012ec
+        ├── [16]
+            └── 65ff9baf9ab600560f902765d94191eacefdac
+        ├── [1e]
+            ├── 1e889ac22f3329faa0fd18e37c96a13e2f1454
+            └── 8bfef1493948fac030a0c138c5666cd11f618d
+        ├── [20]
+            └── e4ddd5e7e53b21bc32697cb6f9f104a4994528
+        ├── [25]
+            └── fc441a1b6cf62cff92f894a2adbf2c69213f3d
+        ├── [26]
+            └── 5bf0f65a4ccbf276d79544d1241c6af9137d1b
+        ├── [29]
+            ├── 2412474dae486f60f9e6408635721355d7acc3
+            └── 3229a7d843077328f96dd3fe55c17078684a3d
+        ├── [2d]
+            └── 2624b6d60a32f523dd58b944f2ecc73629a6f0
+        ├── [2f]
+            └── b5f0b31383add35c706df0c5ff5020c94cb753
+        ├── [31]
+            ├── 054c892ad0dd23abe09ab74dcdaa19a0cfbe9e
+            └── f364705106fe69de8aa3f197eed8d6a4e7ced2
+        ├── [34]
+            └── c5b3f57d0d3655f312b42524645c2f3d833937
+        ├── [37]
+            └── b7b3898838d2776dd336c1ea4621ad0e99ce7a
+        ├── [3b]
+            └── 26a8cfc42d12da419992e70974506aa31f1079
+        ├── [3c]
+            └── cc6329a0d2c8da7b8f54c5640cc382bfb9f0fc
+        ├── [3e]
+            └── 9cc09c323c9c045d655b05723a350c278983c2
+        ├── [40]
+            └── 6384b6720ed7333bfa7d1ff7a1c1ddd4deee27
+        ├── [42]
+            └── 3c8ae7054a35a67bb71638e15185b32988b0e7
+        ├── [43]
+            ├── 7ed050af8605deb4ea9004fe746fa15e8554da
+            └── 8a7cb4406a32522982f1788a830d00377725f5
+        ├── [45]
+            └── 6604e5e40db73870163fa40c80b46d6666b67f
+        ├── [46]
+            └── 3bf0459da002bb2d1559d657600869c24f9bde
+        ├── [4e]
+            └── 64063cc3f0d2330d433692230011f5c6fb9439
+        ├── [54]
+            └── d1b1d44b1e504642d510894f76363a22d1d53c
+        ├── [59]
+            └── 7fe85e26fa95ee965c02664880f6d623ff5697
+        ├── [5b]
+            └── 6562161d1224acb728229a9ea4637c953b4fc4
+        ├── [5f]
+            ├── be88199ae4a44a4fa24b5f79a6a3a46f9882b2
+            └── bea30e82a2e9e684d305f8dbdc47b141d06d2c
+        ├── [60]
+            ├── b2158247ffe6c4a3d2477048f801747a793cd1
+            └── f15b95e192e35e5d142e9be710cdcf8382dcfd
+        ├── [61]
+            └── 6104bb747240ab3e89d39b02ad02023ecfab22
+        ├── [65]
+            ├── 8b9652bc633c5611098e8fa34d79ff1f78c681
+            └── f851ddcac4221629997ef87d456df4a20d9e57
+        ├── [67]
+            └── 50d3931f6954a66d7ae5fa33f10836feb79d58
+        ├── [69]
+            └── 13606f4fe63cc84dcf3137130f67d0954645ae
+        ├── [6a]
+            └── 4e07a93c978ae24b66c2adade56c60545d06ab
+        ├── [6b]
+            └── c83113ce595470e2f7f2755800e1d1aa012d11
+        ├── [6e]
+            ├── 7d3dab3d43cf278987e26625b137fd63aab3e9
+            └── e350e368081ddd620dd21b40d0eb07105ef4c9
+        ├── [70]
+            ├── 3ea601aee716ad810ac3f50d5d2949014401db
+            └── c02c40a4ed3187e94609c9b21b3e8b984946f1
+        ├── [73]
+            └── 6627ed7aaafb30f92ec6ba5b0a03506c31b18f
+        ├── [74]
+            └── 6ec25c6ab106d966596dca76cebb8c3e968f0a
+        ├── [75]
+            └── 338e4c51753c9c2f296a3e85665bdb5867ff70
+        ├── [78]
+            └── 0ad18b531d4d5a3439fc6efe2476cbaea746b4
+        ├── [79]
+            └── 09bdf5922554f91903ee88bc96d73846125766
+        ├── [7a]
+            └── 9d2ad82f54583bcce4d07d3f7a6d0d96988a73
+        ├── [7d]
+            ├── 161a437cf325eadcd6e816cfe2507df0a89275
+            └── 5c4cf22538b760df7ab91c8c9bcf481b7120b7
+        ├── [7f]
+            └── a5e0ea84346c58beb72c31ba1c6f728024dd4d
+        ├── [81]
+            └── 9b666d8344eda72c05adfb67f4d8d6a80f03de
+        ├── [87]
+            └── 691d5bda7b19d73464226e33e432e4e9e77f50
+        ├── [8c]
+            ├── 2fcd2f3e0144df7fe30ab967e96fb073a898a5
+            ├── 6d7cbfd50d4826131a80593c2826b5886985cb
+            ├── 7e779ac6df43900b6574be709cb052c18592c4
+            └── e3d38883788649ee5ce28347fafc4ecb54c286
+        ├── [8f]
+            └── 5b47dc047e59c696c2fa328db2b871ee803ab6
+        ├── [95]
+            └── 31a200fec979e8ff760b303b95667103f60579
+        ├── [96]
+            └── bc0350cf33c0503e611de05a8048848f7fe6d9
+        ├── [97]
+            └── 335b3b1615581acdc79a886295ab92f2d55bc7
+        ├── [98]
+            └── aaaa311c236a1f86560b58e6cde584b7f14f45
+        ├── [9e]
+            └── ae8bf6577985853a412c034056293fb36e4ace
+        ├── [a5]
+            ├── 443dd6d231811b7bb1b7332e7dec5a539beb58
+            └── 7687003a09c6230d71c44ef79f6848c1ffd2ca
+        ├── [a8]
+            └── 154f6cd575f5e520902832238f5f441b85ea15
+        ├── [a9]
+            ├── b72e213863786bd5288cad6367bd160e464561
+            └── ed595ce76db5de7f08fe33e0345a2ec72e7c71
+        ├── [ab]
+            └── 6c2c68f6c0866c66db79dc3bfdcbd7139ac88f
+        ├── [b0]
+            ├── 316fdfd679a1a8cc861847b326b933beebf1aa
+            └── 6a9795e7255ae4cc9950967345cc161c8938f4
+        ├── [b5]
+            └── 4710b4611f20c92d09668a4ce8988ee78d3dae
+        ├── [b6]
+            └── e3af3079070dc853bf606739936228c17cdef9
+        ├── [bd]
+            └── b963c93f9b32476ea4ca56320c0b4d3aeed3f6
+        ├── [be]
+            └── 0ee1c07dd98201520bb28adc0d97bbd8926867
+        ├── [c0]
+            └── 384ca21b1ce31df1b1384367a04a72a362489f
+        ├── [c1]
+            ├── 45df9f2afcbb4ff6d2e36713ef808f529ccf07
+            └── 47607984692a9b10a938fc14f3fc37654ba837
+        ├── [c2]
+            └── 9cde656fa90b616593ad765d62b6c6579f8470
+        ├── [c7]
+            └── 4eac3eb901028d9d570034dd74cdbaff28e312
+        ├── [c8]
+            └── c88ea0a16c739cc4608e70e1fce707fc83cf4d
+        ├── [cc]
+            └── 42e7a8d469b10ae789a82ada7ae86a0b443eb6
+        ├── [ce]
+            ├── 7b96f81236c8c49185447c39c8bbb4ad3848b4
+            └── 9c4f477267af312ccd78de580c97f1ac6f39c7
+        ├── [d2]
+            └── c348c00490620b6e9cce14afcc6dcda4a35647
+        ├── [d4]
+            ├── aceb89428bbd015f1c5fe1978b5f89d07bec4c
+            └── f27334a1e42273113fe0d04c0355e07a7c0413
+        ├── [d7]
+            └── 6eb854529d5fe637f19707cf63efc1db6e5a7e
+        ├── [d9]
+            └── 3cf8e2054de8fff86932790dd437937888e7bd
+        ├── [da]
+            └── 70efa67bc0a7d4288da92cb32ee4890c87c67e
+        ├── [de]
+            └── 39061b2f34a2d0e65961c8a7d6f9dad44f0b41
+        ├── [df]
+            └── 827c3c2c9b2294102cdbf613a607cd67f66d5f
+        ├── [e2]
+            ├── cb88e3d917569a17c74dc4e399c78405af062c
+            └── f09b4c4af20f271c7614eae9d7108353dc9f40
+        ├── [e3]
+            └── ec734b8f68272ece4d6811eeb3ebe4db7748e0
+        ├── [e4]
+            ├── 15e2aea86414a0f837e2e4b2ebca351a4208d3
+            └── d21a6cf6fb07cb2be1e424f0fb1974d1287d8c
+        ├── [e5]
+            └── ee0bbe3320dc69f3ce0ebcd0ecfd310f517d28
+        ├── [e6]
+            └── 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+        ├── [ea]
+            └── c0c4da7aa7c4406dedc610df805501b3c241a2
+        ├── [ee]
+            └── 0915b519a18ca83bf2e199df1350aa674711c5
+        ├── [ef]
+            └── 7c581c000bd3ff127f8dc6783354120ae7a62d
+        ├── [f0]
+            └── 0e8fec63f27b3696ff8c5695704daeebe141f8
+        ├── [f1]
+            └── 14fb49d17bb4bc9a2f22b204787a2b61f71141
+        ├── [f5]
+            └── 51e40da62b4d9a0437cb2e1c6ff17d804a7d46
+        ├── [f7]
+            └── e3a67af11042e4dc2784333c4f3dd8610a2ade
+        ├── [f9]
+            └── 9c59203b69d7beef144e9a7330d3ed19d935fe
+        ├── [fa]
+            ├── 76745140cec868e214af80d83153fee232f9ae
+            └── d0ded8d2e9d0d5cf0a8c9b1d68a49f65ca991f
+        ├── [fc]
+            └── 1574735499144c013822138c6686b8339e5a97
+        ├── [ff]
+            ├── 12f3b3b660296c339bfb1cb26195c403988428
+            └── ca64ea2e17c8870735c8d586a637b1c79ed2ed
+        ├── [info]
+        └── [pack]
+    ├── ORIG_HEAD
+    └── [refs]
+        ├── [heads]
+            └── main
+        ├── [remotes]
+            └── [origin]
+                ├── HEAD
+                └── main
+        └── [tags]
+[assets]
+    ├── [audio]
+    ├── [font]
+    └── [img]
+[css]
+    └── style.css
+index.html
+[js]
+    ├── [config]
+        └── UniverseData.js
+    ├── [core]
+        ├── App.js
+        └── SceneManager.js
+    ├── main.js
+    ├── music.js
+    ├── [objects]
+        ├── CenterMessage.js
+        ├── CoreSphere.js
+        ├── FocusText.js
+        ├── FocusWord.js
+        ├── StarField.js
+        ├── TextSprite.js
+        └── WordSphere.js
+    ├── [systems]
+        ├── CameraController.js
+        ├── ClickManager.js
+        ├── HoverManager.js
+        ├── InteractionManager.js
+        ├── IntroManager.js
+        ├── MessageSystem.js
+        ├── UniverseFocus.js
+        └── WordInteraction.js
+    └── words.js
+
+--- File Contents ---
+
+--- File: .git\COMMIT_EDITMSG ---
+todo arreglado
+
+
+--- File: .git\config ---
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/MaxiYerio/SoloParaTi.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+	vscode-merge-base = origin/main
+
+
+--- File: .git\description ---
+Unnamed repository; edit this file 'description' to name the repository.
+
+
+--- File: .git\FETCH_HEAD ---
+fa76745140cec868e214af80d83153fee232f9ae		branch 'main' of https://github.com/MaxiYerio/SoloParaTi
+
+
+--- File: .git\HEAD ---
+ref: refs/heads/main
+
+
+--- File: .git\hooks\applypatch-msg.sample ---
+#!/bin/sh
+#
+# An example hook script to check the commit log message taken by
+# applypatch from an e-mail message.
+#
+# The hook should exit with non-zero status after issuing an
+# appropriate message if it wants to stop the commit.  The hook is
+# allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "applypatch-msg".
+
+. git-sh-setup
+commitmsg="$(git rev-parse --git-path hooks/commit-msg)"
+test -x "$commitmsg" && exec "$commitmsg" ${1+"$@"}
+:
+
+
+--- File: .git\hooks\commit-msg.sample ---
+#!/bin/sh
+#
+# An example hook script to check the commit log message.
+# Called by "git commit" with one argument, the name of the file
+# that has the commit message.  The hook should exit with non-zero
+# status after issuing an appropriate message if it wants to stop the
+# commit.  The hook is allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "commit-msg".
+
+# Uncomment the below to add a Signed-off-by line to the message.
+# Doing this in a hook is a bad idea in general, but the prepare-commit-msg
+# hook is more suited to it.
+#
+# SOB=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
+
+# This example catches duplicate Signed-off-by lines.
+
+test "" = "$(grep '^Signed-off-by: ' "$1" |
+	 sort | uniq -c | sed -e '/^[ 	]*1[ 	]/d')" || {
+	echo >&2 Duplicate Signed-off-by lines.
+	exit 1
+}
+
+
+--- File: .git\hooks\fsmonitor-watchman.sample ---
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use IPC::Open2;
+
+# An example hook script to integrate Watchman
+# (https://facebook.github.io/watchman/) with git to speed up detecting
+# new and modified files.
+#
+# The hook is passed a version (currently 2) and last update token
+# formatted as a string and outputs to stdout a new update token and
+# all files that have been modified since the update token. Paths must
+# be relative to the root of the working tree and separated by a single NUL.
+#
+# To enable this hook, rename this file to "query-watchman" and set
+# 'git config core.fsmonitor .git/hooks/query-watchman'
+#
+my ($version, $last_update_token) = @ARGV;
+
+# Uncomment for debugging
+# print STDERR "$0 $version $last_update_token\n";
+
+# Check the hook interface version
+if ($version ne 2) {
+	die "Unsupported query-fsmonitor hook version '$version'.\n" .
+	    "Falling back to scanning...\n";
+}
+
+my $git_work_tree = get_working_dir();
+
+my $retry = 1;
+
+my $json_pkg;
+eval {
+	require JSON::XS;
+	$json_pkg = "JSON::XS";
+	1;
+} or do {
+	require JSON::PP;
+	$json_pkg = "JSON::PP";
+};
+
+launch_watchman();
+
+sub launch_watchman {
+	my $o = watchman_query();
+	if (is_work_tree_watched($o)) {
+		output_result($o->{clock}, @{$o->{files}});
+	}
+}
+
+sub output_result {
+	my ($clockid, @files) = @_;
+
+	# Uncomment for debugging watchman output
+	# open (my $fh, ">", ".git/watchman-output.out");
+	# binmode $fh, ":utf8";
+	# print $fh "$clockid\n@files\n";
+	# close $fh;
+
+	binmode STDOUT, ":utf8";
+	print $clockid;
+	print "\0";
+	local $, = "\0";
+	print @files;
+}
+
+sub watchman_clock {
+	my $response = qx/watchman clock "$git_work_tree"/;
+	die "Failed to get clock id on '$git_work_tree'.\n" .
+		"Falling back to scanning...\n" if $? != 0;
+
+	return $json_pkg->new->utf8->decode($response);
+}
+
+sub watchman_query {
+	my $pid = open2(\*CHLD_OUT, \*CHLD_IN, 'watchman -j --no-pretty')
+	or die "open2() failed: $!\n" .
+	"Falling back to scanning...\n";
+
+	# In the query expression below we're asking for names of files that
+	# changed since $last_update_token but not from the .git folder.
+	#
+	# To accomplish this, we're using the "since" generator to use the
+	# recency index to select candidate nodes and "fields" to limit the
+	# output to file names only. Then we're using the "expression" term to
+	# further constrain the results.
+	my $last_update_line = "";
+	if (substr($last_update_token, 0, 1) eq "c") {
+		$last_update_token = "\"$last_update_token\"";
+		$last_update_line = qq[\n"since": $last_update_token,];
+	}
+	my $query = <<"	END";
+		["query", "$git_work_tree", {$last_update_line
+			"fields": ["name"],
+			"expression": ["not", ["dirname", ".git"]]
+		}]
+	END
+
+	# Uncomment for debugging the watchman query
+	# open (my $fh, ">", ".git/watchman-query.json");
+	# print $fh $query;
+	# close $fh;
+
+	print CHLD_IN $query;
+	close CHLD_IN;
+	my $response = do {local $/; <CHLD_OUT>};
+
+	# Uncomment for debugging the watch response
+	# open ($fh, ">", ".git/watchman-response.json");
+	# print $fh $response;
+	# close $fh;
+
+	die "Watchman: command returned no output.\n" .
+	"Falling back to scanning...\n" if $response eq "";
+	die "Watchman: command returned invalid output: $response\n" .
+	"Falling back to scanning...\n" unless $response =~ /^\{/;
+
+	return $json_pkg->new->utf8->decode($response);
+}
+
+sub is_work_tree_watched {
+	my ($output) = @_;
+	my $error = $output->{error};
+	if ($retry > 0 and $error and $error =~ m/unable to resolve root .* directory (.*) is not watched/) {
+		$retry--;
+		my $response = qx/watchman watch "$git_work_tree"/;
+		die "Failed to make watchman watch '$git_work_tree'.\n" .
+		    "Falling back to scanning...\n" if $? != 0;
+		$output = $json_pkg->new->utf8->decode($response);
+		$error = $output->{error};
+		die "Watchman: $error.\n" .
+		"Falling back to scanning...\n" if $error;
+
+		# Uncomment for debugging watchman output
+		# open (my $fh, ">", ".git/watchman-output.out");
+		# close $fh;
+
+		# Watchman will always return all files on the first query so
+		# return the fast "everything is dirty" flag to git and do the
+		# Watchman query just to get it over with now so we won't pay
+		# the cost in git to look up each individual file.
+		my $o = watchman_clock();
+		$error = $output->{error};
+
+		die "Watchman: $error.\n" .
+		"Falling back to scanning...\n" if $error;
+
+		output_result($o->{clock}, ("/"));
+		$last_update_token = $o->{clock};
+
+		eval { launch_watchman() };
+		return 0;
+	}
+
+	die "Watchman: $error.\n" .
+	"Falling back to scanning...\n" if $error;
+
+	return 1;
+}
+
+sub get_working_dir {
+	my $working_dir;
+	if ($^O =~ 'msys' || $^O =~ 'cygwin') {
+		$working_dir = Win32::GetCwd();
+		$working_dir =~ tr/\\/\//;
+	} else {
+		require Cwd;
+		$working_dir = Cwd::cwd();
+	}
+
+	return $working_dir;
+}
+
+
+--- File: .git\hooks\post-update.sample ---
+#!/bin/sh
+#
+# An example hook script to prepare a packed repository for use over
+# dumb transports.
+#
+# To enable this hook, rename this file to "post-update".
+
+exec git update-server-info
+
+
+--- File: .git\hooks\pre-applypatch.sample ---
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed
+# by applypatch from an e-mail message.
+#
+# The hook should exit with non-zero status after issuing an
+# appropriate message if it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-applypatch".
+
+. git-sh-setup
+precommit="$(git rev-parse --git-path hooks/pre-commit)"
+test -x "$precommit" && exec "$precommit" ${1+"$@"}
+:
+
+
+--- File: .git\hooks\pre-commit.sample ---
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-commit".
+
+if git rev-parse --verify HEAD >/dev/null 2>&1
+then
+	against=HEAD
+else
+	# Initial commit: diff against an empty tree object
+	against=$(git hash-object -t tree /dev/null)
+fi
+
+# If you want to allow non-ASCII filenames set this variable to true.
+allownonascii=$(git config --type=bool hooks.allownonascii)
+
+# Redirect output to stderr.
+exec 1>&2
+
+# Cross platform projects tend to avoid non-ASCII filenames; prevent
+# them from being added to the repository. We exploit the fact that the
+# printable range starts at the space character and ends with tilde.
+if [ "$allownonascii" != "true" ] &&
+	# Note that the use of brackets around a tr range is ok here, (it's
+	# even required, for portability to Solaris 10's /usr/bin/tr), since
+	# the square bracket bytes happen to fall in the designated range.
+	test $(git diff-index --cached --name-only --diff-filter=A -z $against |
+	  LC_ALL=C tr -d '[ -~]\0' | wc -c) != 0
+then
+	cat <<\EOF
+Error: Attempt to add a non-ASCII file name.
+
+This can cause problems if you want to work with people on other platforms.
+
+To be portable it is advisable to rename the file.
+
+If you know what you are doing you can disable this check using:
+
+  git config hooks.allownonascii true
+EOF
+	exit 1
+fi
+
+# If there are whitespace errors, print the offending file names and fail.
+exec git diff-index --check --cached $against --
+
+
+--- File: .git\hooks\pre-merge-commit.sample ---
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git merge" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message to
+# stderr if it wants to stop the merge commit.
+#
+# To enable this hook, rename this file to "pre-merge-commit".
+
+. git-sh-setup
+test -x "$GIT_DIR/hooks/pre-commit" &&
+        exec "$GIT_DIR/hooks/pre-commit"
+:
+
+
+--- File: .git\hooks\pre-push.sample ---
+#!/bin/sh
+
+# An example hook script to verify what is about to be pushed.  Called by "git
+# push" after it has checked the remote status, but before anything has been
+# pushed.  If this script exits with a non-zero status nothing will be pushed.
+#
+# This hook is called with the following parameters:
+#
+# $1 -- Name of the remote to which the push is being done
+# $2 -- URL to which the push is being done
+#
+# If pushing without using a named remote those arguments will be equal.
+#
+# Information about the commits which are being pushed is supplied as lines to
+# the standard input in the form:
+#
+#   <local ref> <local oid> <remote ref> <remote oid>
+#
+# This sample shows how to prevent push of commits where the log message starts
+# with "WIP" (work in progress).
+
+remote="$1"
+url="$2"
+
+zero=$(git hash-object --stdin </dev/null | tr '[0-9a-f]' '0')
+
+while read local_ref local_oid remote_ref remote_oid
+do
+	if test "$local_oid" = "$zero"
+	then
+		# Handle delete
+		:
+	else
+		if test "$remote_oid" = "$zero"
+		then
+			# New branch, examine all commits
+			range="$local_oid"
+		else
+			# Update to existing branch, examine new commits
+			range="$remote_oid..$local_oid"
+		fi
+
+		# Check for WIP commit
+		commit=$(git rev-list -n 1 --grep '^WIP' "$range")
+		if test -n "$commit"
+		then
+			echo >&2 "Found WIP commit in $local_ref, not pushing"
+			exit 1
+		fi
+	fi
+done
+
+exit 0
+
+
+--- File: .git\hooks\pre-rebase.sample ---
+#!/bin/sh
+#
+# Copyright (c) 2006, 2008 Junio C Hamano
+#
+# The "pre-rebase" hook is run just before "git rebase" starts doing
+# its job, and can prevent the command from running by exiting with
+# non-zero status.
+#
+# The hook is called with the following parameters:
+#
+# $1 -- the upstream the series was forked from.
+# $2 -- the branch being rebased (or empty when rebasing the current branch).
+#
+# This sample shows how to prevent topic branches that are already
+# merged to 'next' branch from getting rebased, because allowing it
+# would result in rebasing already published history.
+
+publish=next
+basebranch="$1"
+if test "$#" = 2
+then
+	topic="refs/heads/$2"
+else
+	topic=`git symbolic-ref HEAD` ||
+	exit 0 ;# we do not interrupt rebasing detached HEAD
+fi
+
+case "$topic" in
+refs/heads/??/*)
+	;;
+*)
+	exit 0 ;# we do not interrupt others.
+	;;
+esac
+
+# Now we are dealing with a topic branch being rebased
+# on top of master.  Is it OK to rebase it?
+
+# Does the topic really exist?
+git show-ref -q "$topic" || {
+	echo >&2 "No such branch $topic"
+	exit 1
+}
+
+# Is topic fully merged to master?
+not_in_master=`git rev-list --pretty=oneline ^master "$topic"`
+if test -z "$not_in_master"
+then
+	echo >&2 "$topic is fully merged to master; better remove it."
+	exit 1 ;# we could allow it, but there is no point.
+fi
+
+# Is topic ever merged to next?  If so you should not be rebasing it.
+only_next_1=`git rev-list ^master "^$topic" ${publish} | sort`
+only_next_2=`git rev-list ^master           ${publish} | sort`
+if test "$only_next_1" = "$only_next_2"
+then
+	not_in_topic=`git rev-list "^$topic" master`
+	if test -z "$not_in_topic"
+	then
+		echo >&2 "$topic is already up to date with master"
+		exit 1 ;# we could allow it, but there is no point.
+	else
+		exit 0
+	fi
+else
+	not_in_next=`git rev-list --pretty=oneline ^${publish} "$topic"`
+	/usr/bin/perl -e '
+		my $topic = $ARGV[0];
+		my $msg = "* $topic has commits already merged to public branch:\n";
+		my (%not_in_next) = map {
+			/^([0-9a-f]+) /;
+			($1 => 1);
+		} split(/\n/, $ARGV[1]);
+		for my $elem (map {
+				/^([0-9a-f]+) (.*)$/;
+				[$1 => $2];
+			} split(/\n/, $ARGV[2])) {
+			if (!exists $not_in_next{$elem->[0]}) {
+				if ($msg) {
+					print STDERR $msg;
+					undef $msg;
+				}
+				print STDERR " $elem->[1]\n";
+			}
+		}
+	' "$topic" "$not_in_next" "$not_in_master"
+	exit 1
+fi
+
+<<\DOC_END
+
+This sample hook safeguards topic branches that have been
+published from being rewound.
+
+The workflow assumed here is:
+
+ * Once a topic branch forks from "master", "master" is never
+   merged into it again (either directly or indirectly).
+
+ * Once a topic branch is fully cooked and merged into "master",
+   it is deleted.  If you need to build on top of it to correct
+   earlier mistakes, a new topic branch is created by forking at
+   the tip of the "master".  This is not strictly necessary, but
+   it makes it easier to keep your history simple.
+
+ * Whenever you need to test or publish your changes to topic
+   branches, merge them into "next" branch.
+
+The script, being an example, hardcodes the publish branch name
+to be "next", but it is trivial to make it configurable via
+$GIT_DIR/config mechanism.
+
+With this workflow, you would want to know:
+
+(1) ... if a topic branch has ever been merged to "next".  Young
+    topic branches can have stupid mistakes you would rather
+    clean up before publishing, and things that have not been
+    merged into other branches can be easily rebased without
+    affecting other people.  But once it is published, you would
+    not want to rewind it.
+
+(2) ... if a topic branch has been fully merged to "master".
+    Then you can delete it.  More importantly, you should not
+    build on top of it -- other people may already want to
+    change things related to the topic as patches against your
+    "master", so if you need further changes, it is better to
+    fork the topic (perhaps with the same name) afresh from the
+    tip of "master".
+
+Let's look at this example:
+
+		   o---o---o---o---o---o---o---o---o---o "next"
+		  /       /           /           /
+		 /   a---a---b A     /           /
+		/   /               /           /
+	       /   /   c---c---c---c B         /
+	      /   /   /             \         /
+	     /   /   /   b---b C     \       /
+	    /   /   /   /             \     /
+    ---o---o---o---o---o---o---o---o---o---o---o "master"
+
+
+A, B and C are topic branches.
+
+ * A has one fix since it was merged up to "next".
+
+ * B has finished.  It has been fully merged up to "master" and "next",
+   and is ready to be deleted.
+
+ * C has not merged to "next" at all.
+
+We would want to allow C to be rebased, refuse A, and encourage
+B to be deleted.
+
+To compute (1):
+
+	git rev-list ^master ^topic next
+	git rev-list ^master        next
+
+	if these match, topic has not merged in next at all.
+
+To compute (2):
+
+	git rev-list master..topic
+
+	if this is empty, it is fully merged to "master".
+
+DOC_END
+
+
+--- File: .git\hooks\pre-receive.sample ---
+#!/bin/sh
+#
+# An example hook script to make use of push options.
+# The example simply echoes all push options that start with 'echoback='
+# and rejects all pushes when the "reject" push option is used.
+#
+# To enable this hook, rename this file to "pre-receive".
+
+if test -n "$GIT_PUSH_OPTION_COUNT"
+then
+	i=0
+	while test "$i" -lt "$GIT_PUSH_OPTION_COUNT"
+	do
+		eval "value=\$GIT_PUSH_OPTION_$i"
+		case "$value" in
+		echoback=*)
+			echo "echo from the pre-receive-hook: ${value#*=}" >&2
+			;;
+		reject)
+			exit 1
+		esac
+		i=$((i + 1))
+	done
+fi
+
+
+--- File: .git\hooks\prepare-commit-msg.sample ---
+#!/bin/sh
+#
+# An example hook script to prepare the commit log message.
+# Called by "git commit" with the name of the file that has the
+# commit message, followed by the description of the commit
+# message's source.  The hook's purpose is to edit the commit
+# message file.  If the hook fails with a non-zero status,
+# the commit is aborted.
+#
+# To enable this hook, rename this file to "prepare-commit-msg".
+
+# This hook includes three examples. The first one removes the
+# "# Please enter the commit message..." help message.
+#
+# The second includes the output of "git diff --name-status -r"
+# into the message, just before the "git status" output.  It is
+# commented because it doesn't cope with --amend or with squashed
+# commits.
+#
+# The third example adds a Signed-off-by line to the message, that can
+# still be edited.  This is rarely a good idea.
+
+COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2
+SHA1=$3
+
+/usr/bin/perl -i.bak -ne 'print unless(m/^. Please enter the commit message/..m/^#$/)' "$COMMIT_MSG_FILE"
+
+# case "$COMMIT_SOURCE,$SHA1" in
+#  ,|template,)
+#    /usr/bin/perl -i.bak -pe '
+#       print "\n" . `git diff --cached --name-status -r`
+# 	 if /^#/ && $first++ == 0' "$COMMIT_MSG_FILE" ;;
+#  *) ;;
+# esac
+
+# SOB=$(git var GIT_COMMITTER_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# git interpret-trailers --in-place --trailer "$SOB" "$COMMIT_MSG_FILE"
+# if test -z "$COMMIT_SOURCE"
+# then
+#   /usr/bin/perl -i.bak -pe 'print "\n" if !$first_line++' "$COMMIT_MSG_FILE"
+# fi
+
+
+--- File: .git\hooks\push-to-checkout.sample ---
+#!/bin/sh
+
+# An example hook script to update a checked-out tree on a git push.
+#
+# This hook is invoked by git-receive-pack(1) when it reacts to git
+# push and updates reference(s) in its repository, and when the push
+# tries to update the branch that is currently checked out and the
+# receive.denyCurrentBranch configuration variable is set to
+# updateInstead.
+#
+# By default, such a push is refused if the working tree and the index
+# of the remote repository has any difference from the currently
+# checked out commit; when both the working tree and the index match
+# the current commit, they are updated to match the newly pushed tip
+# of the branch. This hook is to be used to override the default
+# behaviour; however the code below reimplements the default behaviour
+# as a starting point for convenient modification.
+#
+# The hook receives the commit with which the tip of the current
+# branch is going to be updated:
+commit=$1
+
+# It can exit with a non-zero status to refuse the push (when it does
+# so, it must not modify the index or the working tree).
+die () {
+	echo >&2 "$*"
+	exit 1
+}
+
+# Or it can make any necessary changes to the working tree and to the
+# index to bring them to the desired state when the tip of the current
+# branch is updated to the new commit, and exit with a zero status.
+#
+# For example, the hook can simply run git read-tree -u -m HEAD "$1"
+# in order to emulate git fetch that is run in the reverse direction
+# with git push, as the two-tree form of git read-tree -u -m is
+# essentially the same as git switch or git checkout that switches
+# branches while keeping the local changes in the working tree that do
+# not interfere with the difference between the branches.
+
+# The below is a more-or-less exact translation to shell of the C code
+# for the default behaviour for git's push-to-checkout hook defined in
+# the push_to_deploy() function in builtin/receive-pack.c.
+#
+# Note that the hook will be executed from the repository directory,
+# not from the working tree, so if you want to perform operations on
+# the working tree, you will have to adapt your code accordingly, e.g.
+# by adding "cd .." or using relative paths.
+
+if ! git update-index -q --ignore-submodules --refresh
+then
+	die "Up-to-date check failed"
+fi
+
+if ! git diff-files --quiet --ignore-submodules --
+then
+	die "Working directory has unstaged changes"
+fi
+
+# This is a rough translation of:
+#
+#   head_has_history() ? "HEAD" : EMPTY_TREE_SHA1_HEX
+if git cat-file -e HEAD 2>/dev/null
+then
+	head=HEAD
+else
+	head=$(git hash-object -t tree --stdin </dev/null)
+fi
+
+if ! git diff-index --quiet --cached --ignore-submodules $head --
+then
+	die "Working directory has staged changes"
+fi
+
+if ! git read-tree -u -m "$commit"
+then
+	die "Could not update working tree to new HEAD"
+fi
+
+
+--- File: .git\hooks\sendemail-validate.sample ---
+#!/bin/sh
+
+# An example hook script to validate a patch (and/or patch series) before
+# sending it via email.
+#
+# The hook should exit with non-zero status after issuing an appropriate
+# message if it wants to prevent the email(s) from being sent.
+#
+# To enable this hook, rename this file to "sendemail-validate".
+#
+# By default, it will only check that the patch(es) can be applied on top of
+# the default upstream branch without conflicts in a secondary worktree. After
+# validation (successful or not) of the last patch of a series, the worktree
+# will be deleted.
+#
+# The following config variables can be set to change the default remote and
+# remote ref that are used to apply the patches against:
+#
+#   sendemail.validateRemote (default: origin)
+#   sendemail.validateRemoteRef (default: HEAD)
+#
+# Replace the TODO placeholders with appropriate checks according to your
+# needs.
+
+validate_cover_letter () {
+	file="$1"
+	# TODO: Replace with appropriate checks (e.g. spell checking).
+	true
+}
+
+validate_patch () {
+	file="$1"
+	# Ensure that the patch applies without conflicts.
+	git am -3 "$file" || return
+	# TODO: Replace with appropriate checks for this patch
+	# (e.g. checkpatch.pl).
+	true
+}
+
+validate_series () {
+	# TODO: Replace with appropriate checks for the whole series
+	# (e.g. quick build, coding style checks, etc.).
+	true
+}
+
+# main -------------------------------------------------------------------------
+
+if test "$GIT_SENDEMAIL_FILE_COUNTER" = 1
+then
+	remote=$(git config --default origin --get sendemail.validateRemote) &&
+	ref=$(git config --default HEAD --get sendemail.validateRemoteRef) &&
+	worktree=$(mktemp --tmpdir -d sendemail-validate.XXXXXXX) &&
+	git worktree add -fd --checkout "$worktree" "refs/remotes/$remote/$ref" &&
+	git config --replace-all sendemail.validateWorktree "$worktree"
+else
+	worktree=$(git config --get sendemail.validateWorktree)
+fi || {
+	echo "sendemail-validate: error: failed to prepare worktree" >&2
+	exit 1
+}
+
+unset GIT_DIR GIT_WORK_TREE
+cd "$worktree" &&
+
+if grep -q "^diff --git " "$1"
+then
+	validate_patch "$1"
+else
+	validate_cover_letter "$1"
+fi &&
+
+if test "$GIT_SENDEMAIL_FILE_COUNTER" = "$GIT_SENDEMAIL_FILE_TOTAL"
+then
+	git config --unset-all sendemail.validateWorktree &&
+	trap 'git worktree remove -ff "$worktree"' EXIT &&
+	validate_series
+fi
+
+
+--- File: .git\hooks\update.sample ---
+#!/bin/sh
+#
+# An example hook script to block unannotated tags from entering.
+# Called by "git receive-pack" with arguments: refname sha1-old sha1-new
+#
+# To enable this hook, rename this file to "update".
+#
+# Config
+# ------
+# hooks.allowunannotated
+#   This boolean sets whether unannotated tags will be allowed into the
+#   repository.  By default they won't be.
+# hooks.allowdeletetag
+#   This boolean sets whether deleting tags will be allowed in the
+#   repository.  By default they won't be.
+# hooks.allowmodifytag
+#   This boolean sets whether a tag may be modified after creation. By default
+#   it won't be.
+# hooks.allowdeletebranch
+#   This boolean sets whether deleting branches will be allowed in the
+#   repository.  By default they won't be.
+# hooks.denycreatebranch
+#   This boolean sets whether remotely creating branches will be denied
+#   in the repository.  By default this is allowed.
+#
+
+# --- Command line
+refname="$1"
+oldrev="$2"
+newrev="$3"
+
+# --- Safety check
+if [ -z "$GIT_DIR" ]; then
+	echo "Don't run this script from the command line." >&2
+	echo " (if you want, you could supply GIT_DIR then run" >&2
+	echo "  $0 <ref> <oldrev> <newrev>)" >&2
+	exit 1
+fi
+
+if [ -z "$refname" -o -z "$oldrev" -o -z "$newrev" ]; then
+	echo "usage: $0 <ref> <oldrev> <newrev>" >&2
+	exit 1
+fi
+
+# --- Config
+allowunannotated=$(git config --type=bool hooks.allowunannotated)
+allowdeletebranch=$(git config --type=bool hooks.allowdeletebranch)
+denycreatebranch=$(git config --type=bool hooks.denycreatebranch)
+allowdeletetag=$(git config --type=bool hooks.allowdeletetag)
+allowmodifytag=$(git config --type=bool hooks.allowmodifytag)
+
+# check for no description
+projectdesc=$(sed -e '1q' "$GIT_DIR/description")
+case "$projectdesc" in
+"Unnamed repository"* | "")
+	echo "*** Project description file hasn't been set" >&2
+	exit 1
+	;;
+esac
+
+# --- Check types
+# if $newrev is 0000...0000, it's a commit to delete a ref.
+zero=$(git hash-object --stdin </dev/null | tr '[0-9a-f]' '0')
+if [ "$newrev" = "$zero" ]; then
+	newrev_type=delete
+else
+	newrev_type=$(git cat-file -t $newrev)
+fi
+
+case "$refname","$newrev_type" in
+	refs/tags/*,commit)
+		# un-annotated tag
+		short_refname=${refname##refs/tags/}
+		if [ "$allowunannotated" != "true" ]; then
+			echo "*** The un-annotated tag, $short_refname, is not allowed in this repository" >&2
+			echo "*** Use 'git tag [ -a | -s ]' for tags you want to propagate." >&2
+			exit 1
+		fi
+		;;
+	refs/tags/*,delete)
+		# delete tag
+		if [ "$allowdeletetag" != "true" ]; then
+			echo "*** Deleting a tag is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/tags/*,tag)
+		# annotated tag
+		if [ "$allowmodifytag" != "true" ] && git rev-parse $refname > /dev/null 2>&1
+		then
+			echo "*** Tag '$refname' already exists." >&2
+			echo "*** Modifying a tag is not allowed in this repository." >&2
+			exit 1
+		fi
+		;;
+	refs/heads/*,commit)
+		# branch
+		if [ "$oldrev" = "$zero" -a "$denycreatebranch" = "true" ]; then
+			echo "*** Creating a branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/heads/*,delete)
+		# delete branch
+		if [ "$allowdeletebranch" != "true" ]; then
+			echo "*** Deleting a branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/remotes/*,commit)
+		# tracking branch
+		;;
+	refs/remotes/*,delete)
+		# delete tracking branch
+		if [ "$allowdeletebranch" != "true" ]; then
+			echo "*** Deleting a tracking branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	*)
+		# Anything else (is there anything else?)
+		echo "*** Update hook: unknown type of update to ref $refname of type $newrev_type" >&2
+		exit 1
+		;;
+esac
+
+# --- Finished
+exit 0
+
+
+--- File: .git\index ---
+DIRC      jj} (
+Bhjm7���          ��          u�Ȏ��ls��`�p������M 
+css/style.css     jj}�sjrg5�\          ��          I�l,h���lf�y�;����ȏ 
+index.html        jk��!��jm4x!�          ��          �v� :	�#
+q�N��hH���� js/config/UniverseData.js jj�s!xjk�8+bW          ��           y�⮨d��7����5B� js/core/App.js    jj~�#�(jr�*5CD          ��          ��8L���8Cg�Jr�bH� js/core/SceneManager.js   jj}I0�jk�� 2Q4          ��          y��c�?�2Gn��V2M:��� 
+js/main.js        jj~�:���jj~�:���          ��            �⛲��CK�)�wZ���S� js/music.js       jn�U���jn�Z
+          ��          �k�1�YTp���uX �Ѫ- js/objects/CenterMessage.js       jj� ;^�jn�>2ˇ           ��          
+�i[�{�4d"n3�2���P js/objects/CoreSphere.js  jn��$bYjr5ݵ          ��          
+\Ԭ�B��__ᗋ_��{�L js/objects/FocusText.js   jr
+�(�zjr~%��P          ��          g�tsT�L8"�f��3�Z� js/objects/FocusWord.js   jj~�2���jn�=1#,          ��          	q�Ol�u�� �(2#�_D�� js/objects/StarField.js   jj�0>ljr$�o��          ��          Q���I9H��0��8�fl�a� js/objects/TextSprite.js  jjɲ{jm=�!�it          ��          ����޺�Q�,g�0 js/objects/WordSphere.js  jl� � jo�/���          ��          �i`oO�<�M�17gЕFE� js/systems/CameraController.js    jm.�*��jo�%v3�          ��          Ze��R�c<V	���My�xƁ js/systems/ClickManager.js        jl�x6�jo���ߨ          ��          hC~�P��޴��to�^�T� js/systems/HoverManager.js        jj~���Pjr)m-`          ��          ��G`y�i*��8���7eK�7  js/systems/InteractionManager.js  jj~�絰jj~�絰          ��            �⛲��CK�)�wZ���S� js/systems/IntroManager.js        jm2��]�jo����d          ��          o��Y ;i׾�N�s0���5� js/systems/MessageSystem.js       jm7��U@jr�IW�          ��          ��|X ����x3T
+�- js/systems/UniverseFocus.js       jl�E$�<�jl�E$�<�          ��            �⛲��CK�)�wZ���S� js/systems/WordInteraction.js     jj~����jj~����          ��            �⛲��CK�)�wZ���S� js/words.js       TREE   � 23 2
+&[��ZL��vוD�$j�}js 21 4
+��fm�D��,��g��֨�core 2 0
+߂|<,�"�,����g�m_config 1 0
+��l���+��$��t�(}�objects 7 0
+�I��%I�����5����systems 8 0
+�j���%Z�̙P�sE��8�css 1 0
+���1#j�VX��儷�OE��7�&�B�*��+ 
+l���C
+
+--- File: .git\info\exclude ---
+# git ls-files --others --exclude-from=.git/info/exclude
+# Lines that start with '#' are comments.
+# For a project mostly in C, the following would be a good set of
+# exclude patterns (uncomment them if you want to use them):
+# *.[oa]
+# *~
+
+
+--- File: .git\logs\HEAD ---
+0000000000000000000000000000000000000000 ee0915b519a18ca83bf2e199df1350aa674711c5 Blotver <matesitobot@gmail.com> 1785365638 -0300	commit (initial): Primer commit
+ee0915b519a18ca83bf2e199df1350aa674711c5 0000000000000000000000000000000000000000 Blotver <matesitobot@gmail.com> 1785365653 -0300	Branch: renamed refs/heads/master to refs/heads/main
+0000000000000000000000000000000000000000 ee0915b519a18ca83bf2e199df1350aa674711c5 Blotver <matesitobot@gmail.com> 1785365653 -0300	Branch: renamed refs/heads/master to refs/heads/main
+ee0915b519a18ca83bf2e199df1350aa674711c5 0000000000000000000000000000000000000000 Blotver <matesitobot@gmail.com> 1785365671 -0300	Branch: renamed refs/heads/main to refs/heads/main
+ee0915b519a18ca83bf2e199df1350aa674711c5 ee0915b519a18ca83bf2e199df1350aa674711c5 Blotver <matesitobot@gmail.com> 1785365671 -0300	Branch: renamed refs/heads/main to refs/heads/main
+ee0915b519a18ca83bf2e199df1350aa674711c5 0000000000000000000000000000000000000000 Blotver <matesitobot@gmail.com> 1785365816 -0300	Branch: renamed refs/heads/main to refs/heads/main
+ee0915b519a18ca83bf2e199df1350aa674711c5 ee0915b519a18ca83bf2e199df1350aa674711c5 Blotver <matesitobot@gmail.com> 1785365816 -0300	Branch: renamed refs/heads/main to refs/heads/main
+ee0915b519a18ca83bf2e199df1350aa674711c5 0000000000000000000000000000000000000000 Blotver <matesitobot@gmail.com> 1785365893 -0300	Branch: renamed refs/heads/main to refs/heads/main
+ee0915b519a18ca83bf2e199df1350aa674711c5 ee0915b519a18ca83bf2e199df1350aa674711c5 Blotver <matesitobot@gmail.com> 1785365893 -0300	Branch: renamed refs/heads/main to refs/heads/main
+ee0915b519a18ca83bf2e199df1350aa674711c5 ee0915b519a18ca83bf2e199df1350aa674711c5 MaxiYerio <yeriomaxi11@gmail.com> 1785366852 -0300	checkout: moving from main to main
+ee0915b519a18ca83bf2e199df1350aa674711c5 ee0915b519a18ca83bf2e199df1350aa674711c5 MaxiYerio <yeriomaxi11@gmail.com> 1785367161 -0300	checkout: moving from main to ee0915b519a18ca83bf2e199df1350aa674711c5
+ee0915b519a18ca83bf2e199df1350aa674711c5 ee0915b519a18ca83bf2e199df1350aa674711c5 MaxiYerio <yeriomaxi11@gmail.com> 1785367402 -0300	checkout: moving from ee0915b519a18ca83bf2e199df1350aa674711c5 to main
+ee0915b519a18ca83bf2e199df1350aa674711c5 0000000000000000000000000000000000000000 MaxiYerio <yeriomaxi11@gmail.com> 1785380145 -0300	Branch: renamed refs/heads/main to refs/heads/main
+ee0915b519a18ca83bf2e199df1350aa674711c5 ee0915b519a18ca83bf2e199df1350aa674711c5 MaxiYerio <yeriomaxi11@gmail.com> 1785380145 -0300	Branch: renamed refs/heads/main to refs/heads/main
+ee0915b519a18ca83bf2e199df1350aa674711c5 ee0915b519a18ca83bf2e199df1350aa674711c5 MaxiYerio <yeriomaxi11@gmail.com> 1785380867 -0300	checkout: moving from main to main
+ee0915b519a18ca83bf2e199df1350aa674711c5 ee0915b519a18ca83bf2e199df1350aa674711c5 MaxiYerio <yeriomaxi11@gmail.com> 1785380920 -0300	checkout: moving from main to main
+ee0915b519a18ca83bf2e199df1350aa674711c5 616104bb747240ab3e89d39b02ad02023ecfab22 MaxiYerio <yeriomaxi11@gmail.com> 1785381035 -0300	commit: primero
+616104bb747240ab3e89d39b02ad02023ecfab22 ffca64ea2e17c8870735c8d586a637b1c79ed2ed MaxiYerio <yeriomaxi11@gmail.com> 1785382615 -0300	commit: Reorganiza la estructura del proyecto
+ffca64ea2e17c8870735c8d586a637b1c79ed2ed ffca64ea2e17c8870735c8d586a637b1c79ed2ed MaxiYerio <yeriomaxi11@gmail.com> 1785383268 -0300	checkout: moving from main to main
+ffca64ea2e17c8870735c8d586a637b1c79ed2ed a9ed595ce76db5de7f08fe33e0345a2ec72e7c71 MaxiYerio <yeriomaxi11@gmail.com> 1785383270 -0300	commit: Agrega núcleo e iluminación del universo
+a9ed595ce76db5de7f08fe33e0345a2ec72e7c71 6a4e07a93c978ae24b66c2adade56c60545d06ab MaxiYerio <yeriomaxi11@gmail.com> 1785384522 -0300	commit: Motor 3D terminado
+6a4e07a93c978ae24b66c2adade56c60545d06ab c145df9f2afcbb4ff6d2e36713ef808f529ccf07 MaxiYerio <yeriomaxi11@gmail.com> 1785461849 -0300	commit: palabra
+c145df9f2afcbb4ff6d2e36713ef808f529ccf07 c74eac3eb901028d9d570034dd74cdbaff28e312 MaxiYerio <yeriomaxi11@gmail.com> 1785522803 -0300	commit: Palabrasclaves
+c74eac3eb901028d9d570034dd74cdbaff28e312 8c6d7cbfd50d4826131a80593c2826b5886985cb MaxiYerio <yeriomaxi11@gmail.com> 1785536719 -0300	commit: zoom
+8c6d7cbfd50d4826131a80593c2826b5886985cb fa76745140cec868e214af80d83153fee232f9ae MaxiYerio <yeriomaxi11@gmail.com> 1785550023 -0300	commit: desvanecer
+fa76745140cec868e214af80d83153fee232f9ae 023fd22c33897c0ac91419132afe6d646d767482 MaxiYerio <yeriomaxi11@gmail.com> 1785971024 -0300	commit: todo arreglado
+
+
+--- File: .git\logs\refs\heads\main ---
+0000000000000000000000000000000000000000 ee0915b519a18ca83bf2e199df1350aa674711c5 Blotver <matesitobot@gmail.com> 1785365638 -0300	commit (initial): Primer commit
+ee0915b519a18ca83bf2e199df1350aa674711c5 ee0915b519a18ca83bf2e199df1350aa674711c5 Blotver <matesitobot@gmail.com> 1785365653 -0300	Branch: renamed refs/heads/master to refs/heads/main
+ee0915b519a18ca83bf2e199df1350aa674711c5 ee0915b519a18ca83bf2e199df1350aa674711c5 Blotver <matesitobot@gmail.com> 1785365671 -0300	Branch: renamed refs/heads/main to refs/heads/main
+ee0915b519a18ca83bf2e199df1350aa674711c5 ee0915b519a18ca83bf2e199df1350aa674711c5 Blotver <matesitobot@gmail.com> 1785365816 -0300	Branch: renamed refs/heads/main to refs/heads/main
+ee0915b519a18ca83bf2e199df1350aa674711c5 ee0915b519a18ca83bf2e199df1350aa674711c5 Blotver <matesitobot@gmail.com> 1785365893 -0300	Branch: renamed refs/heads/main to refs/heads/main
+ee0915b519a18ca83bf2e199df1350aa674711c5 ee0915b519a18ca83bf2e199df1350aa674711c5 MaxiYerio <yeriomaxi11@gmail.com> 1785380145 -0300	Branch: renamed refs/heads/main to refs/heads/main
+ee0915b519a18ca83bf2e199df1350aa674711c5 616104bb747240ab3e89d39b02ad02023ecfab22 MaxiYerio <yeriomaxi11@gmail.com> 1785381035 -0300	commit: primero
+616104bb747240ab3e89d39b02ad02023ecfab22 ffca64ea2e17c8870735c8d586a637b1c79ed2ed MaxiYerio <yeriomaxi11@gmail.com> 1785382615 -0300	commit: Reorganiza la estructura del proyecto
+ffca64ea2e17c8870735c8d586a637b1c79ed2ed a9ed595ce76db5de7f08fe33e0345a2ec72e7c71 MaxiYerio <yeriomaxi11@gmail.com> 1785383270 -0300	commit: Agrega núcleo e iluminación del universo
+a9ed595ce76db5de7f08fe33e0345a2ec72e7c71 6a4e07a93c978ae24b66c2adade56c60545d06ab MaxiYerio <yeriomaxi11@gmail.com> 1785384522 -0300	commit: Motor 3D terminado
+6a4e07a93c978ae24b66c2adade56c60545d06ab c145df9f2afcbb4ff6d2e36713ef808f529ccf07 MaxiYerio <yeriomaxi11@gmail.com> 1785461849 -0300	commit: palabra
+c145df9f2afcbb4ff6d2e36713ef808f529ccf07 c74eac3eb901028d9d570034dd74cdbaff28e312 MaxiYerio <yeriomaxi11@gmail.com> 1785522803 -0300	commit: Palabrasclaves
+c74eac3eb901028d9d570034dd74cdbaff28e312 8c6d7cbfd50d4826131a80593c2826b5886985cb MaxiYerio <yeriomaxi11@gmail.com> 1785536719 -0300	commit: zoom
+8c6d7cbfd50d4826131a80593c2826b5886985cb fa76745140cec868e214af80d83153fee232f9ae MaxiYerio <yeriomaxi11@gmail.com> 1785550023 -0300	commit: desvanecer
+fa76745140cec868e214af80d83153fee232f9ae 023fd22c33897c0ac91419132afe6d646d767482 MaxiYerio <yeriomaxi11@gmail.com> 1785971024 -0300	commit: todo arreglado
+
+
+--- File: .git\logs\refs\remotes\origin\HEAD ---
+0000000000000000000000000000000000000000 ee0915b519a18ca83bf2e199df1350aa674711c5 MaxiYerio <yeriomaxi11@gmail.com> 1785380889 -0300	fetch
+
+
+--- File: .git\logs\refs\remotes\origin\main ---
+0000000000000000000000000000000000000000 ee0915b519a18ca83bf2e199df1350aa674711c5 MaxiYerio <yeriomaxi11@gmail.com> 1785380677 -0300	update by push
+ee0915b519a18ca83bf2e199df1350aa674711c5 616104bb747240ab3e89d39b02ad02023ecfab22 MaxiYerio <yeriomaxi11@gmail.com> 1785381062 -0300	update by push
+616104bb747240ab3e89d39b02ad02023ecfab22 ffca64ea2e17c8870735c8d586a637b1c79ed2ed MaxiYerio <yeriomaxi11@gmail.com> 1785382625 -0300	update by push
+ffca64ea2e17c8870735c8d586a637b1c79ed2ed a9ed595ce76db5de7f08fe33e0345a2ec72e7c71 MaxiYerio <yeriomaxi11@gmail.com> 1785383278 -0300	update by push
+a9ed595ce76db5de7f08fe33e0345a2ec72e7c71 6a4e07a93c978ae24b66c2adade56c60545d06ab MaxiYerio <yeriomaxi11@gmail.com> 1785384557 -0300	update by push
+6a4e07a93c978ae24b66c2adade56c60545d06ab c145df9f2afcbb4ff6d2e36713ef808f529ccf07 MaxiYerio <yeriomaxi11@gmail.com> 1785461880 -0300	update by push
+c145df9f2afcbb4ff6d2e36713ef808f529ccf07 c74eac3eb901028d9d570034dd74cdbaff28e312 MaxiYerio <yeriomaxi11@gmail.com> 1785522813 -0300	update by push
+c74eac3eb901028d9d570034dd74cdbaff28e312 8c6d7cbfd50d4826131a80593c2826b5886985cb MaxiYerio <yeriomaxi11@gmail.com> 1785536726 -0300	update by push
+8c6d7cbfd50d4826131a80593c2826b5886985cb fa76745140cec868e214af80d83153fee232f9ae MaxiYerio <yeriomaxi11@gmail.com> 1785550031 -0300	update by push
+fa76745140cec868e214af80d83153fee232f9ae 023fd22c33897c0ac91419132afe6d646d767482 MaxiYerio <yeriomaxi11@gmail.com> 1785971046 -0300	update by push
+
+
+--- File: .git\objects\01\3605398bc9f70885a286d0c7749fde9a736b03 ---
+x+)JMU06c040031Q(�/J)��*fx�a���'~u�2�W/�4ߙ�  H��
+
+--- File: .git\objects\02\3fd22c33897c0ac91419132afe6d646d767482 ---
+x��K
+1]������A�x �=Ig#!����
+�UP�Ro�N�ws0Ktv)�8K&���w�GkL4���gXē?�,�7�J���`����3j,�X�k���z�+�����1�ymT���I�6zPh�^i��f�������K��;�.��H�
+
+--- File: .git\objects\04\46798a40464f3b5dc1c71d033a841cc89ef177 ---
+x�W�n�F��O�Х(�M� ����)EV ��(��V�Z�z���.�E.=��SQ
+r����P�|�>A��[�gK tx�ow���ٙ�R�%y����O�Y��%��ƒ��L6������;;��=F��q4���T�?���~��rci�#o��#��L3��4�95��<�T�S�24q��F b��ŕf�����dSnʟ�ML�]HG?S�ѥ����J�0C�jE�U@-ge�0���9Ӊ��@�LZ�B����-�E�)f�� ێ�QV7���NX�?��,���/y��6Z���
+��\�pғm��$>�8̱{�G�En�\X�aq���:+O[ӄ�'�. [l�Da�$�+�erwvsdA�[4���y�C�~Kʺd̢^],*l���ޱ	� _��\$�����{���<�"%an{���O�v7�]��ڊM����+!Q����D�eR�	�r�l���\��$O�c Z�&���2ɩ��S ��m���3��n�#�2�JpO��bP3HxL��-�Ա��{7eK��z�P�@���r!�wܮ��oeM�{��6��d_(s����Uk�c2�*��Ky�%�4bۄ}Y��>Xg}����[�� �b��n�d�X��Q)&T}
+��B�R�!󌧼.�]���0|6�¨;׭�<��$��3�F�W���/xl�v4��U�@B(�$���Ws���#�Sv�O]�e���,��xY����N���cp��0����R�p|�޼���N�{{7B�߿ʒ2duӈ�Ԭ�$���ޑ�T����aث�9v�w��,��^�-0�A�-��S+����_~���5�c猯`���>����6/.`�O�%�%I�����77�+�www�B���5�-V7Q��Hq:Mƴs�2�q]�Cws�q3�,b�������$?GX�W�xT[P�k�_���AM��
+撔����;�x�ʡVࠛq��?�t��$�*��E�Ux�
+��sF{}M
+�Ӽ���,s���<��Yny󹱎�u�ý&����@��#1|)�r��K�A����S��F7�GC:�}����������_"�*D����˯����
+
+--- File: .git\objects\08\bbff3b5e623e15b1a4aa326893f5924693c2c4 ---
+x+)JMU01`040031Q.I,r�L�I��*f�t�� ˄$�9�D֟�=�dq�; }D0
+
+--- File: .git\objects\0d\6b8b230f060bbf5489f7de6c2db5f31b806422 ---
+x+)JMU�4g01 ���b9��Y��5-�+�f�B;}�C3�̼��
+������:K���t�<�Iڮ{���G�Y���/��~M}7-�)ͣ��5��a��#(�
+
+--- File: .git\objects\11\8b54c074d84520d658d2b81437ac39e2d8fc10 ---
+x�VKo�8޳�'��Rr��n�,65��@q�\z����D"�$;-�ߗI$]y{��I��g�����d|�[�>�o9�m��[��
+~�Z�\(���\��fh)x��k�j�!M7�~Z�W�Z��2<�ǣt��e�h��Ŧmmx����rD�\qE�,�kc�/!W2혽�S�^��>]��U~�8�칽�_`�浠�׳�:e����?3��r�-_��J���BX7kdJ*mdʙ�,A�Yڗ�K�ڹ���ʖ�o�4��j���QuR�֚�l��#����2�c�p��<F���m��Fͽ���4�~>0������
+�X�nR��sۮ�ܙT
+L���Z9J�it^CE�m�Fh ;;\�
+s�`*d09B?�? �@�n�p#p���O+�7��D���"�v���ttzԨ���_~�w�����ټ9�R�)�D�eP��ɚ���~�	�&��m�IQ$����W���u\��qq��,���]6��Y���C���m��7Er�5D���d1��&��$�û�5��@
+�c���?6��M�����i��ubu:!3F�v�8v�r�b�,x`>d�Y�����}ȎWڳ�&=�
+)�^:[nE<+����[L�@�F)
+i�`  ,5�Q�eq�]0���F'ͨ�8�� �O7�
+B%
+N�A"LQRR"? %6�%e�&�꼿�w�z0�3��!�;L˦y.�8����AyOt{�l��g������+
+��L�xjV��}|�\$Cۅ�#/@�ZWf�֯����U�զ���r�APj�g��u�;���5f�c�����d%]�����km�Y�S���euZ����3k����i%'Q���;�Ny�/N@4s��m��J�k��u0�_Goמ��7 ե�׸v%�vN�6ƞ���7;;��h�e��Co��󈨇^�8��.\^�%���᏷D���,�#U�XrQ�f|�����,5���8����c�&䎛W����_3�z+Ξ��Cw�ƥd(@�Y#���϶�t��ߛ�ЏQ�g�����0�p���L�9W�;��s^_������6����G��?gO�Q
+
+--- File: .git\objects\11\8df101d6debafa0b51a82c0f67d5301deeb5bf ---
+x�T�o�0��5	�ݘ�n FGH�biri<;�������{�@B�%��w�}w>{��9�N'��J��+����E���HA�ң���%�&�>���Dɜ��z�(�/Y$���
+��M�>c�`Q�,�6�˸̐n����]K0��	JÛ0��hS�3�6��Ȩ�})
+\�ʜ� M|�15��Є-��	_6���#G�r=HJ.E��m���(K�
+Y*YdN��co�B�Ǿ�
+e�-!F6m�]u=�
+c^"�q�l�	3k�Mz���b��2�}��}8��Hɾ����'㾞Bra0�巊.�����:9����%��{{M�x���5��I('�^�>���6�AEڢU������ŭkU-Ф`�kN���~�pUFRS���-�u��\܇�qLl��A]��Eq�8y8��Ҥ
+�n&�}�rЩ�0�t���
+�9N�`�dµ���h<�;��[׍�
+�ft���8��������R���
+F�"�Ռ����eֹ���#��4W� m�-�뾜q���l�M�)���*���o�ol�ۗ�1$��:+
+�
+=2T��W�$�R�d���a����S-5(�ʘPه�#n��L��3��T�6M��K������4
+s���K�zפ��@��'č*����9)�0&\@|K2��H��cD5P�[/G��(fLV'�7oǱF�w˼��{�l�����][�m��s��	��{��%�
+
+--- File: .git\objects\12\c749c4eba32549c0f5cdcdf635118088c012ec ---
+x+)JMU0�0g040031QpN�+I-�M-.NLO��*f�>a(|.2����O�/�b����/J
+.�H-+lϔ��U-y�$E)���ѓ����
+��K�CR+J@^Y�ө{/c�L�������� ��/J��#ZR2Sć�BI�'�m���Pu�%�En��9`u+D�s��~}�0A�H�?�E���(T���������}����u�`�A��i9�{�
+Av"|"����ڽ]��W��_5�}�u? �q�
+
+--- File: .git\objects\16\65ff9baf9ab600560f902765d94191eacefdac ---
+x}S�n�0��_A��(Kh�(��u�K�"I�K.����R�@R��ǿwW�l�	*� qgfg,�-X���wi���@��
+l�u�T �񓉪����g7߮�K�r�f�*�Ɵ�ik��k^�:
+��<����ҢUZ�3^[�j��^L&��W�)����D�}�D� ��d��)����a�OLڲ��YK
+��L#`zp1&�-2b��!,�	X[2�%#���J�
+��,��K�@j]��G�%ly�A�+lW2;d��I:��_��2!m�PkZX-�I�l��4�t}�Ey��������a��ѹ��JJ
+�WB�)+���2ߊ;ر|%��_Xm����NO./G�0�-ų�Q�+��4e���I��	e.�gH^R���Q&�y�HT���l�/���u�o<�"k��nH�ud��}\K��&F�1����s ��-7��J;�ϝ��n���P򸯢�9�G'�o���as�b�P���u�VB{�jσѸ~o�H�����n<��q:Y_Y��x=�'��#��D9���ׇ��!�����V�����h�E�R[�`�-ڰ��_-8T�kca���iL
+
+--- File: .git\objects\1e\1e889ac22f3329faa0fd18e37c96a13e2f1454 ---
+x+)JMU06g040031Q(.��I�K..f(5��	,�����eך};"� ;�
+
+--- File: .git\objects\1e\8bfef1493948fac030a0c138c5666cd11f618d ---
+x}TQO�0�s�ս�	9M4��&m0�^�&`�/N|m�۲�����I	-���w���wwn�mŊr�|����V�P�ps
+�x弊�o�l�Zg}d������[y۲y�Gy��k�k��� ��88�E^uJ�t�[+;Mt���6=�3uTְڃ��I�{��>�5!�Z�;��Ĥ��L�	u��޲yJ��OAq���k���D���KI�)�'��J���E�q�H�Ժ�)��GH��Z��خl���3��4۷��*!l� ׼�Z���m�w�2}_z��D5~�jm(�Fw�m����Jh��������Jk�B'�`�
+�����j�	���pyp~>�M	'��x��X]!�U��I�&��&��G�9�Q�&��M��R=TS"S��g�~����CC�1�P�6��@t���ܧ����H#YRQC>7 2�pXa��`t�Ӷx��/x�]�B�ó�V�#6POD/Lp���0�����t���J�1�=}��������p�I<���	��}��lt�O���i��8�b�F��xkL�Y�=�/ ��Ղ�>,^n�����F.�	`�/�j�~��ط`���ER6j��`�������/Z���
+
+--- File: .git\objects\20\e4ddd5e7e53b21bc32697cb6f9f104a4994528 ---
+x+)JMU�4g01 ���b��V�(gɷ�qG<;��e�GWC3�̼��
+�����i{���K�}����_��&Č�b���O���W��}�C�Pa; י(u
+
+--- File: .git\objects\25\fc441a1b6cf62cff92f894a2adbf2c69213f3d ---
+x+)JMU�0d040031Qp�/J
+.�H-J��*f(�[Ƹ���F��_yc5=]oC�$�e�椀�m{�ޠ���D���t��Ik�� "� Y
+
+--- File: .git\objects\26\5bf0f65a4ccbf276d79544d1241c6af9137d1b ---
+x+)JMU�4g01 ���b��V�(gɷ�qG<;��e�GWC3�̼��
+������9:���ݮ�c���u�Y'�!fd34�N�mvy�\�u���/7���g� 4�+�
+
+--- File: .git\objects\29\2412474dae486f60f9e6408635721355d7acc3 ---
+xeR�n�0�9_���6�-�P+U*��q�Y��`����F�{��!��ɞ���f]�5L'Wl�5�%���?H_0���B%
+�����A�Y,>Z`|o9x,�&�VrCBI0HU�lE�J�VE���.i�$`?���ك}�/f�2©e�Q��:�y�t@I��J���;�A�C,�=�仃"���#�H�B8ynzp)�����-��]���p��X��e��E��]����h;�Ȕ�Q\��rDsXh�GL���s���5�Vhh��c}�v?,���bˮ��S�v�Z�4;�ἷ��i܅�F����v>�9���
+
+--- File: .git\objects\29\3229a7d843077328f96dd3fe55c17078684a3d ---
+xK��OR��4e���*�II,I�)�/Jq2�����R+
+�J���K`2
+�
+�\\
+@P
+&A��Ԋ+%�����%�Dr~N~PF�
+�d�3�R�JK*�Jy�E��9J`jupX���[P��d�"SW77$�,�=��839�8�E��.�Գ(,31+��=.N&n�H2y((�8�5�&n�Բ�9?/-31�
+k�Q7-��f�$a���q�^����=�ܨ��u�C�x��nz���� �TX6�⊵ ����
+
+--- File: .git\objects\2d\2624b6d60a32f523dd58b944f2ecc73629a6f0 ---
+x+)JMU027`01 ������t��67��S����� ��>ۃa
+�R�>�]��;�����L����Z7�tJbI"����_ky�B?mQUI�ѷm�4740031Q�M����*fػ3���l#��%�x�}��]�SRZ��R�l�ٛ.^s���\Wu�Г���[�R�K��[��]7��U+�}���W�S��(�,.I�-fH�x��%1͙u?j]s�,���<�(��= �sh
+
+--- File: .git\objects\2f\b5f0b31383add35c706df0c5ff5020c94cb753 ---
+x+)JMU01f040031Q��,K-*NuI,I��*f`q��rp�=x\�٪E�ļ�� �hg
+
+--- File: .git\objects\31\054c892ad0dd23abe09ab74dcdaa19a0cfbe9e ---
+xK��OR022c���*�II,I�)�/J)��*��J�(�/*QH��+.Q +�*Dsq) ��cnfqIb������[P�
+���U����:��e&�U��2�R�a�A�ŉp�{ifIbQ\iPjrijQJ>\�cRQb��^����� ��E`�?꘧��k
+ ��@�
+
+--- File: .git\objects\31\f364705106fe69de8aa3f197eed8d6a4e7ced2 ---
+x+)JMU01f040031Q��+)��M�KLO-��*fx6���M�9{wk�+��q�IO�D Ήa
+
+--- File: .git\objects\34\c5b3f57d0d3655f312b42524645c2f3d833937 ---
+x+)JMU047f040031Q�/JqO�K-J,�/��I��*f��r�����εb��~X1�I�OfRQbQ%T�Vw�-��
+'u9Ӻ|^��{�k���h�KbI"T��������?s/�=XP��e����̐էS��]��fm�=�Jr��}� ��G�
+
+--- File: .git\objects\37\b7b3898838d2776dd336c1ea4621ad0e99ce7a ---
+x}TMo�@�_1���n�:iA�	�@�H�-ph98���`��5�C������G+���͛7�<���j����a�4j��ؚ��J'�e��ҌF�(��p����7�װЪ�����Lð���Ǫm�ߏ���%���J��x��*'��Y���Xcd�W����"���<l�A�w)��6�1�Q��a��B�a7�3G���_T2�B�}��#31J`;�;N�XH��J����g���z,�����Ԍ�w���:JDE��=�*��\�{x������_#��o_��9��G�G[�&��S*!-U����[(
+,G¡��yuQ����`�5��n\& ��;�I��g{і����v(o�x릫�h3t󺂮�cOW�`�����~��4<#��x	��+��}=hj�����8�Q�6;���Il�����Q��y��RA��
+Z�ׇ���\���z��6�@�ЭX/.���Q�n�//+��m�LmuЀ�	�� p�eڹ?�GC���� ���3ئ�N�>�;�i����]%=�њ����v;@U�� ��������wn�v�r>]�
+
+--- File: .git\objects\3b\26a8cfc42d12da419992e70974506aa31f1079 ---
+x�R=O�0eί����*E]��['��T��|6P��w|�NHE��߇ߥt
+�w��jO[:��7ھ��
+�n{�� 뻰�N�U�d��*�ڴ��+?����*��lX�#~��X��tZ�u�LO������<��ET��I-
+O�* Y?͢��_��������t��eT|��� �q׫�Q�<�����qs����ȗ�Q��Ц,�>�s�n�!�/�s߁�q=E��asW7p9\BY����#���Q�A,f�C;��LA�5�
+��t��-
+
+--- File: .git\objects\3c\cc6329a0d2c8da7b8f54c5640cc382bfb9f0fc ---
+x+)JMU�4g01 ���b9��Y��5-�+�f�B;}�C3�̼��
+�����4��Ox�[��/�iؒ����bFV1Cd��8�_S�M�aJ�h�vM��t �;'�
+
+--- File: .git\objects\3e\9cc09c323c9c045d655b05723a350c278983c2 ---
+x�UKo�0�9�B�.N�)N�r��mw؀a�CуlS�;�2�ؚ����m����"��?�Y%229K&�ʺR�������%�R�d�ԺU���4���E=�K	�*�����3SV���Z�z���ܻ��4�.ECr	L�g��U	U�������E�4YHaZrA�ዠ���0��r9޳����d�&IL��1�����yZ��s��0�6�<�g349�ۿ@�<��Qg�� -Nv��<��{��N\OS�i2ݏT��1�^Oy��|I�6�	�[�Dv��{�cO�����aE��6��T
+��L�^X�q��y�'����t�s�!�h��Vzsf�0���*BL$+J�bҲ
+�~"#5h��)����樓�^+Ti;Rrs{��%��J�`vv.$���蜜��K����a��Ǽ�5ju[��L/�dM!j��2y2��i΁:��oWC����j���[��N��o\������ ̅V�,�rt�'P˭���Le����.�&Un����*Я��efP�]�a���#��{rU	���^]|BI�|\���
+�'4�(?�o�,Y՛�GQ6Z!��(z�zs�������N�s���-4�M�LB�w~�L�,/�j�*�m����WYj��*���B#�������u�����ٷ���o(
+��$��S�
+�R�`k^��Ϣ
+
+--- File: .git\objects\40\6384b6720ed7333bfa7d1ff7a1c1ddd4deee27 ---
+x+)JMU043f040031Qp�/J
+.�H-J��*f�i�����?2�*y��O��x��0�$��-35'��������:g+�E�L��&��8T]HjEIpAQf	�����x��9]��/3�R�x��0<�(a���͝��s/�|妸�o�* 0qC�
+
+--- File: .git\objects\42\3c8ae7054a35a67bb71638e15185b32988b0e7 ---
+x+)JMU043f040031Qp�/J
+.�H-J��*f�i�����?2�*y��O��x��0�$��-35'��������:g+�E�L��&��8T]HjEIpAQf	��y뺿�W��Z9�0;�i�o��:U�_���Y��#�{�~q���O�j �n�~ -�C�
+
+--- File: .git\objects\43\7ed050af8605deb4ea9004fe746fa15e8554da ---
+x�Uˎ�0e���*�t�8�J��i�Ҁx�a�&��KbG�3m���\'ͫM��}ι�s�.���דgA�6�fg,��q��P䒯P���<�fJ[�n���a6��V)bk3�&r��^�P���5�F�l,r�D�KU�'Hr�[��44߅�Bj���M)��]X#S�젾bh���-�.g�&O�[��e�1�M�E!�\�V(	m���eD
+z!OQ��%����E*�%����G��>>�B��K��2%$��R^�Q��ӷ��úUTȶ0m���_pX��~� 6BFjÄ���Dd�!Y3�kS�*V#�����8R��XŶ�}q"[�ƨ�4	wE�Z�WIU�����w�unW������v.6���O��;�]��F���I���!�SK�!���cu�L�i��=�8B
+�9���l�
+~.X۞�.qvg8�nAN渨�t�iFO��&J�ww�u9�qm�
+4,A�r3|�h.�j5�������T����8��>��i�{c8ZE�dc{*O��
+�l��9ػ��{�h���`=.��kp�[M,]�Cwz�}d�s�1�7����Ou���n��A�b>]	�y���������k�5=�Z���� ��
+
+--- File: .git\objects\43\8a7cb4406a32522982f1788a830d00377725f5 ---
+x+)JMU027`01 ������t��67��S����� ��>ۃa
+�R>����X�e�,}�M,Uډ�!�)�%�&G7��5�,�EU%%F߶��������D!713O/��a��������
+3����zw�LIiqf2Hͳ��fo�x�ٻ[s]yԍCOz�'Bl�O�JM.)f�y|������]̣f�_�N�j��(�,.I�-f�Ka�9��1���$e���~O���S�_�R�� <sW
+
+--- File: .git\objects\45\6604e5e40db73870163fa40c80b46d6666b67f ---
+x�T���0�_1��^ I�@K��.��Z]g�xql��i���H�O����&iZ��D���̛�痬�]�tr>}���~?[~�_B]�d�Z�*����#(J^���� @���<�����w�_9#̣�­�>D}��Hk�ڪ2�y�%1�_�2*(�c�Bc>M&ǮA��\xBW�BM�$��+����_�t����1\��B�ie>�G�G�#s1(�ѫ=����E���,%���F�%�6GJ�Պ�J�}ƢxKd����G��lRI���Z4J������oX�ƚ�b[������ų��l�ͭs��>��s�|3�T���n|f�^v�FG:�g����G��b�i�O��떥����-w	��oM�v�A�6��<R]�@��UVO�n�$Ix��и��ⒽýoZ|�ۀĆb�8���w�Q�d�ڍ��	S,���lD�
+}Ö�����;��S��
+��=x�d����̈́��%���B�$��"��p!�r�F�P��s��5�l5����̣kJ�Lrͺ3���	e� <��� �'��7�
+
+--- File: .git\objects\46\3bf0459da002bb2d1559d657600869c24f9bde ---
+x�VKo�8�ٿ���M)9E�A�nS ���\z����T"U�����ˇ$�^��N�p���_���y�*M�䷜��ȁ���~�#Z7\(����>��h%x�ƥR�|��-k��q��T���O.��I�liU8�y�V���W=�/� 
+�����t��|����pyPt��]4%8$�o
+?rQ�����N-A�A���	{�%�����+�Yh�|�
+j��>a�,Ȍ�dƙ��@B���s�����aa{0�@!i�������/�:�Ω�t���v�;�zI��;�.��4�F�j*m~;��l-�Z��GU�^��k4B���k�`��wW�=^���Z��W\$�.���O�O:�4}����NSt��l���z�L
+#�s�(q���l���i@�;�F�8`RI���6�z�=R\\,��U�x�M�ˬI���1[������G���|7�����O���,�ë�
+��t �]��Y���z��[�ڍ��X��ɴ�͎e�n���f~��0�{��?Ҏ�x�=4��qj@�F�h�7f� ^���RV�-���x��*Q�B�-��O��$˲8�����ڮ�Yת��l}�姻�nB%ݜ0�D����D�GJ��%USGu�_���L�,�O�ݲ���s9�*���;��.�����9x���y[�j���A�+0�ϟ�dl�p|�H����J������םT�m7%A�r�6�1�;�����$�]��j���h��J\Z{u�Ǯ� �yAX�T@���A!�������hX�_~� Ս�׳��.����n�mS��&̶�h���M좟�90=��ѵ3�`^�)���UbIY�ՀXqQ�f|���k��,�t#��8��^�`N7NuR̓��QW�z{�7vG�,��M�����)Ҋ���GW(��@B�q�9"&vV�ޅ�Ѝ�kx�%�s�ܼu�tl���:�[T���A�F{
+
+--- File: .git\objects\4e\64063cc3f0d2330d433692230011f5c6fb9439 ---
+x+)JMU02�`040031QpN�M-Jt��+)���I-��*f�Tr�]瑟��C�i�p��5���=��R�|��!J6�6��vd�%���%U�6�J=�J�&'�d��!i�u�ލK//\=��3[6c���S3���>��h���ל��5וG�8��'x"Tix~Q
+�� GcS
+ ôcD
+
+--- File: .git\objects\54\d1b1d44b1e504642d510894f76363a22d1d53c ---
+xmS�o�0朿�
+�MNSغvB�V�� �m��.N�ڸ8vd;[a��γ���F�C�����{q)uI����<��{]�r���5���$M��#�����zM�F7$��k�"�;����J7��
+��	-fsZ�e'$�g�Ѽ��.�N8�m�*'�"���T5�̱3�$�J+�H����L�����Q���߲4ҳ��P����aoY:����>
+�j$���"5�]��^\w��fnp\���/l�oQ{���-&@��Ԓ�ٴ=��m�
+s	�"�g�*�Nyf�݁����%� �Oh��\=#�Ii���؎=�Qek���JKm���r~5�lF�����ǋ�Q�[��u���7���.��h�	�P��"ۯ2�y|� �M�����"9�����#U�1����u�GR�?K�
+���b�A����g���֙�N�m��F0��7ޅ�=�=��hX� ���g��-3�:����к���\�e�Bt{���݆���ِ�~�q�!��+
+�qCE�]���bx-��3�x��`�rB/��a �H��:/� �E@
+
+--- File: .git\objects\59\7fe85e26fa95ee965c02664880f6d623ff5697 ---
+x+)JMU023b040031Q��+I-JL.���+��*fx6���M�9{wk�+��q�IO�D�Ң|jr3�@J�Y�I�,��,2���k?o]��v��[Z��L���Ģ���TBN*NN�K����>c�;��������!`�Ծ�����  #9v�
+
+--- File: .git\objects\5b\6562161d1224acb728229a9ea4637c953b4fc4 ---
+x+)JMU�4b040031Q��+I-JL.����M�KLO-��*f�u�ލK//\=��3[6c���S3���>��h���ל��5וG�8��'x" ��+�
+
+--- File: .git\objects\5f\be88199ae4a44a4fa24b5f79a6a3a46f9882b2 ---
+x�T�N�0�s���)���ک�����Цv?�:�M �-�T��>;���v��>���{�sW�X!2�ޕ�ʠD5�y����Z��H=Nӆ��
+f�NM� �d�\�0IWMY���"o*�w���` �m�uÙ)GL5�U(X�$��c�4 ���ڠ��D�������$9�	]T�~����l9�-�^-����=&��u%��#E0y�{w~��x ��]�VUҪ��t�����H:q\&*��({$�$#�Q�Ц࠵E�a��&h#����f�b��ǋ(�oa��A�&�uɲ锊�t}�EiM�4��4z��7W߾����D���v��J��oW#Xګ�<�Rky@>]^�瑌FQ�%U��}F5aBRV��{
+Y�Ht�ø�����/���������X��n����u1o2�uT�is��
+bu̶�>��C#s�����b��L	C�$�[t:q�d�����M�M|r_�N��s�%���HPk�j�`.,���4��0�+�^۱ X�9P�e��xޯlqWw�Y�_?Uw?
+
+--- File: .git\objects\5f\bea30e82a2e9e684d305f8dbdc47b141d06d2c ---
+xe��n�0�w�SX=i+p��&vA�i�&�ݸ��Am�ⴀ&�}Iiº�P%�������a1��N���3Y�i�D|��n��)��A?I��q+՗�-�W]4tߝ���$�@it
+i6�d��$Z(��\*4n���J٨�J�@*i(l�5X�p5*��ŗ
+���B����z䘟Iᮤ����ձ��YQ)�����9Z�d%X��/cT��c��,��4��+�ֱ9��'z�d3.K�h��V��Y;�3��ݠ*�Q����sb��6�M��H@�0��;2��3�?ri���|1�i�;)0t$��?���G?�XMсA�
+����$dIW-��9�_��~�ucC�=8�����&�r� G���a��-���/Yg
+
+
+--- File: .git\objects\60\b2158247ffe6c4a3d2477048f801747a793cd1 ---
+x�Uˎ�0e���
+�v踓J0�Q��QH#
+���4�m<8v�8}�߹N꼚R�M#��s��]������O�J��0�/���Z��'Ƭ�w�q.׿W,R��$��
+n߲`�ȹ��=��8Ȟ3���"%3:�GafP�$nKi��v�
+��<��+FF�I�h Q�[L.ĝg��7��զ����e.#Õ�M��[�@��IA� 
+S���%��-w�b���(
+�x���O���$RB-�_+.�����Q����N�b�**d;���� `PpX$8Q���\�j˸���xl�!Y3�k�a�U���D�[�?:�s�Ĕ��Nd+���&��X�z�DQU�z�_����u۝��rF�&fd�u�\m?.��aO��>%4��]OF���M�/a����f��eQH�M��I�* ͱ���-�?�]On�8�3��]���ՒNC�Q
+��B��.�޲.�<�!����(Wv�����V}�k�ϛ_L�wƒ����N[���咍M�<]�+X���9����{�h���`=.�/��㺉�kw�NO�;�Z���4�|�[$�v#t���iK����B3/��GbPٯ��ײQ��/���
+
+--- File: .git\objects\60\f15b95e192e35e5d142e9be710cdcf8382dcfd ---
+x+)JMU�4g01 ���b�}|��lb���u�w���2�
+
+�LL2�RR+�2Jrs��a8o| �.Q�AT�GK���3��t�T�]�2��|7b�˧7��4�}  %*
+
+--- File: .git\objects\61\6104bb747240ab3e89d39b02ad02023ecfab22 ---
+x��Q
+B!E�vn����S!�
+��>�yc	�1����B_�s���Vk��]D[f����ᰐO!���<�
+&�3dV+uy-]r	S�)������'��N�k�[�z�������1��V�<��I����,���vq�_�Z{�қ�[�F�
+
+--- File: .git\objects\65\8b9652bc633c5611098e8fa34d79ff1f78c681 ---
+x�T�o�0�9�ѧ:���LE��iLH��%�C�\w�]lg]���s��.)��C}����l/J��ɫ��$���Ӎ6X��g�W�HW��ZG�6Rx�������JV0(���IR����e�JL�ߏ���6I5/s��J�u�D78k��D�҅�^��Tn䀂��h��Œ=t�Tz�#�M�67��F�a7���4^Ȭ��L�ۘ�n���I�
+���RrL�n�3�E��Y��J�{Q_13RM]>:w����4�z�f+9*T#��
+U:���!�k�Y.�y�
+��<�?��'N��ػl�dv����6f�ZBe_B��$A�2%�-�]s�f}�nƎ�QU���r��-�t}�)�t��p� i"=��8b�D�*��}��ad�L��3|�l�X�v����~�V���}���
+Ms�4�����bm7�݌YV��DU���<�`���PJ��ʺ���+�����s��y8�a����}�#�>�,��t�K���vP��8(�v�kնfC�i6t�f0����nE7��$����L��n��>�j�����H:�Z��� M?��[^��M�Ԋ�<��=�X�v#����]ڽL������
+
+--- File: .git\objects\65\f851ddcac4221629997ef87d456df4a20d9e57 ---
+x+)JMU04�`040031Q��+I-JL.����M�KLO-��*f�u�ލK//\=��3[6c���S3���>��h���ל��5וG�8��'x"Tix~Q
+�� ��� Y�@8
+
+--- File: .git\objects\67\50d3931f6954a66d7ae5fa33f10836feb79d58 ---
+x}S�n�0�s���$Ӭ�EےM��������>�	���J��gc(�V�8>��s��U�V_��ĶT����~^]�Z�-��D�Y�a%�?��mH�F������J���VeU����-'��R�	�-�tSjA�V��=8�yT:3=��YBIؠ�9�����dJB��巭�)s��L�8L&`�TIC�Ѫ*�H|�=�a�r��I&*cioO`R���G'�F�/rS�]��P�\�}d3���&6N]J%$9���Vn�4�	�E��}}���~N�O����\k���|�����_��=[w�8�ngy�.UO�)��ac� �	֝`�k���~��w<#��x[4������q���������(7����aCN���7#� ��j�9�7��sq[����i�/:6#Ɠ,c�{������١/vn�:
+ d����zYf����lԚӭG�۽��O������1�Ti��*��V����@۷; ��^bd's���i{��C���N?��x>���uG�fb��h��?��B�
+
+--- File: .git\objects\69\13606f4fe63cc84dcf3137130f67d0954645ae ---
+xeR]O�0�y����&Z@b$<�����GHLa)����J��k��S{��=�ܻE�0ޜ�z37߆07�)�Q󩒤U��fE,���_��O�w���BK%
+�����A�Q
+L^+`pk9�/�&X�rIBI0He�_-�*�!��~^�����A��/�Bằ���	���iz�EIO¦��c�����ֈY�A�|qP9@��[�#]"=7	\����nK�B������������$όӚ�|�2Z��e�S�lQ\��r�� �DL�m�I���DC�*�냶K���/V��.Qː�d'�7�zWa���{�z5�� ��
+
+--- File: .git\objects\6a\4e07a93c978ae24b66c2adade56c60545d06ab ---
+x��AjC1D��)|�ٲ�l(!�ns�,�e�����@r�8W�j��73�[��z���UmV�e)[��.�aU�$+�)y	�/�z6'-�H���RQ� n�����Wa�,�L��߾�s~ԋ�ۯ�[��Ν~Z��O��hG��{�`f:/�l�}�Y�����[.ݼ 1`J
+
+--- File: .git\objects\6b\c83113ce595470e2f7f2755800e1d1aa012d11 ---
+x�Q�J�0��O�M'#]A�v�L��F�i{�E�&$霎���)��:0W�������������K��Qh��\���%
+�Z��q]��
+�y�x��d~��8�)+�����.��<�\Ѱ��~�j@M��~�~b��F�Z,{U���S���\S^���Pi����@�r�`rd�A���/o?[�hb��G6�E-�]�Fs�S��rθL��'w���4�7�������0�ɩ�6��V�ӉIQD^Q�Ӛqs�a��i
+�0�x�QE3�R���+j��&�ʭ�Y����:}��1gI����%��ʐBׂw/��;ӟ����i������3���?�0��\�k
+���4��
+
+--- File: .git\objects\6e\7d3dab3d43cf278987e26625b137fd63aab3e9 ---
+x+)JMU07g040031Qp,(��*fx"�h݊�?�=�������e����ԼT�ļ���"�R��%7\�E\�!b���э? A7!�
+
+--- File: .git\objects\6e\e350e368081ddd620dd21b40d0eb07105ef4c9 ---
+xmT]o�0�s~�]���:PM[�4���C�Im��u!���f�S@�}�6���/�s��=�ڳR�`�f<~�$�ԏz�
+V�����m*�*��A���T^A����n:�����1+�>Ij�zZ�LV�)��!�}�Fɬ�e�1Vɼ.�҅M��A tt!׷�5�8��9v �q�j�n_�%{�{�ۧ>���W��Qi�T�m;���dV�}l&�6��m��
+& p�;fw
+�A�=+Yk�x}��Hu�|p�T��"3\
+�h��6R(rT����t :C�1�%i�,�մ�
+�ai�O���
+'nU�ճ
+���X88"h=a�Z��t��9D]}�8E,����u��
+L��5E�#T�$��"�k�q��sSĴ8�p�ޤ۾�g��?O�^#_Ƨ}�_���	~E{z�$n�ei��j��Q�Ϥ۪zc�_� \Кh���-8>�_fKk���Ͳ�.
+���Q5�z��);���R��(V��	z���!�ǰ_���ý�I��{0Zw��f�I7���Ț{�:C?Cێ53�]ѥ�@Xa%�6<܊��'�G^���óю��O�Y�W�]w�窧�� 7�tZ�V�W(kE����Y[2�gн'k�n ��p�N��i��?����
+
+--- File: .git\objects\70\3ea601aee716ad810ac3f50d5d2949014401db ---
+x��]O� ��ޯ �����\���lz��l�F��*�ht1����*��r�����e����h���Tm#����l2AK%s�O�)t��(W��<4�8�0�0	e�w�s������z�\\���L
+�PR��HAA���z�.&�6h�dY�S$�ɉ���I0����0��q5�h2�Nf��̗2��%N�e
+��J�d�}wt�ٸ@��M�[TFy��
+��.]�Q~�$�9U&�Tq�L�HD��֠U*@�8���^��@y ~�q��Ijb_���콠S����5��=GV�I��f��5oL�$pE�F�|u~}�/�)��ٙ�����@]�hivzT����n������ө�QT�*&6�/$�2��� �o������){����P+�zH}����|_��r���Y��ը/I[@�)�p�}6�U�4&
+
+--- File: .git\objects\70\c02c40a4ed3187e94609c9b21b3e8b984946f1 ---
+x�T͎�0�O1��^ ?�E�%)He��J-��3M�8����>g$�#��B<�4-YB"R�d��7��d��
+&�y� ?}�~��8��:4zz�wha�"B��'AQ�
+|�
+��0ч�U������`mn��!�3]@Z�p�V��.J�(�q���QA	��I��4N���jh� 9�\?�~���{�@�4������N+�	<�"r��Ay�^�q]Du�.�t�d)���4
+�(��9R��VDP��3�["�U��=��f�J��/עQzW̬o�&<|�B5֔۪��fًgYv6���9eh�{¹s�sV*rZ�
+�
+7>�^/
+;�T#���³����A�1��'��u���]�ʖ��]��&x;ڠTPe�.~ ��*�'�G�$��dh������ýoZ|�ۀĆb�8���w�Q�d�ڍ��	3]Zy�
+؈���-��	ߕw.e���>O{��ɔ��Ǜ	�K�ߍ�<�I
+F�����)C}����ز�8>C 򲈮)m�2�5����&����,S��	�7�
+
+--- File: .git\objects\73\6627ed7aaafb30f92ec6ba5b0a03506c31b18f ---
+x+)JMU043f040031Qp�/J
+.�H-J��*f���!9��/�E���/ɟѴ	�0�$��-35'��n΁9F6sXbS�Y��Ly�;�AՅ�V�e��
+�U�~Y���W4zW�l�{���~��0<�(asz����!�r���2��a�o�� &�B�
+
+--- File: .git\objects\74\6ec25c6ab106d966596dca76cebb8c3e968f0a ---
+x+)JMU�4g01 ���b�}|��lb���u�w���2�
+
+�LL2�RR+�2Jrs��a8o| �.Q�AT�GK���3���8=_q%s#���Z��^dq��m 7�*�
+
+--- File: .git\objects\75\338e4c51753c9c2f296a3e85665bdb5867ff70 ---
+x�Sێ�0�3_���V!2I�d��n6I_�0]�-�i�F��5ƹI�Z���3g�E+�8#����S��c�FA����E}��|�Bj:u�*����v�$*$�O��< �
+�y������7誕� � Vc^�ʷZ˽�4!k�gyx���i�:l{��S*��<L&5���2S�� AI�����v�gP���Z�_�`G�Z�Ӫ׶�b8�5��T)�}w����X���t�AX�Y�!��X�-t���=E��8XBo<iQ �i�G���k�eK¡�\��� {"���|	�N����8��:��Mgơ��&;��oG�*u']��0�:)���8�Ѡ!�-
+й��p�}��]���se��茨�����a���(���-�:���2�w���{x�:�n�ԫ ~�9�,��v�P��טM�Q�m���A���.������k�R�mO�O��1�$j��g&FQ��w���A_9��>"%��0���:�.o��Fe�A�����?rJ�
+
+--- File: .git\objects\78\0ad18b531d4d5a3439fc6efe2476cbaea746b4 ---
+x+)JMU02�d01 ����T�W�ܪZ~�!��1��
+���9.240031Q��+I-JL.���+��*fx6���M�9{wk�+��q�IO�D�����<��{�l��&�.<�L<����[W��aJJ�3�qqP~RVjrI1����qIv���2ʘ�u���CG *�+�KRs�?���˼׵���w7�-y~�Ԟ����� ��r�
+
+--- File: .git\objects\79\09bdf5922554f91903ee88bc96d73846125766 ---
+x+)JMU02�d01 ����T�s��~��82�ե����-k-<����(d敤%&�d���e3<��h���ל��5וG�8��'x"TinbfHI��Y};F�����v����P�b�R�����d\�@�����\R̠��EJ:���I?�,Z�_'S�������$5����sJA ۿ�{]�?Nw�ڒ��.A�)�/J��\ xrqK
+
+--- File: .git\objects\7a\9d2ad82f54583bcce4d07d3f7a6d0d96988a73 ---
+x�S�n�0�Y_!D��C�U�З�q�k?�Z\I�H$Aҵ#�^��_@�V'r�;;;��6rg$�~zŅ1?����S<z���1���2]��d�o�q��:]��|�t�e�E�m�q���;F>s���4#�~`����G�ߠ�F�i���Xy[V�UZ��	Y�<��C)�MK�b�ѻR)�nl�0������	J�(-� <и,�}?�������{s8հ��
+��}�1娡�
+���S/�v�b٥���R�͂���J�h�5��)
+�ުz�I��N+�8:��^C/-[��|�]�#YM7>�K vj���ک������l25=���1�|=��[�l��i�J��T����ni��4�7��קu��l�<�Q�ʖN�:Yl��j�ݮHL�&�C�</�|3_����/�����z�='�����5����5f�lPyi�(&Bn�h���K���ҢT�@���c(���/��5⩉Q�(�]�ooЕ�B0��E�}8�c>��������Q�mP�7����x�#
+
+--- File: .git\objects\7d\161a437cf325eadcd6e816cfe2507df0a89275 ---
+x�SMS�0��_�S/��:8x�< ��Mi��0I� �7I?�Ȩ�4yy�v�uP����j�a%��x��x�D2±d��e��
+�����Ӏc��Ĝ��F���HE���E�&&γP�,�e�H4Y8.�-�
+Y&$|jF0[�H
+�+J�iN�s��E1�S&N�%Y2U��3�%\��G�LJ��E┥h�Z�l��pZEAՅ���2>�������h"�"�M��)up�f�f}�7�Ȝg �<�)qL�:�`Y���*
+K7�)�6��־�Ͳ[�e�XA}����t0�ΠI���O�q����v!_����2����e�bʔYf[���J.�$[��5!Z�g����F��fv�mv���`��-:���w�!��_���T�s�w�S(��!���	��e���g��A��oa��5
+
+--- File: .git\objects\7d\5c4cf22538b760df7ab91c8c9bcf481b7120b7 ---
+x+)JMU027`01 ������t�'��r��f?����ʇߒ%5j{`
+�R�jmW�:�W�l�����o��/!�)�%�&G7��5�,�EU%%F߶��������D!713O/��a��������
+3����zw�LIiqf2Hͳ��fo�x�ٻ[s]yԍCOz�'Bl�O�JM.)fp��z��e��z������͚�CTW���3L7����:{|VG��Փ>]�>��<�(��= ��s
+
+--- File: .git\objects\7f\a5e0ea84346c58beb72c31ba1c6f728024dd4d ---
+x�RMK�@��_1�&h��E<	EZO��m2�[6�q?$U���=x���'��4�*�!��<�{�Ȍ���P�D�9�&��>�TxI4�*�,��`�J���S���\]���1��Q�����\���w�䞲T"�["G�'l��e9���[1)N�B���Q^���C�x�����5j];u(�Z
+V�(��M����6��X}@��ݢ��r̅\�I)|0��&��U���má�$y�>9������������f��r�uc����r�A;FH�bժ��8�o�͟'�2��-6�`z����B
+
+--- File: .git\objects\81\9b666d8344eda72c05adfb67f4d8d6a80f03de ---
+x+)JMU02�d01 ������t�'��r��f?����ʇߒ%5j{`
+�R�7����V�"�s���2����r�
+
+�LLr3������L>i?��=oɩ0#n_�w�����g&��<��h���ל��5וG�8��'x"Ė�����b��G^/V�<����o��
+��@TW���3lȚ>��jԓ33��������<�(��= 9Cj 
+
+--- File: .git\objects\87\691d5bda7b19d73464226e33e432e4e9e77f50 ---
+x�UMO�@�9�b���c�-BjE�ǅ���l�Il����Z$��1��c����N��(�̼��of6�D��8�/��h��Bk~(
+�y�����4Wڲ]&
+�sswyɦZ�l'�67#�/��i�C��6� �.NN���E�L���jR$�n��K���
+���T&��ȴ�B�������^{=�O�2c�L�"G|ώ�&���\����߷0� ��P-�-��+C����
+*���b�ѧ��Ni~G�2�E�:����H�C�(=b�\�W�,�D�(c0��}�@&�O�N<�ԡ�v����F�wF�~�Z�U���d�9�j;�x#�`NgR��Ddo6࿥<l��B��ۄ�8�\�	i��L.5d����EQ�c� �E�v�x�j�.d�t����E*�bi����9�����i�w�I�r�W#M&z� ���y�@�l�P���'8��u]C-v3=U:�Y<S���R�hС�ar�	��oL���)SUdT�Ť�Ưn@^���W�QUz��4�D�ęG�TɊ���k|�|s��
+܀�����^�HW�>%���:���$DP�}��<8\�F�*bs�wμU��tV]���'�kD,>�/��_>������I=�˭YW�>��C�pT�]���u˫�F{�&��6�v�t�K��Ko�VZ�w׭VVҟ/۵�fK�m���?�}��
+
+--- File: .git\objects\8c\2fcd2f3e0144df7fe30ab967e96fb073a898a5 ---
+x]��j�0�w�S�(n��FIa�;��X�ele%���d/��'�����|�t�����M��2�_b���&Pf?R½H�+�cӌ2��z�4�6��g�����Y��A�x��X�\�Qԛ�nf���-лˌ�V��$Šv�[�Opo�㮺·���<� A����i.��]F4����0:^Ġ��D��?܄4��m�z�'�������_�e���Sו�� ��i�
+
+--- File: .git\objects\8c\6d7cbfd50d4826131a80593c2826b5886985cb ---
+x���	1�}Ni@���%"6`>�6{z`��j��|f>f���]�Mo"Z�1�̈́�O�0pp��X"сOL��#5�w=�$�2 ��)� `]��q�Ӳ���F�g�֦O鵞��U��?)�#/%���r���v
+Hz@�t\��WY}j-�@EO
+
+--- File: .git\objects\8c\7e779ac6df43900b6574be709cb052c18592c4 ---
+x+)JMU�4g01 ���b9��Y��5-�+�f�B;}�C3�̼��
+�����4��Ox�[��/�iؒ����bFV1ÕO�&�(�?�������E ��&A
+
+--- File: .git\objects\8c\e3d38883788649ee5ce28347fafc4ecb54c286 ---
+x+)JMU043f040031Qp�/J
+.�H-J��*f�i�����?2�*y��O��x��0�$��-35'��������:g+�E�L��&��8T]HjEIpAQf	�@���������?A=����W����*�/JA�l�}sg�ť���f_�)��y�
+ �fE�
+
+--- File: .git\objects\8f\5b47dc047e59c696c2fa328db2b871ee803ab6 ---
+x�V]s�:�9�B�ɥE�˴
+t�\�2Sf:
+ϲ����+�m
+����lK!/�I�ݳg�lR4�@�/��'���P�"}��Y��F��k�:�*M{�}��%oSU��2����yZ����ny�7���������JD�Z�BS�G��ߠT2/�>]r���N����d	���$-��X������F:�[��������;�8��5�TZ8�h[Kݦg���!ʨZ��9�!�Y@�1�w�bop�ゔ�o�Y�.y�E�m���I~r�����~6v���/���o��蹃2�yP�8[�b����(8����ЖL�*	��;�FQ/cڣ��i��l���l��eUx�_��	�N��T��������,qD���8�1���Դ��B���,\ǎ&r'�C.��u;jL����2m&a�YAŌ���V2����
+�����)��=����J+U��g�`tf��`�gY���=��C�ʏ�B�GX�B���������/a����
+)�C�4]Mܩ��86D0�Z���eS
+�w.�8���5�BsCtW�;Z�d{�xٷz�Yݛ�-�U�����*����&�u��e�Gz2��x�_
+iF[=������7�cO��=H����~/t{$�l�f[�L�?���a]�l�i�r��P��ug)`ZC�a�>�t8m?UcIY���z�3��������0���t�äB]�H#����/�_>>��Ȓ��X��_�%{�q�w��N�
+܌Ut'�#�tc*`
+��Q��՝��E�\��]=?B����CU�%O�$@��
+�Y�cb�AX���𧂄�N����tm�7�t�h����3�S�w"��N���
+
+--- File: .git\objects\95\31a200fec979e8ff760b303b95667103f60579 ---
+xuS�n�0�Y_A��(K���A�ֆ�^
+I�^r�ıE�"	�J���E�V���o��7d%uE�ټ|��{���=��=����+<нK�m=yG�#��o7���%i�q�<�����ns�X��3Z,�h�W��<��V�N��:I��n;U{��-0��g����$!���r��L=b���kAyU	�+K#!=�����;�k�<Ζ�%�����Ar1+�h@��H9�%�@k	��b\���(�����X	e[� ��JKN�9�����\�i�z�$�Nf�Ӂ�ئ�9�BA ��s	!���sRY!�&�c�pT��q���R� z���\��Ll#a%����Q�hw��P-lW�.����Bh��9�OgӈHNʿ�!kĢ�\�]gC
+��M��~I�8"Y�0�>U �}3�R�z���{o��L����� eϧ)Zf�d��L�-S�0��BkL0�7��{Z�-�����h��q��";��I]��I9��^�9>�>}'~M��ы� ��-`���"���o}�:�
+
+--- File: .git\objects\96\bc0350cf33c0503e611de05a8048848f7fe6d9 ---
+x�S�n�0�_1�C_ ��"����E��J�<��uf�v=ή���	|C�I�]R��D���\Μ9o���"[\>���^n����	�.��a-L]DHQy���_�b �	C}��ėC�o�-�^��Y��3x�5
+gT��½���g��
+J蘤�X,��T�X.����<}8N��n:E��#
+��7��y��#��]5!8�J�������(��D��T���(���3��["�U��#��f�J��ow�U�/�ַ��~^��TW��	�^eٛ�Yv1���s�Ѓ��^��1�"�E_�A���zQ�5R�N
+
+/���;�5��sNG»-O�1ʷ���M�vV�R{PU��~$2P�,�w
+BםBm��Cɓ�$	�XL�c�+����w7��]@��l��i�3j��,g�y29aʍ��?�+�N�;���	?�4xR�|>O��i&S�?oo)�^lX�4��'I4����k�4S�F���km�i��! yYD���B��ugjc��Ix�ix��;�.[
+
+--- File: .git\objects\97\335b3b1615581acdc79a886295ab92f2d55bc7 ---
+x+)JMU06�d040031QpN�M-Jt��+)���I-��*f�Tr�]瑟��C�i�p��5�a�s2��}��!J�<������{I���kv��/'�J=��R���&lmr�����K�?K�*m.B�z� �\������ׅ{7.��p�<W�lٌ%�SO͔Gh(�GR�l�ٛ.^s���\Wu�Г���P�����@�W���|�o1_Ӣ��Z.���}�}��\��мL���S��K�Aj��V�?�+t�q��%Y��*�j��R��
+R�� E�
+
+--- File: .git\objects\98\aaaa311c236a1f86560b58e6cde584b7f14f45 ---
+x+)JMU06g040031Q(.��I�K..f8q�o��9G�
+�y�����/ n��
+
+--- File: .git\objects\9e\ae8bf6577985853a412c034056293fb36e4ace ---
+x}S[o�0�3��b/t�L`�]��v��2ij:��/N�;c#�4������!%m5)��]�ͅ2������ݘ�J�n�a������"ٴ�z��	Ǯ�_]^��5
+�k�[w���n��xi����ˌgG'<K�N�*���T�"��,�`�.;]zi4+-ϮI%��cQ��)�v��Bߡ�gV��k@{X�
+�+� �;���!�W�/��X[���kY���,�4H�@
+rU{���#�ox�@�+lW2�g�Lz��W�n����P+.���Q�n�OӶR�}�E��Uɕ&d�ՁŶM����ȪR@}%D���J�s���-�բ2���%�����|" 窣xv<)u�r�ȍ&��&��G����h^R���Q&!ʩ'QQ��g�~���CC�1X�6��@r���4��Z�~bd��$8���5@�~��q��`���m��J�vt�]�1����*ў�AzR��B�VX��c����o�\�l)����4&�����,�1�x�w;G�8�l�,hqW
+�������k"L2���ׇ���΁�F+Q�B.� S��+�ѐ�ɾEw�����Ih����L8v=����?s�s�
+
+--- File: .git\objects\a5\443dd6d231811b7bb1b7332e7dec5a539beb58 ---
+x+)JMU�4g01 ���b9��Y��5-�+�f�B;}�C3�̼��
+�����4��Ox�[��/�iؒ����bFV1C%�ޯ�TC~J2���3����Px }�&i
+
+--- File: .git\objects\a5\7687003a09c6230d71c44ef79f6848c1ffd2ca ---
+x�W͎�6��OA�R��M�b����^�k�X���Ɂ�h�����f�E.9��SQ
+r���>@��M�y��~v�5Y�F�����Ùт�z���?�vO��P�%]=�qzN�"}�q�T�Z�"R#XV����Џ����u>��Q��^�9O!���B�{1UGm���<�$N$1��!����<�_bce��4\ci,��"���'8�3�6�&TY�?���Dl��.$�4a�d�>Qx-V٠�6�i<�B���'bµe!
+Q��s���QZl�N�ZV���LX�;y��,w���il�m��F
+7�5]Si������r�bifB�Xv�z��*4c�Bq�]IA�|��-q��W����/n,�	ᔯ|���y��#�߂��k�SZ�S�%�p��bQ`�����ED|�7\SI�����͟��sDY��T� �FT  �Hu'N��
+K)��sE7B�x���gB�pn��-X+<�4FG���$��% �RczFP����d�:�Dk�������G脐Ͷ��8i��!��/����0G,��޻	YP��[��j��2�~�z���t+�r�y���&�L�ݳ��Z�
+Q_�d�/��R�m�E��`��U�S���TȊ�}�af%�BF�J�&"�kf
+q1�/�-2�iL��Q�u��a>��ǳ���s݉�t&N-�i8���77~NC-��I/S��C	F	��Ff5wqvY�8!����[�B�¢�票�E�?�'���9P�L��s��c���s�*�$��w�wG����+,�CV6�@pI�kt��;b�����La�#���meɕ��l��Zm�4�R�D����{������S���w��}�����4ͮ`��	J9�9��b��
+��;܅�Ngꅄ����X]E��,6�a�"��������q7�"7e�d�Ҽu�!��K��*e����|k��0�&P�L3��Z��읹x"�Vࠫq��?7�($o*��؈�3,��������
+hR&I�����<砈�<Ҝ厷0�+mi\�)�k���2���+s$�/E�O�xaf�����)�����`�Nӏ����� �x�}�����n�^|���!
+
+--- File: .git\objects\a8\154f6cd575f5e520902832238f5f441b85ea15 ---
+x�V�o�0�9�U^�-sl�ڎ!`l	�I<l{p�K��đ��������4i�R������}w�}��O�O�Óѳ^�^�r�%o�*&.HCz/'�
+.�#L��w_..H$xF:�R���ze^|�рg=�W}:8��A�/�4�6��L�uNL¨�����%�+ȡK���	x.�	^����A����b>�er|`� \������H�����㩽;�#s:^�4��Q�b�&h2Nw��X��1�Nv#�8������;�G��!�4�F
+��Q+=��Q���R��"���%޳$k{�B�fbjJ-��R�˹ig}T�HZG�Q ��شü��}�7I[2�E�bZ�`DAWLk�>�}]Hϸ�I���|�=�=�u. �,��T����lҩ�c՜a�"a)�a�i)A�e��ꦅ�C�+�$JwP�E;T��l�׭alw<�~ծc�g���.`^�"�ņαٹ����[f/s����&��H�RPjmU �@�Ǖm�"W��zm��Rp�hUH��;5��*�)���q��EX�h%���V����W��K�Rƭ�����`y�3���5Ҥ-�3`�$}��o=�� ͮ�v��oս �Ɣ�V;٫�BS�g*��m��Zj�Tx�>�Hg�������-H%��J��/���;��ֿ�)g�ph�P�WA(�î��pw���	�Dl�Z[
+uݟy�+�4���>ս�Q�B�ùQ�(QB��b��U���u��)ST�B��o"Q0�͟�f:
+�B^��jS�R����$��	���
+��U4׿�٢Y�RM�$Z_���r_�M��Y�&D���T
+
+--- File: .git\objects\a9\b72e213863786bd5288cad6367bd160e464561 ---
+x+)JMU043f040031Qp�/J
+.�H-J��*f�i�����?2�*y��O��x��0�$��-35'��������:g+�E�L��&��8T]HjEIpAQf	��������|���zjZ!�7�J���������7wvX\*Ͻlv��Z��� ]LD�
+
+--- File: .git\objects\a9\ed595ce76db5de7f08fe33e0345a2ec72e7c71 ---
+x���m!Es��i 0��"�. �8�x��@��(�+7_�X6-��ޗ��c+%���Fvӄ)�ɢ��
+aD+�$:vx�Wܥ�^#ϓ�C�{҄.����3R0���$��xo��+_����Uv6���Kl���C��4<k�Z��~qȿdu^�,�q��4��Vr�?�����)���/�U
+
+--- File: .git\objects\ab\6c2c68f6c0866c66db79dc3bfdcbd7139ac88f ---
+x�SK��0e=��d1ȧ0$��A���n,�Nu���=.�{�m8g��Qv	�HQbWի���ke�lV\�zT��)������biZ�����>�W_�,��ge)��*LBF��/����s&:�|�|^ݤ/Cί��=T�V���	QƄ�4U�d㻪������%��*E�T��8�z��sp�v����C� �f P؋	mJ%�W�@U�u@M5��xt6U�yo�*�7�
+�֘V�3a�S���BϽg��D�d+�ѯ��o6�@|�f�{��jn\o���{�xots�k;��yQ�~Q����Vj��.)��^ʹh$Z��
+w�N'��~T��?9�/��w�>�D����/���a�ʵiƣ����L4r�dS%2��ē�f��T3��A�f�02@�&'�2j1; �t[_S���`$|�H4.h��a��[ph��N��r]��x�Ψ������Y�By�A��we�3����9�[�lE��ǩ�G�(@CR�.������;̏��Xo�A��C'���K�ݒ�D-��2?O6���~%3�
+
+--- File: .git\objects\b0\316fdfd679a1a8cc861847b326b933beebf1aa ---
+x�VKo�8޳��M))m�A�NS q9S�8b+�Z�����HJ$]��N�<�y𛑊Z����?X�
+��KD:���n�B)4��j�wi����.E��J�����-�Ӣg5�2��׀�t����J	D�ZyŠ���c�����K'�Aץ��n+�p��k:�I�w�ڃΟa�֭d�`d��γ�J�pa^KҀ$�]�� iO�nF�tq�m;ejϤ)pu�*e%�`ѹ��u�1�h;s�����	�gj=d���ҏI]"[{��\z\���=���R�B&�.����G�%M_��1�����\���N�lJa'�t�-J��Pb�ۘ�8�|aOcҦ�P���v��Q���Q`zV,6�0�.[d�
+E���s�����7er;"J�x�8��8���p����Vtl��@���s��@��r�Ő_����3
+�5�c̱����C3!���`����m���9ﴇf'=��]��{���A���m�b�� �UJQ(��a���ypʳ,�{o���]畟�Q�P��=o�܆Jܞ�p�H�H�)�C��mE��F�f�0g;CPwX�)5 u�个�����#����Sxd%x����o�R5h�?�Z�0�>|�D��a�����՝YV�+�LIP�8��l�Y�?s�p~�ͦ
+<���+�:��������3�,�����C���{���{?x�[
+��o�Ҷc@;���?�CT�;ƃ�V-ȍ�
+�%`.��3�e8�r��+;�c�Ͳ�t�,+]w�e��z4��N'2�K�4e��H��kl۠�@T/��N̨�ՅtrS�k
+��k1����߉�"��v�j�z'����2M��
+
+--- File: .git\objects\b0\6a9795e7255ae4cc9950967345cc161c8938f4 ---
+x+)JMU06�d040031QpN�M-Jt��+)���I-��*f�N��fs�����0���n��`�s2��}��!JS���I�	���_�[�_��X#T�G~Yj�R���X�my5��_I�¸֐[P��y%@G$�d��!i8�Pْ�5[`�����S�W�#4�#)}6���M�9{wk�+��q�IO�D�R���b�k�+�KRsA��9'R�:����"~��
+.���i��64/���T����b���52ܗ����0�z�L�6<�(�� ��\ lZ�C
+
+--- File: .git\objects\b5\4710b4611f20c92d09668a4ce8988ee78d3dae ---
+xeS�n�@��X��TQBHER�I����V�r�ؓx���̮I��p����?�&Ҏ��ڷ�f潝�[����^�}vv�r�xx|`)�4�͋�K�ְx�s���.�{�$&|!�WRsn>�=|2��y(NNQ(#��J�^�[�W�b���m^��X�Uݯn�ط�@Q
+o8��@z�I�2��?f0b��#	ܐ�(����5Uؓ���iI%�NV��Rt
+�6>_�>��֙;�E�~7�9��OaT̂�,P�yGN@�w�랚�u�k5��O�T�QKD72�z����*�C����>�=F�Q�f�*���h�E�J˄��kv���̓��|i>�����Nf�zJ-;]B��n�.?PEu\̲�[K��i��aej��h���ܳ�L��zr�/�ޠixyӀx*��GΖ���=�E�m��Pr���(��aŞ��ka)�JQ�\��_��&a�3���*���:�y�+ �ajf\p�u��-����g�p�Ro�����$���/K>% 
+
+--- File: .git\objects\b6\e3af3079070dc853bf606739936228c17cdef9 ---
+x�T�o�0��U^�-�i���	��� $�=8ɹ5$qd��
+���$kS~�u������+���|>"�V*$G�i�����K��x����db��ۊ���Z�J����N'�Ul�����~�����}Bn��lH��!|B��Te�h &?G#bW!�d��i�K���P�v�(������m@E�7!�,M��4K���o���?�~��]S�3�&ర&�t��E@��Y��a$���RY�� ����4�=Mg���,?�0�H�S^�!y�)+�@^ߪ4�	�[�F���
+g�4
+&D���JatBZV"��q���f0�7�sP���v�^ ��©Eې��sOT�F!+�z��s�"J��M������������	�1+m�^GAK�­�=�5U�)e��R:����<L��~[ܞy�{��O��Z;�o|ɼ��aP�Q�@+hV��o��dx^�J¾����Њ����E5�kD%r��Sܸ�؊��+��$ÓY�6���I�z؃x����#�k�5)���>HѠ��������k��(����%*;$�U�n����d�
+��eJ;%�����J��r��=hs���U<�ąv��e�[�N ���&}�}��M���c���9��
+
+--- File: .git\objects\bd\b963c93f9b32476ea4ca56320c0b4d3aeed3f6 ---
+x]�1k�0�;�W�d���)8�B�Bǎ]�Rd���
+&��Wrݥ��w�{w���3��m{͟�qA_�n����$~��$A�v��m��Q�(d8�`i�F���O��u~�J���#�Ƣ-����E��`馍������0)���J1���#܅�r�E��m !O)��Z���i�髻��3�5E38��Avu�B�p#��J5�q��.GoV2P�?x
+��J�-������������nI
+
+--- File: .git\objects\be\0ee1c07dd98201520bb28adc0d97bbd8926867 ---
+x+)JMU06g040031Q(.��I�K..f���uC?$��̓��U���ft O'�
+
+--- File: .git\objects\c0\384ca21b1ce31df1b1384367a04a72a362489f ---
+x�W_S�8��|
+]�������7G3ptf�/}Ql�l�')���J�,�5ׇ�<Y�W��UV�X�w��~��;���~]���K��-��NMX�
+��kD�|~}z��R4h�ѺU�|���[\�&�I���ǳ|�eu�h�ն�`mz��}G��Dӥ&�ѺBϝa�s����Vy�U]@��vC%�
+�Q�!���wT�3��e+�����g��*�`,��TC�����T�R3�ce��4mT���%�F�#��uM嘥�� k�\<�+[ƿP��~ԫa�+2��%U
+�ri��O�B��Ĭ���ڶt`B3�t�RS�������,mMݷ������U'����s�o	w$͊Q�/��F;J+Xr�І)���Є�옮�ܵ�)����>� ��x�1���M2��">^���V�-�х��̊]�؟���T���O�w���/��ew���R\�$���D��5)����E$<��������b�;(m��<-{�:X������E����b��ᄛO"��"	b�~~�qy�ͣ��4���B1�0�<6)�wj(7����Y�4ȟY�^�L��+��.��09����/
+Jkf��v��xɎX�'�7�#x�c��l^�`�]{��jZJ*`8��W�`�AttA�<2^�G�8��Uz�r�Ω���,:͊�&4�7�k���yI�7t���u�Y�A&k�5#5#��rK#��n7�Q��g_C��4�}�Q�qZ6��`�s)�Y�f�؎��Z�G�}`%
+��
+����f2ķT����>>}������ @�*���)냨D�i��6O6BDk�1��`Op�1X�֘�����^�u+9���1����������iE�_Z��l��n���ϖ��,��,�Da��DD3�ѱ��A�x-X�ϓI�h{�_�����J�Xy��3	����yz��̓;��hAd@�x��:�T<�{��)�B�.aӿx�~�K�7X1]��j�\�^R��#<4^�Ŭ�qF��8�]O9���^O&8(l7���O�#Z@,�J�`�{����(��KIx$K�9sDL,`��Š�ac�5f:�H͹+����C�ۅ�H������S��� ƈU
+
+--- File: .git\objects\c1\45df9f2afcbb4ff6d2e36713ef808f529ccf07 ---
+x��Q
+B!E�vn�}:*D����8N� 3Ġv�m��˽p.�[�������":8����,	�',LYr��H�xRO���	J�I�ˈl�P����/0��ƭu}��z��6�����n��Zi��Ճ6!z�&���� ��N�!���N���pF�
+
+--- File: .git\objects\c1\47607984692a9b10a938fc14f3fc37654ba837 ---
+x�U]n�@�٧���}�T��Zj��H���ޤ[ٻaw��О�p��"c��ڛP�
+a��3�|���N����~���ܨ+�+MSurM%�4��p2�2�Q��P
+LK2�3>���D�^�XH�d"Sc�w{֚&���-i""�sfM���>�yX�Ѡ~�|yx����dԮ�E�+
+Ó�0�_�Q�4�v��{`>�U�+6e	�I$"%QZY�^�G�p�7]�e�
+���/�h"c��LRN��6�h������dx68?.(����L�r&m�~�,%@P	1�?M95<]-��0�x�֫��#����T�x����8"|I�E�����[Fe>�	���~���(gU��'KD�3���Nh-3k�[�z]�&�fE
+�e�eq�`KŒ:l��'���L�m�>�c3=n,����uc7�5d���j�����s&	��q�CZDD"XJ2%0�ҘM�4���s�^H�
+��й}%�n��� J�[�{5�u�0�Tmܗ��S�������
+�Mrg��+'�v�fv������8H[�i��v��u?֖	7�D ��$�;I�2b�/�"æHR� ��T N��f��х͚�7).���T��
+����]M���+D�v��@]�q�;�j�t���8�F�	*mMDy)41=���A��a�ƭ\��f{g�g�
+5ۂ5��S�v017NӍ`I�0)}X���S�į���2ԣI��Z6#�9 {��n�{�z�H_+l��6����w�6U�Plk:G�ǘ'�g6���y[���t�6s�ߠO�
+
+--- File: .git\objects\c2\9cde656fa90b616593ad765d62b6c6579f8470 ---
+x�S�n�0��_���l��Ȇ6Ȱ5H�$zV,&VkK�$�i���dIv�n��$J��{��;4�^��xYIe�D5�u�Y��^�Ź1��L�ZT��21������2Iv5/��#�du�^��(འL5�5T]s(:`B��*ó�/�
+0Hg `�-AQV (P>�MϣN�����R .��6 x�E�~-��G/��w[ݽ��Jւ
+R���
+���*�Mf���in��îU���֠t���N����k������3�'��������&z�$MS5�B*�y3$�lYM�AL;��;�}�݄��0Ɇ&�ӂS}iT
+����r�.}�sۼ�'̖?COs_�����y�CM}�5?A��V����<�׌!
+�Y]�0�	� fU@_=�`8v��G��V���2�f�]s&�P�ʥ�������Q���Ga�
+~נ�7�o�r��%pHkќ͉��'���@)������d���������w�y�aڔ���ʿ���H�X��;��x����=~��S+��KB��~Ѝg���n���_������Z��濑�'5���t�N��3�5�x{�w
+
+--- File: .git\objects\c7\4eac3eb901028d9d570034dd74cdbaff28e312 ---
+x��AJ1E]�����t�d. ��e�R�
+��d2���xW�����V�>,bz]ĮN!��
+,()��k�'���.�a�P4)�r΋�Zf�n�E��01����g���~�w�{����t��G��x�V_-l1��}v�93�yqȿbs��r��-7���J
+
+--- File: .git\objects\c8\c88ea0a16c739cc4608e70e1fce707fc83cf4d ---
+x�T�n�0��_!���"ʖ��l��-R�H:�c��;\�	�� ��Y�<��u+��O�ow�Q��om�-K�+���n������ݻSO(��k�K4���T��,����Qc�6�%�F.r˩i0ʲk��a�nL08��T��-n8�L���5)_k%7��q���?*)LR���{|�K�=�*�D�D3�+c�K&X��K�
+�W|�hHQ��~,�1Fɯ�[r(�}K��j�����	劕�T)�M7��g�
+��I	Й0��B iy-nX�/�'\P��T�3NZ.QI����a���"�����@ޙͲ�|���ĀV*�m E��z�P�k�i�t=�_œT��(�$�tRP�!� ��ax�XwQx��|.V�`��E#;�g�@�a;��
+Z� �(�8D�EQ����<q�������}����ϋ���%�v�rQ�<�Sۺ'"��F�x~�w�N��eOJn�8��"D��8���V�(��|����+����y���u���|�:	Y!�ڋO�Х�����m Mj��u��O��e��Pڏ��e���C�T�8��j�a7	���5��"�b�/��ґ]0��T0��<�{�L�����Fc�7 8�U��
+��(��E�拡���J�I�[M�n7�-�����9����-��O�(b4)�(��i��P\����J~�����{m�,�K�jE��l�әjKs/a��
+go�H4���|�7�i;rS;[��l]L����^���i1DKo�\��*Lu#�|�Ϊ��?3��
+
+--- File: .git\objects\cc\42e7a8d469b10ae789a82ada7ae86a0b443eb6 ---
+x+)JMU027`01 ������t��y;B���?3�8��|������`
+�R�>�]��;�����L����Z7�tJbI"����_ky�B?mQUI�ѷm�4740031Q�M����*fػ3���l#��%�x�}��]�SRZ��R�l�ٛ.^s���\Wu�Г���[�R�K�Vn�S�H�Ⱦ�ѳ69}���k"DEqeqIjn1Ctj����ʚ�J��-I��j�jOy~QJ1.{ M�m�
+
+--- File: .git\objects\ce\7b96f81236c8c49185447c39c8bbb4ad3848b4 ---
+x+)JMU044g040031Qp,(��*f�/�y���ٿe6%N=�<�E�"895/�71/1=���?��K]�i�~�n�Q���jLiIb�[fjN
+Hݳ��fo�x�ٻ[s]yԍCOz�' ��3�
+
+--- File: .git\objects\ce\9c4f477267af312ccd78de580c97f1ac6f39c7 ---
+x�UKo�0�9�B�.N�)���t�@�6`���� �t�ζ�ښ�8��m����"��?�q!c6>�Dφ�{}+�{HP�~F��r(R~�{����Bv��f_�}��d��%�/k=MU��D�C\(�W#>>���06y�z/ej
+�t��^\��T	�b���
+t�c��h%����J��]�
+~�"�����\��b	*p�!G�Q�F|�lrJ��i���3���)ʢ,� �)����_��i|J���H�';Hi[�HG'��	�4��GJ��8�NO�(:Β$hT�Pn)�Z�y�CO���:�a��X�]�t�$
+;S�d��{Z�zD���C�9��\y��h���ΜE)M�!��O�int�jQ ��,ղ��7&�@]��ZI9��R�#M!7w�n@^��,�j�ΞI��e99����%�������&/��^-������W�JeIT� &Ot��9��������H�bl5�a��m��5�7�������䠙/���bp�'P˭����UH���ϛM�T���|=@�_#�<6$�6����Æ��=�*����C����>����
+�'4�(?��n��Eљ�G�W��fw<������
+��S팡2����t-T��L�"�q9#N�BR�q�U�3��Bo����!T�=>�/e���{�������o(h�
+Y�v�������/�D�%
+
+--- File: .git\objects\d2\c348c00490620b6e9cce14afcc6dcda4a35647 ---
+x�TMs�0�_�1�
+��M
+3�4n/�t�[����-y��t�ߑ�(v(�a�V����'�J�"����3^�R!9!L�O��KR(Y�h�X��``D�uCsY
+p� ަt�jF�����گ�J�M	��{=�k #r�R�\C��Le�u�s���^��'�B#ـ� �=yC|�<�)
+PW�P�X�6C[��4m�8Mӣ`-5w��
+�~>
+岔�O�7�DpY����Z��8z^4O��>�߳�]N���=��l�-��syv1ɖQ���^
+�Hl�n�������������6z���`���*&ֲ��t�X?��i����ؖ�t������~�
+���V�c�'G�h	b��$��ݘ}�9U}�Ӎ{�Bٝg�G5�;D�W�#P���-��Y)�Gީm~H�}2�O.��k�F���-���W���OqVZq[�7��V�&?��i����N��@!�5��s��@'��9�f
+>�ɚ��ެ��jX�@�N�O�vA'O�y��_�w&����=d@l����r�aY%�ӣ�M��	�	h>
+
+--- File: .git\objects\d4\aceb89428bbd015f1c5fe1978b5f89d07bec4c ---
+x�U[O�0�s�U$T6�^T�U�@��L��i/���ۘ9qd;P���w��4�e�/m�}���c��Z���t�n<~4j��#knTT�{����"͕��=a�����&k�R2L���b<.��φF*�Ds�eB���t:^B�~��*.$wË��o��u�EV��D�3��AGG�u0 �"�K"�=A�%�!��g�z�k��k4���Ehd�`����Je�������g�ȳ���t၄�Mb9��*�z*4$�Ͼ&���`� ���@�*�Z0�0�˵��G	�J�(>e�����}¸m5�L�4(X<�b���7:\�5�&�T�"a_d�}���GOj�*���I��X	����p���å��Q����U��=��DZ�eO�'�:��_Ӧ�-�L�����!�Iy�5v�A�%���X�����!1��ni$9ӷ0+�����ϲ]��i;�a��ժ
+�(s�*�&���t �8O��̐r��"CY�Tı�m��ѕ�19��[r�t���,��4KUwl��w��Ukxp�V�c��+%�F���g�77��KY i^�I�`
+q�AE��(,hu��wLf�p9ŀו
+��adi�yl~�1�"���U�v��4ZF^k/��\��At�������
+�
+��T	 ����ͅ'�P���wD�����.'�b�U��j�iyw@Y��BJ{��-Y��lF��2JD��{=�j{�^yF�C��;�n����n�Z���q5��Z!�c�v;j�u��N�9j��3hXғg�=��C��yS�+c��
+̀]��h�5�w�%��7�����S��n�>��� ���-W��+��d���h�G����}@+���N�wͰ��QR�
+
+--- File: .git\objects\d4\f27334a1e42273113fe0d04c0355e07a7c0413 ---
+x+)JMU0�0`01 ����T��o���3����f������r��ĒDF3V���9Z�]8^2�ެ�lfC3�̼�Ԣ�����b��b�gs��t�w������O�*�M��)��?�o��r��1������W�X
+SRZ�������R�K�����V��m�S�خh.�Í�ŕ�%�����S
+��e��Z�q��ז<?w	jOy~Q
+N� ��}�
+
+--- File: .git\objects\d7\6eb854529d5fe637f19707cf63efc1db6e5a7e ---
+x+)JMU01f040031Q��,K-*NuI,I��*f�_��U�INľ�:��d�T�� ��
+
+--- File: .git\objects\d9\3cf8e2054de8fff86932790dd437937888e7bd ---
+x�TMo�0�s~��S(ȉ��
+iŪ��Ve��g ��َ
+��c{�?�v� �V4R�yo<��8�L,�&߂`�^�b
+L���B¼H@^+�K�BH��U�����ZJ���D�BEAP��u����H�!&�	&��L���p.�2�宾{l��˒3�
+����p��A��W��(4E�\��F���eQA�~���2G$U	h��@%~��C5��DZn}�I���_��ܖ��lU�h�d�)���=��f"2Bᆌ	!��*6iz_%�2 <h�L4krd�N�T2Au��'�����v�굱���8��GM���H3�`c5	Y��?����^�rF�����Mƣ�#��\T7�hYB�QP��u���Jc��]�Q�:7�/�e]h̒�Kɛ=�cu�'r��s�i�e�%9촍��9���ȥ�9�0ozmzCR��7���A]d\K�J�o�g���Ohn�X�u�@���~U���a%�!��4(���g��a��y}kp="4mq�1F�u��m�xXK�Hv+.������;=st�F�3����M�
+
+--- File: .git\objects\da\70efa67bc0a7d4288da92cb32ee4890c87c67e ---
+xmS[o�0湿��^2T9m`�eB�V�xAB�Ϯ}�۲��h���n�L��8络��d�̎,�����{�<y�z�ِ�3-)��_VU���妭B� >O�t���j�I%�7��)��|q7�)	�;̓4�p,�#�u2@���y4"�p�} ��'��D��]:�L�(���Ȁ��nH
+'d�
+=@X�ˢ��I��
+�����Y"��&`����)�D��r2���I�?d��9{�G�bg� �ڞ�wc��)�4*�b�_�<��88�lX]1Jj��V
+� fUEvN*e���\X�a��FIW��|��d3`��X��s�Q�!�Q��j��ގǙ�/���.����0�����s��̸�n=Ju.zk8�ݣ�t/�+eV�Yg<� ����
+��uЏ�d[��$Sot��};����	Zf�g�A��1�-sxE��0(	���7y�g�C�z���Ӫ����o��g$����a�uMo�z;8M�&� �$�a/l#�
+
+--- File: .git\objects\de\39061b2f34a2d0e65961c8a7d6f9dad44f0b41 ---
+x]��j�0�w�S�(^�^%=z����+�ñ�����w��e�%���[���~������|���aDX�O4�2����+�CUu3��A��i�����\_�7��*P� 2����m�(ݛ��n�:w�
+t��%#i5���d�t
+��Ur|�7�����=������D�yhh���Y�US�X!�? M�u������yv%#E��d�O�f�,���)�R�J;i�
+
+--- File: .git\objects\df\827c3c2c9b2294102cdbf613a607cd67f66d5f ---
+x+)JMU07g040031Qp,(��*fx"�h݊�?�=�������e����ԼT�ļ���"��>��e�~�h᜾��hq��| : �
+
+--- File: .git\objects\e2\cb88e3d917569a17c74dc4e399c78405af062c ---
+x+)JMU�4g01 ���b�}|��lb���u�w���2�
+
+�LL2�RR+�2Jrs��a8o| �.Q�AT�GK���3����j�8di6}��j�e0/W�
+ [(
+
+--- File: .git\objects\e2\f09b4c4af20f271c7614eae9d7108353dc9f40 ---
+xK��OR020cH�(�/*QH��+.Q(�/J)V�U���R %�����%7835��(��=��839�u��K�L̫��e&f�ä�2����̒Ģ"�Ҡ���Ԣ�|�Ǥ��*׽(19�= �K����1O��+� ��9�
+
+--- File: .git\objects\e3\ec734b8f68272ece4d6811eeb3ebe4db7748e0 ---
+x+)JMU044g040031Qp,(��*f�/�y���ٿe6%N=�<�E�"895/�71/1=��t�a��k�W�i�p߬��x�돫`JK��2SsR@��}4{��k��ݚ�ʣnz�< ��4C
+
+--- File: .git\objects\e4\15e2aea86414a0f837e2e4b2ebca351a4208d3 ---
+xK��OR044a��W�*�I�/J�q,(��*���-�/*Q�V���,	NN�KU�UH+��UP���}��S�������R+���J�K2���K�J�fihVsq) �
+M��Z �	(+
+
+--- File: .git\objects\e4\d21a6cf6fb07cb2be1e424f0fb1974d1287d8c ---
+x+)JMU01f040031Q��,K-*NuI,I��*fXZ��`�yL��������_: ��]
+
+--- File: .git\objects\e5\ee0bbe3320dc69f3ce0ebcd0ecfd310f517d28 ---
+x�R]o�0�9����E��L�&6���TuH{v���[b�i˦�w���#yr�ǹ�{�Z(���w�i�2����ݮ�h�d��ʘV_-�h������T
+�sF�ˏ$_����F�����$�� ]��k�,i����@��Uprcw�(
+�q��}߅g/I���0�	8zb$�m��'-��Jv�MJW��
+g��&;��g��s�n@�,��S���	������G ����q���2Q��)�˳,�PS*������g�*?<�&L��v�
+� RO�
+�iͩ�2��h*�ۊ����:��sϟ!�9^ʭ��9��t�v�OPo���op^�[��ɲk@wd����������Թ"��$m[�Ǫ�N��p&��1�Ko��β�&��1�T�m��r{���:��l����{g�A'���`��qm��Nh�v:ǳ�0����Ќ�N	K����ܹ��>����9�)X�2��F����R��F�ӥ�W������PW
+
+--- File: .git\objects\e6\9de29bb2d1d6434b8b29ae775ad8c2e48c5391 ---
+xK��OR0`  	��
+
+--- File: .git\objects\ea\c0c4da7aa7c4406dedc610df805501b3c241a2 ---
+x+)JMU044g040031Qp,(��*fx6���M�9{wk�+��q�IO�D����ԼT�ļ���"��Cs���NL���,6i۱��-0�%�En��9)�� Hc55
+
+--- File: .git\objects\ee\0915b519a18ca83bf2e199df1350aa674711c5 ---
+x��a
+!��~{
+/P��:k�Dt���Z�6u��N��������N��baC��<T@ �a��l��(T?Q��3�O����~J�+'-��B�������e�c��G{`�:u��������X�:.
+
+--- File: .git\objects\ef\7c581c000bd3ff127f8dc6783354120ae7a62d ---
+xu��n�0�w�S=)�8�(�=�a�!v�E���A"���4��eY�'�����Dҫ�^�b����|��7:��=��V�_4�?t�(�R�5�V'8���j��p��"�\�2}��S��Ђ,���g��0����B��M�l7h|��K�?�\�GQ-+�)�+~��)�Z׎X�^m��4�S�����^��b�E�p���]�;�I��t���k�z�GG�0���Q�k���ի�`:y@I���q���sn�/g�,���
+���p��=���� �b	�����U}�o!��	N
+�Z�o�
+9w�̵��x��At�����7��3�|�{Z�>C���Ug@���&��
+����h��r5u.=����*!�y���%�;T%
+��S7婵��2|��'��_�ZQjE,~Xе��:��r�t����ހ������Xُ+l���A�������kCkD
+
+--- File: .git\objects\f0\0e8fec63f27b3696ff8c5695704daeebe141f8 ---
+x�VKo�8�ٿ���M)9E�E�nS ���\z����T"U�����˗$Jk���I��73g�NK���yr�*�巌��΀���~��	�j.z��D_o�W+��B�B�Z����߷8�U�
+�w�g�x�
+-s'�ϛ4��}��e���"�#�2G/㘧��)wʃ�K��.@�!�^{������s�=���j]�F�#g	��?3�d�r�-���JƁ��Mۤ������3#��q�X�Y�$5��i��׮+םI�R`�n�$5��s��]o4���M�\��Qe�%:A�&�6At��\�`o���8%����
+��K^r%��Cr>;?�.q��?������j��uz�R
+��sP9[SB����i ³�;�I[0��(�o�#jQo����t�ل���"�H�P�ߞ�e�M���A&w]C�H/�$.��Ep8�ч�5�� ���I�=���!�Zl��2F�%�>��#{;��u�j���-r��a�p��r�w��I^
+Y�
+I�`i�@@�<dnGY�w�2��@1
+e7`@H5��Y�$C�]2���y�����{h����n������0�D����D�CJ4�%e]'u�_ڻi#��Yӟ��eK
+ C�+yXU{G�P�ݞ���f�[Qr�5�^�v�
+�Ԫ#���9����'��k�̲�Oe�%���{�e��v]pA�(#�I?������Ͱ`�%:�M��J?���~�L�e���U.�GR][{=���ț����i꼅4eۉɂ|��uR�O�nVL�gt��5�s�@��/DXR\���Al��� 3����k��$���hl�l>jY��w�y�I6����w���'�fj��<ESR����@W���
+��� H�'_0���V��Ӿ�P�w�����g���to/��۵��72z��'�c
+
+--- File: .git\objects\f1\14fb49d17bb4bc9a2f22b204787a2b61f71141 ---
+x+)JMU07g040031Qp,(��*fx"�h݊�?�=�������e����ԼT�ļ���"�R7��s0�������y��= 5| �
+
+--- File: .git\objects\f5\51e40da62b4d9a0437cb2e1c6ff17d804a7d46 ---
+x+)JMU07g040031Qp,(��*fx"�h݊�?�=�������e����ԼT�ļ���"��|�o�?U�M��6��w�뇎? XL#�
+
+--- File: .git\objects\f7\e3a67af11042e4dc2784333c4f3dd8610a2ade ---
+x+)JMU�4g01 ���b9��Y��5-�+�f�B;}�C3�̼��
+�����4��Ox�[��/�iؒ����bFV1C���`Y�(�?y�T�N�[� q�&�
+
+--- File: .git\objects\f9\9c59203b69d7beef144e9a7330d3ed19d935fe ---
+xm��n�0�w�SD=ipc��m�M��v�6����i!�}qi˺��*���ߟ$+\�f�ǻ�x�+<a ��w@�X֡�a������I���F�/�+��./���z�Irak�KŸ����S�X�l�ڂ�1�)���A;˴ա��G-B���LE6�܃�R E<U�JGQ���z�UlI�����1�PU��9ur���[](����e��[whPy�c�
+�^D��-P4`����1�OI�vp(�ds֝U,���f���o�c�<#Sj��l�N'2��0SN��~|:�LZ�K٭VОH���@j����V�ipt�Jy���}���tE�禄&"�Om���M�G��B�F�0�K�năq���@gY
+
+--- File: .git\objects\fa\76745140cec868e214af80d83153fee232f9ae ---
+x��K!D]s
+.�i���/�\���Id0�Fo/^�U��K%�j)K����Y"��9OL:��I��S�v�����Љ{h�v���Ι �Vi��	Er�zG)������)��3�����e�R�K	�m�j9H59"@-���h����E��+����/e'F�
+
+--- File: .git\objects\fa\d0ded8d2e9d0d5cf0a8c9b1d68a49f65ca991f ---
+x�S�N�0e�W�L)�4��P�	��`bi�.&�F�;ؗ��c'�:	!2d�����;�-Wo��*�:�Wfa�P�œD�<A���<��`�2a�5�2!36eK��t@���23[�'-�J���j�U"��ѨD4ؔJ#[V�U�`U�$��u8���%
+��˚;(UIU���ݼB	*!Z�mWˏx�>Ԗ�,�s	�W*�ܧj-���������9�V�������*�ȴ��ݓ�ȱ��e�+�Ww��2�(Ʌ58�|�]��w����trr0|�zC�톴�)�v�nzf���bv̦ǜ���돶\;]3��Uv��(����],i��}nݵ��B�^F԰�?�t���yd�0���ã;���6s)
+��Y�} �Z��}Լ�pǤ�����]R.3vf_vt{�4�п���i�����o
+
+--- File: .git\objects\fc\1574735499144c013822138c6686b8339e5a97 ---
+x�TM��0��_a��Jaq>ԥK%.�pCb+��%M��KG���P���&�Z��f���ϳ�)ߒp������Q���b%�oy\�_\$�(g3�\(�D�l����!;�32?(Uȕ�y�{Oc���  �4\~���-Y���xR����ז�Db��
+<��B0�j���M��j�2��yS{�-�i6#z�<���/�&9<��+F�ŵA�y��$ۦ�q�(���RPDA��L�N\Eb�.��`��^D1S4��	P�ȭ:ThNye4^=���)}�^0���g
+R�6���X\�Ӹ�v�<���wr�FI��������|"�_X��~tI+;Cd��L�A�(�	�=Gw2=|�%C3P	�.	�&�%N�ƹR�1�A8"~"���[�C�&�Ԣ$�YߢJ�֡��uc؛�ɶ���N��@{ƹ���l���w��"�C���_ZK�+�So��.Qx�����v����G0�{G����9�N���+��g�z����vЕ+��ny�v�p��ޜ)����x�9�U���>�7!����!�~	���7�;�\�G��Wo�	Ǯqu���o�����(��
+
+--- File: .git\objects\ff\12f3b3b660296c339bfb1cb26195c403988428 ---
+xK��OR�4c��-�/*Q�V���,	NN�KU�UH+��UP���}��S��������R+���J�K2���K�J
+44���� n��&Py- 4�"
+
+--- File: .git\objects\ff\ca64ea2e17c8870735c8d586a637b1c79ed2ed ---
+x��AJ1E]�u��JU��/0w.+I��L����������O��2�z]6�,���Zt�.'��1sr�V�B��ܥ�m�j'q1z�ɡD�p�|�8%$$ִI$2r����"��C{i����:��o�*eN����a�@�]���h&���kl޵���ʏ�.�_�i] ����F3���Ql
+
+--- File: .git\ORIG_HEAD ---
+023fd22c33897c0ac91419132afe6d646d767482
+
+
+--- File: .git\refs\heads\main ---
+023fd22c33897c0ac91419132afe6d646d767482
+
+
+--- File: .git\refs\remotes\origin\HEAD ---
+ref: refs/remotes/origin/main
+
+
+--- File: .git\refs\remotes\origin\main ---
+023fd22c33897c0ac91419132afe6d646d767482
+
+
+--- File: css\style.css ---
+/* css\style.css */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    background:#0B0515;
+
+    font-family:"Poppins",sans-serif;
+}
+
+#scene{
+
+    position:fixed;
+
+    inset:0;
+
+}
+
+#intro{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:100;
+
+    background:linear-gradient(
+        180deg,
+        #0B0515,
+        #160B2F
+    );
+
+    color:white;
+
+    transition:1.2s;
+
+}
+
+#intro h1{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:3rem;
+
+    color:#E9D5FF;
+
+    margin-bottom:20px;
+
+    text-shadow:
+
+    0 0 10px #A855F7,
+
+    0 0 30px #7C3AED;
+
+}
+
+#intro p{
+
+    color:#D8B4FE;
+
+    font-size:1.1rem;
+
+}
+
+#intro span{
+
+    margin-top:70px;
+
+    font-size:.9rem;
+
+    opacity:.6;
+
+    animation:pulse 2s infinite;
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        opacity:.3;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        opacity:.3;
+
+    }
+
+}
+
+#message-system{
+
+    position:fixed;
+
+    left:50%;
+    top:68%;
+
+    transform:translate(-50%,-50%);
+
+    min-width:320px;
+    max-width:620px;
+
+    padding:22px 34px;
+
+    border-radius:22px;
+
+    background:rgba(16,10,28,.28);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(185,135,255,.18);
+
+    color:#FFFFFF;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:2rem;
+
+    text-align:center;
+
+    white-space:pre-line;
+
+    opacity:0;
+
+    transition:.6s;
+
+    pointer-events:none;
+
+    box-shadow:
+        0 0 40px rgba(185,135,255,.12);
+
+    text-shadow:
+        0 0 12px rgba(185,135,255,.45);
+
+    z-index:999;
+
+}
+
+#message-system.show{
+
+    opacity:1;
+
+}
+
+--- File: docs\.project_structure_ignore ---
+
+
+--- File: index.html ---
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Cerebro</title>
+
+    <!-- Fuente -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Poppins:wght@300;400;500&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Intro -->
+
+    <div id="intro">
+
+        <h1>Para alguien muy especial...</h1>
+
+        <p>Espero que disfrutes este pequeño universo.</p>
+
+        <span>Tocá en cualquier parte para comenzar</span>
+
+    </div>
+
+    <!-- Canvas ThreeJS -->
+
+    <div id="scene"></div>
+
+    <!-- Scripts -->
+
+    <script type="module"
+            src="js/main.js"></script>
+
+</body>
+
+</html> 
+
+--- File: js\config\UniverseData.js ---
+//js\config\UniverseData.js
+
+export const UniverseData = [
+
+    //--------------------------------------------------
+    // AMISTAD
+    //--------------------------------------------------
+
+    { text:"Amistad" },
+    { text:"Siempre" },
+    { text:"Gracias" },
+    { text:"Confianza" },
+    { text:"Escuchar" },
+    { text:"Consejos" },
+    { text:"Compañía" },
+    { text:"Risas" },
+    { text:"Paciencia" },
+    { text:"Apoyo" },
+    { text:"Abrazo" },
+    { text:"Charlas" },
+    { text:"Desahogarse" },
+    { text:"Mate" },
+    { text:"Tiempo" },
+    { text:"Recuerdos" },
+    { text:"Momentos" },
+    { text:"Sos importante" },
+    { text:"Siempre estoy" },
+    { text:"Nosotros" },
+
+    //--------------------------------------------------
+    // ANIME
+    //--------------------------------------------------
+
+    { text:"Anime" },
+    { text:"Ghibli" },
+    { text:"Chihiro" },
+    { text:"Haku" },
+    { text:"Sin Cara" },
+    { text:"Deku" },
+    { text:"UA" },
+    { text:"Plus Ultra" },
+    { text:"Héroes" },
+    { text:"Temporada 5" },
+    { text:"Maratón" },
+    { text:"Opening" },
+    { text:"Ending" },
+
+    //--------------------------------------------------
+    // MÚSICA
+    //--------------------------------------------------
+
+    {
+        text:"BTS",
+        type:"folder",
+
+        children:[
+
+            { text:"Film Out", audio:"film-out.mp3" },
+            { text:"Letter", audio:"letter.mp3" },
+            { text:"Mikrokosmos", audio:"mikrokosmos.mp3" },
+            { text:"I'm Fine", audio:"im-fine.mp3" },
+            { text:"Like Animals", audio:"like-animals.mp3" },
+            { text:"Sea", audio:"sea.mp3" },
+            { text:"I Need U", audio:"i-need-u.mp3" },
+            { text:"Best Of Me", audio:"best-of-me.mp3" },
+            { text:"Rebirth", audio:"rebirth.mp3" },
+            { text:"Still With You", audio:"still-with-you.mp3" },
+            { text:"Closer", audio:"closer.mp3" },
+            { text:"Mic Drop", audio:"mic-drop.mp3" }
+
+        ]
+
+    },
+
+    { text:"Guitarra" },
+    { text:"Fingerstyle" },
+    { text:"Acordes" },
+    { text:"Melodías" },
+    { text:"Canciones" },
+    { text:"Jimin" },
+
+    //--------------------------------------------------
+    // VIDEOJUEGOS
+    //--------------------------------------------------
+
+    { text:"Fortnite" },
+    { text:"GG" },
+    { text:"Victoria" },
+    { text:"Squad" },
+    { text:"Otra partida" },
+    { text:"Caídas" },
+    { text:"Revivime" },
+    { text:"Loot" },
+
+    //--------------------------------------------------
+    // COLORES
+    //--------------------------------------------------
+
+    { text:"Violeta" },
+    { text:"Lavanda" },
+    { text:"Lila" },
+    { text:"Verde" },
+
+    //--------------------------------------------------
+    // EMOCIONES
+    //--------------------------------------------------
+
+    {
+        text:"Sonreí :)",
+        type:"memory",
+
+        sequence:[
+
+            "Sonreí :)",
+            "Nunca dejes de sonreir"
+
+        ]
+
+    },
+
+    {
+        text:"Tigre",
+        type:"memory",
+
+        sequence:[
+
+            "¿Qué come un tigre disléxico?",
+            "...",
+            "Acelgas."
+
+        ]
+
+    },
+
+    { text:"Calma" },
+    { text:"Esperanza" },
+    { text:"Respirá" },
+    { text:"Todo pasa" },
+    { text:"Seguimos" },
+    { text:"Luz" },
+    { text:"Orgullo" },
+    { text:"Valentía" },
+    { text:"Vos podés" },
+    { text:"Un día más" },
+    { text:"No estás sola" },
+
+    //--------------------------------------------------
+    // BL
+    //--------------------------------------------------
+
+    { text:"BL" },
+    { text:"Yaoi" },
+    { text:"Mangas" },
+    { text:"Comics" },
+    { text:"Series" },
+
+    //--------------------------------------------------
+    // HUMOR
+    //--------------------------------------------------
+
+    { text:"Chistes" },
+    { text:"Humor negro" },
+    { text:"Down" },
+    { text:"Escondinabo" },
+    { text:"😂" },
+
+    //--------------------------------------------------
+    // SECRETOS
+    //--------------------------------------------------
+
+    { text:"∞" },
+    { text:"24/08" },
+    { text:"💜" }
+
+];
+
+--- File: js\core\App.js ---
+// js\core\App.js
+import { initScene } from "./SceneManager.js";
+
+export function startApp(){
+
+    initScene();
+
+}
+
+--- File: js\core\SceneManager.js ---
+//js\core\SceneManager.js
+import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
+import { createStarField } from "../objects/StarField.js";
+import { createCoreSphere } from "../objects/CoreSphere.js";
+import { createWordSphere } from "../objects/WordSphere.js";
+import { createFocusWord } from "../objects/FocusWord.js";
+
+import { setupInteraction } from "../systems/InteractionManager.js";
+import { setupCameraController } from "../systems/CameraController.js";
+import { setupHover } from "../systems/HoverManager.js";
+import { setupClick } from "../systems/ClickManager.js";
+import { initMessageSystem } from "../systems/MessageSystem.js";
+import { setupUniverseFocus, updateUniverseFocus } from "../systems/UniverseFocus.js";
+
+let scene;
+let camera;
+let renderer;
+let stars;
+let core;
+let wordSphere;
+let focusWord;
+let ambientLight;
+let pointLight;
+let hemisphereLight;
+
+export function initScene() {
+
+    scene = new THREE.Scene();
+
+    scene.background = new THREE.Color(0x0B0515);
+
+    //----------------------------------
+    // LUCES
+    //----------------------------------
+
+    ambientLight = new THREE.AmbientLight(
+
+        0xffffff,
+
+        0.18
+
+    );
+
+    scene.add(ambientLight);
+
+    hemisphereLight = new THREE.HemisphereLight(
+
+        0xd6b8ff,
+
+        0x08070d,
+
+        0.35
+
+    );
+
+    scene.add(hemisphereLight);
+
+    pointLight = new THREE.PointLight(
+
+        0xb987ff,
+
+        7,
+
+        18,
+
+        2
+
+    );
+
+    pointLight.position.set(
+
+        0,
+
+        0,
+
+        0
+
+    );
+
+    scene.add(pointLight);
+
+    stars = createStarField(scene);
+
+    scene.add(stars.object);
+
+    wordSphere = createWordSphere();
+
+    scene.add(wordSphere.object);
+
+    core = createCoreSphere(scene);
+
+    scene.add(core.object);
+
+    focusWord = createFocusWord();
+
+    core.object.add(
+
+        focusWord.object
+
+    );
+
+    camera = new THREE.PerspectiveCamera(
+
+        60,
+
+        window.innerWidth / window.innerHeight,
+
+        0.1,
+
+        1000
+
+    );
+
+    camera.position.z = 12;
+
+    renderer = new THREE.WebGLRenderer({
+
+        antialias: true,
+
+        alpha: true
+
+    });
+
+    renderer.setSize(
+
+        window.innerWidth,
+
+        window.innerHeight
+
+    );
+
+    renderer.setPixelRatio(
+
+        window.devicePixelRatio
+
+    );
+
+    document
+        .getElementById("scene")
+        .appendChild(renderer.domElement);
+
+    // Ahora el canvas ya existe
+    setupInteraction(wordSphere.object);
+
+    setupCameraController(camera);
+
+    setupHover(
+
+        renderer,
+
+        camera,
+
+        scene
+
+    );
+
+    setupClick(
+
+        renderer,
+
+        camera,
+
+        scene
+
+    );
+
+    initMessageSystem();
+
+    setupUniverseFocus({
+
+        stars,
+
+        wordSphere,
+
+        core,
+
+        focusWord
+
+    });
+
+    animate();
+
+}
+
+function animate() {
+
+    requestAnimationFrame(animate);
+
+    updateUniverseFocus();
+
+    stars.update();
+
+    core.update();
+
+    wordSphere.update(camera);
+
+    focusWord.update();
+
+    pointLight.intensity =
+
+        6.8 +
+
+        Math.sin(
+
+            performance.now() * 0.0015
+
+        ) * 0.6;
+
+    renderer.render(scene, camera);
+
+}
+
+window.addEventListener("resize", () => {
+
+    if (!camera) return;
+
+    camera.aspect =
+
+        window.innerWidth /
+
+        window.innerHeight;
+
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(
+
+        window.innerWidth,
+
+        window.innerHeight
+
+    );
+
+});
+
+--- File: js\main.js ---
+//js\main.js
+
+import { startApp } from "./core/App.js";
+
+const intro = document.getElementById("intro");
+
+let started = false;
+
+window.addEventListener("pointerdown", () => {
+
+    if(started) return;
+
+    started = true;
+
+    intro.style.opacity = "0";
+
+    setTimeout(()=>{
+
+        intro.style.display = "none";
+
+        startApp();
+
+    },1200);
+
+});
+
+--- File: js\music.js ---
+
+
+--- File: js\objects\CenterMessage.js ---
+import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
+
+import { createTextSprite } from "./TextSprite.js";
+
+let group;
+let sprite;
+
+export function createCenterMessage(scene){
+
+    group = new THREE.Group();
+
+    sprite = createTextSprite({
+
+        text:"",
+        color:"#FFFFFF",
+        size:1.6
+
+    });
+
+    sprite.material.opacity = 0;
+
+    group.add(sprite);
+
+    scene.add(group);
+
+}
+
+export function setCenterMessage(text){
+
+    group.visible = true;
+
+    group.position.set(
+
+        0,
+        0,
+        0
+
+    );
+
+    sprite.material.opacity = 1;
+
+    sprite.material.map.dispose();
+
+    group.remove(sprite);
+
+    sprite = createTextSprite({
+
+        text,
+
+        color:"#FFFFFF",
+
+        size:1.6
+
+    });
+
+    group.add(sprite);
+
+}
+
+export function hideCenterMessage(){
+
+    group.visible = false;
+
+}
+
+--- File: js\objects\CoreSphere.js ---
+//js\objects\CoreSphere.js
+
+import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
+
+let focus = false;
+
+export function createCoreSphere() {
+
+    const group = new THREE.Group();
+
+    // Núcleo
+    const sphere = new THREE.Mesh(
+        new THREE.SphereGeometry(1.1, 64, 64),
+        new THREE.MeshPhysicalMaterial({
+            color: 0x18111F,
+            roughness: 0.3,
+            metalness: 0.15,
+            clearcoat: 1,
+            clearcoatRoughness: 0
+        })
+    );
+
+    group.add(sphere);
+
+    // Halo exterior
+    const halo = new THREE.Mesh(
+        new THREE.SphereGeometry(1.45, 64, 64),
+        new THREE.MeshBasicMaterial({
+            color: 0xB987FF,
+            transparent: true,
+            opacity: 0.10,
+            side: THREE.BackSide
+        })
+    );
+
+    group.add(halo);
+
+    return {
+
+        object: group,
+
+        focus() {
+
+            focus = true;
+
+        },
+
+        unfocus() {
+
+            focus = false;
+
+        },
+
+        update() {
+
+            const t = performance.now() * 0.001;
+
+            const speed = focus ? 1 : 2;
+
+            const amount = focus ? 0.05 : 0.02;
+
+            const pulse =
+
+                1 +
+
+                Math.sin(t * speed) * amount;
+
+            sphere.scale.setScalar(pulse);
+
+            const haloScale =
+
+                focus
+
+                    ? 1.08
+
+                    : 1.03;
+
+            halo.scale.x += (haloScale - halo.scale.x) * 0.05;
+            halo.scale.y += (haloScale - halo.scale.y) * 0.05;
+            halo.scale.z += (haloScale - halo.scale.z) * 0.05;
+
+            const targetOpacity =
+
+                focus
+
+                    ? 0.18
+
+                    : 0.08;
+
+            halo.material.opacity +=
+
+                (
+
+                    targetOpacity
+
+                    -
+
+                    halo.material.opacity
+
+                ) * 0.06;
+
+            group.rotation.y += 0.001;
+
+        }
+
+    };
+
+}
+
+--- File: js\objects\FocusText.js ---
+//js\objects\FocusText.js
+
+import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
+
+export function createFocusText() {
+
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = 2048;
+    canvas.height = 512;
+
+    const texture = new THREE.CanvasTexture(canvas);
+
+    const material = new THREE.SpriteMaterial({
+
+        map: texture,
+
+        transparent: true,
+
+        depthWrite: false,
+
+        opacity: 0
+
+    });
+
+    const sprite = new THREE.Sprite(material);
+
+    sprite.visible = false;
+
+
+
+    sprite.position.set(
+
+        0,
+        0,
+        0
+
+    );
+
+    sprite.scale.set(
+
+        0.15,
+        0.04,
+        1
+
+    );
+
+    let targetOpacity = 0;
+
+    let targetScale = 0.15;
+
+    function draw(text) {
+
+        ctx.clearRect(
+
+            0,
+            0,
+            canvas.width,
+            canvas.height
+
+        );
+
+        ctx.textAlign = "center";
+
+        ctx.textBaseline = "middle";
+
+        ctx.font = "bold 92px Cormorant Garamond";
+
+        ctx.fillStyle = "#FFFFFF";
+
+        ctx.shadowColor = "#B987FF";
+
+        ctx.shadowBlur = 40;
+
+        ctx.fillText(
+
+            text,
+
+            canvas.width / 2,
+
+            canvas.height / 2
+
+        );
+
+        texture.needsUpdate = true;
+
+    }
+
+    return {
+
+        object: sprite,
+
+        show(text) {
+
+            draw(text);
+
+            sprite.visible = true;
+
+            sprite.scale.set(
+
+                0.15,
+
+                0.04,
+
+                1
+
+            );
+
+            material.opacity = 0;
+
+            targetOpacity = 1;
+
+            targetScale = 2.4;
+
+        },
+
+        hide() {
+
+            targetOpacity = 0;
+
+            targetScale = 0.15;
+
+        },
+
+        update() {
+
+            material.opacity +=
+
+                (
+
+                    targetOpacity
+
+                    -
+
+                    material.opacity
+
+                ) * 0.08;
+
+            const next =
+
+                sprite.scale.x +
+
+                (
+
+                    targetScale
+
+                    -
+
+                    sprite.scale.x
+
+                ) * 0.08;
+
+            sprite.scale.set(
+
+                next,
+
+                next * 0.26,
+
+                1
+
+            );
+
+            if (
+
+                material.opacity < 0.01
+
+                &&
+
+                targetOpacity === 0
+
+            ) {
+
+                sprite.visible = false;
+
+            }
+
+        }
+
+    };
+
+}
+
+--- File: js\objects\FocusWord.js ---
+// js\objects\FocusWord.js
+
+import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
+import { createTextSprite } from "./TextSprite.js";
+
+export function createFocusWord() {
+
+    const group = new THREE.Group();
+
+    group.visible = false;
+
+    let sprite = null;
+
+    let targetScale = 0;
+
+    let targetOpacity = 0;
+
+    return {
+
+        object: group,
+
+        show(text) {
+
+            if (sprite) {
+
+                group.remove(sprite);
+
+            }
+
+            sprite = createTextSprite({
+
+                text,
+
+                color: "#FFFFFF",
+
+                size: 1.5
+
+            });
+
+            sprite.material.depthTest = false;
+
+            sprite.position.set(0, 0, 0);
+
+            sprite.scale.set(
+
+                0.01,
+
+                0.01,
+
+                1
+
+            );
+
+            sprite.material.opacity = 0;
+
+            group.add(sprite);
+
+            group.visible = true;
+
+            targetScale = 1;
+
+            targetOpacity = 1;
+
+        },
+
+        hide() {
+
+            targetScale = 0;
+
+            targetOpacity = 0;
+
+        },
+
+        update() {
+
+            if (!sprite) return;
+
+            sprite.scale.lerp(
+
+                new THREE.Vector3(
+
+                    2.8 * targetScale,
+
+                    0.7 * targetScale,
+
+                    1
+
+                ),
+
+                0.08
+
+            );
+
+            sprite.material.opacity +=
+
+                (
+
+                    targetOpacity
+
+                    -
+
+                    sprite.material.opacity
+
+                ) * 0.08;
+
+            if (
+
+                targetOpacity === 0 &&
+
+                sprite.material.opacity < 0.01
+
+            ) {
+
+                group.visible = false;
+
+            }
+
+        }
+
+    };
+
+}
+
+--- File: js\objects\StarField.js ---
+//js\objects\StarField.js
+
+import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
+
+export function createStarField(scene) {
+
+    const group = new THREE.Group();
+
+    createLayer(group, 1800, 0.08, 260, [
+        "#ffffff",
+        "#f8f8ff",
+        "#efe9ff"
+    ]);
+
+    createLayer(group, 900, 0.16, 190, [
+        "#ffffff",
+        "#e8d5ff",
+        "#dcb8ff"
+    ]);
+
+    createLayer(group, 350, 0.28, 120, [
+        "#ffffff",
+        "#d8b4fe",
+        "#c084fc"
+    ]);
+
+    return {
+
+        object: group,
+
+        fadeTarget: 1,
+
+        fadeOut() {
+
+            this.fadeTarget = 0.15;
+
+        },
+
+        fadeIn() {
+
+            this.fadeTarget = 1;
+
+        },
+
+        update() {
+
+            group.rotation.y += 0.00008;
+
+            group.rotation.x += 0.00002;
+
+            group.children.forEach(layer => {
+
+                const material = layer.userData.material;
+
+                material.opacity +=
+
+                    (
+
+                        this.fadeTarget
+
+                        -
+
+                        material.opacity
+
+                    ) * 0.05;
+
+            });
+
+        }
+
+    };
+
+}
+
+function createLayer(group, amount, size, radius, palette) {
+
+    const geometry = new THREE.BufferGeometry();
+
+    const positions = [];
+    const colors = [];
+
+    for (let i = 0; i < amount; i++) {
+
+        positions.push(
+
+            (Math.random() - 0.5) * radius,
+            (Math.random() - 0.5) * radius,
+            (Math.random() - 0.5) * radius
+
+        );
+
+        const color = new THREE.Color(
+
+            palette[Math.floor(Math.random() * palette.length)]
+
+        );
+
+        colors.push(color.r, color.g, color.b);
+
+    }
+
+    geometry.setAttribute(
+
+        "position",
+
+        new THREE.Float32BufferAttribute(positions, 3)
+
+    );
+
+    geometry.setAttribute(
+
+        "color",
+
+        new THREE.Float32BufferAttribute(colors, 3)
+
+    );
+
+    const material = new THREE.PointsMaterial({
+
+        size,
+
+        vertexColors: true,
+
+        transparent: true,
+
+        opacity: 0.9,
+
+        depthWrite: false,
+
+        sizeAttenuation: true
+
+    });
+
+    const stars = new THREE.Points(
+        geometry,
+        material
+    );
+
+    stars.userData.material = material;
+
+    group.add(stars);
+
+}
+
+--- File: js\objects\TextSprite.js ---
+//js\objects\TextSprite.js
+
+import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
+
+export function createTextSprite(data) {
+
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = 1024;
+    canvas.height = 256;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.font = "bold 72px Poppins";
+
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    // brillo suave
+    ctx.shadowColor = "#B987FF";
+    ctx.shadowBlur = 18;
+
+    ctx.fillStyle = data.color || "#FFFFFF";
+
+    ctx.fillText(
+
+        data.text,
+
+        canvas.width / 2,
+
+        canvas.height / 2
+
+    );
+
+    const texture = new THREE.CanvasTexture(canvas);
+
+    texture.needsUpdate = true;
+
+    const material = new THREE.SpriteMaterial({
+
+        map: texture,
+
+        transparent: true,
+
+        depthWrite: false,
+        depthTest: true,
+        toneMapped: false
+
+    });
+
+    const sprite = new THREE.Sprite(material);
+
+    const size = data.size || 1;
+
+    sprite.scale.set(
+
+        2.5 * size,
+
+        0.6 * size,
+
+        1
+
+    );
+
+    sprite.userData.baseScale = sprite.scale.clone();
+
+    sprite.userData.baseColor = data.color || "#FFFFFF";
+
+    sprite.userData.data = data;
+
+    return sprite;
+
+}
+
+--- File: js\objects\WordSphere.js ---
+// js/objects/WordSphere.js
+
+import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
+import { createTextSprite } from "./TextSprite.js";
+import { UniverseData } from "../config/UniverseData.js";
+
+export function createWordSphere() {
+
+    const group = new THREE.Group();
+
+    const generatedWords = UniverseData;
+
+    const radius = 4;
+
+    const total = 180;
+
+    const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+
+    const points = [];
+
+    //----------------------------------
+    // Vectores reutilizables
+    //----------------------------------
+
+    const worldPosition = new THREE.Vector3();
+
+    const directionToCamera = new THREE.Vector3();
+
+    const wordNormal = new THREE.Vector3();
+
+    for (let i = 0; i < total; i++) {
+
+        const y = 1 - (i / (total - 1)) * 2;
+
+        const r = Math.sqrt(1 - y * y);
+
+        const theta = goldenAngle * i;
+
+        const x = Math.cos(theta) * r;
+
+        const z = Math.sin(theta) * r;
+
+        const data = generatedWords[
+            i % generatedWords.length
+        ];
+
+        const mesh = createTextSprite(data);
+
+        mesh.position.set(
+
+            x * radius,
+
+            y * radius,
+
+            z * radius
+
+        );
+
+        group.add(mesh);
+
+        points.push({
+
+            mesh,
+
+            index: i,
+
+            position: new THREE.Vector3(
+
+                x,
+
+                y,
+
+                z
+
+            )
+
+        });
+
+    }
+
+    return {
+
+        object: group,
+
+        points,
+
+        fadeOut() {
+
+            points.forEach(point => {
+
+                point.mesh.userData.targetOpacity = 0.08;
+
+            });
+
+        },
+
+        fadeIn() {
+
+            points.forEach(point => {
+
+                point.mesh.userData.targetOpacity = 1;
+
+            });
+
+        },
+
+        update(camera) {
+
+            points.forEach(point => {
+
+                const mesh = point.mesh;
+
+                if (mesh.userData.targetOpacity === undefined) {
+
+                    mesh.userData.targetOpacity = 1;
+
+                }
+
+                //----------------------------------
+                // Posición mundial
+                //----------------------------------
+
+                mesh.getWorldPosition(worldPosition);
+
+                //----------------------------------
+                // Dirección hacia la cámara
+                //----------------------------------
+
+                directionToCamera
+                    .subVectors(
+                        camera.position,
+                        worldPosition
+                    )
+                    .normalize();
+
+                //----------------------------------
+                // Normal de la palabra
+                //----------------------------------
+
+                wordNormal
+                    .copy(worldPosition)
+                    .normalize();
+
+                //----------------------------------
+                // Intensidad de luz
+                //----------------------------------
+
+                const facing =
+
+                    wordNormal.dot(directionToCamera);
+
+                const frontLight = THREE.MathUtils.clamp(
+
+                    (facing + 1) * 0.5,
+
+                    0.45,
+
+                    1
+
+                );
+
+                //----------------------------------
+                // Fade
+                //----------------------------------
+
+                const targetOpacity =
+
+                    mesh.userData.targetOpacity *
+
+                    frontLight;
+
+                mesh.material.opacity +=
+
+                    (
+
+                        targetOpacity -
+
+                        mesh.material.opacity
+
+                    ) * 0.08;
+
+            });
+
+        }
+
+    };
+
+}
+
+--- File: js\systems\CameraController.js ---
+//js\systems\CameraController.js
+
+let camera;
+
+let targetZ = 12;
+
+const MIN_Z = 6;
+const MAX_Z = 18;
+
+export function setupCameraController(cam){
+
+    camera = cam;
+
+    targetZ = camera.position.z;
+
+    window.addEventListener(
+
+        "wheel",
+
+        onWheel,
+
+        { passive:true }
+
+    );
+
+    animate();
+
+}
+
+function onWheel(e){
+
+    targetZ += e.deltaY * 0.01;
+
+    targetZ = Math.max(
+
+        MIN_Z,
+
+        Math.min(
+
+            MAX_Z,
+
+            targetZ
+
+        )
+
+    );
+
+}
+
+function animate(){
+
+    requestAnimationFrame(animate);
+
+    if(!camera) return;
+
+    camera.position.z +=
+
+        (targetZ - camera.position.z)
+
+        * 0.08;
+
+}
+
+--- File: js\systems\ClickManager.js ---
+// js\systems\ClickManager.js
+
+import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
+import {
+
+    showMessage,
+    hideMessage
+
+} from "./MessageSystem.js";
+
+import {
+
+    playSequence
+
+} from "./UniverseFocus.js";
+
+import {
+
+    isUniverseBusy
+
+} from "./UniverseFocus.js";
+
+const raycaster = new THREE.Raycaster();
+
+const mouse = new THREE.Vector2();
+
+export function setupClick(renderer, camera, scene) {
+
+    renderer.domElement.addEventListener(
+
+        "click",
+
+        event => {
+
+            if (isUniverseBusy()) return;
+
+            mouse.x =
+
+                (event.clientX / window.innerWidth) * 2 - 1;
+
+            mouse.y =
+
+                -(event.clientY / window.innerHeight) * 2 + 1;
+
+            raycaster.setFromCamera(
+
+                mouse,
+
+                camera
+
+            );
+
+            const intersects = raycaster.intersectObjects(
+
+                scene.children,
+
+                true
+
+            );
+
+            if (!intersects.length) return;
+
+            const object = intersects[0].object;
+
+            const data = object.userData.data;
+
+            console.log(data);
+
+            if (!data) return;
+            
+            if (data.type == "memory") {
+
+                playSequence(
+
+                    data.sequence
+
+                );
+
+                return;
+
+            }
+
+            showMessage(
+
+                data.text
+
+            );
+
+            setTimeout(() => {
+
+                hideMessage();
+
+            }, 1800);
+
+        }
+
+    );
+
+}
+
+--- File: js\systems\HoverManager.js ---
+//js\systems\HoverManager.js
+
+import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
+
+const raycaster = new THREE.Raycaster();
+
+const mouse = new THREE.Vector2();
+
+let hovered = null;
+let previous = null;
+
+export function setupHover(renderer, camera, scene) {
+
+    renderer.domElement.addEventListener(
+
+        "pointermove",
+
+        event => {
+
+            mouse.x =
+
+                (event.clientX / window.innerWidth) * 2 - 1;
+
+            mouse.y =
+
+                -(event.clientY / window.innerHeight) * 2 + 1;
+
+            raycaster.setFromCamera(
+
+                mouse,
+
+                camera
+
+            );
+
+            const intersects = raycaster.intersectObjects(
+
+                scene.children,
+
+                true
+
+            );
+
+            if (previous) {
+
+                previous.scale.set(
+
+                    previous.userData.baseScale.x,
+
+                    previous.userData.baseScale.y,
+
+                    1
+
+                );
+
+                previous.material.color.set(
+
+                    previous.userData.baseColor
+
+                );
+
+            }
+
+            if (intersects.length) {
+
+                hovered = intersects[0].object;
+
+                if (hovered.userData.baseScale) {
+
+                    hovered.scale.set(
+
+                        hovered.userData.baseScale.x * 1.15,
+
+                        hovered.userData.baseScale.y * 1.15,
+
+                        1
+
+                    );
+
+                    hovered.material.color.set("#FFFFFF");
+
+                    previous = hovered;
+
+                }
+
+            }
+            else {
+
+                hovered = null;
+
+                previous = null;
+
+            }
+
+        }
+
+    );
+
+}
+
+export function getHoveredObject() {
+
+    return hovered;
+
+}
+
+--- File: js\systems\InteractionManager.js ---
+// js/systems/InteractionManager.js
+
+let isDragging = false;
+
+let previousX = 0;
+let previousY = 0;
+
+let velocityX = 0;
+let velocityY = 0;
+
+//----------------------------------
+// CONFIGURACIÓN
+//----------------------------------
+
+const SENSITIVITY = 0.0022;
+const FRICTION = 0.90;
+const STOP_THRESHOLD = 0.00001;
+
+//----------------------------------
+// AUTO ROTACIÓN
+//----------------------------------
+
+const IDLE_DELAY = 6000;      // 6 segundos sin tocar
+const AUTO_SPEED = 0.00045;   // velocidad muy lenta
+
+let lastInteraction = performance.now();
+
+export function setupInteraction(target){
+
+    const canvas = document.querySelector("canvas");
+
+    canvas.addEventListener(
+        "pointerdown",
+        startDrag
+    );
+
+    window.addEventListener(
+        "pointermove",
+        moveDrag
+    );
+
+    window.addEventListener(
+        "pointerup",
+        endDrag
+    );
+
+    function startDrag(e){
+
+        isDragging = true;
+
+        // detener completamente la inercia
+        velocityX = 0;
+        velocityY = 0;
+
+        lastInteraction = performance.now();
+
+        previousX = e.clientX;
+        previousY = e.clientY;
+
+    }
+
+    function moveDrag(e){
+
+        if(!isDragging) return;
+
+        const dx = e.clientX - previousX;
+        const dy = e.clientY - previousY;
+
+        previousX = e.clientX;
+        previousY = e.clientY;
+
+        lastInteraction = performance.now();
+
+        if(
+
+            Math.abs(dx) > 0.1 ||
+
+            Math.abs(dy) > 0.1
+
+        ){
+
+            velocityX = dx * SENSITIVITY;
+            velocityY = dy * SENSITIVITY;
+
+        }
+
+        target.rotation.y += velocityX;
+        target.rotation.x += velocityY;
+
+    }
+
+    function endDrag(){
+
+        isDragging = false;
+
+        lastInteraction = performance.now();
+
+    }
+
+    function animate(){
+
+        requestAnimationFrame(animate);
+
+        //----------------------------------
+        // Mientras arrastra
+        //----------------------------------
+
+        if(isDragging) return;
+
+        //----------------------------------
+        // Inercia
+        //----------------------------------
+
+        velocityX *= FRICTION;
+        velocityY *= FRICTION;
+
+        if(Math.abs(velocityX) < STOP_THRESHOLD){
+
+            velocityX = 0;
+
+        }
+
+        if(Math.abs(velocityY) < STOP_THRESHOLD){
+
+            velocityY = 0;
+
+        }
+
+        target.rotation.y += velocityX;
+        target.rotation.x += velocityY;
+
+        //----------------------------------
+        // Auto rotación
+        //----------------------------------
+
+        const idleTime = performance.now() - lastInteraction;
+
+        if(
+
+            idleTime > IDLE_DELAY &&
+
+            velocityX === 0 &&
+
+            velocityY === 0
+
+        ){
+
+            target.rotation.y += AUTO_SPEED;
+
+        }
+
+    }
+
+    animate();
+
+}
+
+--- File: js\systems\IntroManager.js ---
+
+
+--- File: js\systems\MessageSystem.js ---
+//js\systems\MessageSystem.js
+import {
+
+    beginUniverseFocus,
+    endUniverseFocus
+
+} from "./UniverseFocus.js";
+
+let container;
+
+export function initMessageSystem() {
+
+    container = document.createElement("div");
+
+    container.id = "message-system";
+
+    document.body.appendChild(container);
+
+}
+
+export function showMessage(text) {
+
+    container.textContent = text;
+
+    container.classList.add("show");
+
+}
+
+export async function showSequence(sequence) {
+
+    beginUniverseFocus();
+
+    for (const text of sequence) {
+
+        showMessage(text);
+
+        await wait(1800);
+
+    }
+
+    hideMessage();
+
+    endUniverseFocus();
+
+}
+
+export function wait(ms){
+
+    return new Promise(resolve=>{
+
+        setTimeout(resolve,ms);
+
+    });
+
+}
+
+export function hideMessage() {
+
+    container.classList.remove("show");
+
+}
+
+--- File: js\systems\UniverseFocus.js ---
+//js\systems\UniverseFocus.js
+
+import { wait } from "./MessageSystem.js";
+
+let active = false;
+
+let stars;
+let wordSphere;
+let core;
+let focusWord;
+
+let fade = 0;
+
+export function setupUniverseFocus(objects) {
+
+    stars = objects.stars;
+
+    wordSphere = objects.wordSphere;
+
+    core = objects.core;
+
+    focusWord = objects.focusWord;
+
+}
+
+export function isUniverseBusy() {
+
+    return active;
+
+}
+
+export function beginUniverseFocus() {
+
+
+    active = true;
+
+    stars.fadeOut();
+
+    wordSphere.fadeOut();
+
+    core.focus();
+
+}
+
+export function endUniverseFocus() {
+
+    active = false;
+
+    stars.fadeIn?.();
+
+    wordSphere.fadeIn();
+
+    core.unfocus();
+
+    focusWord.hide();
+}
+
+export function updateUniverseFocus() {
+
+    if (active) {
+
+        fade += (1 - fade) * 0.08;
+
+    } else {
+
+        fade += (0 - fade) * 0.08;
+
+    }
+
+}
+
+export function getUniverseFade() {
+
+    return fade;
+
+}
+
+export async function playSequence(sequence){
+
+    beginUniverseFocus();
+
+    await wait(800);
+
+    for(const text of sequence){
+
+        focusWord.show(text);
+
+        await wait(2200);
+
+        focusWord.hide();
+
+        await wait(700);
+
+    }
+
+    endUniverseFocus();
+
+}
+
+--- File: js\systems\WordInteraction.js ---
+
+
+--- File: js\words.js ---
+

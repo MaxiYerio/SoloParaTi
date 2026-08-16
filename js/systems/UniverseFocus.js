@@ -75,13 +75,20 @@ export function getUniverseFade() {
 
 }
 
-export async function playSequence(sequence){
+export async function playSequence(
+    sequence,
+    alreadyFocused = false
+) {
 
-    beginUniverseFocus();
+    if (!alreadyFocused) {
+
+        beginUniverseFocus();
+
+    }
 
     await wait(800);
 
-    for(const text of sequence){
+    for (const text of sequence) {
 
         focusWord.show(text);
 
@@ -93,6 +100,10 @@ export async function playSequence(sequence){
 
     }
 
-    endUniverseFocus();
+    if (!alreadyFocused) {
+
+        endUniverseFocus();
+
+    }
 
 }

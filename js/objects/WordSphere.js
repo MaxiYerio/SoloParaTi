@@ -1,15 +1,10 @@
-//js\objects\WordSphere.js
+// js/objects/WordSphere.js
 
 import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
-import {
-
-    getUniverseFade
-
-} from "../systems/UniverseFocus.js";
 import { createTextSprite } from "./TextSprite.js";
 import { UniverseData } from "../config/UniverseData.js";
 
-export function createWordSphere(scene) {
+export function createWordSphere() {
 
     const group = new THREE.Group();
 
@@ -22,6 +17,16 @@ export function createWordSphere(scene) {
     const goldenAngle = Math.PI * (3 - Math.sqrt(5));
 
     const points = [];
+
+    //----------------------------------
+    // Vectores reutilizables
+    //----------------------------------
+
+    const worldPosition = new THREE.Vector3();
+
+    const directionToCamera = new THREE.Vector3();
+
+    const wordNormal = new THREE.Vector3();
 
     for (let i = 0; i < total; i++) {
 
@@ -111,13 +116,64 @@ export function createWordSphere(scene) {
 
                 }
 
+                //----------------------------------
+                // Posición mundial
+                //----------------------------------
+
+                mesh.getWorldPosition(worldPosition);
+
+                //----------------------------------
+                // Dirección hacia la cámara
+                //----------------------------------
+
+                directionToCamera
+                    .subVectors(
+                        camera.position,
+                        worldPosition
+                    )
+                    .normalize();
+
+                //----------------------------------
+                // Normal de la palabra
+                //----------------------------------
+
+                wordNormal
+                    .copy(worldPosition)
+                    .normalize();
+
+                //----------------------------------
+                // Intensidad de luz
+                //----------------------------------
+
+                const facing =
+
+                    wordNormal.dot(directionToCamera);
+
+                const frontLight = THREE.MathUtils.clamp(
+
+                    (facing + 1) * 0.5,
+
+                    0.45,
+
+                    1
+
+                );
+
+                //----------------------------------
+                // Fade
+                //----------------------------------
+
+                const targetOpacity =
+
+                    mesh.userData.targetOpacity *
+
+                    frontLight;
+
                 mesh.material.opacity +=
 
                     (
 
-                        mesh.userData.targetOpacity
-
-                        -
+                        targetOpacity -
 
                         mesh.material.opacity
 

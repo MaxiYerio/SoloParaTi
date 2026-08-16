@@ -3,11 +3,16 @@ import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
 import { createStarField } from "../objects/StarField.js";
 import { createCoreSphere } from "../objects/CoreSphere.js";
 import { createWordSphere } from "../objects/WordSphere.js";
-import { createTextSprite } from "../objects/TextSprite.js";
 import { createFocusWord } from "../objects/FocusWord.js";
 
 import { setupInteraction } from "../systems/InteractionManager.js";
 import { setupCameraController } from "../systems/CameraController.js";
+import {
+
+    setupCameraFocus,
+    updateCameraFocus
+
+} from "../systems/CameraFocus.js";
 import { setupHover } from "../systems/HoverManager.js";
 import { setupClick } from "../systems/ClickManager.js";
 import { initMessageSystem } from "../systems/MessageSystem.js";
@@ -84,7 +89,7 @@ export function initScene() {
 
     scene.add(stars.object);
 
-    wordSphere = createWordSphere(scene);
+    wordSphere = createWordSphere();
 
     scene.add(wordSphere.object);
 
@@ -145,6 +150,8 @@ export function initScene() {
 
     setupCameraController(camera);
 
+    setupCameraFocus(camera);
+
     setupHover(
 
         renderer,
@@ -189,6 +196,8 @@ function animate() {
 
     updateUniverseFocus();
 
+    updateCameraFocus();
+
     stars.update();
 
     core.update();
@@ -196,7 +205,7 @@ function animate() {
     wordSphere.update(camera);
 
     focusWord.update();
-
+    
     pointLight.intensity =
 
         6.8 +

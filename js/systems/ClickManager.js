@@ -1,99 +1,220 @@
-// js\systems\ClickManager.js
+// js/systems/ClickManager.js
 
-import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
+import * as THREE from
+"https://unpkg.com/three@0.179.1/build/three.module.js";
+
 import {
-
     showMessage,
     hideMessage
-
 } from "./MessageSystem.js";
 
 import {
+    interactWithWord
+} from "./WordInteraction.js";
 
-    playSequence
-
+import {
+    playSequence,
+    beginUniverseFocus,
+    endUniverseFocus,
+    isUniverseBusy
 } from "./UniverseFocus.js";
 
 import {
+    enterCameraFocus,
+    exitCameraFocus,
+    lockCameraZoom,
+    unlockCameraZoom
+} from "./CameraController.js";
 
-    isUniverseBusy
-
-} from "./UniverseFocus.js";
+import {
+    startChihiro
+} from "../music.js";
 
 const raycaster = new THREE.Raycaster();
 
 const mouse = new THREE.Vector2();
 
-export function setupClick(renderer, camera, scene) {
+//----------------------------------
+// REFERENCIAS
+//----------------------------------
+
+let camera;
+let scene;
+let renderer;
+
+//----------------------------------
+// CONFIGURACIÓN
+//----------------------------------
+
+const MESSAGE_DURATION = 1800;
+
+//----------------------------------
+// SETUP
+//----------------------------------
+
+export function setupClick(
+    rendererInstance,
+    cameraInstance,
+    sceneInstance
+) {
+
+    renderer = rendererInstance;
+    camera = cameraInstance;
+    scene = sceneInstance;
 
     renderer.domElement.addEventListener(
-
         "click",
+        handleClick
+    );
 
-        event => {
+}
 
-            if (isUniverseBusy()) return;
+//----------------------------------
+// CLICK
+//----------------------------------
 
-            mouse.x =
+async function handleClick(event) {
 
-                (event.clientX / window.innerWidth) * 2 - 1;
+    //----------------------------------
+    // Si el universo está ocupado
+    //----------------------------------
 
-            mouse.y =
+    if (isUniverseBusy()) return;
 
-                -(event.clientY / window.innerHeight) * 2 + 1;
+    startChihiro();
 
-            raycaster.setFromCamera(
+    //----------------------------------
+    // POSICIÓN DEL MOUSE
+    //----------------------------------
 
-                mouse,
+    mouse.x =
+        (event.clientX / window.innerWidth) * 2 - 1;
 
-                camera
+    mouse.y =
+        -(event.clientY / window.innerHeight) * 2 + 1;
 
+    //----------------------------------
+    // RAYCAST
+    //----------------------------------
+
+    raycaster.setFromCamera(
+        mouse,
+        camera
+    );
+
+    //----------------------------------
+    // BUSCAR OBJETO
+    //----------------------------------
+
+    const intersects =
+        raycaster.intersectObjects(
+            scene.children,
+            true
+        );
+
+    if (!intersects.length) return;
+
+    //----------------------------------
+    // OBJETO CLICKEADO
+    //----------------------------------
+
+    const object =
+        intersects[0].object;
+
+    const data =
+        object.userData.data;
+
+    if (!data) return;
+
+    console.log("CLICK:", data);
+
+    //----------------------------------
+    // BLOQUEAR CÁMARA
+    //----------------------------------
+
+    lockCameraZoom();
+
+    beginUniverseFocus();
+
+    enterCameraFocus();
+
+    //----------------------------------
+    // PEQUEÑA PAUSA
+    //----------------------------------
+
+    await wait(500);
+
+//----------------------------------
+// MEMORY
+//----------------------------------
+
+if (data.type === "memory") {
+
+    await playSequence(
+        data.sequence,
+        true
+    );
+
+    exitCameraFocus();
+
+    unlockCameraZoom();
+
+    endUniverseFocus();
+
+    return;
+
+}
+
+//----------------------------------
+// FOLDER
+//----------------------------------
+
+if (data.type === "folder") {
+
+    interactWithWord(data);
+
+    return;
+
+}
+
+//----------------------------------
+// PALABRA NORMAL
+//----------------------------------
+
+showMessage(
+    data.text
+);
+
+await wait(
+    MESSAGE_DURATION
+);
+
+hideMessage();
+
+await wait(300);
+
+exitCameraFocus();
+
+unlockCameraZoom();
+
+endUniverseFocus();
+}
+
+//----------------------------------
+// WAIT
+//----------------------------------
+
+function wait(ms) {
+
+    return new Promise(
+        resolve => {
+
+            setTimeout(
+                resolve,
+                ms
             );
-
-            const intersects = raycaster.intersectObjects(
-
-                scene.children,
-
-                true
-
-            );
-
-            if (!intersects.length) return;
-
-            const object = intersects[0].object;
-
-            const data = object.userData.data;
-
-            console.log(data);
-
-            if (!data) return;
-            
-            if (data.type == "memory") {
-
-                playSequence(
-
-                    data.sequence
-
-                );
-
-                return;
-
-            }
-
-            showMessage(
-
-                data.text
-
-            );
-
-            setTimeout(() => {
-
-                hideMessage();
-
-            }, 1800);
 
         }
-
     );
 
 }

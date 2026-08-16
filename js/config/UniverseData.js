@@ -112,7 +112,7 @@ export const UniverseData = [
         sequence:[
 
             "Sonreí :)",
-            "Otra razón para sonreír 💜"
+            "Nunca dejes de sonreir"
 
         ]
 
