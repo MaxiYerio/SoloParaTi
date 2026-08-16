@@ -59,7 +59,9 @@ export function setupClick(
 ) {
 
     renderer = rendererInstance;
+
     camera = cameraInstance;
+
     scene = sceneInstance;
 
     renderer.domElement.addEventListener(
@@ -80,6 +82,10 @@ async function handleClick(event) {
     //----------------------------------
 
     if (isUniverseBusy()) return;
+
+    //----------------------------------
+    // Iniciar Chihiro
+    //----------------------------------
 
     startChihiro();
 
@@ -144,16 +150,54 @@ async function handleClick(event) {
 
     await wait(500);
 
-//----------------------------------
-// MEMORY
-//----------------------------------
+    //----------------------------------
+    // MEMORY
+    //----------------------------------
 
-if (data.type === "memory") {
+    if (data.type === "memory") {
 
-    await playSequence(
-        data.sequence,
-        true
+        await playSequence(
+            data.sequence,
+            true
+        );
+
+        exitCameraFocus();
+
+        unlockCameraZoom();
+
+        endUniverseFocus();
+
+        return;
+
+    }
+
+    //----------------------------------
+    // FOLDER
+    //----------------------------------
+
+    if (data.type === "folder") {
+
+        interactWithWord(data);
+
+        return;
+
+    }
+
+    //----------------------------------
+    // PALABRA NORMAL
+    //----------------------------------
+
+    showMessage(
+        data.text
     );
+
+    await wait(
+        MESSAGE_DURATION
+    );
+
+    hideMessage();
+
+    await wait(300);
 
     exitCameraFocus();
 
@@ -161,43 +205,6 @@ if (data.type === "memory") {
 
     endUniverseFocus();
 
-    return;
-
-}
-
-//----------------------------------
-// FOLDER
-//----------------------------------
-
-if (data.type === "folder") {
-
-    interactWithWord(data);
-
-    return;
-
-}
-
-//----------------------------------
-// PALABRA NORMAL
-//----------------------------------
-
-showMessage(
-    data.text
-);
-
-await wait(
-    MESSAGE_DURATION
-);
-
-hideMessage();
-
-await wait(300);
-
-exitCameraFocus();
-
-unlockCameraZoom();
-
-endUniverseFocus();
 }
 
 //----------------------------------

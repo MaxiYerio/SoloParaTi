@@ -138,6 +138,14 @@ function createFolderUI(folder) {
                     child
                 );
 
+                if (child.audio) {
+
+                    playSong(
+                        child.audio
+                    );
+
+                }
+
             }
         );
 
