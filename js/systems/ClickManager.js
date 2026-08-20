@@ -1,7 +1,7 @@
 // js/systems/ClickManager.js
 
 import * as THREE from
-"https://unpkg.com/three@0.179.1/build/three.module.js";
+    "https://unpkg.com/three@0.179.1/build/three.module.js";
 
 import {
     showMessage,
@@ -178,6 +178,26 @@ async function handleClick(event) {
     if (data.type === "folder") {
 
         interactWithWord(data);
+
+        return;
+
+    }
+
+    //----------------------------------
+    // SECRET
+    //----------------------------------
+
+    if (data.type === "secret") {
+
+        interactWithWord(data);
+
+        await wait(300);
+
+        exitCameraFocus();
+
+        unlockCameraZoom();
+
+        endUniverseFocus();
 
         return;
 

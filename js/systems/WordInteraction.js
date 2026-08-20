@@ -1,20 +1,30 @@
 // js/systems/WordInteraction.js
 
 import { showMessage } from "./MessageSystem.js";
-import {
-    beginUniverseFocus,
-    endUniverseFocus
-} from "./UniverseFocus.js";
+
+import { beginUniverseFocus, endUniverseFocus } from "./UniverseFocus.js";
+
+import { enterCameraFocus, exitCameraFocus } from "./CameraController.js";
 
 import {
-    enterCameraFocus,
-    exitCameraFocus
-} from "./CameraController.js";
-
-
-import { playSong } from "../music.js";
+    playSong,
+    playGuillotine
+} from "../music.js";
 
 let folderContainer = null;
+let core = null;
+
+//--------------------------------------------------
+// CONFIGURAR NÚCLEO
+//--------------------------------------------------
+
+export function setupWordInteractionCore(
+    coreObject
+) {
+
+    core = coreObject;
+
+}
 
 //--------------------------------------------------
 // INTERACCIÓN PRINCIPAL
@@ -40,7 +50,7 @@ export function interactWithWord(word) {
 
         case "secret":
 
-            console.log("Secret:", word.text);
+            handleSecret(word);
 
             break;
 
@@ -49,6 +59,84 @@ export function interactWithWord(word) {
             showNormalWord(word);
 
             break;
+
+    }
+
+}
+
+//--------------------------------------------------
+// SECRETOS
+//--------------------------------------------------
+
+function handleSecret(word) {
+
+    if (!word) return;
+
+    //----------------------------------
+    // CAMBIAR COLOR DEL NÚCLEO
+    //----------------------------------
+
+    if (
+        word.action ===
+        "changeCoreColor"
+    ) {
+
+        if (!core) {
+
+            console.warn(
+                "CoreSphere no está conectado a WordInteraction."
+            );
+
+            return;
+
+        }
+
+        core.changeColor();
+
+        return;
+
+    }
+
+    //----------------------------------
+    // OTROS SECRETOS
+    //----------------------------------
+
+    if (
+        word.action ===
+        "guillotine"
+    ) {
+
+        console.log(
+            "[Secret] Guillotine"
+        );
+
+        if (core) {
+
+            core.startGuillotine();
+
+        }
+
+        playGuillotine(() => {
+
+            if (core) {
+
+                core.stopGuillotine();
+
+            }
+
+        });
+
+        return;
+
+    }
+
+    if (word.text === "24/08") {
+
+        console.log(
+            "Secret 24/08"
+        );
+
+        return;
 
     }
 
@@ -140,8 +228,23 @@ function createFolderUI(folder) {
 
                 if (child.audio) {
 
+                    if (core) {
+
+                        core.startMusicVisualizer();
+
+                    }
+
                     playSong(
-                        child.audio
+                        child.audio,
+                        () => {
+
+                            if (core) {
+
+                                core.stopMusicVisualizer();
+
+                            }
+
+                        }
                     );
 
                 }

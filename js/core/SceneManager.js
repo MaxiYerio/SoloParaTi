@@ -7,16 +7,12 @@ import { createFocusWord } from "../objects/FocusWord.js";
 
 import { setupInteraction } from "../systems/InteractionManager.js";
 import { setupCameraController } from "../systems/CameraController.js";
-import {
-
-    setupCameraFocus,
-    updateCameraFocus
-
-} from "../systems/CameraFocus.js";
+import { setupCameraFocus, updateCameraFocus } from "../systems/CameraFocus.js";
 import { setupHover } from "../systems/HoverManager.js";
 import { setupClick } from "../systems/ClickManager.js";
 import { initMessageSystem } from "../systems/MessageSystem.js";
 import { setupUniverseFocus, updateUniverseFocus } from "../systems/UniverseFocus.js";
+import { setupWordInteractionCore } from "../systems/WordInteraction.js";
 
 let scene;
 let camera;
@@ -96,6 +92,8 @@ export function initScene() {
     core = createCoreSphere(scene);
 
     scene.add(core.object);
+
+    setupWordInteractionCore(core);
 
     focusWord = createFocusWord();
 
@@ -205,15 +203,17 @@ function animate() {
     wordSphere.update(camera);
 
     focusWord.update();
-    
+
+    pointLight.color.setHex(
+        core.getColor()
+    );
+
     pointLight.intensity =
 
         6.8 +
 
         Math.sin(
-
             performance.now() * 0.0015
-
         ) * 0.6;
 
     renderer.render(scene, camera);
