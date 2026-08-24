@@ -2,7 +2,7 @@
 // CONFIGURACIÓN
 //--------------------------------------------------
 
-const MUSIC_FOLDER = "../assets/audio/";
+const MUSIC_FOLDER = "./assets/audio/";
 
 const FADE_TIME = 1800;
 const FADE_STEPS = 30;
