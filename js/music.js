@@ -1,5 +1,3 @@
-// js/music.js
-
 //--------------------------------------------------
 // CONFIGURACIÓN
 //--------------------------------------------------
@@ -7,91 +5,93 @@
 const MUSIC_FOLDER = "../assets/audio/";
 
 const FADE_TIME = 1800;
-
 const FADE_STEPS = 30;
+
 
 //--------------------------------------------------
 // AUDIO BASE
 //--------------------------------------------------
 
-const chihiro =
-    new Audio(
-        MUSIC_FOLDER +
-        "chihiro.mp3"
-    );
+const chihiro = new Audio(
+    MUSIC_FOLDER + "chihiro.mp3"
+);
 
 chihiro.loop = true;
-
 chihiro.volume = 0;
+
 
 //--------------------------------------------------
 // GUILLOTINE
 //--------------------------------------------------
 
-const guillotine =
-    new Audio(
-        MUSIC_FOLDER +
-        "guillotine.mp3"
-    );
+const guillotine = new Audio(
+    MUSIC_FOLDER + "guillotine.mp3"
+);
 
+guillotine.loop = false;
 guillotine.volume = 0;
+
 
 //--------------------------------------------------
 // AUDIO CONTEXT
 //--------------------------------------------------
 
 let audioContext = null;
-
 let analyser = null;
 
+
 //--------------------------------------------------
-// SOURCES DEL ANALIZADOR
+// SOURCES
 //--------------------------------------------------
 
 let chihiroSource = null;
-
 let guillotineSource = null;
-
 let currentSongSource = null;
+
 
 //--------------------------------------------------
 // ESTADO DEL ANALIZADOR
 //--------------------------------------------------
 
-let audioData = {
+const audioData = {
 
     bass: 0,
-
     mid: 0,
-
     treble: 0,
-
     overall: 0
 
 };
 
+
 //--------------------------------------------------
-// ESTADO
+// ESTADO MUSICAL
 //--------------------------------------------------
 
 let currentSong = null;
 
-let fadeInterval = null;
+let guillotinePlaying = false;
+
+let guillotineStarting = false;
+
+let fadeAnimation = null;
+
 
 //--------------------------------------------------
-// INICIALIZAR ANALIZADOR
+// INICIALIZAR AUDIO CONTEXT
 //--------------------------------------------------
 
 function initAudioAnalyzer() {
 
-    if (audioContext)
+    if (audioContext) {
         return;
+    }
+
+    const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
 
     audioContext =
-        new (
-            window.AudioContext ||
-            window.webkitAudioContext
-        )();
+        new AudioContext();
 
     analyser =
         audioContext.createAnalyser();
@@ -106,10 +106,11 @@ function initAudioAnalyzer() {
     );
 
     console.log(
-        "[Music] Analizador de audio iniciado"
+        "[Music] Audio analyzer iniciado"
     );
 
 }
+
 
 //--------------------------------------------------
 // CONECTAR CHIHIRO
@@ -119,8 +120,9 @@ function connectChihiroToAnalyzer() {
 
     initAudioAnalyzer();
 
-    if (chihiroSource)
+    if (chihiroSource) {
         return;
+    }
 
     chihiroSource =
         audioContext.createMediaElementSource(
@@ -133,6 +135,7 @@ function connectChihiroToAnalyzer() {
 
 }
 
+
 //--------------------------------------------------
 // CONECTAR GUILLOTINE
 //--------------------------------------------------
@@ -141,8 +144,9 @@ function connectGuillotineToAnalyzer() {
 
     initAudioAnalyzer();
 
-    if (guillotineSource)
+    if (guillotineSource) {
         return;
+    }
 
     guillotineSource =
         audioContext.createMediaElementSource(
@@ -154,6 +158,7 @@ function connectGuillotineToAnalyzer() {
     );
 
 }
+
 
 //--------------------------------------------------
 // CONECTAR CANCIÓN
@@ -177,8 +182,23 @@ function connectSongToAnalyzer(song) {
 
 }
 
+
 //--------------------------------------------------
-// ACTUALIZAR DATOS
+// RESET AUDIO DATA
+//--------------------------------------------------
+
+function resetAudioData() {
+
+    audioData.bass = 0;
+    audioData.mid = 0;
+    audioData.treble = 0;
+    audioData.overall = 0;
+
+}
+
+
+//--------------------------------------------------
+// ACTUALIZAR ANALIZADOR
 //--------------------------------------------------
 
 function updateAudioData() {
@@ -194,8 +214,9 @@ function updateAudioData() {
 
     }
 
+
     //--------------------------------------------------
-    // COMPROBAR SI HAY AUDIO
+    // ¿HAY AUDIO?
     //--------------------------------------------------
 
     const hasAudio =
@@ -205,6 +226,7 @@ function updateAudioData() {
         ) ||
         !guillotine.paused ||
         !chihiro.paused;
+
 
     if (!hasAudio) {
 
@@ -216,6 +238,7 @@ function updateAudioData() {
         return;
 
     }
+
 
     //--------------------------------------------------
     // FRECUENCIAS
@@ -233,23 +256,21 @@ function updateAudioData() {
         frequencies
     );
 
+
     //--------------------------------------------------
     // BANDAS
     //--------------------------------------------------
 
     let bass = 0;
-
     let mid = 0;
-
     let treble = 0;
 
     let bassCount = 0;
-
     let midCount = 0;
-
     let trebleCount = 0;
 
     let total = 0;
+
 
     //--------------------------------------------------
     // RECORRER FRECUENCIAS
@@ -266,6 +287,7 @@ function updateAudioData() {
 
         total += value;
 
+
         //--------------------------------------------------
         // BASS
         //--------------------------------------------------
@@ -276,10 +298,10 @@ function updateAudioData() {
         ) {
 
             bass += value;
-
             bassCount++;
 
         }
+
 
         //--------------------------------------------------
         // MID
@@ -291,10 +313,10 @@ function updateAudioData() {
         ) {
 
             mid += value;
-
             midCount++;
 
         }
+
 
         //--------------------------------------------------
         // TREBLE
@@ -303,12 +325,12 @@ function updateAudioData() {
         else {
 
             treble += value;
-
             trebleCount++;
 
         }
 
     }
+
 
     //--------------------------------------------------
     // NORMALIZAR
@@ -331,6 +353,7 @@ function updateAudioData() {
 
     const overall =
         total / bufferLength;
+
 
     //--------------------------------------------------
     // SUAVIZAR
@@ -362,6 +385,7 @@ function updateAudioData() {
 
 }
 
+
 //--------------------------------------------------
 // OBTENER DATOS
 //--------------------------------------------------
@@ -374,8 +398,9 @@ export function getAudioData() {
 
 }
 
+
 //--------------------------------------------------
-// SABER SI HAY CANCIÓN
+// ¿HAY CANCIÓN?
 //--------------------------------------------------
 
 export function isSongPlaying() {
@@ -386,6 +411,7 @@ export function isSongPlaying() {
     );
 
 }
+
 
 //--------------------------------------------------
 // FADE
@@ -408,62 +434,167 @@ function fadeAudio(
 
             }
 
-            clearInterval(
-                fadeInterval
-            );
+            //--------------------------------------------------
+            // LIMITAR VOLUMEN OBJETIVO
+            //--------------------------------------------------
+
+            targetVolume =
+                Math.max(
+                    0,
+                    Math.min(
+                        1,
+                        targetVolume
+                    )
+                );
+
+
+            //--------------------------------------------------
+            // CANCELAR FADE ANTERIOR
+            //--------------------------------------------------
+
+            if (fadeAnimation) {
+
+                cancelAnimationFrame(
+                    fadeAnimation
+                );
+
+                fadeAnimation = null;
+
+            }
+
+
+            //--------------------------------------------------
+            // VOLUMEN INICIAL
+            //--------------------------------------------------
 
             const startVolume =
-                audio.volume;
+                Math.max(
+                    0,
+                    Math.min(
+                        1,
+                        audio.volume
+                    )
+                );
+
+
+            //--------------------------------------------------
+            // DIFERENCIA
+            //--------------------------------------------------
 
             const difference =
                 targetVolume -
                 startVolume;
 
-            const stepTime =
-                duration /
-                FADE_STEPS;
 
-            let step = 0;
+            //--------------------------------------------------
+            // TIEMPO
+            //--------------------------------------------------
 
-            fadeInterval =
-                setInterval(
-                    () => {
+            const startTime =
+                performance.now();
 
-                        step++;
 
-                        const progress =
-                            step /
-                            FADE_STEPS;
+            //--------------------------------------------------
+            // ANIMACIÓN
+            //--------------------------------------------------
 
-                        audio.volume =
-                            startVolume +
-                            difference *
-                            progress;
+            function animateFade(now) {
 
-                        if (
-                            step >=
-                            FADE_STEPS
-                        ) {
+                const elapsed =
+                    now -
+                    startTime;
 
-                            audio.volume =
-                                targetVolume;
 
-                            clearInterval(
-                                fadeInterval
-                            );
+                const progress =
+                    Math.min(
+                        elapsed / duration,
+                        1
+                    );
 
-                            resolve();
 
-                        }
+                //--------------------------------------------------
+                // EASING
+                //--------------------------------------------------
 
-                    },
-                    stepTime
+                const eased =
+                    progress *
+                    (
+                        2 -
+                        progress
+                    );
+
+
+                //--------------------------------------------------
+                // CALCULAR VOLUMEN
+                //--------------------------------------------------
+
+                let volume =
+                    startVolume +
+                    difference *
+                    eased;
+
+
+                //--------------------------------------------------
+                // SEGURIDAD
+                //--------------------------------------------------
+
+                volume =
+                    Math.max(
+                        0,
+                        Math.min(
+                            1,
+                            volume
+                        )
+                    );
+
+
+                audio.volume =
+                    volume;
+
+
+                //--------------------------------------------------
+                // TERMINÓ
+                //--------------------------------------------------
+
+                if (
+                    progress >= 1
+                ) {
+
+                    audio.volume =
+                        targetVolume;
+
+                    fadeAnimation =
+                        null;
+
+                    resolve();
+
+                    return;
+
+                }
+
+
+                //--------------------------------------------------
+                // SIGUIENTE FRAME
+                //--------------------------------------------------
+
+                fadeAnimation =
+                    requestAnimationFrame(
+                        animateFade
+                    );
+
+            }
+
+
+            fadeAnimation =
+                requestAnimationFrame(
+                    animateFade
                 );
 
         }
     );
 
 }
+
 
 //--------------------------------------------------
 // INICIAR CHIHIRO
@@ -477,6 +608,7 @@ export async function startChihiro() {
 
         connectChihiroToAnalyzer();
 
+
         if (
             audioContext.state ===
             "suspended"
@@ -486,12 +618,14 @@ export async function startChihiro() {
 
         }
 
+
         await chihiro.play();
 
         await fadeAudio(
             chihiro,
             0.35
         );
+
 
         console.log(
             "[Music] Chihiro iniciado"
@@ -509,6 +643,7 @@ export async function startChihiro() {
 
 }
 
+
 //--------------------------------------------------
 // REPRODUCIR CANCIÓN
 //--------------------------------------------------
@@ -518,19 +653,23 @@ export async function playSong(
     onEnded = null
 ) {
 
-    if (!filename)
+    if (!filename) {
         return;
+    }
+
 
     console.log(
         "[Music] Reproduciendo:",
         filename
     );
 
+
     //--------------------------------------------------
     // AUDIO CONTEXT
     //--------------------------------------------------
 
     initAudioAnalyzer();
+
 
     if (
         audioContext.state ===
@@ -541,19 +680,20 @@ export async function playSong(
 
     }
 
-    //--------------------------------------------------
-    // GUILLOTINE
-    //--------------------------------------------------
-
-    await fadeAudio(
-        guillotine,
-        0
-    );
-
-    guillotine.pause();
 
     //--------------------------------------------------
-    // CANCIÓN ANTERIOR
+    // DETENER GUILLOTINE
+    //--------------------------------------------------
+
+    if (guillotinePlaying) {
+
+        await stopGuillotine();
+
+    }
+
+
+    //--------------------------------------------------
+    // DETENER CANCIÓN ANTERIOR
     //--------------------------------------------------
 
     if (currentSong) {
@@ -573,8 +713,9 @@ export async function playSong(
 
     }
 
+
     //--------------------------------------------------
-    // CHIHIRO
+    // BAJAR CHIHIRO
     //--------------------------------------------------
 
     await fadeAudio(
@@ -582,8 +723,9 @@ export async function playSong(
         0
     );
 
+
     //--------------------------------------------------
-    // CREAR CANCIÓN
+    // CREAR AUDIO
     //--------------------------------------------------
 
     const song =
@@ -594,7 +736,9 @@ export async function playSong(
 
     song.volume = 0;
 
-    currentSong = song;
+    currentSong =
+        song;
+
 
     //--------------------------------------------------
     // ANALIZADOR
@@ -604,8 +748,9 @@ export async function playSong(
         song
     );
 
+
     //--------------------------------------------------
-    // TERMINA
+    // CUANDO TERMINA
     //--------------------------------------------------
 
     song.addEventListener(
@@ -617,6 +762,7 @@ export async function playSong(
                 filename
             );
 
+
             await fadeAudio(
                 song,
                 0
@@ -624,29 +770,34 @@ export async function playSong(
 
             song.pause();
 
+
             if (
                 currentSong ===
                 song
             ) {
 
                 currentSong = null;
-
                 currentSongSource = null;
 
             }
 
-            audioData.bass = 0;
 
-            audioData.mid = 0;
+            resetAudioData();
 
-            audioData.treble = 0;
 
-            audioData.overall = 0;
+            //--------------------------------------------------
+            // VOLVER A CHIHIRO
+            //--------------------------------------------------
 
-            await fadeAudio(
-                chihiro,
-                0.35
-            );
+            if (!guillotinePlaying) {
+
+                await fadeAudio(
+                    chihiro,
+                    0.35
+                );
+
+            }
+
 
             if (onEnded) {
 
@@ -659,6 +810,7 @@ export async function playSong(
             once: true
         }
     );
+
 
     //--------------------------------------------------
     // REPRODUCIR
@@ -681,17 +833,13 @@ export async function playSong(
             error
         );
 
+
         currentSong = null;
 
         currentSongSource = null;
 
-        audioData.bass = 0;
+        resetAudioData();
 
-        audioData.mid = 0;
-
-        audioData.treble = 0;
-
-        audioData.overall = 0;
 
         await fadeAudio(
             chihiro,
@@ -702,23 +850,38 @@ export async function playSong(
 
 }
 
-//--------------------------------------------------
+
+//==================================================
 // GUILLOTINE
-//--------------------------------------------------
+//==================================================
 
 export async function playGuillotine(
     onEnded = null
 ) {
 
+    if (guillotinePlaying || guillotineStarting) {
+
+        console.log(
+            "[Music] Guillotine ya está activa."
+        );
+
+        return;
+
+    }
+
+    guillotineStarting = true;
+
     console.log(
         "[Music] Iniciando Guillotine"
     );
+
 
     //--------------------------------------------------
     // AUDIO CONTEXT
     //--------------------------------------------------
 
     initAudioAnalyzer();
+
 
     if (
         audioContext.state ===
@@ -729,11 +892,21 @@ export async function playGuillotine(
 
     }
 
+
     //--------------------------------------------------
-    // CONECTAR UNA SOLA VEZ
+    // CONECTAR
     //--------------------------------------------------
 
     connectGuillotineToAnalyzer();
+
+
+    //--------------------------------------------------
+    // MARCAR ESTADO
+    //--------------------------------------------------
+
+    guillotinePlaying =
+        true;
+
 
     //--------------------------------------------------
     // DETENER CANCIÓN NORMAL
@@ -756,8 +929,9 @@ export async function playGuillotine(
 
     }
 
+
     //--------------------------------------------------
-    // CHIHIRO
+    // BAJAR CHIHIRO
     //--------------------------------------------------
 
     await fadeAudio(
@@ -765,8 +939,9 @@ export async function playGuillotine(
         0
     );
 
+
     //--------------------------------------------------
-    // REINICIAR
+    // REINICIAR GUILLOTINE
     //--------------------------------------------------
 
     guillotine.pause();
@@ -775,12 +950,57 @@ export async function playGuillotine(
 
     guillotine.volume = 0;
 
+
     //--------------------------------------------------
-    // MARCAR COMO CANCIÓN ACTIVA
+    // EVENTO FINAL
     //--------------------------------------------------
 
-    currentSong =
-        guillotine;
+    guillotine.onended =
+        async () => {
+
+            console.log(
+                "[Music] Terminó Guillotine"
+            );
+
+
+            guillotinePlaying =
+                false;
+
+
+            await fadeAudio(
+                guillotine,
+                0
+            );
+
+
+            guillotine.pause();
+
+
+            resetAudioData();
+
+
+            //--------------------------------------------------
+            // VOLVER A CHIHIRO
+            //--------------------------------------------------
+
+            await fadeAudio(
+                chihiro,
+                0.35
+            );
+
+
+            //--------------------------------------------------
+            // CALLBACK
+            //--------------------------------------------------
+
+            if (onEnded) {
+
+                onEnded();
+
+            }
+
+        };
+
 
     //--------------------------------------------------
     // REPRODUCIR
@@ -790,74 +1010,15 @@ export async function playGuillotine(
 
         await guillotine.play();
 
+        guillotineStarting = false;
+
         await fadeAudio(
             guillotine,
             0.35
         );
 
-        //--------------------------------------------------
-        // TERMINA
-        //--------------------------------------------------
-
-        guillotine.addEventListener(
-            "ended",
-            async () => {
-
-                console.log(
-                    "[Music] Terminó Guillotine"
-                );
-
-                await fadeAudio(
-                    guillotine,
-                    0
-                );
-
-                guillotine.pause();
-
-                if (
-                    currentSong ===
-                    guillotine
-                ) {
-
-                    currentSong = null;
-
-                }
-
-                //--------------------------------------------------
-                // LIMPIAR DATOS
-                //--------------------------------------------------
-
-                audioData.bass = 0;
-
-                audioData.mid = 0;
-
-                audioData.treble = 0;
-
-                audioData.overall = 0;
-
-                //--------------------------------------------------
-                // VOLVER A CHIHIRO
-                //--------------------------------------------------
-
-                await fadeAudio(
-                    chihiro,
-                    0.35
-                );
-
-                //--------------------------------------------------
-                // CALLBACK
-                //--------------------------------------------------
-
-                if (onEnded) {
-
-                    onEnded();
-
-                }
-
-            },
-            {
-                once: true
-            }
+        console.log(
+            "[Music] Guillotine reproduciendo"
         );
 
     }
@@ -868,17 +1029,87 @@ export async function playGuillotine(
             error
         );
 
-        currentSong = null;
+        guillotineStarting = false;
+
+        guillotinePlaying = false;
+
+        resetAudioData();
+
+        await fadeAudio(
+            chihiro,
+            0.35
+        );
 
     }
 
 }
+
 
 //--------------------------------------------------
 // DETENER GUILLOTINE
 //--------------------------------------------------
 
 export async function stopGuillotine() {
+    console.log(
+        "[Music] Deteniendo Guillotine"
+    );
+
+
+    guillotinePlaying =
+        false;
+
+
+    await fadeAudio(
+        guillotine,
+        0
+    );
+
+    guillotineStarting = false;
+
+    guillotinePlaying = false;
+
+    guillotine.pause();
+
+    guillotine.currentTime = 0;
+
+    guillotine.onended = null;
+
+
+    resetAudioData();
+
+
+    //--------------------------------------------------
+    // VOLVER A CHIHIRO
+    //--------------------------------------------------
+
+    await fadeAudio(
+        chihiro,
+        0.35
+    );
+
+}
+
+
+//--------------------------------------------------
+// DETENER TODO
+//--------------------------------------------------
+
+export async function stopMusic() {
+
+    console.log(
+        "[Music] Deteniendo toda la música"
+    );
+
+
+    //--------------------------------------------------
+    // GUILLOTINE
+    //--------------------------------------------------
+
+    guillotinePlaying =
+        false;
+
+    guillotine.onended = null;
+
 
     await fadeAudio(
         guillotine,
@@ -889,35 +1120,6 @@ export async function stopGuillotine() {
 
     guillotine.currentTime = 0;
 
-    if (
-        currentSong ===
-        guillotine
-    ) {
-
-        currentSong = null;
-
-    }
-
-    audioData.bass = 0;
-
-    audioData.mid = 0;
-
-    audioData.treble = 0;
-
-    audioData.overall = 0;
-
-    await fadeAudio(
-        chihiro,
-        0.35
-    );
-
-}
-
-//--------------------------------------------------
-// DETENER TODO
-//--------------------------------------------------
-
-export async function stopMusic() {
 
     //--------------------------------------------------
     // CANCIÓN
@@ -940,30 +1142,6 @@ export async function stopMusic() {
 
     }
 
-    //--------------------------------------------------
-    // GUILLOTINE
-    //--------------------------------------------------
-
-    await fadeAudio(
-        guillotine,
-        0
-    );
-
-    guillotine.pause();
-
-    guillotine.currentTime = 0;
-
-    //--------------------------------------------------
-    // DATOS
-    //--------------------------------------------------
-
-    audioData.bass = 0;
-
-    audioData.mid = 0;
-
-    audioData.treble = 0;
-
-    audioData.overall = 0;
 
     //--------------------------------------------------
     // CHIHIRO
@@ -977,5 +1155,12 @@ export async function stopMusic() {
     chihiro.pause();
 
     chihiro.currentTime = 0;
+
+
+    //--------------------------------------------------
+    // RESET
+    //--------------------------------------------------
+
+    resetAudioData();
 
 }
