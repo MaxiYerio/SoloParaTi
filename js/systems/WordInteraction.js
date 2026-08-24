@@ -95,78 +95,6 @@ export function interactWithWord(word) {
 //--------------------------------------------------
 
 function playFolderSong(song) {
-    function playFolderSong(song) {
-
-        if (!song?.audio) {
-
-            console.warn(
-                "[Music] Esta canción no tiene audio:",
-                song
-            );
-
-            return;
-
-        }
-
-        console.log(
-            "[Music] Reproduciendo:",
-            song.text
-        );
-
-        //--------------------------------------------------
-        // VISUALIZADOR
-        //--------------------------------------------------
-
-        if (core) {
-
-            core.startMusicVisualizer();
-
-        }
-
-        //--------------------------------------------------
-        // COLORES
-        //--------------------------------------------------
-
-        if (
-            core &&
-            Array.isArray(song.colors) &&
-            song.colors.length > 0
-        ) {
-
-            core.setMusicColors(
-                song.colors
-            );
-
-        }
-
-        //--------------------------------------------------
-        // REPRODUCIR
-        //--------------------------------------------------
-
-        playSong(
-
-            song.audio,
-
-            () => {
-
-                console.log(
-                    "[Music] Canción terminada:",
-                    song.text
-                );
-
-                if (core) {
-
-                    core.stopMusicVisualizer();
-
-                    core.resetMusicColors();
-
-                }
-
-            }
-
-        );
-
-    }
 
     if (!song?.audio) {
 
@@ -301,6 +229,8 @@ function handleSecret(word) {
 
             core.startGuillotine();
 
+            core.startMusicVisualizer();
+
         }
 
         playGuillotine(
@@ -310,6 +240,8 @@ function handleSecret(word) {
                 if (core) {
 
                     core.stopGuillotine();
+
+                    core.stopMusicVisualizer();
 
                 }
 

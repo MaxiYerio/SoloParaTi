@@ -4,17 +4,14 @@
 // CONFIGURACIÓN
 //--------------------------------------------------
 
-const MUSIC_FOLDER =
-    "../assets/audio/";
+const MUSIC_FOLDER = "../assets/audio/";
 
-const FADE_TIME =
-    1800;
+const FADE_TIME = 1800;
 
-const FADE_STEPS =
-    30;
+const FADE_STEPS = 30;
 
 //--------------------------------------------------
-// AUDIO
+// AUDIO BASE
 //--------------------------------------------------
 
 const chihiro =
@@ -23,21 +20,39 @@ const chihiro =
         "chihiro.mp3"
     );
 
-chihiro.loop =
-    true;
+chihiro.loop = true;
 
-chihiro.volume =
-    0;
+chihiro.volume = 0;
+
+//--------------------------------------------------
+// GUILLOTINE
+//--------------------------------------------------
+
+const guillotine =
+    new Audio(
+        MUSIC_FOLDER +
+        "guillotine.mp3"
+    );
+
+guillotine.volume = 0;
 
 //--------------------------------------------------
 // AUDIO CONTEXT
 //--------------------------------------------------
 
-let audioContext =
-    null;
+let audioContext = null;
 
-let analyser =
-    null;
+let analyser = null;
+
+//--------------------------------------------------
+// SOURCES DEL ANALIZADOR
+//--------------------------------------------------
+
+let chihiroSource = null;
+
+let guillotineSource = null;
+
+let currentSongSource = null;
 
 //--------------------------------------------------
 // ESTADO DEL ANALIZADOR
@@ -59,14 +74,9 @@ let audioData = {
 // ESTADO
 //--------------------------------------------------
 
-let currentSong =
-    null;
+let currentSong = null;
 
-let currentSongSource =
-    null;
-
-let fadeInterval =
-    null;
+let fadeInterval = null;
 
 //--------------------------------------------------
 // INICIALIZAR ANALIZADOR
@@ -86,23 +96,10 @@ function initAudioAnalyzer() {
     analyser =
         audioContext.createAnalyser();
 
-    //--------------------------------------------------
-    // FFT
-    //--------------------------------------------------
-
-    analyser.fftSize =
-        512;
-
-    //--------------------------------------------------
-    // SUAVIZADO
-    //--------------------------------------------------
+    analyser.fftSize = 512;
 
     analyser.smoothingTimeConstant =
         0.68;
-
-    //--------------------------------------------------
-    // SALIDA
-    //--------------------------------------------------
 
     analyser.connect(
         audioContext.destination
@@ -115,27 +112,61 @@ function initAudioAnalyzer() {
 }
 
 //--------------------------------------------------
-// CREAR CONEXIÓN
+// CONECTAR CHIHIRO
 //--------------------------------------------------
 
-function connectSongToAnalyzer(
-    song
-) {
+function connectChihiroToAnalyzer() {
 
     initAudioAnalyzer();
 
-    //--------------------------------------------------
-    // SOURCE
-    //--------------------------------------------------
+    if (chihiroSource)
+        return;
+
+    chihiroSource =
+        audioContext.createMediaElementSource(
+            chihiro
+        );
+
+    chihiroSource.connect(
+        analyser
+    );
+
+}
+
+//--------------------------------------------------
+// CONECTAR GUILLOTINE
+//--------------------------------------------------
+
+function connectGuillotineToAnalyzer() {
+
+    initAudioAnalyzer();
+
+    if (guillotineSource)
+        return;
+
+    guillotineSource =
+        audioContext.createMediaElementSource(
+            guillotine
+        );
+
+    guillotineSource.connect(
+        analyser
+    );
+
+}
+
+//--------------------------------------------------
+// CONECTAR CANCIÓN
+//--------------------------------------------------
+
+function connectSongToAnalyzer(song) {
+
+    initAudioAnalyzer();
 
     const source =
         audioContext.createMediaElementSource(
             song
         );
-
-    //--------------------------------------------------
-    // SOURCE → ANALYZER → AUDIO
-    //--------------------------------------------------
 
     source.connect(
         analyser
@@ -152,26 +183,35 @@ function connectSongToAnalyzer(
 
 function updateAudioData() {
 
+    if (!analyser) {
+
+        audioData.bass *= 0.82;
+        audioData.mid *= 0.86;
+        audioData.treble *= 0.86;
+        audioData.overall *= 0.86;
+
+        return;
+
+    }
+
     //--------------------------------------------------
-    // SIN CANCIÓN
+    // COMPROBAR SI HAY AUDIO
     //--------------------------------------------------
 
-    if (
-        !analyser ||
-        !currentSong
-    ) {
+    const hasAudio =
+        (
+            currentSong &&
+            !currentSong.paused
+        ) ||
+        !guillotine.paused ||
+        !chihiro.paused;
 
-        audioData.bass *=
-            0.82;
+    if (!hasAudio) {
 
-        audioData.mid *=
-            0.86;
-
-        audioData.treble *=
-            0.86;
-
-        audioData.overall *=
-            0.86;
+        audioData.bass *= 0.82;
+        audioData.mid *= 0.86;
+        audioData.treble *= 0.86;
+        audioData.overall *= 0.86;
 
         return;
 
@@ -197,26 +237,19 @@ function updateAudioData() {
     // BANDAS
     //--------------------------------------------------
 
-    let bass =
-        0;
+    let bass = 0;
 
-    let mid =
-        0;
+    let mid = 0;
 
-    let treble =
-        0;
+    let treble = 0;
 
-    let bassCount =
-        0;
+    let bassCount = 0;
 
-    let midCount =
-        0;
+    let midCount = 0;
 
-    let trebleCount =
-        0;
+    let trebleCount = 0;
 
-    let total =
-        0;
+    let total = 0;
 
     //--------------------------------------------------
     // RECORRER FRECUENCIAS
@@ -229,14 +262,12 @@ function updateAudioData() {
     ) {
 
         const value =
-            frequencies[i] /
-            255;
+            frequencies[i] / 255;
 
-        total +=
-            value;
+        total += value;
 
         //--------------------------------------------------
-        // GRAVES
+        // BASS
         //--------------------------------------------------
 
         if (
@@ -244,15 +275,14 @@ function updateAudioData() {
             bufferLength * 0.08
         ) {
 
-            bass +=
-                value;
+            bass += value;
 
             bassCount++;
 
         }
 
         //--------------------------------------------------
-        // MEDIOS
+        // MID
         //--------------------------------------------------
 
         else if (
@@ -260,21 +290,19 @@ function updateAudioData() {
             bufferLength * 0.35
         ) {
 
-            mid +=
-                value;
+            mid += value;
 
             midCount++;
 
         }
 
         //--------------------------------------------------
-        // AGUDOS
+        // TREBLE
         //--------------------------------------------------
 
         else {
 
-            treble +=
-                value;
+            treble += value;
 
             trebleCount++;
 
@@ -302,11 +330,10 @@ function updateAudioData() {
             : 0;
 
     const overall =
-        total /
-        bufferLength;
+        total / bufferLength;
 
     //--------------------------------------------------
-    // RESPUESTA DE GRAVES
+    // SUAVIZAR
     //--------------------------------------------------
 
     audioData.bass +=
@@ -315,29 +342,17 @@ function updateAudioData() {
             audioData.bass
         ) * 0.55;
 
-    //--------------------------------------------------
-    // MEDIOS
-    //--------------------------------------------------
-
     audioData.mid +=
         (
             mid -
             audioData.mid
         ) * 0.28;
 
-    //--------------------------------------------------
-    // AGUDOS
-    //--------------------------------------------------
-
     audioData.treble +=
         (
             treble -
             audioData.treble
         ) * 0.32;
-
-    //--------------------------------------------------
-    // ENERGÍA GENERAL
-    //--------------------------------------------------
 
     audioData.overall +=
         (
@@ -408,8 +423,7 @@ function fadeAudio(
                 duration /
                 FADE_STEPS;
 
-            let step =
-                0;
+            let step = 0;
 
             fadeInterval =
                 setInterval(
@@ -459,6 +473,19 @@ export async function startChihiro() {
 
     try {
 
+        initAudioAnalyzer();
+
+        connectChihiroToAnalyzer();
+
+        if (
+            audioContext.state ===
+            "suspended"
+        ) {
+
+            await audioContext.resume();
+
+        }
+
         await chihiro.play();
 
         await fadeAudio(
@@ -470,10 +497,11 @@ export async function startChihiro() {
             "[Music] Chihiro iniciado"
         );
 
-    } catch (error) {
+    }
+    catch (error) {
 
         console.warn(
-            "[Music] El navegador bloqueó el audio hasta una interacción.",
+            "[Music] No se pudo iniciar Chihiro:",
             error
         );
 
@@ -514,6 +542,17 @@ export async function playSong(
     }
 
     //--------------------------------------------------
+    // GUILLOTINE
+    //--------------------------------------------------
+
+    await fadeAudio(
+        guillotine,
+        0
+    );
+
+    guillotine.pause();
+
+    //--------------------------------------------------
     // CANCIÓN ANTERIOR
     //--------------------------------------------------
 
@@ -526,14 +565,11 @@ export async function playSong(
 
         currentSong.pause();
 
-        currentSong.currentTime =
-            0;
+        currentSong.currentTime = 0;
 
-        currentSong =
-            null;
+        currentSong = null;
 
-        currentSongSource =
-            null;
+        currentSongSource = null;
 
     }
 
@@ -556,11 +592,9 @@ export async function playSong(
             filename
         );
 
-    song.volume =
-        0;
+    song.volume = 0;
 
-    currentSong =
-        song;
+    currentSong = song;
 
     //--------------------------------------------------
     // ANALIZADOR
@@ -571,7 +605,7 @@ export async function playSong(
     );
 
     //--------------------------------------------------
-    // CUANDO TERMINA
+    // TERMINA
     //--------------------------------------------------
 
     song.addEventListener(
@@ -583,10 +617,6 @@ export async function playSong(
                 filename
             );
 
-            //--------------------------------------------------
-            // FADE OUT
-            //--------------------------------------------------
-
             await fadeAudio(
                 song,
                 0
@@ -594,51 +624,29 @@ export async function playSong(
 
             song.pause();
 
-            //--------------------------------------------------
-            // LIMPIAR
-            //--------------------------------------------------
-
             if (
                 currentSong ===
                 song
             ) {
 
-                currentSong =
-                    null;
+                currentSong = null;
 
-                currentSongSource =
-                    null;
+                currentSongSource = null;
 
             }
 
-            //--------------------------------------------------
-            // LIMPIAR VISUALIZADOR
-            //--------------------------------------------------
+            audioData.bass = 0;
 
-            audioData.bass =
-                0;
+            audioData.mid = 0;
 
-            audioData.mid =
-                0;
+            audioData.treble = 0;
 
-            audioData.treble =
-                0;
-
-            audioData.overall =
-                0;
-
-            //--------------------------------------------------
-            // VOLVER A CHIHIRO
-            //--------------------------------------------------
+            audioData.overall = 0;
 
             await fadeAudio(
                 chihiro,
                 0.35
             );
-
-            //--------------------------------------------------
-            // AVISAR AL NÚCLEO
-            //--------------------------------------------------
 
             if (onEnded) {
 
@@ -646,6 +654,9 @@ export async function playSong(
 
             }
 
+        },
+        {
+            once: true
         }
     );
 
@@ -662,30 +673,25 @@ export async function playSong(
             0.35
         );
 
-    } catch (error) {
+    }
+    catch (error) {
 
         console.error(
             "[Music] No se pudo reproducir:",
             error
         );
 
-        currentSong =
-            null;
+        currentSong = null;
 
-        currentSongSource =
-            null;
+        currentSongSource = null;
 
-        audioData.bass =
-            0;
+        audioData.bass = 0;
 
-        audioData.mid =
-            0;
+        audioData.mid = 0;
 
-        audioData.treble =
-            0;
+        audioData.treble = 0;
 
-        audioData.overall =
-            0;
+        audioData.overall = 0;
 
         await fadeAudio(
             chihiro,
@@ -700,19 +706,6 @@ export async function playSong(
 // GUILLOTINE
 //--------------------------------------------------
 
-const guillotine =
-    new Audio(
-        MUSIC_FOLDER +
-        "guillotine.mp3"
-    );
-
-guillotine.volume =
-    0;
-
-//--------------------------------------------------
-// REPRODUCIR GUILLOTINE
-//--------------------------------------------------
-
 export async function playGuillotine(
     onEnded = null
 ) {
@@ -722,7 +715,49 @@ export async function playGuillotine(
     );
 
     //--------------------------------------------------
-    // BAJAR CHIHIRO
+    // AUDIO CONTEXT
+    //--------------------------------------------------
+
+    initAudioAnalyzer();
+
+    if (
+        audioContext.state ===
+        "suspended"
+    ) {
+
+        await audioContext.resume();
+
+    }
+
+    //--------------------------------------------------
+    // CONECTAR UNA SOLA VEZ
+    //--------------------------------------------------
+
+    connectGuillotineToAnalyzer();
+
+    //--------------------------------------------------
+    // DETENER CANCIÓN NORMAL
+    //--------------------------------------------------
+
+    if (currentSong) {
+
+        await fadeAudio(
+            currentSong,
+            0
+        );
+
+        currentSong.pause();
+
+        currentSong.currentTime = 0;
+
+        currentSong = null;
+
+        currentSongSource = null;
+
+    }
+
+    //--------------------------------------------------
+    // CHIHIRO
     //--------------------------------------------------
 
     await fadeAudio(
@@ -734,11 +769,18 @@ export async function playGuillotine(
     // REINICIAR
     //--------------------------------------------------
 
-    guillotine.currentTime =
-        0;
+    guillotine.pause();
 
-    guillotine.volume =
-        0;
+    guillotine.currentTime = 0;
+
+    guillotine.volume = 0;
+
+    //--------------------------------------------------
+    // MARCAR COMO CANCIÓN ACTIVA
+    //--------------------------------------------------
+
+    currentSong =
+        guillotine;
 
     //--------------------------------------------------
     // REPRODUCIR
@@ -765,10 +807,6 @@ export async function playGuillotine(
                     "[Music] Terminó Guillotine"
                 );
 
-                //--------------------------------------------------
-                // FADE OUT
-                //--------------------------------------------------
-
                 await fadeAudio(
                     guillotine,
                     0
@@ -776,24 +814,29 @@ export async function playGuillotine(
 
                 guillotine.pause();
 
-                //--------------------------------------------------
-                // LIMPIAR VISUALIZADOR
-                //--------------------------------------------------
+                if (
+                    currentSong ===
+                    guillotine
+                ) {
 
-                audioData.bass =
-                    0;
+                    currentSong = null;
 
-                audioData.mid =
-                    0;
-
-                audioData.treble =
-                    0;
-
-                audioData.overall =
-                    0;
+                }
 
                 //--------------------------------------------------
-                // CHIHIRO
+                // LIMPIAR DATOS
+                //--------------------------------------------------
+
+                audioData.bass = 0;
+
+                audioData.mid = 0;
+
+                audioData.treble = 0;
+
+                audioData.overall = 0;
+
+                //--------------------------------------------------
+                // VOLVER A CHIHIRO
                 //--------------------------------------------------
 
                 await fadeAudio(
@@ -817,12 +860,15 @@ export async function playGuillotine(
             }
         );
 
-    } catch (error) {
+    }
+    catch (error) {
 
         console.error(
             "[Music] No se pudo reproducir Guillotine:",
             error
         );
+
+        currentSong = null;
 
     }
 
@@ -841,20 +887,24 @@ export async function stopGuillotine() {
 
     guillotine.pause();
 
-    guillotine.currentTime =
-        0;
+    guillotine.currentTime = 0;
 
-    audioData.bass =
-        0;
+    if (
+        currentSong ===
+        guillotine
+    ) {
 
-    audioData.mid =
-        0;
+        currentSong = null;
 
-    audioData.treble =
-        0;
+    }
 
-    audioData.overall =
-        0;
+    audioData.bass = 0;
+
+    audioData.mid = 0;
+
+    audioData.treble = 0;
+
+    audioData.overall = 0;
 
     await fadeAudio(
         chihiro,
@@ -882,14 +932,11 @@ export async function stopMusic() {
 
         currentSong.pause();
 
-        currentSong.currentTime =
-            0;
+        currentSong.currentTime = 0;
 
-        currentSong =
-            null;
+        currentSong = null;
 
-        currentSongSource =
-            null;
+        currentSongSource = null;
 
     }
 
@@ -904,24 +951,19 @@ export async function stopMusic() {
 
     guillotine.pause();
 
-    guillotine.currentTime =
-        0;
+    guillotine.currentTime = 0;
 
     //--------------------------------------------------
-    // LIMPIAR VISUALIZADOR
+    // DATOS
     //--------------------------------------------------
 
-    audioData.bass =
-        0;
+    audioData.bass = 0;
 
-    audioData.mid =
-        0;
+    audioData.mid = 0;
 
-    audioData.treble =
-        0;
+    audioData.treble = 0;
 
-    audioData.overall =
-        0;
+    audioData.overall = 0;
 
     //--------------------------------------------------
     // CHIHIRO
@@ -934,7 +976,6 @@ export async function stopMusic() {
 
     chihiro.pause();
 
-    chihiro.currentTime =
-        0;
+    chihiro.currentTime = 0;
 
 }
