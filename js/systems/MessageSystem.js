@@ -20,7 +20,20 @@ export function initMessageSystem() {
 
 export function showMessage(text) {
 
-    container.textContent = text;
+    if (!container) return;
+
+    container.innerHTML = text;
+
+    // Detectar mensajes largos
+    if (text.length > 35) {
+
+        container.classList.add("long-message");
+
+    } else {
+
+        container.classList.remove("long-message");
+
+    }
 
     container.classList.add("show");
 
@@ -44,11 +57,11 @@ export async function showSequence(sequence) {
 
 }
 
-export function wait(ms){
+export function wait(ms) {
 
-    return new Promise(resolve=>{
+    return new Promise(resolve => {
 
-        setTimeout(resolve,ms);
+        setTimeout(resolve, ms);
 
     });
 

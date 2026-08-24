@@ -3,6 +3,7 @@
 import * as THREE from
     "https://unpkg.com/three@0.179.1/build/three.module.js";
 
+
 export function createTextSprite(data) {
 
     const canvas =
@@ -11,8 +12,14 @@ export function createTextSprite(data) {
     const ctx =
         canvas.getContext("2d");
 
+
+    //--------------------------------------------------
+    // CANVAS
+    //--------------------------------------------------
+
     canvas.width = 1024;
     canvas.height = 256;
+
 
     ctx.clearRect(
         0,
@@ -21,12 +28,180 @@ export function createTextSprite(data) {
         canvas.height
     );
 
+
+    //--------------------------------------------------
+    // CONFIGURACIÓN
+    //--------------------------------------------------
+
+    const fitText =
+        data.fitText === true;
+
+    const maxWidth =
+        data.maxWidth || 920;
+
+    const maxLines =
+        data.maxLines || 2;
+
+    const maxFontSize =
+        data.fontSize || 72;
+
+    const minFontSize =
+        data.minFontSize || 44;
+
+    const fontFamily =
+        data.fontFamily || "Poppins";
+
+
+    //--------------------------------------------------
+    // CALCULAR LÍNEAS
+    //--------------------------------------------------
+
+    function getLines(text, fontSize) {
+
+        ctx.font =
+            `bold ${fontSize}px ${fontFamily}`;
+
+        const words =
+            text.trim().split(/\s+/);
+
+        const lines = [];
+
+        let currentLine = "";
+
+
+        for (const word of words) {
+
+            const testLine =
+                currentLine
+                    ? `${currentLine} ${word}`
+                    : word;
+
+            const width =
+                ctx.measureText(testLine).width;
+
+
+            if (
+                width <= maxWidth ||
+                !currentLine
+            ) {
+
+                currentLine =
+                    testLine;
+
+            } else {
+
+                lines.push(
+                    currentLine
+                );
+
+                currentLine =
+                    word;
+
+            }
+
+        }
+
+
+        if (currentLine) {
+
+            lines.push(
+                currentLine
+            );
+
+        }
+
+
+        return lines;
+
+    }
+
+
+    //--------------------------------------------------
+    // PREPARAR TEXTO
+    //--------------------------------------------------
+
+    let fontSize =
+        maxFontSize;
+
+    let lines = [];
+
+
+    if (fitText) {
+
+        //--------------------------------------------------
+        // INTENTAR MANTENER EL TAMAÑO
+        //--------------------------------------------------
+
+        while (
+            fontSize > minFontSize
+        ) {
+
+            lines =
+                getLines(
+                    data.text,
+                    fontSize
+                );
+
+
+            if (
+                lines.length <= maxLines
+            ) {
+
+                break;
+
+            }
+
+
+            fontSize -= 2;
+
+        }
+
+
+        //--------------------------------------------------
+        // SEGURIDAD
+        //--------------------------------------------------
+
+        lines =
+            getLines(
+                data.text,
+                fontSize
+            );
+
+
+        //--------------------------------------------------
+        // SI TODAVÍA HAY DEMASIADAS LÍNEAS
+        //--------------------------------------------------
+
+        if (
+            lines.length > maxLines
+        ) {
+
+            fontSize =
+                minFontSize;
+
+            lines =
+                getLines(
+                    data.text,
+                    fontSize
+                );
+
+        }
+
+    } else {
+
+        lines = [
+            data.text
+        ];
+
+    }
+
+
     //--------------------------------------------------
     // FUENTE
     //--------------------------------------------------
 
     ctx.font =
-        "bold 72px Poppins";
+        `bold ${fontSize}px ${fontFamily}`;
 
     ctx.textAlign =
         "center";
@@ -34,11 +209,9 @@ export function createTextSprite(data) {
     ctx.textBaseline =
         "middle";
 
+
     //--------------------------------------------------
     // BORDE OSCURO
-    //
-    // Esto permite que la palabra siga siendo blanca
-    // incluso cuando pasa delante del núcleo.
     //--------------------------------------------------
 
     ctx.shadowColor =
@@ -53,6 +226,7 @@ export function createTextSprite(data) {
     ctx.shadowOffsetY =
         0;
 
+
     //--------------------------------------------------
     // COLOR
     //--------------------------------------------------
@@ -61,19 +235,61 @@ export function createTextSprite(data) {
         data.color ||
         "#FFFFFF";
 
+    ctx.strokeStyle = "rgba(235, 210, 255, 0.85)";
+    ctx.lineWidth = 3;
+
     //--------------------------------------------------
-    // TEXTO
+    // DIBUJAR TEXTO
     //--------------------------------------------------
 
-    ctx.fillText(
+    if (fitText && lines.length > 1) {
 
-        data.text,
+        const lineHeight =
+            fontSize * 1.05;
 
-        canvas.width / 2,
+        const totalHeight =
+            lineHeight *
+            lines.length;
 
-        canvas.height / 2
+        const startY =
+            (canvas.height - totalHeight) / 2 +
+            lineHeight / 2;
 
-    );
+
+        lines.forEach(
+            (line, index) => {
+
+                ctx.strokeText(
+                    line,
+                    canvas.width / 2,
+                    startY + index * lineHeight
+                );
+
+                ctx.fillText(
+                    line,
+                    canvas.width / 2,
+                    startY + index * lineHeight
+                );
+
+            }
+        );
+
+    } else {
+
+        ctx.strokeText(
+            data.text,
+            canvas.width / 2,
+            canvas.height / 2
+        );
+
+        ctx.fillText(
+            data.text,
+            canvas.width / 2,
+            canvas.height / 2
+        );
+
+    }
+
 
     //--------------------------------------------------
     // TEXTURA
@@ -86,6 +302,7 @@ export function createTextSprite(data) {
 
     texture.needsUpdate =
         true;
+
 
     //--------------------------------------------------
     // MATERIAL
@@ -111,6 +328,7 @@ export function createTextSprite(data) {
 
         });
 
+
     //--------------------------------------------------
     // SPRITE
     //--------------------------------------------------
@@ -120,6 +338,7 @@ export function createTextSprite(data) {
             material
         );
 
+
     //--------------------------------------------------
     // TAMAÑO
     //--------------------------------------------------
@@ -128,15 +347,13 @@ export function createTextSprite(data) {
         data.size ||
         1;
 
+
     sprite.scale.set(
-
         2.5 * size,
-
         0.6 * size,
-
         1
-
     );
+
 
     //--------------------------------------------------
     // DATOS
@@ -151,6 +368,7 @@ export function createTextSprite(data) {
 
     sprite.userData.data =
         data;
+
 
     return sprite;
 

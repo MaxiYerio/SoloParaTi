@@ -33,7 +33,17 @@ export function createFocusWord() {
 
                 color: "#FFFFFF",
 
-                size: 1.5
+                size: 1.5,
+
+                fitText: true,
+
+                maxWidth: 920,
+
+                maxLines: 2,
+
+                fontSize: 72,
+
+                minFontSize: 44
 
             });
 
