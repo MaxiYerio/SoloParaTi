@@ -6,10 +6,6 @@ export const UniverseData = [
     // AMISTAD
     //--------------------------------------------------
 
-    //--------------------------------------------------
-    // AMISTAD
-    //--------------------------------------------------
-
     {
         text: "Amistad",
         type: "memory",
@@ -226,7 +222,6 @@ export const UniverseData = [
     },
 
 
-
     //--------------------------------------------------
     // ANIME
     //--------------------------------------------------
@@ -369,6 +364,7 @@ export const UniverseData = [
         ]
     },
 
+
     //--------------------------------------------------
     // MÚSICA
     //--------------------------------------------------
@@ -383,9 +379,9 @@ export const UniverseData = [
                 text: "Film Out",
                 audio: "film-out.mp3",
                 colors: [
-                    "#C9A27E", // Café claro
-                    "#9DD9E8", // Celeste
-                    "#A9D9A0"  // Verde claro
+                    "#C9A27E",
+                    "#9DD9E8",
+                    "#A9D9A0"
                 ]
             },
 
@@ -393,9 +389,9 @@ export const UniverseData = [
                 text: "Letter",
                 audio: "letter.mp3",
                 colors: [
-                    "#FFFFFF", // Blanco
-                    "#5B8FC9", // Azul
-                    "#C0C0C0"  // Plata
+                    "#FFFFFF",
+                    "#5B8FC9",
+                    "#C0C0C0"
                 ]
             },
 
@@ -403,9 +399,9 @@ export const UniverseData = [
                 text: "Mikrokosmos",
                 audio: "mikrokosmos.mp3",
                 colors: [
-                    "#9B5DE5", // Morado
-                    "#F29BC2", // Rosa
-                    "#D4AF37"  // Dorado
+                    "#9B5DE5",
+                    "#F29BC2",
+                    "#D4AF37"
                 ]
             },
 
@@ -413,9 +409,9 @@ export const UniverseData = [
                 text: "I'm Fine",
                 audio: "im-fine.mp3",
                 colors: [
-                    "#52B788", // Verde menta brillante
-                    "#4EA8DE", // Celeste alegre
-                    "#FFB703"  // Naranja cálido
+                    "#52B788",
+                    "#4EA8DE",
+                    "#FFB703"
                 ]
             },
 
@@ -423,9 +419,9 @@ export const UniverseData = [
                 text: "Like Animals",
                 audio: "like-animals.mp3",
                 colors: [
-                    "#D81B60", // Fucsia coqueto / ardiente
-                    "#880E4F", // Guinda / vino apasionado
-                    "#E65100"  // Naranja fuego / caliente
+                    "#D81B60",
+                    "#880E4F",
+                    "#E65100"
                 ]
             },
 
@@ -433,9 +429,9 @@ export const UniverseData = [
                 text: "Sea",
                 audio: "sea.mp3",
                 colors: [
-                    "#F6E7A1", // Amarillo claro
-                    "#D8C39B", // Arena
-                    "#4E91C7"  // Azul
+                    "#F6E7A1",
+                    "#D8C39B",
+                    "#4E91C7"
                 ]
             },
 
@@ -443,8 +439,8 @@ export const UniverseData = [
                 text: "I Need U",
                 audio: "i-need-u.mp3",
                 colors: [
-                    "#D8A0A8", // Rosa palo
-                    "#9A9A9A"  // Gris
+                    "#D8A0A8",
+                    "#9A9A9A"
                 ]
             },
 
@@ -452,9 +448,9 @@ export const UniverseData = [
                 text: "Best Of Me",
                 audio: "best-of-me.mp3",
                 colors: [
-                    "#B9A0E8", // Lila
-                    "#9EDCF0", // Celeste
-                    "#D4AF37"  // Dorado
+                    "#B9A0E8",
+                    "#9EDCF0",
+                    "#D4AF37"
                 ]
             },
 
@@ -462,7 +458,7 @@ export const UniverseData = [
                 text: "Rebirth",
                 audio: "rebirth.mp3",
                 colors: [
-                    "#F47B20"  // Naranja
+                    "#F47B20"
                 ]
             },
 
@@ -470,7 +466,7 @@ export const UniverseData = [
                 text: "Still With You",
                 audio: "still-with-you.mp3",
                 colors: [
-                    "#32145F"  // Morado oscuro
+                    "#32145F"
                 ]
             },
 
@@ -478,8 +474,8 @@ export const UniverseData = [
                 text: "Closer",
                 audio: "closer.mp3",
                 colors: [
-                    "#4D8FD8", // Azul
-                    "#FFFFFF"  // Blanco
+                    "#4D8FD8",
+                    "#FFFFFF"
                 ]
             },
 
@@ -487,14 +483,13 @@ export const UniverseData = [
                 text: "Mic Drop",
                 audio: "mic-drop.mp3",
                 colors: [
-                    "#D71920", // Rojo
-                    "#080808"  // Negro
+                    "#D71920",
+                    "#080808"
                 ]
             }
 
         ]
     },
-
 
     {
         text: "Guitarra",
@@ -552,9 +547,6 @@ export const UniverseData = [
         ]
     },
 
-    //--------------------------------------------------
-    // VIDEOJUEGOS
-    //--------------------------------------------------
 
     //--------------------------------------------------
     // VIDEOJUEGOS
@@ -651,7 +643,7 @@ export const UniverseData = [
         sequence: [
             "Violeta.",
             "...",
-            "Creo que no hacía falta explicar por qué está acá 💜"
+            "Creo que no hacía falta explicar por qué está acá"
         ]
     },
 
@@ -659,8 +651,9 @@ export const UniverseData = [
         text: "Lavanda",
         type: "memory",
         sequence: [
-            "sabes que necesitas para las quemaduras?",
-            "la banda jejje (si, lo contare las veces que haga falta"
+            "¿Sabes que necesitas para las quemaduras?",
+            "la banda jejje",
+            "(si, lo contare las veces que haga falta)"
         ]
     },
 
@@ -685,6 +678,7 @@ export const UniverseData = [
         ]
     },
 
+
     //--------------------------------------------------
     // EMOCIONES
     //--------------------------------------------------
@@ -692,7 +686,6 @@ export const UniverseData = [
     {
         text: "Sonreí :)",
         type: "memory",
-
         sequence: [
             "Sonreí :)",
             "Nunca dejes de sonreir"
@@ -702,7 +695,6 @@ export const UniverseData = [
     {
         text: "Tigre",
         type: "memory",
-
         sequence: [
             "¿Qué come un tigre disléxico?",
             "...",
