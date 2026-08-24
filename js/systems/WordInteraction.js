@@ -7,6 +7,11 @@ import {
     playGuillotine
 } from "../music.js";
 
+import {
+    startGuillotineLyrics,
+    stopGuillotineLyrics
+} from "./GuillotineLyricsManager.js";
+
 let folderContainer = null;
 
 let core = null;
@@ -233,9 +238,13 @@ function handleSecret(word) {
 
         }
 
+        startGuillotineLyrics();
+
         playGuillotine(
 
             () => {
+
+                stopGuillotineLyrics();
 
                 if (core) {
 

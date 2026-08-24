@@ -53,6 +53,15 @@ import {
     setupWordInteractionCore
 } from "../systems/WordInteraction.js";
 
+import {
+    createGuillotineLyrics
+} from "../systems/GuillotineLyrics.js";
+
+import {
+    setupGuillotineLyrics,
+    updateGuillotineLyrics
+} from "../systems/GuillotineLyricsManager.js";
+
 let scene;
 let camera;
 let renderer;
@@ -61,6 +70,7 @@ let stars;
 let core;
 let wordSphere;
 let focusWord;
+let guillotineLyrics;
 
 let ambientLight;
 let pointLight;
@@ -201,6 +211,19 @@ export function initScene() {
 
     core.object.add(
         focusWord.object
+    );
+
+    //--------------------------------------------------
+    // LETRA GUILLOTINE
+    //--------------------------------------------------
+
+    guillotineLyrics =
+        createGuillotineLyrics(
+            scene
+        );
+
+    setupGuillotineLyrics(
+        guillotineLyrics
     );
 
     //--------------------------------------------------
@@ -358,6 +381,8 @@ function animate() {
     );
 
     focusWord.update();
+
+    updateGuillotineLyrics();
 
     //--------------------------------------------------
     // LUZ DEL NÚCLEO

@@ -412,6 +412,16 @@ export function isSongPlaying() {
 
 }
 
+//--------------------------------------------------
+// TIEMPO DE GUILLOTINE
+//--------------------------------------------------
+
+export function getGuillotineTime() {
+
+    return guillotine.currentTime || 0;
+
+}
+
 
 //--------------------------------------------------
 // FADE
