@@ -1,4 +1,4 @@
-//js\config\UniverseData.js
+// js/config/UniverseData.js
 
 export const UniverseData = [
 
@@ -55,21 +55,120 @@ export const UniverseData = [
 
         children: [
 
-            { text: "Film Out", audio: "film-out.mp3" },
-            { text: "Letter", audio: "letter.mp3" },
-            { text: "Mikrokosmos", audio: "mikrokosmos.mp3" },
-            { text: "I'm Fine", audio: "im-fine.mp3" },
-            { text: "Like Animals", audio: "like-animals.mp3" },
-            { text: "Sea", audio: "sea.mp3" },
-            { text: "I Need U", audio: "i-need-u.mp3" },
-            { text: "Best Of Me", audio: "best-of-me.mp3" },
-            { text: "Rebirth", audio: "rebirth.mp3" },
-            { text: "Still With You", audio: "still-with-you.mp3" },
-            { text: "Closer", audio: "closer.mp3" },
-            { text: "Mic Drop", audio: "mic-drop.mp3" }
+            {
+                text: "Film Out",
+                audio: "film-out.mp3",
+                colors: [
+                    "#C9A27E", // Café claro
+                    "#9DD9E8", // Celeste
+                    "#A9D9A0"  // Verde claro
+                ]
+            },
+
+            {
+                text: "Letter",
+                audio: "letter.mp3",
+                colors: [
+                    "#FFFFFF", // Blanco
+                    "#5B8FC9", // Azul
+                    "#C0C0C0"  // Plata
+                ]
+            },
+
+            {
+                text: "Mikrokosmos",
+                audio: "mikrokosmos.mp3",
+                colors: [
+                    "#9B5DE5", // Morado
+                    "#F29BC2", // Rosa
+                    "#D4AF37"  // Dorado
+                ]
+            },
+
+            {
+                text: "I'm Fine",
+                audio: "im-fine.mp3",
+                colors: [
+                    "#52B788", // Verde menta brillante
+                    "#4EA8DE", // Celeste alegre
+                    "#FFB703"  // Naranja cálido
+                ]
+            },
+
+            {
+                text: "Like Animals",
+                audio: "like-animals.mp3",
+                colors: [
+                    "#D81B60", // Fucsia coqueto / ardiente
+                    "#880E4F", // Guinda / vino apasionado
+                    "#E65100"  // Naranja fuego / caliente
+                ]
+            },
+
+            {
+                text: "Sea",
+                audio: "sea.mp3",
+                colors: [
+                    "#F6E7A1", // Amarillo claro
+                    "#D8C39B", // Arena
+                    "#4E91C7"  // Azul
+                ]
+            },
+
+            {
+                text: "I Need U",
+                audio: "i-need-u.mp3",
+                colors: [
+                    "#D8A0A8", // Rosa palo
+                    "#9A9A9A"  // Gris
+                ]
+            },
+
+            {
+                text: "Best Of Me",
+                audio: "best-of-me.mp3",
+                colors: [
+                    "#B9A0E8", // Lila
+                    "#9EDCF0", // Celeste
+                    "#D4AF37"  // Dorado
+                ]
+            },
+
+            {
+                text: "Rebirth",
+                audio: "rebirth.mp3",
+                colors: [
+                    "#F47B20"  // Naranja
+                ]
+            },
+
+            {
+                text: "Still With You",
+                audio: "still-with-you.mp3",
+                colors: [
+                    "#32145F"  // Morado oscuro
+                ]
+            },
+
+            {
+                text: "Closer",
+                audio: "closer.mp3",
+                colors: [
+                    "#4D8FD8", // Azul
+                    "#FFFFFF"  // Blanco
+                ]
+            },
+
+            {
+                text: "Mic Drop",
+                audio: "mic-drop.mp3",
+                colors: [
+                    "#D71920", // Rojo
+                    "#080808"  // Negro
+                ]
+            }
 
         ]
-
     },
 
     { text: "Guitarra" },
@@ -110,12 +209,9 @@ export const UniverseData = [
         type: "memory",
 
         sequence: [
-
             "Sonreí :)",
             "Nunca dejes de sonreir"
-
         ]
-
     },
 
     {
@@ -123,13 +219,10 @@ export const UniverseData = [
         type: "memory",
 
         sequence: [
-
             "¿Qué come un tigre disléxico?",
             "...",
             "Acelgas."
-
         ]
-
     },
 
     { text: "Calma" },
@@ -163,10 +256,6 @@ export const UniverseData = [
     { text: "Down" },
     { text: "Escondinabo" },
     { text: "😂" },
-
-    //--------------------------------------------------
-    // SECRETOS
-    //--------------------------------------------------
 
     //--------------------------------------------------
     // SECRETOS

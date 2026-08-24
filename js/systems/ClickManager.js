@@ -175,9 +175,20 @@ async function handleClick(event) {
     // FOLDER
     //----------------------------------
 
+    //----------------------------------
+    // FOLDER
+    //----------------------------------
+
     if (data.type === "folder") {
 
+        // El menú de canciones NO debe dejar
+        // el universo bloqueado/enfocado.
+
         interactWithWord(data);
+
+        exitCameraFocus();
+        unlockCameraZoom();
+        endUniverseFocus();
 
         return;
 

@@ -18,6 +18,33 @@ let guillotineMode = false;
 let musicVisualizerMode = false;
 
 //--------------------------------------------------
+// PALETA MUSICAL
+//--------------------------------------------------
+
+let musicColors = [];
+
+let currentMusicColor = new THREE.Color();
+
+let targetMusicColor = new THREE.Color();
+
+let musicColorIndex = 0;
+
+let musicColorTimer = 0;
+
+const MUSIC_COLOR_CHANGE_TIME = 2.8;
+const MUSIC_COLOR_SMOOTH = 0.035;
+
+let lastMusicUpdate = performance.now();
+
+//--------------------------------------------------
+// COLOR ORIGINAL
+//--------------------------------------------------
+
+let originalColor = new THREE.Color();
+
+let hasMusicColor = false;
+
+//--------------------------------------------------
 // SHADER DEL NÚCLEO
 //--------------------------------------------------
 
@@ -28,9 +55,13 @@ const vertexShader = `
 
     void main() {
 
-        vNormal = normalize(normalMatrix * normal);
+        vNormal =
+            normalize(
+                normalMatrix * normal
+            );
 
-        vPosition = position;
+        vPosition =
+            position;
 
         gl_Position =
             projectionMatrix *
@@ -46,17 +77,20 @@ const fragmentShader = `
     uniform vec3 uColor;
     uniform float uTime;
     uniform float uFocus;
+    uniform float uMusicEnergy;
 
     varying vec3 vNormal;
     varying vec3 vPosition;
 
     //--------------------------------------------------
-    // RUIDO SIMPLE
+    // RUIDO
     //--------------------------------------------------
 
     float hash(vec3 p) {
 
-        p = fract(p * 0.3183099 + 0.1);
+        p = fract(
+            p * 0.3183099 + 0.1
+        );
 
         p *= 17.0;
 
@@ -71,23 +105,42 @@ const fragmentShader = `
 
     float noise(vec3 p) {
 
-        vec3 i = floor(p);
-        vec3 f = fract(p);
+        vec3 i =
+            floor(p);
 
-        f = f * f * (3.0 - 2.0 * f);
+        vec3 f =
+            fract(p);
+
+        f =
+            f *
+            f *
+            (3.0 - 2.0 * f);
 
         return mix(
 
             mix(
                 mix(
                     hash(i),
-                    hash(i + vec3(1,0,0)),
+
+                    hash(
+                        i +
+                        vec3(1,0,0)
+                    ),
+
                     f.x
                 ),
 
                 mix(
-                    hash(i + vec3(0,1,0)),
-                    hash(i + vec3(1,1,0)),
+                    hash(
+                        i +
+                        vec3(0,1,0)
+                    ),
+
+                    hash(
+                        i +
+                        vec3(1,1,0)
+                    ),
+
                     f.x
                 ),
 
@@ -97,14 +150,30 @@ const fragmentShader = `
             mix(
 
                 mix(
-                    hash(i + vec3(0,0,1)),
-                    hash(i + vec3(1,0,1)),
+                    hash(
+                        i +
+                        vec3(0,0,1)
+                    ),
+
+                    hash(
+                        i +
+                        vec3(1,0,1)
+                    ),
+
                     f.x
                 ),
 
                 mix(
-                    hash(i + vec3(0,1,1)),
-                    hash(i + vec3(1,1,1)),
+                    hash(
+                        i +
+                        vec3(0,1,1)
+                    ),
+
+                    hash(
+                        i +
+                        vec3(1,1,1)
+                    ),
+
                     f.x
                 ),
 
@@ -131,10 +200,15 @@ const fragmentShader = `
 
         float fresnel =
             pow(
-                1.0 - max(
+                1.0 -
+                max(
                     dot(
                         normal,
-                        vec3(0.0, 0.0, 1.0)
+                        vec3(
+                            0.0,
+                            0.0,
+                            1.0
+                        )
                     ),
                     0.0
                 ),
@@ -146,9 +220,12 @@ const fragmentShader = `
         //--------------------------------------------------
 
         vec3 p =
-            vPosition * 2.8;
+            vPosition *
+            2.8;
 
-        p.z += uTime * 0.12;
+        p.z +=
+            uTime *
+            0.12;
 
         float n1 =
             noise(
@@ -170,18 +247,30 @@ const fragmentShader = `
                 )
             );
 
+        //--------------------------------------------------
+        // ENERGÍA NORMAL
+        //--------------------------------------------------
+
         float energy =
             n1 * 0.65 +
             n2 * 0.35;
 
         //--------------------------------------------------
-        // MANCHAS DE ENERGÍA
+        // ENERGÍA MUSICAL
+        //--------------------------------------------------
+
+        energy +=
+            uMusicEnergy *
+            0.45;
+
+        //--------------------------------------------------
+        // MANCHAS
         //--------------------------------------------------
 
         float energyMask =
             smoothstep(
-                0.28,
-                0.78,
+                0.25,
+                0.72,
                 energy
             );
 
@@ -196,7 +285,7 @@ const fragmentShader = `
             mix(
                 baseColor,
                 vec3(1.0),
-                0.35
+                0.42
             );
 
         vec3 finalColor =
@@ -207,22 +296,38 @@ const fragmentShader = `
             );
 
         //--------------------------------------------------
+        // FLASH MUSICAL
+        //--------------------------------------------------
+
+        finalColor +=
+            brightColor *
+            uMusicEnergy *
+            0.35;
+
+        //--------------------------------------------------
         // BORDE CÓSMICO
         //--------------------------------------------------
 
         finalColor +=
             baseColor *
             fresnel *
-            (1.5 + uFocus * 1.5);
+            (
+                1.5 +
+                uFocus * 1.5 +
+                uMusicEnergy * 2.5
+            );
 
         //--------------------------------------------------
-        // PEQUEÑO BRILLO INTERNO
+        // BRILLO INTERNO
         //--------------------------------------------------
 
         finalColor +=
             brightColor *
             energyMask *
-            0.12;
+            (
+                0.12 +
+                uMusicEnergy * 0.35
+            );
 
         //--------------------------------------------------
         // OPACIDAD
@@ -232,12 +337,15 @@ const fragmentShader = `
             0.72 +
             fresnel * 0.28;
 
-        //--------------------------------------------------
-        // FOCUS
-        //--------------------------------------------------
-
         alpha +=
             uFocus * 0.12;
+
+        alpha +=
+            uMusicEnergy * 0.08;
+
+        //--------------------------------------------------
+        // OUTPUT
+        //--------------------------------------------------
 
         gl_FragColor =
             vec4(
@@ -259,7 +367,7 @@ export function createCoreSphere() {
         new THREE.Group();
 
     //--------------------------------------------------
-    // COLOR GUARDADO
+    // COLOR INICIAL
     //--------------------------------------------------
 
     const savedColor =
@@ -270,8 +378,20 @@ export function createCoreSphere() {
             savedColor
         );
 
+    originalColor.copy(
+        color
+    );
+
+    currentMusicColor.copy(
+        color
+    );
+
+    targetMusicColor.copy(
+        color
+    );
+
     //--------------------------------------------------
-    // NÚCLEO PRINCIPAL
+    // MATERIAL DEL NÚCLEO
     //--------------------------------------------------
 
     const sphereMaterial =
@@ -280,15 +400,28 @@ export function createCoreSphere() {
             uniforms: {
 
                 uColor: {
-                    value: color.clone()
+
+                    value:
+                        color.clone()
+
                 },
 
                 uTime: {
+
                     value: 0
+
                 },
 
                 uFocus: {
+
                     value: 0
+
+                },
+
+                uMusicEnergy: {
+
+                    value: 0
+
                 }
 
             },
@@ -297,17 +430,23 @@ export function createCoreSphere() {
 
             fragmentShader,
 
-            transparent: true,
+            transparent:
+                true,
 
             blending:
                 THREE.AdditiveBlending,
 
-            depthWrite: false,
+            depthWrite:
+                false,
 
             side:
                 THREE.FrontSide
 
         });
+
+    //--------------------------------------------------
+    // ESFERA
+    //--------------------------------------------------
 
     const sphere =
         new THREE.Mesh(
@@ -322,7 +461,9 @@ export function createCoreSphere() {
 
         );
 
-    group.add(sphere);
+    group.add(
+        sphere
+    );
 
     //--------------------------------------------------
     // GLOW INTERNO
@@ -331,16 +472,20 @@ export function createCoreSphere() {
     const glowMaterial =
         new THREE.MeshBasicMaterial({
 
-            color: color.clone(),
+            color:
+                color.clone(),
 
-            transparent: true,
+            transparent:
+                true,
 
-            opacity: 0.08,
+            opacity:
+                0.08,
 
             blending:
                 THREE.AdditiveBlending,
 
-            depthWrite: false,
+            depthWrite:
+                false,
 
             side:
                 THREE.BackSide
@@ -360,7 +505,9 @@ export function createCoreSphere() {
 
         );
 
-    group.add(glow);
+    group.add(
+        glow
+    );
 
     //--------------------------------------------------
     // HALO EXTERIOR
@@ -369,16 +516,20 @@ export function createCoreSphere() {
     const haloMaterial =
         new THREE.MeshBasicMaterial({
 
-            color: color.clone(),
+            color:
+                color.clone(),
 
-            transparent: true,
+            transparent:
+                true,
 
-            opacity: 0.035,
+            opacity:
+                0.035,
 
             blending:
                 THREE.AdditiveBlending,
 
-            depthWrite: false,
+            depthWrite:
+                false,
 
             side:
                 THREE.BackSide
@@ -398,20 +549,21 @@ export function createCoreSphere() {
 
         );
 
-    group.add(halo);
+    group.add(
+        halo
+    );
 
     //--------------------------------------------------
     // PARTÍCULAS
     //--------------------------------------------------
 
-    const particleCount = 90;
+    const particleCount =
+        90;
 
     const positions =
         new Float32Array(
             particleCount * 3
         );
-
-    const particleData = [];
 
     for (
         let i = 0;
@@ -426,10 +578,14 @@ export function createCoreSphere() {
 
         const radius =
             1.25 +
-            Math.random() * 0.75;
+            Math.random() *
+            0.75;
 
         const y =
-            (Math.random() - 0.5) *
+            (
+                Math.random() -
+                0.5
+            ) *
             1.8;
 
         const x =
@@ -440,31 +596,20 @@ export function createCoreSphere() {
             Math.sin(angle) *
             radius;
 
-        positions[i * 3] =
+        positions[
+            i * 3
+        ] =
             x;
 
-        positions[i * 3 + 1] =
+        positions[
+            i * 3 + 1
+        ] =
             y;
 
-        positions[i * 3 + 2] =
+        positions[
+            i * 3 + 2
+        ] =
             z;
-
-        particleData.push({
-
-            angle,
-
-            radius,
-
-            speed:
-                0.15 +
-                Math.random() * 0.35,
-
-            offset:
-                Math.random() *
-                Math.PI *
-                2
-
-        });
 
     }
 
@@ -485,18 +630,23 @@ export function createCoreSphere() {
     const particleMaterial =
         new THREE.PointsMaterial({
 
-            color: color.clone(),
+            color:
+                color.clone(),
 
-            size: 0.035,
+            size:
+                0.035,
 
-            transparent: true,
+            transparent:
+                true,
 
-            opacity: 0.7,
+            opacity:
+                0.7,
 
             blending:
                 THREE.AdditiveBlending,
 
-            depthWrite: false
+            depthWrite:
+                false
 
         });
 
@@ -509,31 +659,60 @@ export function createCoreSphere() {
 
         );
 
-    group.add(particles);
+    group.add(
+        particles
+    );
 
     //--------------------------------------------------
-    // CAMBIAR COLOR
+    // APLICAR COLOR A TODO EL NÚCLEO
     //--------------------------------------------------
 
-    function setColor(newColor) {
+    function applyColor(
+        newColor
+    ) {
 
         const threeColor =
             new THREE.Color(
                 newColor
             );
 
-        sphereMaterial.uniforms
-            .uColor.value
-            .copy(threeColor);
+        sphereMaterial
+            .uniforms
+            .uColor
+            .value
+            .copy(
+                threeColor
+            );
 
-        glow.material.color
-            .copy(threeColor);
+        glow.material.color.copy(
+            threeColor
+        );
 
-        halo.material.color
-            .copy(threeColor);
+        halo.material.color.copy(
+            threeColor
+        );
 
-        particles.material.color
-            .copy(threeColor);
+        particles.material.color.copy(
+            threeColor
+        );
+
+    }
+
+    //--------------------------------------------------
+    // CAMBIAR COLOR NORMAL
+    //--------------------------------------------------
+
+    function setColor(
+        newColor
+    ) {
+
+        applyColor(
+            newColor
+        );
+
+        originalColor.set(
+            newColor
+        );
 
     }
 
@@ -546,7 +725,115 @@ export function createCoreSphere() {
         const newColor =
             nextCoreColor();
 
-        setColor(newColor);
+        setColor(
+            newColor
+        );
+
+    }
+
+    //--------------------------------------------------
+    // CONFIGURAR COLORES DE MÚSICA
+    //--------------------------------------------------
+
+    function setMusicColors(
+        colors
+    ) {
+
+        if (
+            !Array.isArray(colors) ||
+            colors.length === 0
+        ) {
+
+            return;
+
+        }
+
+        musicColors =
+            colors.map(
+                color =>
+                    new THREE.Color(color)
+            );
+
+        musicColorIndex = 0;
+
+        musicColorTimer = 0;
+
+        lastMusicUpdate = performance.now();
+
+        hasMusicColor = true;
+
+        currentMusicColor.copy(
+            musicColors[0]
+        );
+
+        targetMusicColor.copy(
+            musicColors[0]
+        );
+
+        applyColor(
+            currentMusicColor
+        );
+
+    }
+
+    //--------------------------------------------------
+    // SIGUIENTE COLOR MUSICAL
+    //--------------------------------------------------
+
+    function nextMusicColor() {
+
+        if (
+            musicColors.length <= 1
+        ) {
+
+            return;
+
+        }
+
+        musicColorIndex++;
+
+        if (
+            musicColorIndex >=
+            musicColors.length
+        ) {
+
+            musicColorIndex = 0;
+
+        }
+
+        targetMusicColor.copy(
+            musicColors[
+            musicColorIndex
+            ]
+        );
+
+    }
+
+    //--------------------------------------------------
+    // RESTAURAR COLOR ORIGINAL
+    //--------------------------------------------------
+
+    function resetMusicColors() {
+
+        hasMusicColor = false;
+
+        musicColors = [];
+
+        musicColorIndex = 0;
+
+        musicColorTimer = 0;
+
+        targetMusicColor.copy(
+            originalColor
+        );
+
+        currentMusicColor.copy(
+            originalColor
+        );
+
+        applyColor(
+            originalColor
+        );
 
     }
 
@@ -560,70 +847,234 @@ export function createCoreSphere() {
             performance.now() *
             0.001;
 
+        //--------------------------------------------------
+        // AUDIO
+        //--------------------------------------------------
+
         const audio =
             musicVisualizerMode
+
                 ? getAudioData()
+
                 : {
+
                     bass: 0,
                     mid: 0,
                     treble: 0,
                     overall: 0
+
                 };
 
         //--------------------------------------------------
-        // TIEMPO DEL SHADER
+        // BANDAS
         //--------------------------------------------------
 
-        sphereMaterial.uniforms
-            .uTime.value =
+        const bass =
+            audio.bass;
+
+        const mid =
+            audio.mid;
+
+        const treble =
+            audio.treble;
+
+        const overall =
+            audio.overall;
+
+        //--------------------------------------------------
+        // BOOM
+        //--------------------------------------------------
+
+        const bassBoom =
+            Math.pow(
+                bass,
+                1.35
+            );
+
+        //--------------------------------------------------
+        // ENERGÍA TOTAL
+        //--------------------------------------------------
+
+        const musicEnergy =
+            Math.min(
+
+                1,
+
+                bassBoom * 0.70 +
+                mid * 0.20 +
+                overall * 0.10
+
+            );
+
+        //--------------------------------------------------
+        // COLOR MUSICAL
+        //--------------------------------------------------
+
+        if (
+            musicVisualizerMode &&
+            hasMusicColor &&
+            musicColors.length > 0
+        ) {
+
+            const now = performance.now();
+
+            const deltaTime =
+                (now - lastMusicUpdate) / 1000;
+
+            lastMusicUpdate = now;
+
+            musicColorTimer += deltaTime;
+
+            //--------------------------------------------------
+            // CAMBIO DE COLOR
+            //--------------------------------------------------
+
+            if (
+                musicColorTimer >=
+                MUSIC_COLOR_CHANGE_TIME
+            ) {
+
+                musicColorTimer = 0;
+
+                nextMusicColor();
+
+            }
+
+            //--------------------------------------------------
+            // TRANSICIÓN
+            //--------------------------------------------------
+
+            currentMusicColor.lerp(
+                targetMusicColor,
+                MUSIC_COLOR_SMOOTH
+            );
+
+            applyColor(
+                currentMusicColor
+            );
+
+        }
+        else {
+
+            //--------------------------------------------------
+            // VOLVER AL COLOR NORMAL
+            //--------------------------------------------------
+
+            currentMusicColor.lerp(
+                targetMusicColor,
+                0.025
+            );
+
+            if (
+                !hasMusicColor
+            ) {
+
+                applyColor(
+                    currentMusicColor
+                );
+
+            }
+
+        }
+
+        //--------------------------------------------------
+        // SHADER
+        //--------------------------------------------------
+
+        sphereMaterial
+            .uniforms
+            .uTime
+            .value =
             time;
+
+        sphereMaterial
+            .uniforms
+            .uMusicEnergy
+            .value +=
+
+            (
+                musicEnergy -
+
+                sphereMaterial
+                    .uniforms
+                    .uMusicEnergy
+                    .value
+
+            ) *
+            0.22;
 
         //--------------------------------------------------
         // FOCUS
         //--------------------------------------------------
 
         const targetFocus =
-            focus ? 1 : 0;
+            focus
+                ? 1
+                : 0;
 
-        const targetGuillotine =
-            guillotineMode ? 1 : 0;
+        sphereMaterial
+            .uniforms
+            .uFocus
+            .value +=
 
-        sphereMaterial.uniforms
-            .uFocus.value +=
             (
                 targetFocus -
-                sphereMaterial.uniforms
-                    .uFocus.value
-            ) * 0.06;
+
+                sphereMaterial
+                    .uniforms
+                    .uFocus
+                    .value
+
+            ) *
+            0.06;
 
         //--------------------------------------------------
-        // PULSO
+        // PULSO NORMAL
         //--------------------------------------------------
-
-        const musicPulse =
-            musicVisualizerMode
-                ? audio.bass * 0.22
-                : 0;
 
         const pulseSpeed =
             guillotineMode
+
                 ? 2.8
+
                 : focus
+
                     ? 1.4
+
                     : 1.8;
 
         const pulseAmount =
             guillotineMode
+
                 ? 0.075
+
                 : focus
+
                     ? 0.045
+
                     : 0.018;
 
         const normalPulse =
             Math.sin(
-                time * pulseSpeed
+                time *
+                pulseSpeed
             ) *
             pulseAmount;
+
+        //--------------------------------------------------
+        // PULSO MUSICAL
+        //--------------------------------------------------
+
+        const musicPulse =
+            musicVisualizerMode
+
+                ? bassBoom * 0.34
+
+                : 0;
+
+        //--------------------------------------------------
+        // PULSO FINAL
+        //--------------------------------------------------
 
         const pulse =
             1 +
@@ -640,30 +1091,41 @@ export function createCoreSphere() {
 
         const targetGlow =
             guillotineMode
+
                 ? 1.28
+
                 : musicVisualizerMode
-                    ? 1.04 + audio.overall * 0.22
+
+                    ? 1.04 +
+                    overall * 0.28 +
+                    bassBoom * 0.18
+
                     : focus
+
                         ? 1.16
+
                         : 1.04;
 
         glow.scale.x +=
             (
                 targetGlow -
                 glow.scale.x
-            ) * 0.05;
+            ) *
+            0.07;
 
         glow.scale.y +=
             (
                 targetGlow -
                 glow.scale.y
-            ) * 0.05;
+            ) *
+            0.07;
 
         glow.scale.z +=
             (
                 targetGlow -
                 glow.scale.z
-            ) * 0.05;
+            ) *
+            0.07;
 
         //--------------------------------------------------
         // HALO
@@ -671,87 +1133,190 @@ export function createCoreSphere() {
 
         const targetHalo =
             guillotineMode
+
                 ? 1.22
-                : focus
-                    ? 1.12
-                    : 1.02;
+
+                : musicVisualizerMode
+
+                    ? 1.02 +
+                    overall * 0.18 +
+                    bassBoom * 0.14
+
+                    : focus
+
+                        ? 1.12
+
+                        : 1.02;
 
         halo.scale.x +=
             (
                 targetHalo -
                 halo.scale.x
-            ) * 0.04;
+            ) *
+            0.06;
 
         halo.scale.y +=
             (
                 targetHalo -
                 halo.scale.y
-            ) * 0.04;
+            ) *
+            0.06;
 
         halo.scale.z +=
             (
                 targetHalo -
                 halo.scale.z
-            ) * 0.04;
+            ) *
+            0.06;
 
         //--------------------------------------------------
-        // OPACIDAD
+        // OPACIDAD GLOW
         //--------------------------------------------------
 
         const targetGlowOpacity =
             guillotineMode
+
                 ? 0.16
-                : focus
-                    ? 0.14
-                    : 0.075;
+
+                : musicVisualizerMode
+
+                    ? 0.075 +
+                    overall * 0.09 +
+                    bassBoom * 0.10
+
+                    : focus
+
+                        ? 0.14
+
+                        : 0.075;
 
         glow.material.opacity +=
             (
                 targetGlowOpacity -
                 glow.material.opacity
-            ) * 0.06;
+            ) *
+            0.08;
+
+        //--------------------------------------------------
+        // OPACIDAD HALO
+        //--------------------------------------------------
 
         const targetHaloOpacity =
-            focus
-                ? 0.06
-                : 0.035;
+            guillotineMode
+
+                ? 0.08
+
+                : musicVisualizerMode
+
+                    ? 0.035 +
+                    overall * 0.04 +
+                    bassBoom * 0.055
+
+                    : focus
+
+                        ? 0.06
+
+                        : 0.035;
 
         halo.material.opacity +=
             (
                 targetHaloOpacity -
                 halo.material.opacity
-            ) * 0.05;
+            ) *
+            0.06;
 
         //--------------------------------------------------
         // PARTÍCULAS
         //--------------------------------------------------
 
         particles.rotation.y +=
+
             guillotineMode
+
                 ? 0.004
+
                 : musicVisualizerMode
+
                     ? 0.001 +
-                    audio.mid * 0.004
+                    mid * 0.006 +
+                    bassBoom * 0.003
+
                     : focus
+
                         ? 0.0025
+
                         : 0.001;
 
         particles.rotation.x +=
+
             guillotineMode
+
                 ? 0.001
+
                 : musicVisualizerMode
+
                     ? 0.0004 +
-                    audio.treble * 0.0015
+                    treble * 0.0025 +
+                    bassBoom * 0.001
+
                     : 0.0004;
+
+        //--------------------------------------------------
+        // TAMAÑO DE PARTÍCULAS
+        //--------------------------------------------------
+
+        const targetParticleSize =
+            musicVisualizerMode
+
+                ? 0.035 +
+                bassBoom * 0.035 +
+                treble * 0.025
+
+                : 0.035;
+
+        particles.material.size +=
+            (
+                targetParticleSize -
+                particles.material.size
+            ) *
+            0.12;
+
+        //--------------------------------------------------
+        // OPACIDAD DE PARTÍCULAS
+        //--------------------------------------------------
+
+        const targetParticleOpacity =
+            musicVisualizerMode
+
+                ? 0.7 +
+                bassBoom * 0.25 +
+                treble * 0.15
+
+                : 0.7;
+
+        particles.material.opacity +=
+            (
+                targetParticleOpacity -
+                particles.material.opacity
+            ) *
+            0.12;
 
         //--------------------------------------------------
         // ROTACIÓN DEL NÚCLEO
         //--------------------------------------------------
 
         group.rotation.y +=
+
             focus
+
                 ? 0.0015
-                : 0.0005;
+
+                : musicVisualizerMode
+
+                    ? 0.0005 +
+                    mid * 0.002
+
+                    : 0.0005;
 
     }
 
@@ -761,43 +1326,62 @@ export function createCoreSphere() {
 
     return {
 
-        object: group,
+        object:
+            group,
 
         focus() {
 
-            focus = true;
+            focus =
+                true;
 
         },
 
         unfocus() {
 
-            focus = false;
+            focus =
+                false;
 
         },
 
         startGuillotine() {
 
-            guillotineMode = true;
+            guillotineMode =
+                true;
 
         },
 
         stopGuillotine() {
 
-            guillotineMode = false;
+            guillotineMode =
+                false;
 
         },
 
         startMusicVisualizer() {
 
-            musicVisualizerMode = true;
+            musicVisualizerMode =
+                true;
 
         },
 
         stopMusicVisualizer() {
 
-            musicVisualizerMode = false;
+            musicVisualizerMode =
+                false;
 
         },
+
+        //----------------------------------
+        // MÚSICA
+        //----------------------------------
+
+        setMusicColors,
+
+        resetMusicColors,
+
+        //----------------------------------
+        // COLOR NORMAL
+        //----------------------------------
 
         changeColor,
 

@@ -2,27 +2,27 @@
 
 import { showMessage } from "./MessageSystem.js";
 
-import { beginUniverseFocus, endUniverseFocus } from "./UniverseFocus.js";
-
-import { enterCameraFocus, exitCameraFocus } from "./CameraController.js";
-
 import {
     playSong,
     playGuillotine
 } from "../music.js";
 
 let folderContainer = null;
+
 let core = null;
+let wordSphere = null;
 
 //--------------------------------------------------
-// CONFIGURAR NÚCLEO
+// CONFIGURAR NÚCLEO Y WORD SPHERE
 //--------------------------------------------------
 
 export function setupWordInteractionCore(
-    coreObject
+    coreObject,
+    wordSphereObject
 ) {
 
     core = coreObject;
+    wordSphere = wordSphereObject;
 
 }
 
@@ -34,33 +34,220 @@ export function interactWithWord(word) {
 
     if (!word) return;
 
-    switch (word.type) {
+    console.log(
+        "[WordInteraction] Click:",
+        word
+    );
 
-        case "folder":
+    //--------------------------------------------------
+    // FOLDER
+    //--------------------------------------------------
 
-            openFolder(word);
+    if (word.type === "folder") {
 
-            break;
+        openFolder(word);
 
-        case "memory":
-
-            console.log("Memory:", word.text);
-
-            break;
-
-        case "secret":
-
-            handleSecret(word);
-
-            break;
-
-        default:
-
-            showNormalWord(word);
-
-            break;
+        return;
 
     }
+
+    //--------------------------------------------------
+    // MEMORY
+    //--------------------------------------------------
+
+    if (word.type === "memory") {
+
+        console.log(
+            "Memory:",
+            word.text
+        );
+
+        showMessage(
+            word.text
+        );
+
+        return;
+
+    }
+
+    //--------------------------------------------------
+    // SECRET
+    //--------------------------------------------------
+
+    if (word.type === "secret") {
+
+        handleSecret(word);
+
+        return;
+
+    }
+
+    //--------------------------------------------------
+    // PALABRA NORMAL
+    //--------------------------------------------------
+
+    showNormalWord(word);
+
+}
+
+//--------------------------------------------------
+// REPRODUCIR CANCIÓN
+//--------------------------------------------------
+
+function playFolderSong(song) {
+    function playFolderSong(song) {
+
+        if (!song?.audio) {
+
+            console.warn(
+                "[Music] Esta canción no tiene audio:",
+                song
+            );
+
+            return;
+
+        }
+
+        console.log(
+            "[Music] Reproduciendo:",
+            song.text
+        );
+
+        //--------------------------------------------------
+        // VISUALIZADOR
+        //--------------------------------------------------
+
+        if (core) {
+
+            core.startMusicVisualizer();
+
+        }
+
+        //--------------------------------------------------
+        // COLORES
+        //--------------------------------------------------
+
+        if (
+            core &&
+            Array.isArray(song.colors) &&
+            song.colors.length > 0
+        ) {
+
+            core.setMusicColors(
+                song.colors
+            );
+
+        }
+
+        //--------------------------------------------------
+        // REPRODUCIR
+        //--------------------------------------------------
+
+        playSong(
+
+            song.audio,
+
+            () => {
+
+                console.log(
+                    "[Music] Canción terminada:",
+                    song.text
+                );
+
+                if (core) {
+
+                    core.stopMusicVisualizer();
+
+                    core.resetMusicColors();
+
+                }
+
+            }
+
+        );
+
+    }
+
+    if (!song?.audio) {
+
+        console.warn(
+            "[Music] Esta canción no tiene audio:",
+            song
+        );
+
+        return;
+
+    }
+
+    console.log(
+        "[Music] Reproduciendo:",
+        song.text
+    );
+
+    //--------------------------------------------------
+    // LIMPIAR ESTADO MUSICAL ANTERIOR
+    //--------------------------------------------------
+
+    if (core) {
+
+        core.stopMusicVisualizer();
+
+        core.resetMusicColors();
+
+    }
+
+    //--------------------------------------------------
+    // VISUALIZADOR
+    //--------------------------------------------------
+
+    if (core) {
+
+        core.startMusicVisualizer();
+
+    }
+
+    //--------------------------------------------------
+    // COLORES
+    //--------------------------------------------------
+
+    if (
+        core &&
+        Array.isArray(song.colors) &&
+        song.colors.length > 0
+    ) {
+
+        core.setMusicColors(
+            song.colors
+        );
+
+    }
+
+    //--------------------------------------------------
+    // REPRODUCIR
+    //--------------------------------------------------
+
+    playSong(
+
+        song.audio,
+
+        () => {
+
+            console.log(
+                "[Music] Canción terminada:",
+                song.text
+            );
+
+            if (core) {
+
+                core.stopMusicVisualizer();
+
+                core.resetMusicColors();
+
+            }
+
+        }
+
+    );
 
 }
 
@@ -72,9 +259,9 @@ function handleSecret(word) {
 
     if (!word) return;
 
-    //----------------------------------
-    // CAMBIAR COLOR DEL NÚCLEO
-    //----------------------------------
+    //--------------------------------------------------
+    // CAMBIAR COLOR
+    //--------------------------------------------------
 
     if (
         word.action ===
@@ -84,7 +271,7 @@ function handleSecret(word) {
         if (!core) {
 
             console.warn(
-                "CoreSphere no está conectado a WordInteraction."
+                "[Secret] Core no conectado."
             );
 
             return;
@@ -97,9 +284,9 @@ function handleSecret(word) {
 
     }
 
-    //----------------------------------
-    // OTROS SECRETOS
-    //----------------------------------
+    //--------------------------------------------------
+    // GUILLOTINE
+    //--------------------------------------------------
 
     if (
         word.action ===
@@ -116,24 +303,35 @@ function handleSecret(word) {
 
         }
 
-        playGuillotine(() => {
+        playGuillotine(
 
-            if (core) {
+            () => {
 
-                core.stopGuillotine();
+                if (core) {
+
+                    core.stopGuillotine();
+
+                }
 
             }
 
-        });
+        );
 
         return;
 
     }
 
-    if (word.text === "24/08") {
+    //--------------------------------------------------
+    // 24/08
+    //--------------------------------------------------
+
+    if (
+        word.text ===
+        "24/08"
+    ) {
 
         console.log(
-            "Secret 24/08"
+            "[Secret] 24/08"
         );
 
         return;
@@ -148,141 +346,241 @@ function handleSecret(word) {
 
 function showNormalWord(word) {
 
-    showMessage(word.text);
+    showMessage(
+        word.text
+    );
 
 }
 
 //--------------------------------------------------
-// FOLDER
+// ABRIR FOLDER
 //--------------------------------------------------
 
-function openFolder(word) {
+function openFolder(folder) {
 
-    if (!word.children?.length) {
+    if (
+        !folder.children ||
+        folder.children.length === 0
+    ) {
 
         console.warn(
-            "El folder no tiene contenido:",
-            word.text
+            "[Folder] No tiene contenido:",
+            folder.text
         );
 
         return;
 
     }
 
-    createFolderUI(word);
+    console.log(
+        "[Folder] Abriendo:",
+        folder.text
+    );
+
+    createFolderUI(folder);
 
 }
 
 //--------------------------------------------------
-// CREAR UI
+// CREAR UI DEL FOLDER
 //--------------------------------------------------
 
 function createFolderUI(folder) {
 
+    //--------------------------------------------------
+    // CERRAR ANTERIOR
+    //--------------------------------------------------
+
     closeFolder();
 
-    folderContainer = document.createElement("div");
+    //--------------------------------------------------
+    // CONTENEDOR
+    //--------------------------------------------------
 
-    folderContainer.id = "folder-system";
+    folderContainer =
+        document.createElement(
+            "div"
+        );
 
-    const panel = document.createElement("div");
+    folderContainer.id =
+        "folder-system";
 
-    panel.className = "folder-panel";
+    //--------------------------------------------------
+    // PANEL
+    //--------------------------------------------------
 
-    //----------------------------------
+    const panel =
+        document.createElement(
+            "div"
+        );
+
+    panel.className =
+        "folder-panel";
+
+    //--------------------------------------------------
     // TÍTULO
-    //----------------------------------
+    //--------------------------------------------------
 
-    const title = document.createElement("div");
+    const title =
+        document.createElement(
+            "div"
+        );
 
-    title.className = "folder-title";
+    title.className =
+        "folder-title";
 
-    title.textContent = folder.text;
+    title.textContent =
+        folder.text;
 
-    panel.appendChild(title);
+    panel.appendChild(
+        title
+    );
 
-    //----------------------------------
-    // CONTENIDO
-    //----------------------------------
+    //--------------------------------------------------
+    // LISTA
+    //--------------------------------------------------
 
-    const list = document.createElement("div");
+    const list =
+        document.createElement(
+            "div"
+        );
 
-    list.className = "folder-list";
+    list.className =
+        "folder-list";
 
-    folder.children.forEach(child => {
+    //--------------------------------------------------
+    // CANCIONES
+    //--------------------------------------------------
 
-        const item = document.createElement("button");
+    folder.children.forEach(
+        song => {
 
-        item.className = "folder-item";
-
-        item.textContent = "♪ " + child.text;
-
-        item.addEventListener(
-            "click",
-            () => {
-
-                console.log(
-                    "Seleccionado:",
-                    child
+            const item =
+                document.createElement(
+                    "button"
                 );
 
-                if (child.audio) {
+            item.type =
+                "button";
 
-                    if (core) {
+            item.className =
+                "folder-item";
 
-                        core.startMusicVisualizer();
+            item.textContent =
+                "♪ " +
+                song.text;
 
-                    }
+            //--------------------------------------------------
+            // COLOR DEL BOTÓN
+            //--------------------------------------------------
 
-                    playSong(
-                        child.audio,
-                        () => {
+            if (
+                Array.isArray(song.colors) &&
+                song.colors.length > 0
+            ) {
 
-                            if (core) {
+                item.style.setProperty(
+                    "--song-color",
+                    song.colors[0]
+                );
 
-                                core.stopMusicVisualizer();
+                item.style.borderColor =
+                    song.colors[0];
 
-                            }
+            }
 
-                        }
+            //--------------------------------------------------
+            // CLICK
+            //--------------------------------------------------
+
+            item.addEventListener(
+                "click",
+                event => {
+
+                    event.preventDefault();
+
+                    event.stopPropagation();
+
+                    console.log(
+                        "[Folder] Canción seleccionada:",
+                        song.text
+                    );
+
+                    playFolderSong(
+                        song
                     );
 
                 }
+            );
 
-            }
+            //--------------------------------------------------
+            // AGREGAR
+            //--------------------------------------------------
+
+            list.appendChild(
+                item
+            );
+
+        }
+    );
+
+    panel.appendChild(
+        list
+    );
+
+    //--------------------------------------------------
+    // BOTÓN CERRAR
+    //--------------------------------------------------
+
+    const closeButton =
+        document.createElement(
+            "button"
         );
 
-        list.appendChild(item);
+    closeButton.type =
+        "button";
 
-    });
+    closeButton.className =
+        "folder-close";
 
-    panel.appendChild(list);
-
-    //----------------------------------
-    // CERRAR
-    //----------------------------------
-
-    const closeButton = document.createElement("button");
-
-    closeButton.className = "folder-close";
-
-    closeButton.textContent = "Cerrar";
+    closeButton.textContent =
+        "Cerrar";
 
     closeButton.addEventListener(
         "click",
-        closeFolder
+        event => {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+            closeFolder();
+
+        }
     );
 
-    panel.appendChild(closeButton);
+    panel.appendChild(
+        closeButton
+    );
 
-    //----------------------------------
-    // AGREGAR
-    //----------------------------------
+    //--------------------------------------------------
+    // AGREGAR PANEL
+    //--------------------------------------------------
 
-    folderContainer.appendChild(panel);
+    folderContainer.appendChild(
+        panel
+    );
 
     document.body.appendChild(
         folderContainer
+    );
+
+    //--------------------------------------------------
+    // DEBUG
+    //--------------------------------------------------
+
+    console.log(
+        "[Folder] UI creada correctamente."
     );
 
 }
@@ -293,14 +591,18 @@ function createFolderUI(folder) {
 
 export function closeFolder() {
 
-    if (!folderContainer) return;
+    if (!folderContainer) {
+
+        return;
+
+    }
 
     folderContainer.remove();
 
     folderContainer = null;
 
-    exitCameraFocus();
-
-    endUniverseFocus();
+    console.log(
+        "[Folder] Cerrado."
+    );
 
 }
