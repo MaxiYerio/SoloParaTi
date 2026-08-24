@@ -610,7 +610,38 @@ function fadeAudio(
 // INICIAR CHIHIRO
 //--------------------------------------------------
 
+//--------------------------------------------------
+// INICIAR / REANUDAR CHIHIRO
+//--------------------------------------------------
+
 export async function startChihiro() {
+
+    // Si hay otra música reproduciéndose,
+    // NO iniciar Chihiro encima.
+    if (
+        currentSong &&
+        !currentSong.paused
+    ) {
+
+        console.log(
+            "[Music] Chihiro no inicia: hay otra canción."
+        );
+
+        return;
+
+    }
+
+    if (
+        guillotinePlaying
+    ) {
+
+        console.log(
+            "[Music] Chihiro no inicia: Guillotine está activa."
+        );
+
+        return;
+
+    }
 
     try {
 
@@ -629,7 +660,20 @@ export async function startChihiro() {
         }
 
 
-        await chihiro.play();
+        //--------------------------------------------------
+        // IMPORTANTE:
+        // NO reiniciamos currentTime.
+        // Continúa exactamente donde quedó.
+        //--------------------------------------------------
+
+        if (
+            chihiro.paused
+        ) {
+
+            await chihiro.play();
+
+        }
+
 
         await fadeAudio(
             chihiro,
@@ -638,14 +682,16 @@ export async function startChihiro() {
 
 
         console.log(
-            "[Music] Chihiro iniciado"
+            "[Music] Chihiro reanudado en:",
+            chihiro.currentTime.toFixed(2),
+            "s"
         );
 
     }
     catch (error) {
 
         console.warn(
-            "[Music] No se pudo iniciar Chihiro:",
+            "[Music] No se pudo iniciar/reanudar Chihiro:",
             error
         );
 
@@ -725,13 +771,15 @@ export async function playSong(
 
 
     //--------------------------------------------------
-    // BAJAR CHIHIRO
+    // BAJAR Y PAUSAR CHIHIRO
     //--------------------------------------------------
 
     await fadeAudio(
         chihiro,
         0
     );
+
+    chihiro.pause();
 
 
     //--------------------------------------------------
@@ -801,9 +849,17 @@ export async function playSong(
 
             if (!guillotinePlaying) {
 
+                await chihiro.play();
+
                 await fadeAudio(
                     chihiro,
                     0.35
+                );
+
+                console.log(
+                    "[Music] Chihiro reanudado en:",
+                    chihiro.currentTime.toFixed(2),
+                    "s"
                 );
 
             }
@@ -925,10 +981,12 @@ export async function playGuillotine(
     if (currentSong) {
 
         await fadeAudio(
-            currentSong,
+            chihiro,
             0
         );
 
+        chihiro.pause();
+        
         currentSong.pause();
 
         currentSong.currentTime = 0;
