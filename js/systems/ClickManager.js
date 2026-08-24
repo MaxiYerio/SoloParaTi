@@ -9,6 +9,10 @@ import {
 } from "./MessageSystem.js";
 
 import {
+    wasDragging
+} from "./InteractionManager.js";
+
+import {
     interactWithWord
 } from "./WordInteraction.js";
 
@@ -76,6 +80,13 @@ export function setupClick(
 //----------------------------------
 
 async function handleClick(event) {
+
+
+    if (wasDragging()) {
+
+        return;
+
+    }
 
     //----------------------------------
     // Si el universo está ocupado

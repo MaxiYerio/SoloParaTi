@@ -1,6 +1,7 @@
 // js/systems/InteractionManager.js
 
 let isDragging = false;
+let hasDragged = false;
 
 let previousX = 0;
 let previousY = 0;
@@ -16,136 +17,290 @@ const SENSITIVITY = 0.0022;
 const FRICTION = 0.90;
 const STOP_THRESHOLD = 0.00001;
 
+// Distancia mínima para considerar
+// que realmente hubo un arrastre.
+const DRAG_THRESHOLD = 6;
+
 //----------------------------------
 // AUTO ROTACIÓN
 //----------------------------------
 
-const IDLE_DELAY = 6000;      // 6 segundos sin tocar
-const AUTO_SPEED = 0.00045;   // velocidad muy lenta
+const IDLE_DELAY = 6000;
+const AUTO_SPEED = 0.00045;
 
 let lastInteraction = performance.now();
 
-export function setupInteraction(target){
+//----------------------------------
+// ESTADO DEL CLICK
+//----------------------------------
 
-    const canvas = document.querySelector("canvas");
+export function wasDragging() {
+    return hasDragged;
+}
+
+//----------------------------------
+// SETUP
+//----------------------------------
+
+export function setupInteraction(target) {
+
+    const canvas =
+        document.querySelector("canvas");
+
+    if (!canvas) {
+
+        console.warn(
+            "[Interaction] Canvas no encontrado."
+        );
+
+        return;
+
+    }
+
+    //----------------------------------
+    // POINTER DOWN
+    //----------------------------------
 
     canvas.addEventListener(
         "pointerdown",
         startDrag
     );
 
+    //----------------------------------
+    // POINTER MOVE
+    //----------------------------------
+
     window.addEventListener(
         "pointermove",
         moveDrag
     );
+
+    //----------------------------------
+    // POINTER UP
+    //----------------------------------
 
     window.addEventListener(
         "pointerup",
         endDrag
     );
 
-    function startDrag(e){
+    //----------------------------------
+    // POINTER CANCEL
+    //----------------------------------
+
+    window.addEventListener(
+        "pointercancel",
+        endDrag
+    );
+
+    //----------------------------------
+    // INICIAR
+    //----------------------------------
+
+    function startDrag(e) {
 
         isDragging = true;
 
-        // detener completamente la inercia
+        hasDragged = false;
+
         velocityX = 0;
         velocityY = 0;
 
-        lastInteraction = performance.now();
+        lastInteraction =
+            performance.now();
 
-        previousX = e.clientX;
-        previousY = e.clientY;
+        previousX =
+            e.clientX;
+
+        previousY =
+            e.clientY;
 
     }
 
-    function moveDrag(e){
+    //----------------------------------
+    // MOVER
+    //----------------------------------
 
-        if(!isDragging) return;
+    function moveDrag(e) {
 
-        const dx = e.clientX - previousX;
-        const dy = e.clientY - previousY;
+        if (!isDragging) return;
 
-        previousX = e.clientX;
-        previousY = e.clientY;
+        const dx =
+            e.clientX -
+            previousX;
 
-        lastInteraction = performance.now();
+        const dy =
+            e.clientY -
+            previousY;
 
-        if(
+        //----------------------------------
+        // DETECTAR ARRRASTRE REAL
+        //----------------------------------
 
-            Math.abs(dx) > 0.1 ||
+        if (
+            Math.abs(
+                e.clientX -
+                previousX
+            ) > 0.1 ||
+            Math.abs(
+                e.clientY -
+                previousY
+            ) > 0.1
+        ) {
 
-            Math.abs(dy) > 0.1
+            const distance =
+                Math.sqrt(
+                    Math.pow(
+                        e.clientX -
+                        previousX,
+                        2
+                    ) +
+                    Math.pow(
+                        e.clientY -
+                        previousY,
+                        2
+                    )
+                );
 
-        ){
+            if (
+                distance >=
+                DRAG_THRESHOLD
+            ) {
 
-            velocityX = dx * SENSITIVITY;
-            velocityY = dy * SENSITIVITY;
+                hasDragged = true;
+
+            }
 
         }
 
-        target.rotation.y += velocityX;
-        target.rotation.x += velocityY;
+        //----------------------------------
+        // ACTUALIZAR POSICIÓN
+        //----------------------------------
+
+        previousX =
+            e.clientX;
+
+        previousY =
+            e.clientY;
+
+        lastInteraction =
+            performance.now();
+
+        //----------------------------------
+        // VELOCIDAD
+        //----------------------------------
+
+        if (
+            Math.abs(dx) > 0.1 ||
+            Math.abs(dy) > 0.1
+        ) {
+
+            velocityX =
+                dx *
+                SENSITIVITY;
+
+            velocityY =
+                dy *
+                SENSITIVITY;
+
+        }
+
+        //----------------------------------
+        // ROTAR
+        //----------------------------------
+
+        target.rotation.y +=
+            velocityX;
+
+        target.rotation.x +=
+            velocityY;
 
     }
 
-    function endDrag(){
+    //----------------------------------
+    // TERMINAR
+    //----------------------------------
+
+    function endDrag() {
 
         isDragging = false;
 
-        lastInteraction = performance.now();
+        lastInteraction =
+            performance.now();
 
     }
 
-    function animate(){
+    //----------------------------------
+    // ANIMACIÓN
+    //----------------------------------
 
-        requestAnimationFrame(animate);
+    function animate() {
+
+        requestAnimationFrame(
+            animate
+        );
 
         //----------------------------------
-        // Mientras arrastra
+        // MIENTRAS ARRASTRA
         //----------------------------------
 
-        if(isDragging) return;
+        if (isDragging) return;
 
         //----------------------------------
-        // Inercia
+        // INERCIA
         //----------------------------------
 
-        velocityX *= FRICTION;
-        velocityY *= FRICTION;
+        velocityX *=
+            FRICTION;
 
-        if(Math.abs(velocityX) < STOP_THRESHOLD){
+        velocityY *=
+            FRICTION;
+
+        if (
+            Math.abs(
+                velocityX
+            ) <
+            STOP_THRESHOLD
+        ) {
 
             velocityX = 0;
 
         }
 
-        if(Math.abs(velocityY) < STOP_THRESHOLD){
+        if (
+            Math.abs(
+                velocityY
+            ) <
+            STOP_THRESHOLD
+        ) {
 
             velocityY = 0;
 
         }
 
-        target.rotation.y += velocityX;
-        target.rotation.x += velocityY;
+        target.rotation.y +=
+            velocityX;
+
+        target.rotation.x +=
+            velocityY;
 
         //----------------------------------
-        // Auto rotación
+        // AUTO ROTACIÓN
         //----------------------------------
 
-        const idleTime = performance.now() - lastInteraction;
+        const idleTime =
+            performance.now() -
+            lastInteraction;
 
-        if(
-
-            idleTime > IDLE_DELAY &&
-
+        if (
+            idleTime >
+            IDLE_DELAY &&
             velocityX === 0 &&
-
             velocityY === 0
+        ) {
 
-        ){
-
-            target.rotation.y += AUTO_SPEED;
+            target.rotation.y +=
+                AUTO_SPEED;
 
         }
 
