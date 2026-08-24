@@ -729,6 +729,15 @@ export function createCoreSphere() {
             newColor
         );
 
+        // Actualizar inmediatamente los colores visuales
+        currentMusicColor.copy(
+            new THREE.Color(newColor)
+        );
+
+        targetMusicColor.copy(
+            new THREE.Color(newColor)
+        );
+
     }
 
     //--------------------------------------------------
@@ -1386,10 +1395,14 @@ export function createCoreSphere() {
         changeColor,
 
         setColor,
-
+        
         getColor() {
 
-            return getCurrentCoreColor();
+            return sphereMaterial
+                .uniforms
+                .uColor
+                .value
+                .getHex();
 
         },
 
