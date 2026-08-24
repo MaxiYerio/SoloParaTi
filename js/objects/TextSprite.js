@@ -1,27 +1,69 @@
-//js\objects\TextSprite.js
+// js/objects/TextSprite.js
 
-import * as THREE from "https://unpkg.com/three@0.179.1/build/three.module.js";
+import * as THREE from
+    "https://unpkg.com/three@0.179.1/build/three.module.js";
 
 export function createTextSprite(data) {
 
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
+    const canvas =
+        document.createElement("canvas");
+
+    const ctx =
+        canvas.getContext("2d");
 
     canvas.width = 1024;
     canvas.height = 256;
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
 
-    ctx.font = "bold 72px Poppins";
+    //--------------------------------------------------
+    // FUENTE
+    //--------------------------------------------------
 
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
+    ctx.font =
+        "bold 72px Poppins";
 
-    // brillo suave
-    ctx.shadowColor = "#B987FF";
-    ctx.shadowBlur = 18;
+    ctx.textAlign =
+        "center";
 
-    ctx.fillStyle = data.color || "#FFFFFF";
+    ctx.textBaseline =
+        "middle";
+
+    //--------------------------------------------------
+    // BORDE OSCURO
+    //
+    // Esto permite que la palabra siga siendo blanca
+    // incluso cuando pasa delante del núcleo.
+    //--------------------------------------------------
+
+    ctx.shadowColor =
+        "rgba(0, 0, 0, 0.85)";
+
+    ctx.shadowBlur =
+        8;
+
+    ctx.shadowOffsetX =
+        0;
+
+    ctx.shadowOffsetY =
+        0;
+
+    //--------------------------------------------------
+    // COLOR
+    //--------------------------------------------------
+
+    ctx.fillStyle =
+        data.color ||
+        "#FFFFFF";
+
+    //--------------------------------------------------
+    // TEXTO
+    //--------------------------------------------------
 
     ctx.fillText(
 
@@ -33,25 +75,58 @@ export function createTextSprite(data) {
 
     );
 
-    const texture = new THREE.CanvasTexture(canvas);
+    //--------------------------------------------------
+    // TEXTURA
+    //--------------------------------------------------
 
-    texture.needsUpdate = true;
+    const texture =
+        new THREE.CanvasTexture(
+            canvas
+        );
 
-    const material = new THREE.SpriteMaterial({
+    texture.needsUpdate =
+        true;
 
-        map: texture,
+    //--------------------------------------------------
+    // MATERIAL
+    //--------------------------------------------------
 
-        transparent: true,
+    const material =
+        new THREE.SpriteMaterial({
 
-        depthWrite: false,
-        depthTest: true,
-        toneMapped: false
+            map:
+                texture,
 
-    });
+            transparent:
+                true,
 
-    const sprite = new THREE.Sprite(material);
+            depthWrite:
+                false,
 
-    const size = data.size || 1;
+            depthTest:
+                true,
+
+            toneMapped:
+                false
+
+        });
+
+    //--------------------------------------------------
+    // SPRITE
+    //--------------------------------------------------
+
+    const sprite =
+        new THREE.Sprite(
+            material
+        );
+
+    //--------------------------------------------------
+    // TAMAÑO
+    //--------------------------------------------------
+
+    const size =
+        data.size ||
+        1;
 
     sprite.scale.set(
 
@@ -63,11 +138,19 @@ export function createTextSprite(data) {
 
     );
 
-    sprite.userData.baseScale = sprite.scale.clone();
+    //--------------------------------------------------
+    // DATOS
+    //--------------------------------------------------
 
-    sprite.userData.baseColor = data.color || "#FFFFFF";
+    sprite.userData.baseScale =
+        sprite.scale.clone();
 
-    sprite.userData.data = data;
+    sprite.userData.baseColor =
+        data.color ||
+        "#FFFFFF";
+
+    sprite.userData.data =
+        data;
 
     return sprite;
 
