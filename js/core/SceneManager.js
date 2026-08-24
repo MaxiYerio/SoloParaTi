@@ -244,8 +244,36 @@ export function initScene() {
 
         );
 
-    camera.position.z =
-        12;
+    //--------------------------------------------------
+    // CÁMARA RESPONSIVA
+    //--------------------------------------------------
+
+    function updateCameraResponsive() {
+
+        const width =
+            window.innerWidth;
+
+        const height =
+            window.innerHeight;
+
+        const isMobile =
+            width <= 600;
+
+        if (isMobile) {
+
+            camera.position.z =
+                height < 700
+                    ? 14
+                    : 13;
+
+        } else {
+
+            camera.position.z =
+                12;
+
+        }
+
+    }
 
     //--------------------------------------------------
     // RENDERER
@@ -271,8 +299,13 @@ export function initScene() {
     );
 
     renderer.setPixelRatio(
-        window.devicePixelRatio
+        Math.min(
+            window.devicePixelRatio,
+            2
+        )
     );
+
+    updateCameraResponsive();
 
     //--------------------------------------------------
     // CANVAS
@@ -430,12 +463,11 @@ window.addEventListener(
         camera.updateProjectionMatrix();
 
         renderer.setSize(
-
             window.innerWidth,
-
             window.innerHeight
-
         );
+
+        updateCameraResponsive();
 
     }
 );
