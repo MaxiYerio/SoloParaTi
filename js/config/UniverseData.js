@@ -18,6 +18,22 @@ export const UniverseData = [
     },
 
     {
+        text: "Fue Horrible",
+        type: "memory",
+        sequence: [
+            "no boeno lo que acabo de ver"
+        ]
+    },
+    
+    {
+        text: "Huir",
+        type: "memory",
+        sequence: [
+            "Como mi papá deau AJJAJA"
+        ]
+    },
+
+    {
         text: "Siempre",
         type: "memory",
         sequence: [

@@ -10,7 +10,10 @@ export function createWordSphere() {
 
     const generatedWords = UniverseData;
 
-    const radius = 4;
+    const radius =
+        window.innerWidth <= 600
+            ? 3.45
+            : 4;
     const total = 180;
 
     const goldenAngle =

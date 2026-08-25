@@ -20,7 +20,18 @@ let zoomLocked = false;
 // CONFIGURACIÓN DEL ENFOQUE
 //----------------------------------
 
-const FOCUS_Z = 8.2;
+const FOCUS_Z_DESKTOP = 8.2;
+const FOCUS_Z_MOBILE = 9.5;
+
+function getFocusZ() {
+
+    if (window.innerWidth <= 600) {
+        return FOCUS_Z_MOBILE;
+    }
+
+    return FOCUS_Z_DESKTOP;
+
+}
 const FOCUS_SMOOTH = 0.045;
 
 //----------------------------------
@@ -122,7 +133,7 @@ function animate() {
     //----------------------------------
 
     const desiredZ = focusMode
-        ? FOCUS_Z
+        ? getFocusZ()
         : targetZ;
 
     //----------------------------------

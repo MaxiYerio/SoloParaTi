@@ -270,8 +270,16 @@ export function initScene() {
 
     );
 
+    const pixelRatio =
+        Math.min(
+            window.devicePixelRatio || 1,
+            window.innerWidth <= 600
+                ? 1.5
+                : 2
+        );
+
     renderer.setPixelRatio(
-        window.devicePixelRatio
+        pixelRatio
     );
 
     //--------------------------------------------------
@@ -417,24 +425,44 @@ function animate() {
 // RESIZE
 //--------------------------------------------------
 
+function resizeScene() {
+
+    if (!camera || !renderer) return;
+
+    const width =
+        window.innerWidth;
+
+    const height =
+        window.innerHeight;
+
+
+    camera.aspect =
+        width / height;
+
+    camera.updateProjectionMatrix();
+
+
+    renderer.setSize(
+        width,
+        height,
+        false
+    );
+
+}
+
+
 window.addEventListener(
     "resize",
+    resizeScene
+);
+
+window.addEventListener(
+    "orientationchange",
     () => {
 
-        if (!camera) return;
-
-        camera.aspect =
-            window.innerWidth /
-            window.innerHeight;
-
-        camera.updateProjectionMatrix();
-
-        renderer.setSize(
-
-            window.innerWidth,
-
-            window.innerHeight
-
+        setTimeout(
+            resizeScene,
+            100
         );
 
     }
