@@ -10,67 +10,16 @@ export function createWordSphere() {
 
     const generatedWords = UniverseData;
 
-    //--------------------------------------------------
-    // RADIO RESPONSIVE
-    //--------------------------------------------------
-
-    function getUniverseRadius() {
-
-        const width =
-            window.innerWidth;
-
-        const height =
-            window.innerHeight;
-
-
-        //--------------------------------------------------
-        // CELULAR VERTICAL
-        //--------------------------------------------------
-
-        if (
-            width <= 600 &&
-            height > width
-        ) {
-
-            return 3.45;
-
-        }
-
-
-        //--------------------------------------------------
-        // CELULAR HORIZONTAL
-        //--------------------------------------------------
-
-        if (
-            width <= 900 &&
-            width > height
-        ) {
-
-            return 3.75;
-
-        }
-
-
-        //--------------------------------------------------
-        // PC / TABLET
-        //--------------------------------------------------
-
-        return 4;
-
-    }
+    const radius =
+        window.innerWidth <= 600
+            ? 3.45
+            : 4;
     const total = 180;
 
     const goldenAngle =
         Math.PI * (3 - Math.sqrt(5));
 
     const points = [];
-
-    //--------------------------------------------------
-    // RADIO ACTUAL
-    //--------------------------------------------------
-
-    let currentRadius =
-        getUniverseRadius();
 
     //--------------------------------------------------
     // ESTADO
@@ -128,10 +77,11 @@ export function createWordSphere() {
             createTextSprite(data);
 
         mesh.position.set(
-            x * currentRadius,
-            y * currentRadius,
-            z * currentRadius
+            x * radius,
+            y * radius,
+            z * radius
         );
+
         //--------------------------------------------------
         // ESTADO VISUAL
         //--------------------------------------------------
@@ -587,64 +537,7 @@ export function createWordSphere() {
             ) * 0.08;
 
     }
-    //--------------------------------------------------
-    // ACTUALIZAR RADIO
-    //--------------------------------------------------
 
-    function resize() {
-
-        const newRadius =
-            getUniverseRadius();
-
-
-        //--------------------------------------------------
-        // SI NO CAMBIÓ, NO HACEMOS NADA
-        //--------------------------------------------------
-
-        if (
-            Math.abs(
-                newRadius -
-                currentRadius
-            ) < 0.001
-        ) {
-
-            return;
-
-        }
-
-
-        currentRadius =
-            newRadius;
-
-
-        //--------------------------------------------------
-        // ACTUALIZAR PALABRAS NORMALES
-        //--------------------------------------------------
-
-        normalPoints.forEach(
-            point => {
-
-                const {
-                    x,
-                    y,
-                    z
-                } = point.position;
-
-
-                point.mesh.position.set(
-
-                    x * currentRadius,
-
-                    y * currentRadius,
-
-                    z * currentRadius
-
-                );
-
-            }
-        );
-
-    }
     //--------------------------------------------------
     // API
     //--------------------------------------------------
@@ -655,8 +548,6 @@ export function createWordSphere() {
 
         points,
 
-        resize,
-        
         //--------------------------------------------------
         // BTS
         //--------------------------------------------------

@@ -80,62 +80,6 @@ let hemisphereLight;
 // INICIALIZAR ESCENA
 //--------------------------------------------------
 
-//--------------------------------------------------
-// FOV ADAPTATIVO
-//
-// Mantenemos un FOV horizontal estable para que
-// el universo no cambie de tamaño visualmente
-// al cambiar entre vertical / horizontal.
-//--------------------------------------------------
-
-function getVerticalFOV() {
-
-    const width =
-        window.innerWidth;
-
-    const height =
-        window.innerHeight;
-
-    const aspect =
-        width / height;
-
-
-    //--------------------------------------------------
-    // FOV HORIZONTAL DE REFERENCIA
-    //--------------------------------------------------
-
-    const horizontalFOV =
-        THREE.MathUtils.degToRad(60);
-
-
-    //--------------------------------------------------
-    // CONVERTIR FOV HORIZONTAL → FOV VERTICAL
-    //--------------------------------------------------
-
-    const verticalFOV =
-        2 *
-
-        Math.atan(
-
-            Math.tan(
-                horizontalFOV / 2
-            ) /
-
-            aspect
-
-        );
-
-
-    //--------------------------------------------------
-    // PASAR A GRADOS
-    //--------------------------------------------------
-
-    return THREE.MathUtils.radToDeg(
-        verticalFOV
-    );
-
-}
-
 export function initScene() {
 
     scene =
@@ -289,7 +233,7 @@ export function initScene() {
     camera =
         new THREE.PerspectiveCamera(
 
-            getVerticalFOV(),
+            60,
 
             window.innerWidth /
             window.innerHeight,
@@ -478,17 +422,12 @@ function animate() {
 }
 
 //--------------------------------------------------
-// RESIZE RESPONSIVE
+// RESIZE
 //--------------------------------------------------
 
 function resizeScene() {
 
     if (!camera || !renderer) return;
-
-
-    //--------------------------------------------------
-    // TAMAÑO ACTUAL
-    //--------------------------------------------------
 
     const width =
         window.innerWidth;
@@ -497,51 +436,17 @@ function resizeScene() {
         window.innerHeight;
 
 
-    //--------------------------------------------------
-    // ASPECT RATIO
-    //--------------------------------------------------
-
     camera.aspect =
         width / height;
 
-
-    //--------------------------------------------------
-    // FOV ADAPTATIVO
-    //--------------------------------------------------
-
-    camera.fov =
-        getVerticalFOV();
-
-
-    //--------------------------------------------------
-    // ACTUALIZAR PROYECCIÓN
-    //--------------------------------------------------
-
     camera.updateProjectionMatrix();
 
-
-    //--------------------------------------------------
-    // ACTUALIZAR RENDERER
-    //--------------------------------------------------
 
     renderer.setSize(
         width,
         height,
         false
     );
-
-    //--------------------------------------------------
-    // ACTUALIZAR UNIVERSO
-    //--------------------------------------------------
-
-    if (
-        wordSphere &&
-        wordSphere.resize
-    ) {
-
-        wordSphere.resize();
-
-    }
 
 }
 
