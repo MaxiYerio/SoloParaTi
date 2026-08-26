@@ -230,25 +230,13 @@ export function initScene() {
     // CÁMARA
     //--------------------------------------------------
 
-    const initialWidth =
-        sceneContainer
-            ? sceneContainer.clientWidth
-            : window.innerWidth;
-
-
-    const initialHeight =
-        sceneContainer
-            ? sceneContainer.clientHeight
-            : window.innerHeight;
-
-
     camera =
         new THREE.PerspectiveCamera(
 
             60,
 
-            initialWidth /
-            initialHeight,
+            window.innerWidth /
+            window.innerHeight,
 
             0.1,
 
@@ -274,21 +262,12 @@ export function initScene() {
 
         });
 
-    const initialWidth =
-        sceneContainer
-            ? sceneContainer.clientWidth
-            : window.innerWidth;
-
-
-    const initialHeight =
-        sceneContainer
-            ? sceneContainer.clientHeight
-            : window.innerHeight;
-
-
     renderer.setSize(
-        initialWidth,
-        initialHeight
+
+        window.innerWidth,
+
+        window.innerHeight
+
     );
 
     const pixelRatio =
@@ -450,49 +429,18 @@ function resizeScene() {
 
     if (!camera || !renderer) return;
 
-
-    //--------------------------------------------------
-    // CONTENEDOR REAL DEL CANVAS
-    //--------------------------------------------------
-
-    const container =
-        document.getElementById("scene");
-
-    if (!container) return;
-
-
-    const rect =
-        container.getBoundingClientRect();
-
-
     const width =
-        Math.max(
-            1,
-            Math.round(rect.width)
-        );
-
+        window.innerWidth;
 
     const height =
-        Math.max(
-            1,
-            Math.round(rect.height)
-        );
+        window.innerHeight;
 
-
-    //--------------------------------------------------
-    // ACTUALIZAR ASPECT RATIO
-    //--------------------------------------------------
 
     camera.aspect =
         width / height;
 
-
     camera.updateProjectionMatrix();
 
-
-    //--------------------------------------------------
-    // ACTUALIZAR RENDERER
-    //--------------------------------------------------
 
     renderer.setSize(
         width,
@@ -503,19 +451,10 @@ function resizeScene() {
 }
 
 
-//--------------------------------------------------
-// RESIZE DE LA VENTANA
-//--------------------------------------------------
-
 window.addEventListener(
     "resize",
     resizeScene
 );
-
-
-//--------------------------------------------------
-// ROTACIÓN DEL CELULAR
-//--------------------------------------------------
 
 window.addEventListener(
     "orientationchange",
@@ -528,30 +467,3 @@ window.addEventListener(
 
     }
 );
-
-
-//--------------------------------------------------
-// OBSERVAR CAMBIOS REALES DEL CONTENEDOR
-//--------------------------------------------------
-
-const sceneContainer =
-    document.getElementById("scene");
-
-
-if (sceneContainer) {
-
-    const resizeObserver =
-        new ResizeObserver(
-            () => {
-
-                resizeScene();
-
-            }
-        );
-
-
-    resizeObserver.observe(
-        sceneContainer
-    );
-
-}
