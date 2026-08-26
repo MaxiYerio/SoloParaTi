@@ -5,50 +5,211 @@
 
 <head>
 
-      <meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-      <title>Cerebro</title>
+    <meta
+        name="theme-color"
+        content="#0B0515"
+    >
 
-      <!-- Fuente -->
+    <meta
+        name="description"
+        content="Un pequeño universo creado especialmente para vos."
+    >
 
-      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Solo Para Ti</title>
 
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-      <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Poppins:wght@300;400;500&display=swap"
-            rel="stylesheet">
+    <!--==================================================
+        FUENTES
+    ==================================================-->
 
-      <!-- CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-      <link rel="stylesheet" href="css/style.css">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
-      <link rel="stylesheet" href="css/birthday-card.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!--==================================================
+        CSS
+    ==================================================-->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/birthday-card.css"
+    >
 
 </head>
 
+
 <body>
 
-      <!-- Intro -->
 
-      <div id="intro">
+    <!--==================================================
+        INTRO
+        NO CAMBIÉ EL CONTENIDO ORIGINAL
+    ==================================================-->
 
-            <h1>Para alguien muy especial...</h1>
+    <div id="intro">
 
-            <p>Espero que disfrutes este pequeño universo.</p>
+        <h1>
+            Para alguien muy especial...
+        </h1>
 
-            <span>Tocá en cualquier parte para comenzar</span>
+        <p>
+            Espero que disfrutes este pequeño universo.
+        </p>
 
-      </div>
+        <span>
+            Tocá en cualquier parte para comenzar
+        </span>
 
-      <!-- Canvas ThreeJS -->
+    </div>
 
-      <div id="scene"></div>
 
-      <!-- Scripts -->
+    <!--==================================================
+        ESCENA
+    ==================================================-->
 
-      <script type="module" src="js/main.js"></script>
+    <div id="scene"></div>
+
+
+    <!--==================================================
+        ACTUALIZACIONES
+    ==================================================-->
+
+    <div
+        id="updates-container"
+        aria-live="polite"
+    >
+
+        <!-- Campanita -->
+
+        <button
+            id="updates-button"
+            type="button"
+            aria-label="Ver actualizaciones"
+            aria-expanded="false"
+        >
+
+            <span
+                class="bell-icon"
+                aria-hidden="true"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+
+                    <path
+                        d="M18 9.5C18 5.91 15.76 3 12 3C8.24 3 6 5.91 6 9.5C6 14 4 15 4 17H20C20 15 18 14 18 9.5Z"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+
+                    <path
+                        d="M9.5 20C10.1 20.63 10.99 21 12 21C13.01 21 13.9 20.63 14.5 20"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                    />
+
+                </svg>
+
+            </span>
+
+
+            <!-- Indicador de actualización -->
+
+            <span
+                id="updates-dot"
+                aria-hidden="true"
+            ></span>
+
+        </button>
+
+
+        <!-- Panel -->
+
+        <div
+            id="updates-panel"
+            aria-hidden="true"
+        >
+
+            <div class="updates-header">
+
+                <div>
+
+                    <span class="updates-kicker">
+                        SOLO PARA TI
+                    </span>
+
+                    <h2>
+                        Actualizaciones
+                    </h2>
+
+                </div>
+
+
+                <span
+                    id="current-version"
+                    class="version-badge"
+                >
+                    v0.4.0
+                </span>
+
+            </div>
+
+
+            <div
+                id="updates-list"
+                class="updates-list"
+            ></div>
+
+
+            <div class="updates-footer">
+
+                <span>
+                    Este universo todavía está creciendo ✦
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!--==================================================
+        SCRIPTS
+    ==================================================-->
+
+    <script
+        type="module"
+        src="js/main.js"
+    ></script>
 
 </body>
 

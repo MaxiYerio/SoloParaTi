@@ -102,27 +102,20 @@ body {
     text-align: center;
 
     padding:
-        max(30px, env(safe-area-inset-top))
-        max(30px, env(safe-area-inset-right))
-        max(30px, env(safe-area-inset-bottom))
-        max(30px, env(safe-area-inset-left));
+        max(30px, env(safe-area-inset-top)) max(30px, env(safe-area-inset-right)) max(30px, env(safe-area-inset-bottom)) max(30px, env(safe-area-inset-left));
 
     z-index: 100;
 
     background:
 
-        radial-gradient(
-            circle at center,
+        radial-gradient(circle at center,
             rgba(126, 58, 237, 0.12),
-            transparent 45%
-        ),
+            transparent 45%),
 
-        linear-gradient(
-            180deg,
+        linear-gradient(180deg,
             #0B0515 0%,
             #120722 55%,
-            #160B2F 100%
-        );
+            #160B2F 100%);
 
     color: white;
 
@@ -156,11 +149,9 @@ body {
 
     font-family: "Cormorant Garamond", serif;
 
-    font-size: clamp(
-        2.2rem,
-        6vw,
-        3.5rem
-    );
+    font-size: clamp(2.2rem,
+            6vw,
+            3.5rem);
 
     line-height: 1.15;
 
@@ -174,12 +165,10 @@ body {
 
         0 0 30px #7C3AED,
 
-        0 0 60px rgba(
-            124,
+        0 0 60px rgba(124,
             58,
             237,
-            0.4
-        );
+            0.4);
 
 }
 
@@ -196,11 +185,9 @@ body {
 
     color: #D8B4FE;
 
-    font-size: clamp(
-        0.95rem,
-        3vw,
-        1.15rem
-    );
+    font-size: clamp(0.95rem,
+            3vw,
+            1.15rem);
 
     line-height: 1.6;
 
@@ -215,20 +202,16 @@ body {
 
     margin-top: 65px;
 
-    font-size: clamp(
-        0.75rem,
-        2.5vw,
-        0.9rem
-    );
+    font-size: clamp(0.75rem,
+            2.5vw,
+            0.9rem);
 
     letter-spacing: 1px;
 
-    color: rgba(
-        255,
-        255,
-        255,
-        0.65
-    );
+    color: rgba(255,
+            255,
+            255,
+            0.65);
 
     animation:
         pulse 2s infinite;
@@ -268,10 +251,8 @@ body {
     transform:
         translate(-50%, -50%);
 
-    width: min(
-        620px,
-        calc(100vw - 40px)
-    );
+    width: min(620px,
+            calc(100vw - 40px));
 
     min-width: 0;
 
@@ -281,12 +262,10 @@ body {
     border-radius: 22px;
 
     background:
-        rgba(
-            16,
+        rgba(16,
             10,
             28,
-            0.38
-        );
+            0.38);
 
     backdrop-filter:
         blur(18px);
@@ -295,13 +274,10 @@ body {
         blur(18px);
 
     border:
-        1px solid
-        rgba(
-            185,
+        1px solid rgba(185,
             135,
             255,
-            0.18
-        );
+            0.18);
 
     color: #FFFFFF;
 
@@ -309,11 +285,9 @@ body {
         "Cormorant Garamond",
         serif;
 
-    font-size: clamp(
-        1.5rem,
-        5vw,
-        2rem
-    );
+    font-size: clamp(1.5rem,
+            5vw,
+            2rem);
 
     line-height: 1.35;
 
@@ -337,23 +311,17 @@ body {
 
     box-shadow:
 
-        0 0 40px
-        rgba(
-            185,
+        0 0 40px rgba(185,
             135,
             255,
-            0.12
-        );
+            0.12);
 
     text-shadow:
 
-        0 0 12px
-        rgba(
-            185,
+        0 0 12px rgba(185,
             135,
             255,
-            0.45
-        );
+            0.45);
 
     z-index: 999;
 
@@ -389,10 +357,7 @@ body {
     justify-content: center;
 
     padding:
-        max(20px, env(safe-area-inset-top))
-        max(20px, env(safe-area-inset-right))
-        max(20px, env(safe-area-inset-bottom))
-        max(20px, env(safe-area-inset-left));
+        max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
 
     z-index: 1000;
 
@@ -401,12 +366,10 @@ body {
     touch-action: auto;
 
     background:
-        rgba(
-            5,
+        rgba(5,
             2,
             12,
-            0.38
-        );
+            0.38);
 
     backdrop-filter:
         blur(5px);
@@ -425,16 +388,12 @@ body {
 
     position: relative;
 
-    width: min(
-        440px,
-        100%
-    );
+    width: min(440px,
+            100%);
 
     max-height:
-        min(
-            720px,
-            88dvh
-        );
+        min(720px,
+            88dvh);
 
     padding: 26px;
 
@@ -442,48 +401,33 @@ body {
 
     background:
 
-        linear-gradient(
-            145deg,
-            rgba(
-                29,
+        linear-gradient(145deg,
+            rgba(29,
                 17,
                 48,
-                0.97
-            ),
-            rgba(
-                13,
+                0.97),
+            rgba(13,
                 7,
                 24,
-                0.97
-            )
-        );
+                0.97));
 
     border:
-        1px solid
-        rgba(
-            185,
+        1px solid rgba(185,
             135,
             255,
-            0.30
-        );
+            0.30);
 
     box-shadow:
 
-        0 0 40px
-        rgba(
-            185,
+        0 0 40px rgba(185,
             135,
             255,
-            0.15
-        ),
+            0.15),
 
-        0 20px 80px
-        rgba(
+        0 20px 80px rgba(0,
             0,
             0,
-            0,
-            0.45
-        );
+            0.45);
 
     backdrop-filter:
         blur(20px);
@@ -516,11 +460,9 @@ body {
         "Cormorant Garamond",
         serif;
 
-    font-size: clamp(
-        1.8rem,
-        7vw,
-        2.2rem
-    );
+    font-size: clamp(1.8rem,
+            7vw,
+            2.2rem);
 
     font-weight: 600;
 
@@ -552,22 +494,17 @@ body {
 
     background:
 
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             transparent,
             #B987FF,
-            transparent
-        );
+            transparent);
 
     box-shadow:
 
-        0 0 10px
-        rgba(
-            185,
+        0 0 10px rgba(185,
             135,
             255,
-            0.6
-        );
+            0.6);
 
 }
 
@@ -599,14 +536,10 @@ body {
 
     scrollbar-color:
 
-        rgba(
-            185,
+        rgba(185,
             135,
             255,
-            0.35
-        )
-
-        transparent;
+            0.35) transparent;
 
     touch-action: pan-y;
 
@@ -632,12 +565,10 @@ body {
 .folder-list::-webkit-scrollbar-thumb {
 
     background:
-        rgba(
-            185,
+        rgba(185,
             135,
             255,
-            0.35
-        );
+            0.35);
 
     border-radius: 10px;
 
@@ -657,22 +588,16 @@ body {
     min-height: 52px;
 
     border:
-        1px solid
-        rgba(
-            185,
+        1px solid rgba(185,
             135,
             255,
-            0.12
-        );
+            0.12);
 
     border-left:
-        3px solid
-        rgba(
-            185,
+        3px solid rgba(185,
             135,
             255,
-            0.35
-        );
+            0.35);
 
     border-radius: 14px;
 
@@ -681,30 +606,22 @@ body {
 
     background:
 
-        linear-gradient(
-            90deg,
-            rgba(
-                185,
+        linear-gradient(90deg,
+            rgba(185,
                 135,
                 255,
-                0.10
-            ),
-            rgba(
-                185,
+                0.10),
+            rgba(185,
                 135,
                 255,
-                0.035
-            )
-        );
+                0.035));
 
     color:
 
-        rgba(
+        rgba(255,
             255,
             255,
-            255,
-            0.88
-        );
+            0.88);
 
     font-family: inherit;
 
@@ -749,43 +666,32 @@ body {
 
         background:
 
-            linear-gradient(
-                90deg,
-                rgba(
-                    185,
+            linear-gradient(90deg,
+                rgba(185,
                     135,
                     255,
-                    0.20
-                ),
-                rgba(
-                    185,
+                    0.20),
+                rgba(185,
                     135,
                     255,
-                    0.07
-                )
-            );
+                    0.07));
 
         border-color:
 
-            rgba(
-                185,
+            rgba(185,
                 135,
                 255,
-                0.35
-            );
+                0.35);
 
         transform:
             translateX(4px);
 
         box-shadow:
 
-            0 0 18px
-            rgba(
-                185,
+            0 0 18px rgba(185,
                 135,
                 255,
-                0.08
-            );
+                0.08);
 
     }
 
@@ -802,12 +708,10 @@ body {
         scale(0.98);
 
     background:
-        rgba(
-            185,
+        rgba(185,
             135,
             255,
-            0.22
-        );
+            0.22);
 
 }
 
@@ -823,13 +727,10 @@ body {
     min-height: 48px;
 
     border:
-        1px solid
-        rgba(
-            185,
+        1px solid rgba(185,
             135,
             255,
-            0.25
-        );
+            0.25);
 
     border-radius: 14px;
 
@@ -837,20 +738,16 @@ body {
         11px 16px;
 
     background:
-        rgba(
-            185,
+        rgba(185,
             135,
             255,
-            0.055
-        );
+            0.055);
 
     color:
-        rgba(
+        rgba(255,
             255,
             255,
-            255,
-            0.72
-        );
+            0.72);
 
     font-family: inherit;
 
@@ -878,12 +775,10 @@ body {
     .folder-close:hover {
 
         background:
-            rgba(
-                185,
+            rgba(185,
                 135,
                 255,
-                0.14
-            );
+                0.14);
 
         color: white;
 
@@ -910,13 +805,7 @@ body {
 
         padding:
 
-            max(25px, env(safe-area-inset-top))
-
-            max(25px, env(safe-area-inset-right))
-
-            max(25px, env(safe-area-inset-bottom))
-
-            max(25px, env(safe-area-inset-left));
+            max(25px, env(safe-area-inset-top)) max(25px, env(safe-area-inset-right)) max(25px, env(safe-area-inset-bottom)) max(25px, env(safe-area-inset-left));
 
     }
 
@@ -976,13 +865,7 @@ body {
 
         padding:
 
-            max(14px, env(safe-area-inset-top))
-
-            max(14px, env(safe-area-inset-right))
-
-            max(14px, env(safe-area-inset-bottom))
-
-            max(14px, env(safe-area-inset-left));
+            max(14px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) max(14px, env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left));
 
         align-items: center;
 
@@ -1176,11 +1059,7 @@ body {
   CELULAR HORIZONTAL
 =========================================================*/
 
-@media (
-    max-width: 900px
-) and (
-    orientation: landscape
-) {
+@media (max-width: 900px) and (orientation: landscape) {
 
     #intro {
 
@@ -1193,11 +1072,9 @@ body {
     #intro h1 {
 
         font-size:
-            clamp(
-                1.8rem,
+            clamp(1.8rem,
                 6vw,
-                2.6rem
-            );
+                2.6rem);
 
         margin-bottom: 8px;
 
@@ -1209,11 +1086,9 @@ body {
         max-width: 520px;
 
         font-size:
-            clamp(
-                0.8rem,
+            clamp(0.8rem,
                 2.2vw,
-                1rem
-            );
+                1rem);
 
         line-height: 1.4;
 
@@ -1232,10 +1107,8 @@ body {
         top: 72%;
 
         max-width:
-            min(
-                620px,
-                calc(100vw - 40px)
-            );
+            min(620px,
+                calc(100vw - 40px));
 
     }
 
@@ -1245,10 +1118,8 @@ body {
         max-height: 90dvh;
 
         width:
-            min(
-                440px,
-                calc(100vw - 30px)
-            );
+            min(440px,
+                calc(100vw - 30px));
 
     }
 
@@ -1259,23 +1130,17 @@ body {
   DISPOSITIVOS CON NOTCH / SAFE AREA
 =========================================================*/
 
-@supports (
-    padding: env(safe-area-inset-top)
-) {
+@supports (padding: env(safe-area-inset-top)) {
 
     #intro {
 
         padding-top:
-            max(
-                25px,
-                env(safe-area-inset-top)
-            );
+            max(25px,
+                env(safe-area-inset-top));
 
         padding-bottom:
-            max(
-                25px,
-                env(safe-area-inset-bottom)
-            );
+            max(25px,
+                env(safe-area-inset-bottom));
 
     }
 
@@ -1283,16 +1148,776 @@ body {
     #folder-system {
 
         padding-top:
-            max(
-                14px,
-                env(safe-area-inset-top)
-            );
+            max(14px,
+                env(safe-area-inset-top));
 
         padding-bottom:
-            max(
-                14px,
-                env(safe-area-inset-bottom)
-            );
+            max(14px,
+                env(safe-area-inset-bottom));
+
+    }
+
+}
+
+/*=========================================================
+  ACTUALIZACIONES
+=========================================================*/
+
+#updates-container {
+
+    position: fixed;
+
+    top: max(22px,
+            env(safe-area-inset-top));
+
+    right: max(22px,
+            env(safe-area-inset-right));
+
+    z-index: 2000;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translateY(-10px) scale(0.95);
+
+    transition:
+
+        opacity 0.6s ease,
+
+        visibility 0.6s ease,
+
+        transform 0.6s ease;
+
+    pointer-events: none;
+
+}
+
+
+#updates-container.visible {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0) scale(1);
+
+    pointer-events: auto;
+
+}
+
+
+/*=========================================================
+  BOTÓN CAMPANA
+=========================================================*/
+
+#updates-button {
+
+    position: relative;
+
+    width: 48px;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid rgba(216,
+            180,
+            254,
+            0.22);
+
+    border-radius: 50%;
+
+    background:
+        rgba(11,
+            5,
+            21,
+            0.52);
+
+    color:
+        rgba(233,
+            213,
+            255,
+            0.82);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+    box-shadow:
+
+        0 0 18px rgba(168,
+            85,
+            247,
+            0.12);
+
+    cursor: pointer;
+
+    transition:
+
+        transform 0.25s ease,
+
+        background 0.25s ease,
+
+        border-color 0.25s ease,
+
+        box-shadow 0.25s ease;
+
+    touch-action: manipulation;
+
+    -webkit-tap-highlight-color:
+        transparent;
+
+}
+
+
+.bell-icon {
+
+    width: 22px;
+
+    height: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.bell-icon svg {
+
+    width: 100%;
+
+    height: 100%;
+
+}
+
+
+/*=========================================================
+  HOVER
+=========================================================*/
+
+@media (hover: hover) and (pointer: fine) {
+
+    #updates-button:hover {
+
+        transform:
+            translateY(-2px);
+
+        background:
+            rgba(126,
+                58,
+                237,
+                0.16);
+
+        border-color:
+            rgba(216,
+                180,
+                254,
+                0.45);
+
+        color: #FFFFFF;
+
+        box-shadow:
+
+            0 0 25px rgba(168,
+                85,
+                247,
+                0.25);
+
+    }
+
+}
+
+
+/*=========================================================
+  CLICK
+=========================================================*/
+
+#updates-button:active {
+
+    transform:
+        scale(0.93);
+
+}
+
+
+/*=========================================================
+  INDICADOR NUEVA ACTUALIZACIÓN
+=========================================================*/
+
+#updates-dot {
+
+    position: absolute;
+
+    top: 2px;
+
+    right: 2px;
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background:
+        #C084FC;
+
+    border:
+        2px solid #0B0515;
+
+    box-shadow:
+
+        0 0 8px rgba(192,
+            132,
+            252,
+            0.9);
+
+    opacity: 0;
+
+    transform:
+        scale(0);
+
+    transition:
+
+        opacity 0.25s ease,
+
+        transform 0.25s ease;
+
+}
+
+
+#updates-dot.show {
+
+    opacity: 1;
+
+    transform:
+        scale(1);
+
+    animation:
+        updatePulse 2s ease-in-out infinite;
+
+}
+
+
+@keyframes updatePulse {
+
+    0%,
+    100% {
+
+        box-shadow:
+            0 0 6px rgba(192,
+                132,
+                252,
+                0.7);
+
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 16px rgba(192,
+                132,
+                252,
+                1);
+
+    }
+
+}
+
+
+/*=========================================================
+  PANEL DE ACTUALIZACIONES
+=========================================================*/
+
+#updates-panel {
+
+    position: absolute;
+
+    top: 58px;
+
+    right: 0;
+
+    width: 370px;
+
+    max-width:
+        calc(100vw - 30px);
+
+    max-height:
+        min(620px,
+            calc(100vh - 100px));
+
+    padding: 22px;
+
+    overflow-y: auto;
+
+    border-radius: 22px;
+
+    border: 1px solid rgba(185,
+            135,
+            255,
+            0.25);
+
+    background:
+
+        linear-gradient(145deg,
+            rgba(29,
+                17,
+                48,
+                0.96),
+            rgba(10,
+                5,
+                19,
+                0.97));
+
+    backdrop-filter:
+        blur(22px);
+
+    -webkit-backdrop-filter:
+        blur(22px);
+
+    box-shadow:
+
+        0 20px 70px rgba(0,
+            0,
+            0,
+            0.45),
+
+        0 0 35px rgba(168,
+            85,
+            247,
+            0.12);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translateY(-8px) scale(0.97);
+
+    transform-origin:
+        top right;
+
+    transition:
+
+        opacity 0.25s ease,
+
+        visibility 0.25s ease,
+
+        transform 0.25s ease;
+
+    pointer-events: none;
+
+}
+
+
+#updates-panel.show {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0) scale(1);
+
+    pointer-events: auto;
+
+}
+
+
+/*=========================================================
+  HEADER
+=========================================================*/
+
+.updates-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding-bottom: 16px;
+
+    border-bottom:
+        1px solid rgba(185,
+            135,
+            255,
+            0.13);
+
+}
+
+
+.updates-kicker {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(216,
+            180,
+            254,
+            0.55);
+
+}
+
+
+.updates-header h2 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 25px;
+
+    font-weight: 600;
+
+    color: #F3E8FF;
+
+}
+
+
+.version-badge {
+
+    flex-shrink: 0;
+
+    padding:
+        5px 9px;
+
+    border-radius: 20px;
+
+    border:
+        1px solid rgba(192,
+            132,
+            252,
+            0.28);
+
+    background:
+        rgba(168,
+            85,
+            247,
+            0.08);
+
+    color:
+        #D8B4FE;
+
+    font-size: 11px;
+
+    letter-spacing: 0.5px;
+
+}
+
+
+/*=========================================================
+  LISTA
+=========================================================*/
+
+.updates-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    padding-top: 18px;
+
+}
+
+
+/*=========================================================
+  ACTUALIZACIÓN
+=========================================================*/
+
+.update-item {
+
+    position: relative;
+
+    padding-left: 15px;
+
+    border-left:
+        2px solid rgba(192,
+            132,
+            252,
+            0.35);
+
+}
+
+
+.update-item-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.update-version {
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.7px;
+
+    color:
+        #C084FC;
+
+}
+
+
+.update-date {
+
+    font-size: 9px;
+
+    color:
+        rgba(255,
+            255,
+            255,
+            0.38);
+
+}
+
+
+.update-item h3 {
+
+    margin-bottom: 5px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 21px;
+
+    font-weight: 600;
+
+    color: #F3E8FF;
+
+}
+
+
+.update-message {
+
+    margin-bottom: 10px;
+
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    color:
+        rgba(255,
+            255,
+            255,
+            0.65);
+
+}
+
+
+.update-changes {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    padding-left: 15px;
+
+}
+
+
+.update-changes li {
+
+    font-size: 11px;
+
+    line-height: 1.45;
+
+    color:
+        rgba(255,
+            255,
+            255,
+            0.52);
+
+}
+
+
+.update-changes li::marker {
+
+    color:
+        rgba(192,
+            132,
+            252,
+            0.7);
+
+}
+
+
+/*=========================================================
+  FOOTER
+=========================================================*/
+
+.updates-footer {
+
+    margin-top: 18px;
+
+    padding-top: 14px;
+
+    border-top:
+        1px solid rgba(185,
+            135,
+            255,
+            0.10);
+
+    text-align: center;
+
+}
+
+
+.updates-footer span {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 13px;
+
+    color:
+        rgba(216,
+            180,
+            254,
+            0.45);
+
+}
+
+
+/*=========================================================
+  MÓVIL
+=========================================================*/
+
+@media (max-width: 600px) {
+
+    #updates-container {
+
+        top: max(14px,
+                env(safe-area-inset-top));
+
+        right: max(14px,
+                env(safe-area-inset-right));
+
+    }
+
+
+    #updates-button {
+
+        width: 44px;
+
+        height: 44px;
+
+    }
+
+
+    .bell-icon {
+
+        width: 20px;
+
+        height: 20px;
+
+    }
+
+
+    #updates-panel {
+
+        top: 54px;
+
+        right: -2px;
+
+        width:
+            calc(100vw - 28px);
+
+        max-width:
+            calc(100vw - 28px);
+
+        max-height:
+            calc(100dvh - 82px);
+
+        padding: 19px;
+
+        border-radius: 20px;
+
+    }
+
+
+    .updates-header h2 {
+
+        font-size: 23px;
+
+    }
+
+
+    .update-item h3 {
+
+        font-size: 20px;
+
+    }
+
+}
+
+
+/*=========================================================
+  CELULARES MUY PEQUEÑOS
+=========================================================*/
+
+@media (max-width: 380px) {
+
+    #updates-panel {
+
+        width:
+            calc(100vw - 20px);
+
+        max-width:
+            calc(100vw - 20px);
+
+        padding: 16px;
+
+    }
+
+
+    .updates-header h2 {
+
+        font-size: 21px;
+
+    }
+
+
+    .update-message {
+
+        font-size: 11px;
 
     }
 
