@@ -230,10 +230,6 @@ export function initScene() {
     // CÁMARA
     //--------------------------------------------------
 
-    const sceneContainer =
-        document.getElementById("scene");
-
-
     const initialWidth =
         sceneContainer
             ? sceneContainer.clientWidth
@@ -277,10 +273,6 @@ export function initScene() {
                 true
 
         });
-
-    const sceneContainer =
-        document.getElementById("scene");
-
 
     const initialWidth =
         sceneContainer
