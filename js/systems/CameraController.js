@@ -33,61 +33,7 @@ let zoomLocked = false;
 // CONFIGURACIÓN DEL ENFOQUE
 //--------------------------------------------------
 
-//--------------------------------------------------
-// FOCUS ADAPTATIVO
-//--------------------------------------------------
-
-const FOCUS_Z_DESKTOP = 8.2;
-const FOCUS_Z_TABLET = 8.8;
-const FOCUS_Z_MOBILE = 9.4;
-
-
-//--------------------------------------------------
-// OBTENER Z DE FOCUS SEGÚN PANTALLA
-//--------------------------------------------------
-
-function getFocusZ() {
-
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-
-    //--------------------------------------------------
-    // CELULAR
-    //--------------------------------------------------
-
-    if (width <= 600) {
-
-        // Vertical
-        if (height > width) {
-
-            return FOCUS_Z_MOBILE;
-
-        }
-
-        // Horizontal
-        return FOCUS_Z_TABLET;
-
-    }
-
-
-    //--------------------------------------------------
-    // TABLET
-    //--------------------------------------------------
-
-    if (width <= 1024) {
-
-        return FOCUS_Z_TABLET;
-
-    }
-
-
-    //--------------------------------------------------
-    // PC
-    //--------------------------------------------------
-
-    return FOCUS_Z_DESKTOP;
-
-}
+const FOCUS_Z = 8.2;
 
 const FOCUS_SMOOTH = 0.045;
 
@@ -319,7 +265,9 @@ function animate() {
 
     const desiredZ =
         focusMode
-            ? getFocusZ()
+
+            ? FOCUS_Z
+
             : targetZ;
 
 
