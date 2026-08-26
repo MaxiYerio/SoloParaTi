@@ -230,13 +230,29 @@ export function initScene() {
     // CÁMARA
     //--------------------------------------------------
 
+    const sceneContainer =
+        document.getElementById("scene");
+
+
+    const initialWidth =
+        sceneContainer
+            ? sceneContainer.clientWidth
+            : window.innerWidth;
+
+
+    const initialHeight =
+        sceneContainer
+            ? sceneContainer.clientHeight
+            : window.innerHeight;
+
+
     camera =
         new THREE.PerspectiveCamera(
 
             60,
 
-            window.innerWidth /
-            window.innerHeight,
+            initialWidth /
+            initialHeight,
 
             0.1,
 
@@ -262,12 +278,25 @@ export function initScene() {
 
         });
 
+    const sceneContainer =
+        document.getElementById("scene");
+
+
+    const initialWidth =
+        sceneContainer
+            ? sceneContainer.clientWidth
+            : window.innerWidth;
+
+
+    const initialHeight =
+        sceneContainer
+            ? sceneContainer.clientHeight
+            : window.innerHeight;
+
+
     renderer.setSize(
-
-        window.innerWidth,
-
-        window.innerHeight
-
+        initialWidth,
+        initialHeight
     );
 
     const pixelRatio =
@@ -429,18 +458,49 @@ function resizeScene() {
 
     if (!camera || !renderer) return;
 
+
+    //--------------------------------------------------
+    // CONTENEDOR REAL DEL CANVAS
+    //--------------------------------------------------
+
+    const container =
+        document.getElementById("scene");
+
+    if (!container) return;
+
+
+    const rect =
+        container.getBoundingClientRect();
+
+
     const width =
-        window.innerWidth;
+        Math.max(
+            1,
+            Math.round(rect.width)
+        );
+
 
     const height =
-        window.innerHeight;
+        Math.max(
+            1,
+            Math.round(rect.height)
+        );
 
+
+    //--------------------------------------------------
+    // ACTUALIZAR ASPECT RATIO
+    //--------------------------------------------------
 
     camera.aspect =
         width / height;
 
+
     camera.updateProjectionMatrix();
 
+
+    //--------------------------------------------------
+    // ACTUALIZAR RENDERER
+    //--------------------------------------------------
 
     renderer.setSize(
         width,
@@ -451,10 +511,19 @@ function resizeScene() {
 }
 
 
+//--------------------------------------------------
+// RESIZE DE LA VENTANA
+//--------------------------------------------------
+
 window.addEventListener(
     "resize",
     resizeScene
 );
+
+
+//--------------------------------------------------
+// ROTACIÓN DEL CELULAR
+//--------------------------------------------------
 
 window.addEventListener(
     "orientationchange",
@@ -467,3 +536,30 @@ window.addEventListener(
 
     }
 );
+
+
+//--------------------------------------------------
+// OBSERVAR CAMBIOS REALES DEL CONTENEDOR
+//--------------------------------------------------
+
+const sceneContainer =
+    document.getElementById("scene");
+
+
+if (sceneContainer) {
+
+    const resizeObserver =
+        new ResizeObserver(
+            () => {
+
+                resizeScene();
+
+            }
+        );
+
+
+    resizeObserver.observe(
+        sceneContainer
+    );
+
+}
