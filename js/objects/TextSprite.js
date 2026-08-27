@@ -328,7 +328,6 @@ export function createTextSprite(data) {
 
         });
 
-
     //--------------------------------------------------
     // SPRITE
     //--------------------------------------------------
@@ -338,7 +337,8 @@ export function createTextSprite(data) {
             material
         );
 
-    sprite.renderOrder = 1000;
+    sprite.renderOrder = 9999;
+    sprite.frustumCulled = false;
 
     //--------------------------------------------------
     // TAMAÑO

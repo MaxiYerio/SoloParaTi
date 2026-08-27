@@ -426,11 +426,12 @@ const timeline = [
 
 export function createGuillotineLyrics(scene) {
 
-    group = new THREE.Group();
+    group =
+        new THREE.Group();
 
     group.visible = false;
 
-    group.renderOrder = 1000;
+    group.renderOrder = 9999;
 
     scene.add(group);
 
@@ -540,6 +541,13 @@ function updateTimeline(time) {
 
 function createElement(data) {
 
+    console.log(
+        "[Guillotine Lyrics] CREANDO:",
+        data.text,
+        "SIDE:",
+        data.side
+    );
+
     const sprite =
         createTextSprite({
 
@@ -560,7 +568,7 @@ function createElement(data) {
         sprite.position.set(
             -3.6,
             0.7,
-            0
+            2
         );
 
     }
@@ -570,7 +578,7 @@ function createElement(data) {
         sprite.position.set(
             3.6,
             -0.7,
-            0
+            2
         );
 
     }
@@ -580,7 +588,7 @@ function createElement(data) {
         sprite.position.set(
             0,
             -4.0,
-            0
+            2
         );
 
     }

@@ -1037,38 +1037,30 @@ export function createCoreSphere() {
             ) *
             0.06;
 
-        //--------------------------------------------------
-        // PULSO NORMAL
-        //--------------------------------------------------
+//--------------------------------------------------
+// PULSO NORMAL
+// Desactivado durante Guillotine.
+// La reacción musical se mantiene separada.
+//--------------------------------------------------
 
-        const pulseSpeed =
-            guillotineMode
+const pulseSpeed =
+    focus
+        ? 1.4
+        : 1.8;
 
-                ? 2.8
+const pulseAmount =
+    focus
+        ? 0.045
+        : 0.018;
 
-                : focus
-
-                    ? 1.4
-
-                    : 1.8;
-
-        const pulseAmount =
-            guillotineMode
-
-                ? 0.075
-
-                : focus
-
-                    ? 0.045
-
-                    : 0.018;
-
-        const normalPulse =
-            Math.sin(
-                time *
-                pulseSpeed
-            ) *
-            pulseAmount;
+const normalPulse =
+    guillotineMode
+        ? 0
+        : Math.sin(
+            time *
+            pulseSpeed
+        ) *
+        pulseAmount;
 
         //--------------------------------------------------
         // PULSO MUSICAL
