@@ -86,6 +86,13 @@ const timeline = [
     },
 
     {
+        start: 53,
+        end: 57,
+        side: "bottom",
+        text: "bum-ba-dim • bum-ba-bum-dim"
+    },
+
+    {
         start: 57,
         end: 61,
         side: "left",
