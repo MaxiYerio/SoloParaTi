@@ -321,7 +321,7 @@ export function createTextSprite(data) {
                 false,
 
             depthTest:
-                true,
+                false,
 
             toneMapped:
                 false
@@ -338,6 +338,7 @@ export function createTextSprite(data) {
             material
         );
 
+    sprite.renderOrder = 1000;
 
     //--------------------------------------------------
     // TAMAÑO

@@ -430,6 +430,8 @@ export function createGuillotineLyrics(scene) {
 
     group.visible = false;
 
+    group.renderOrder = 1000;
+
     scene.add(group);
 
     return {
