@@ -1,13 +1,3 @@
-import * as THREE from
-    "https://unpkg.com/three@0.179.1/build/three.module.js";
-
-import { createTextSprite } from "../objects/TextSprite.js";
-
-let group = null;
-
-let activeElements = [];
-
-let running = false;
 
 
 //--------------------------------------------------
@@ -421,31 +411,83 @@ const timeline = [
 
 
 //--------------------------------------------------
-// CREAR
+// CAPA DE LETRAS
+//--------------------------------------------------
+
+let lyricsLayer = null;
+
+let activeElements = [];
+
+let running = false;
+
+
+//--------------------------------------------------
+// CREAR SISTEMA
 //--------------------------------------------------
 
 export function createGuillotineLyrics(scene) {
 
-    group =
-        new THREE.Group();
+    // Crear capa HTML independiente del mundo 3D
 
-    group.visible = false;
+    lyricsLayer =
+        document.createElement("div");
 
-    group.renderOrder = 9999;
+    lyricsLayer.id =
+        "guillotine-lyrics-layer";
 
-    scene.add(group);
+    lyricsLayer.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    lyricsLayer.className =
+        "guillotine-lyrics-layer";
+
+
+    // Agregarla al contenedor de la escena
+
+    const sceneContainer =
+        document.getElementById("scene");
+
+    if (sceneContainer) {
+
+        sceneContainer.appendChild(
+            lyricsLayer
+        );
+
+    } else {
+
+        document.body.appendChild(
+            lyricsLayer
+        );
+
+    }
+
 
     return {
 
-        object: group,
+        object:
+            lyricsLayer,
+
+
+        //--------------------------------------------------
+        // START
+        //--------------------------------------------------
 
         start() {
 
             running = true;
 
-            group.visible = true;
+            lyricsLayer.classList.add(
+                "active"
+            );
 
         },
+
+
+        //--------------------------------------------------
+        // STOP
+        //--------------------------------------------------
 
         stop() {
 
@@ -453,9 +495,16 @@ export function createGuillotineLyrics(scene) {
 
             clearElements();
 
-            group.visible = false;
+            lyricsLayer.classList.remove(
+                "active"
+            );
 
         },
+
+
+        //--------------------------------------------------
+        // UPDATE
+        //--------------------------------------------------
 
         update(time) {
 
@@ -471,12 +520,17 @@ export function createGuillotineLyrics(scene) {
 
 
 //--------------------------------------------------
-// TIMELINE
+// ACTUALIZAR TIMELINE
 //--------------------------------------------------
 
 function updateTimeline(time) {
 
     const visible = [];
+
+
+    //--------------------------------------------------
+    // BUSCAR ELEMENTOS ACTIVOS
+    //--------------------------------------------------
 
     for (const item of timeline) {
 
@@ -485,14 +539,17 @@ function updateTimeline(time) {
             time < item.end
         ) {
 
-            visible.push(item);
+            visible.push(
+                item
+            );
 
         }
 
     }
 
+
     //--------------------------------------------------
-    // CREAR LOS QUE CORRESPONDEN
+    // CREAR NUEVOS
     //--------------------------------------------------
 
     for (const item of visible) {
@@ -503,30 +560,44 @@ function updateTimeline(time) {
                     element.data === item
             );
 
+
         if (!exists) {
 
-            createElement(item);
+            createElement(
+                item
+            );
 
         }
 
     }
+
 
     //--------------------------------------------------
     // ELIMINAR LOS QUE TERMINARON
     //--------------------------------------------------
 
     for (
-        let i = activeElements.length - 1;
+        let i =
+            activeElements.length - 1;
+
         i >= 0;
+
         i--
     ) {
 
         const element =
             activeElements[i];
 
-        if (!visible.includes(element.data)) {
 
-            removeElement(element);
+        if (
+            !visible.includes(
+                element.data
+            )
+        ) {
+
+            removeElement(
+                element
+            );
 
         }
 
@@ -536,7 +607,7 @@ function updateTimeline(time) {
 
 
 //--------------------------------------------------
-// CREAR TEXTO
+// CREAR TEXTO HTML
 //--------------------------------------------------
 
 function createElement(data) {
@@ -548,71 +619,95 @@ function createElement(data) {
         data.side
     );
 
-    const sprite =
-        createTextSprite({
 
-            text: data.text,
+    const element =
+        document.createElement("div");
 
-            color: "#FFFFFF",
 
-            size: 0.75
+    //--------------------------------------------------
+    // CLASE BASE
+    //--------------------------------------------------
 
-        });
+    element.className =
+        "guillotine-lyric";
+
 
     //--------------------------------------------------
     // POSICIÓN
     //--------------------------------------------------
 
-    if (data.side === "left") {
+    if (
+        data.side === "left"
+    ) {
 
-        sprite.position.set(
-            -3.6,
-            0.7,
-            2
+        element.classList.add(
+            "lyrics-left"
         );
 
     }
 
-    else if (data.side === "right") {
+    else if (
+        data.side === "right"
+    ) {
 
-        sprite.position.set(
-            3.6,
-            -0.7,
-            2
+        element.classList.add(
+            "lyrics-right"
         );
 
     }
 
-    else if (data.side === "bottom") {
+    else if (
+        data.side === "bottom"
+    ) {
 
-        sprite.position.set(
-            0,
-            -4.0,
-            2
+        element.classList.add(
+            "lyrics-bottom"
         );
 
     }
+
+
+    //--------------------------------------------------
+    // TEXTO
+    //--------------------------------------------------
+
+    element.textContent =
+        data.text;
+
+
+    //--------------------------------------------------
+    // AGREGAR A LA CAPA
+    //--------------------------------------------------
+
+    lyricsLayer.appendChild(
+        element
+    );
+
 
     //--------------------------------------------------
     // ANIMACIÓN
     //--------------------------------------------------
 
-    sprite.scale.multiplyScalar(0.01);
+    requestAnimationFrame(
+        () => {
 
-    sprite.material.opacity = 0;
+            element.classList.add(
+                "show"
+            );
 
-    sprite.userData.targetOpacity = 1;
+        }
+    );
 
-    sprite.userData.targetScale =
-        sprite.userData.baseScale.clone();
 
-    group.add(sprite);
+    //--------------------------------------------------
+    // GUARDAR
+    //--------------------------------------------------
 
     activeElements.push({
 
         data,
 
-        sprite
+        element
 
     });
 
@@ -620,20 +715,62 @@ function createElement(data) {
 
 
 //--------------------------------------------------
-// ELIMINAR
+// ELIMINAR TEXTO
 //--------------------------------------------------
 
 function removeElement(element) {
 
-    if (!element.sprite) return;
+    if (
+        !element ||
+        !element.element
+    ) {
+        return;
+    }
 
-    group.remove(
-        element.sprite
+
+    const domElement =
+        element.element;
+
+
+    //--------------------------------------------------
+    // ANIMACIÓN DE SALIDA
+    //--------------------------------------------------
+
+    domElement.classList.remove(
+        "show"
     );
 
-    element.sprite.material.map.dispose();
 
-    element.sprite.material.dispose();
+    domElement.classList.add(
+        "hide"
+    );
+
+
+    //--------------------------------------------------
+    // ELIMINAR DESPUÉS DE LA ANIMACIÓN
+    //--------------------------------------------------
+
+    setTimeout(
+        () => {
+
+            if (
+                domElement.parentNode
+            ) {
+
+                domElement.parentNode.removeChild(
+                    domElement
+                );
+
+            }
+
+        },
+        450
+    );
+
+
+    //--------------------------------------------------
+    // QUITAR DE ACTIVOS
+    //--------------------------------------------------
 
     activeElements =
         activeElements.filter(
@@ -645,33 +782,15 @@ function removeElement(element) {
 
 
 //--------------------------------------------------
-// ANIMACIÓN
+// ACTUALIZAR ANIMACIONES
 //--------------------------------------------------
 
 export function updateGuillotineLyrics() {
 
-    for (const element of activeElements) {
+    // Las animaciones ahora las maneja CSS.
 
-        const sprite =
-            element.sprite;
-
-        const target =
-            element.sprite.userData
-                .targetScale;
-
-        sprite.scale.lerp(
-            target,
-            0.08
-        );
-
-        sprite.material.opacity +=
-            (
-                element.sprite.userData
-                    .targetOpacity -
-                sprite.material.opacity
-            ) * 0.08;
-
-    }
+    // Esta función queda para mantener
+    // la arquitectura actual del proyecto.
 
 }
 
@@ -682,17 +801,24 @@ export function updateGuillotineLyrics() {
 
 function clearElements() {
 
-    for (const element of activeElements) {
+    for (
+        const element
+        of activeElements
+    ) {
 
-        group.remove(
-            element.sprite
-        );
+        if (
+            element.element &&
+            element.element.parentNode
+        ) {
 
-        element.sprite.material.map.dispose();
+            element.element.parentNode.removeChild(
+                element.element
+            );
 
-        element.sprite.material.dispose();
+        }
 
     }
+
 
     activeElements = [];
 
