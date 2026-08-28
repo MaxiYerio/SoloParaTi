@@ -1969,10 +1969,8 @@ body {
 
     position: absolute;
 
-    width: min(
-        34vw,
-        560px
-    );
+    width: min(34vw,
+            560px);
 
     padding:
         12px 20px;
@@ -1982,11 +1980,9 @@ body {
         sans-serif;
 
     font-size:
-        clamp(
-            1rem,
+        clamp(1rem,
             1.55vw,
-            1.45rem
-        );
+            1.45rem);
 
     font-weight: 500;
 
@@ -1998,62 +1994,41 @@ body {
     text-align: center;
 
     color:
-        rgba(
+        rgba(255,
             255,
             255,
-            255,
-            0.96
-        );
+            0.96);
 
     text-shadow:
 
-        0 0 6px
-        rgba(
-            185,
+        0 0 6px rgba(185,
             135,
             255,
-            0.85
-        ),
+            0.85),
 
-        0 0 18px
-        rgba(
-            185,
+        0 0 18px rgba(185,
             135,
             255,
-            0.45
-        ),
+            0.45),
 
-        0 3px 10px
-        rgba(
+        0 3px 10px rgba(0,
             0,
             0,
-            0,
-            0.9
-        );
+            0.9);
 
     opacity: 0;
 
     transform:
-        translateY(
-            14px
-        )
-        scale(
-            0.96
-        );
+        translateY(14px) scale(0.96);
 
     transition:
 
-        opacity
-            0.45s ease,
+        opacity 0.45s ease,
 
-        transform
-            0.55s
-            cubic-bezier(
-                0.22,
-                1,
-                0.36,
-                1
-            );
+        transform 0.55s cubic-bezier(0.22,
+            1,
+            0.36,
+            1);
 
 }
 
@@ -2067,8 +2042,7 @@ body {
     opacity: 1;
 
     transform:
-        translateY(0)
-        scale(1);
+        translateY(0) scale(1);
 
 }
 
@@ -2082,12 +2056,7 @@ body {
     opacity: 0;
 
     transform:
-        translateY(
-            -12px
-        )
-        scale(
-            0.97
-        );
+        translateY(-12px) scale(0.97);
 
 }
 
@@ -2099,22 +2068,15 @@ body {
 .guillotine-lyric.lyrics-left {
 
     left:
-        clamp(
-            20px,
+        clamp(20px,
             5vw,
-            90px
-        );
+            90px);
 
     top:
         50%;
 
     transform:
-        translateY(
-            calc(-50% + 14px)
-        )
-        scale(
-            0.96
-        );
+        translateY(calc(-50% + 14px)) scale(0.96);
 
 }
 
@@ -2122,8 +2084,7 @@ body {
 .guillotine-lyric.lyrics-left.show {
 
     transform:
-        translateY(-50%)
-        scale(1);
+        translateY(-50%) scale(1);
 
 }
 
@@ -2135,22 +2096,15 @@ body {
 .guillotine-lyric.lyrics-right {
 
     right:
-        clamp(
-            20px,
+        clamp(20px,
             5vw,
-            90px
-        );
+            90px);
 
     top:
         50%;
 
     transform:
-        translateY(
-            calc(-50% + 14px)
-        )
-        scale(
-            0.96
-        );
+        translateY(calc(-50% + 14px)) scale(0.96);
 
 }
 
@@ -2158,8 +2112,7 @@ body {
 .guillotine-lyric.lyrics-right.show {
 
     transform:
-        translateY(-50%)
-        scale(1);
+        translateY(-50%) scale(1);
 
 }
 
@@ -2174,22 +2127,16 @@ body {
         50%;
 
     bottom:
-        clamp(
-            28px,
+        clamp(28px,
             8vh,
-            90px
-        );
+            90px);
 
     transform:
-        translateX(-50%)
-        translateY(14px)
-        scale(0.96);
+        translateX(-50%) translateY(14px) scale(0.96);
 
     width:
-        min(
-            70vw,
-            800px
-        );
+        min(70vw,
+            800px);
 
 }
 
@@ -2197,9 +2144,7 @@ body {
 .guillotine-lyric.lyrics-bottom.show {
 
     transform:
-        translateX(-50%)
-        translateY(0)
-        scale(1);
+        translateX(-50%) translateY(0) scale(1);
 
 }
 
@@ -2213,20 +2158,16 @@ body {
     .guillotine-lyric {
 
         width:
-            min(
-                42vw,
-                300px
-            );
+            min(42vw,
+                300px);
 
         padding:
             8px 10px;
 
         font-size:
-            clamp(
-                0.78rem,
+            clamp(0.78rem,
                 3vw,
-                1rem
-            );
+                1rem);
 
         line-height:
             1.3;
@@ -2267,26 +2208,18 @@ body {
   CELULAR HORIZONTAL
 =========================================================*/
 
-@media (
-    max-width: 900px
-) and (
-    orientation: landscape
-) {
+@media (max-width: 900px) and (orientation: landscape) {
 
     .guillotine-lyric {
 
         width:
-            min(
-                35vw,
-                330px
-            );
+            min(35vw,
+                330px);
 
         font-size:
-            clamp(
-                0.75rem,
+            clamp(0.75rem,
                 2.2vw,
-                1rem
-            );
+                1rem);
 
     }
 
@@ -2309,5 +2242,536 @@ body {
             60vw;
 
     }
+
+}
+
+/*=========================================================
+  GUILLOTINE — CAPA DE LETRAS
+=========================================================*/
+
+/*
+    Esta capa está por encima del canvas de Three.js.
+
+    Las letras NO pertenecen al núcleo.
+    Son una interfaz independiente sobre la pantalla.
+*/
+
+#guillotine-lyrics-layer {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 50;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    display: block;
+
+}
+
+
+/*=========================================================
+  LETRAS NORMALES
+=========================================================*/
+
+.guillotine-lyric {
+
+    position: fixed;
+
+    z-index: 51;
+
+    max-width: 38vw;
+
+    padding: 10px 18px;
+
+    color: rgba(255, 255, 255, 0.92);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: clamp(1.4rem,
+            2.4vw,
+            2.2rem);
+
+    font-weight: 600;
+
+    line-height: 1.15;
+
+    letter-spacing: 0.5px;
+
+    text-align: center;
+
+    white-space: normal;
+
+    text-shadow:
+        0 0 8px rgba(0, 0, 0, 0.95),
+        0 0 18px rgba(0, 0, 0, 0.8);
+
+    opacity: 0;
+
+    transform:
+        translateY(12px) scale(0.96);
+
+    transition:
+        opacity 0.45s ease,
+        transform 0.45s ease;
+
+}
+
+
+/*=========================================================
+  APARECER
+=========================================================*/
+
+.guillotine-lyric.show {
+
+    opacity: 1;
+
+    transform:
+        translateY(0) scale(1);
+
+}
+
+
+/*=========================================================
+  DESAPARECER
+=========================================================*/
+
+.guillotine-lyric.hide {
+
+    opacity: 0;
+
+    transform:
+        translateY(-10px) scale(0.97);
+
+}
+
+
+/*=========================================================
+  IZQUIERDA
+=========================================================*/
+
+.guillotine-lyric.lyrics-left {
+
+    left: 5vw;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%) translateX(-18px) scale(0.96);
+
+}
+
+
+/*=========================================================
+  IZQUIERDA — ACTIVA
+=========================================================*/
+
+.guillotine-lyric.lyrics-left.show {
+
+    transform:
+        translateY(-50%) translateX(0) scale(1);
+
+}
+
+
+/*=========================================================
+  DERECHA
+=========================================================*/
+
+.guillotine-lyric.lyrics-right {
+
+    right: 5vw;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%) translateX(18px) scale(0.96);
+
+}
+
+
+/*=========================================================
+  DERECHA — ACTIVA
+=========================================================*/
+
+.guillotine-lyric.lyrics-right.show {
+
+    transform:
+        translateY(-50%) translateX(0) scale(1);
+
+}
+
+
+/*=========================================================
+  ABAJO
+=========================================================*/
+
+.guillotine-lyric.lyrics-bottom {
+
+    left: 50%;
+
+    bottom: 7%;
+
+    transform:
+        translateX(-50%) translateY(15px) scale(0.96);
+
+}
+
+
+/*=========================================================
+  ABAJO — ACTIVA
+=========================================================*/
+
+.guillotine-lyric.lyrics-bottom.show {
+
+    transform:
+        translateX(-50%) translateY(0) scale(1);
+
+}
+
+
+/*=========================================================
+  VOCALIZACIONES
+=========================================================*/
+
+/*=========================================================
+  VOCALIZACIONES — MICRO ANIMACIÓN
+=========================================================*/
+
+.guillotine-vocal-part {
+
+    position: fixed;
+
+    left: 50%;
+    bottom: 7%;
+
+    z-index: 52;
+
+    color: rgba(255, 255, 255, 0.94);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: clamp(1.5rem,
+            3vw,
+            2.8rem);
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+
+    pointer-events: none;
+
+    text-shadow:
+        0 0 8px rgba(0, 0, 0, 1),
+        0 0 18px rgba(0, 0, 0, 0.9),
+        0 0 30px rgba(185, 135, 255, 0.25);
+
+    opacity: 0;
+
+    /*
+        Cada vocalización empieza ligeramente abajo.
+    */
+
+    transform:
+        translate(calc(-50% + (var(--vocal-index) - 8) * 42px),
+            18px) scale(0.88);
+
+    /*
+        Animación MUY rápida.
+
+        120ms entrada
+        100ms salida
+    */
+
+    transition:
+        opacity 0.12s ease-out,
+        transform 0.12s cubic-bezier(.2, .8, .2, 1);
+
+}
+
+
+/*=========================================================
+  APARECER
+=========================================================*/
+
+.guillotine-vocal-part.show {
+
+    opacity: 1;
+
+    transform:
+        translate(calc(-50% + (var(--vocal-index) - 8) * 42px),
+            -6px) scale(1);
+
+}
+
+
+/*=========================================================
+  DESAPARECER
+=========================================================*/
+
+.guillotine-vocal-part.hide {
+
+    opacity: 0;
+
+    transform:
+        translate(calc(-50% + (var(--vocal-index) - 8) * 42px),
+            -28px) scale(0.82);
+
+}
+
+
+/*=========================================================
+  CELULAR
+=========================================================*/
+
+@media (max-width: 600px) {
+
+    .guillotine-vocal-part {
+
+        bottom: 6%;
+
+        font-size:
+            clamp(1.25rem,
+                6vw,
+                2rem);
+
+        transform:
+            translate(calc(-50% + (var(--vocal-index) - 8) * 27px),
+                15px) scale(0.88);
+
+    }
+
+
+    .guillotine-vocal-part.show {
+
+        transform:
+            translate(calc(-50% + (var(--vocal-index) - 8) * 27px),
+                -5px) scale(1);
+
+    }
+
+
+    .guillotine-vocal-part.hide {
+
+        transform:
+            translate(calc(-50% + (var(--vocal-index) - 8) * 27px),
+                -22px) scale(0.82);
+
+    }
+
+}
+
+
+
+
+
+/*=========================================================
+  CELULAR
+=========================================================*/
+
+@media (max-width: 600px) {
+
+    .guillotine-lyric {
+
+        max-width: 42vw;
+
+        padding:
+            8px 12px;
+
+        font-size:
+            clamp(1.15rem,
+                4.5vw,
+                1.7rem);
+
+        line-height: 1.1;
+
+    }
+
+
+    .guillotine-lyric.lyrics-left {
+
+        left: 3vw;
+
+    }
+
+
+    .guillotine-lyric.lyrics-right {
+
+        right: 3vw;
+
+    }
+
+
+    .guillotine-lyric.lyrics-bottom {
+
+        bottom: 6%;
+
+    }
+
+
+    .guillotine-vocal-part {
+
+        bottom: 6%;
+
+        font-size:
+            clamp(1.25rem,
+                6vw,
+                2rem);
+
+        transform:
+            translate(calc(-50% + (var(--vocal-index) - 8) * 27px),
+                15px) scale(0.75);
+
+    }
+
+
+    .guillotine-vocal-part.show {
+
+        transform:
+            translate(calc(-50% + (var(--vocal-index) - 8) * 27px),
+                0) scale(1);
+
+    }
+
+
+    .guillotine-vocal-part.hide {
+
+        transform:
+            translate(calc(-50% + (var(--vocal-index) - 8) * 27px),
+                -10px) scale(0.8);
+
+    }
+
+}
+
+
+/*=========================================================
+  CELULAR HORIZONTAL
+=========================================================*/
+
+@media (max-width: 900px) and (orientation: landscape) {
+
+    .guillotine-lyric {
+
+        font-size:
+            clamp(1rem,
+                3vw,
+                1.7rem);
+
+        max-width: 32vw;
+
+    }
+
+
+    .guillotine-lyric.lyrics-left {
+
+        left: 3vw;
+
+    }
+
+
+    .guillotine-lyric.lyrics-right {
+
+        right: 3vw;
+
+    }
+
+    .guillotine-vocal-part {
+
+        bottom: 5%;
+
+        font-size:
+            clamp(1.1rem,
+                3vw,
+                1.8rem);
+
+    }
+
+}
+
+/*=========================================================
+  VOCALIZACIONES — ALTERNANCIA ARRIBA / ABAJO
+=========================================================*/
+
+/*
+    Índices PARES
+    ↓
+    aparecen desde abajo
+    ↑
+    suben y desaparecen
+*/
+
+.guillotine-vocal-part:nth-of-type(even) {
+
+    transform:
+        translate(calc(-50% + (var(--vocal-index) - 8) * 42px),
+            18px) scale(0.88);
+
+}
+
+
+.guillotine-vocal-part:nth-of-type(even).show {
+
+    transform:
+        translate(calc(-50% + (var(--vocal-index) - 8) * 42px),
+            -6px) scale(1);
+
+}
+
+
+.guillotine-vocal-part:nth-of-type(even).hide {
+
+    transform:
+        translate(calc(-50% + (var(--vocal-index) - 8) * 42px),
+            -28px) scale(0.82);
+
+}
+
+
+/*
+    Índices IMPARES
+    ↓
+    aparecen desde arriba
+    ↓
+    bajan y desaparecen
+*/
+
+.guillotine-vocal-part:nth-of-type(odd) {
+
+    transform:
+        translate(calc(-50% + (var(--vocal-index) - 8) * 42px),
+            -28px) scale(0.88);
+
+}
+
+
+.guillotine-vocal-part:nth-of-type(odd).show {
+
+    transform:
+        translate(calc(-50% + (var(--vocal-index) - 8) * 42px),
+            -6px) scale(1);
+
+}
+
+
+.guillotine-vocal-part:nth-of-type(odd).hide {
+
+    transform:
+        translate(calc(-50% + (var(--vocal-index) - 8) * 42px),
+            18px) scale(0.82);
 
 }
